@@ -1,0 +1,120 @@
+### deliverable_val  (ckpt=public.pt, root=DATA/public_thin_val )
+n=15
+PSNR         thick   : 28.54 dB
+PSNR                 : 28.58 dB
+SSIM                 : 0.7263
+LAA-950 bias thick   : -0.64 pp
+LAA-950 bias SCTE-R  : -0.11 pp
+LAA-950 MAE  thick   : 0.64 pp
+LAA-950 MAE  SCTE-R  : 0.32 pp
+Perc15  MAE  thick   : 16.71 HU
+Perc15  MAE  SCTE-R  : 2.64 HU
+LAA-950 CCC (thick vs ref): 0.064
+LAA-950 CCC (recon vs ref): 0.891
+reliability (mean)   : 0.983
+
+### deliverable_test  (ckpt=public.pt, root=DATA/public_thin_test )
+n=50
+PSNR         thick   : 28.36 dB
+PSNR                 : 28.40 dB
+SSIM                 : 0.7471
+LAA-950 bias thick   : -0.67 pp
+LAA-950 bias SCTE-R  : -0.39 pp
+LAA-950 MAE  thick   : 0.67 pp
+LAA-950 MAE  SCTE-R  : 0.39 pp
+Perc15  MAE  thick   : 18.28 HU
+Perc15  MAE  SCTE-R  : 2.84 HU
+LAA-950 CCC (thick vs ref): 0.070
+LAA-950 CCC (recon vs ref): 0.875
+reliability (mean)   : 0.983
+
+### docdefault_test  (ckpt=runs/public_docdefault_best.pt, root=DATA/public_thin_test )
+n=50
+PSNR         thick   : 28.36 dB
+PSNR                 : 26.71 dB
+SSIM                 : 0.6670
+LAA-950 bias thick   : -0.67 pp
+LAA-950 bias SCTE-R  : -0.40 pp
+LAA-950 MAE  thick   : 0.67 pp
+LAA-950 MAE  SCTE-R  : 0.44 pp
+Perc15  MAE  thick   : 18.28 HU
+Perc15  MAE  SCTE-R  : 5.27 HU
+LAA-950 CCC (thick vs ref): 0.070
+LAA-950 CCC (recon vs ref): 0.745
+reliability (mean)   : 0.985
+
+### clip_only_test  (ckpt=runs/M1_lr1e3_best.pt, root=DATA/public_thin_test )
+n=50
+PSNR         thick   : 28.36 dB
+PSNR                 : 28.47 dB
+SSIM                 : 0.7471
+LAA-950 bias thick   : -0.67 pp
+LAA-950 bias SCTE-R  : -0.48 pp
+LAA-950 MAE  thick   : 0.67 pp
+LAA-950 MAE  SCTE-R  : 0.48 pp
+Perc15  MAE  thick   : 18.28 HU
+Perc15  MAE  SCTE-R  : 3.51 HU
+LAA-950 CCC (thick vs ref): 0.070
+LAA-950 CCC (recon vs ref): 0.751
+reliability (mean)   : 0.985
+
+### ablation_wtraj0_test  (ckpt=runs/M4_traj0_best.pt, root=DATA/public_thin_test )
+n=50
+PSNR         thick   : 28.36 dB
+PSNR                 : 28.58 dB
+SSIM                 : 0.7472
+LAA-950 bias thick   : -0.67 pp
+LAA-950 bias SCTE-R  : -0.61 pp
+LAA-950 MAE  thick   : 0.67 pp
+LAA-950 MAE  SCTE-R  : 0.61 pp
+Perc15  MAE  thick   : 18.28 HU
+Perc15  MAE  SCTE-R  : 10.03 HU
+LAA-950 CCC (thick vs ref): 0.070
+LAA-950 CCC (recon vs ref): 0.368
+reliability (mean)   : 0.990
+
+### deliverable_test_p128  (ckpt=public.pt, root=DATA/public_thin_test --patch 40 128 128)
+n=50
+PSNR         thick   : 25.79 dB
+PSNR                 : 26.12 dB
+SSIM                 : 0.8894
+LAA-950 bias thick   : -0.84 pp
+LAA-950 bias SCTE-R  : -0.43 pp
+LAA-950 MAE  thick   : 0.84 pp
+LAA-950 MAE  SCTE-R  : 0.46 pp
+Perc15  MAE  thick   : 19.18 HU
+Perc15  MAE  SCTE-R  : 3.19 HU
+LAA-950 CCC (thick vs ref): 0.091
+LAA-950 CCC (recon vs ref): 0.821
+reliability (mean)   : 0.980
+
+### widetrain_test_p128  (ckpt=runs/W2_patch128_ema.pt, root=DATA/public_thin_test --patch 40 128 128)
+n=50
+PSNR         thick   : 25.79 dB
+PSNR                 : 25.89 dB
+SSIM                 : 0.8854
+LAA-950 bias thick   : -0.84 pp
+LAA-950 bias SCTE-R  : +0.60 pp
+LAA-950 MAE  thick   : 0.84 pp
+LAA-950 MAE  SCTE-R  : 0.68 pp
+Perc15  MAE  thick   : 19.18 HU
+Perc15  MAE  SCTE-R  : 4.19 HU
+LAA-950 CCC (thick vs ref): 0.091
+LAA-950 CCC (recon vs ref): 0.763
+reliability (mean)   : 0.980
+
+### deliverable8_test  (ckpt=public_8mm.pt, root=DATA/public_thin_test --downsample 8 --slice_fwhm 8.0)
+n=50
+PSNR         thick   : 27.31 dB
+PSNR                 : 26.70 dB
+SSIM                 : 0.6206
+LAA-950 bias thick   : -0.67 pp
+LAA-950 bias SCTE-R  : -0.29 pp
+LAA-950 MAE  thick   : 0.67 pp
+LAA-950 MAE  SCTE-R  : 0.37 pp
+Perc15  MAE  thick   : 21.65 HU
+Perc15  MAE  SCTE-R  : 4.83 HU
+LAA-950 CCC (thick vs ref): 0.021
+LAA-950 CCC (recon vs ref): 0.730
+reliability (mean)   : 0.984
+

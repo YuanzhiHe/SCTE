@@ -1,0 +1,843 @@
+[
+ {
+  "title": "The Zero Slice of Quaternionic Real Bordism",
+  "title_norm": "the zero slice of quaternionic real bordism",
+  "abstract": "Using the Hill-Hopkins-Ravenel norm, one can produce a $Q_8$-spectrum $N_{C_2}^{Q_8} \\text{MU}\\mathbb{R}$, where $Q_8$ is the quaternion group. Working towards a computation of the slice spectral sequence for $N_{C_2}^{Q_8} \\text{MU}\\mathbb{R}$, we compute the zero slice of $N_{C_2}^{Q_8} \\text{MU}\\mathbb{R}$ and a bigraded subring of the $\\text{RO}(Q_8)$-graded homotopy Mackey functors of this slice.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Bertrand J. Guillou",
+   "Jesse Keyes",
+   "David Mehrle"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2605.01174v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2605.01174v1",
+  "published_iso": "2026-05-02T00:41:06Z",
+  "from_query": [
+   "per-scan slice profile identification certificate",
+   "certified emphysema index thick slice CT"
+  ]
+ },
+ {
+  "title": "On the Structural Foundations of Signature Volatility Models: Existence, Arbitrage, Completeness, and the Hedging-Error Decomposition",
+  "title_norm": "on the structural foundations of signature volatility models existence arbitrage",
+  "abstract": "We establish four structural results for signature volatility models. First, we prove global existence and uniqueness of strong solutions to the signature SDE $dS_t = S_t \\langle \\ell, \\widehat{W}_t \\rangle \\, dB_t$ on the weighted tensor algebra $T_w$, identifying the admissibility class through a summability condition H1 and an exponential-integrability condition H3 for the square-integrable stochastic-exponential construction. Second, we establish the asset-pricing part on the natural filtration of the prolonged signature and separate it from transform non-explosion: H3 makes the reference-measure stochastic exponential a true martingale, hence yields NFLVR, while global solvability of the associated infinite-dimensional Riccati equation is the additional condition equivalent to absence of explosion for finite signature transforms. Third, we characterise market completeness on the price filtration via the density of the truncated signature span $\\mathrm{span}\\{\\langle e_I, \\widehat{W}_T \\rangle : |I| \\leq N\\}$ inside $L^2(\\mathcal{F}^S_T, \\mathbb{Q})$, and identify the minimal such $N$, the price-filtration completeness depth. Fourth, we derive the hedging-error decomposition $X = \\mathbb{E}_\\mathbb{Q}[X] + \\int_0^T H_s \\, dS_s + \\varepsilon_T$ for square-integrable payoffs, with residual expanded through the Gram projection of signature components beyond the completeness depth and bounded by a model-dependent projection error. The four results are tied by an architectural identity: the admissible weighted tensor algebra on which the stochastic exponential is a true martingale and finite signature transforms do not explode is the natural valuation cell of a signature SDE. The proofs are self-contained except for standard results from rough path theory, stochastic integration, and quadratic hedging, recalled in the appendices.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Akmal Xodarev"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2605.17142v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2605.17142v1",
+  "published_iso": "2026-05-16T20:26:25Z",
+  "from_query": [
+   "displacement versus structural residual decomposition"
+  ]
+ },
+ {
+  "title": "Time-Scaled Intertwining Cocycles and Identifiability of Multi-Semigroup Mixtures on Hilbert Operator Networks",
+  "title_norm": "time scaled intertwining cocycles and identifiability of multi semigroup mixture",
+  "abstract": "We study rigidity phenomena for time-scaled intertwining families of dissipative semigroups $\\mathcal S_i(t)=e^{-tA_i}$ and prove that a network of bounded injective operators satisfying $K_{ij}\\mathcal S_j(t)=\\mathcal S_i(λ_{ij}t)K_{ij}$ and $K_{ik}=K_{ij}K_{jk}$ necessarily admits a multiplicative gauge representation $λ_{ij}=τ_i/τ_j$, if and only if the renormalized generators $\\{τ_iA_i\\}$ form a common isospectral class with matching eigenspace dimensions; in particular, eigenspaces are transported isomorphically across sectors. The operators $K_{ij}$ define parallel transport in a flat Hilbert bundle over the index network, with flatness derived from the intertwining constraints rather than assumed. As an application, the mixture observable $M(t)=\\sum_i w_i\\mathcal B_0K_{0i}\\mathcal S_i(t)ψ_i$ reduces under finite spectral support to a structured exponential sum. Under spectral separation, the modal parameters are uniquely identifiable, with sector tags determined intrinsically by the operator spectra; under eigenspace observability, active state components are uniquely recovered. Finite-window exact reconstruction holds from $2L$ samples, and the stability bound $\\|\\widehatΘ-Θ_\\ast\\|_{\\mathcal X}\\le C_{\\mathrm{stab}}κ_{\\mathrm{exp}}\\varepsilon$ follows with constants explicitly controlled by the spectral geometry and observability of the network.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Anton Alexa"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2603.20322v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2603.20322v2",
+  "published_iso": "2026-03-19T23:56:32Z",
+  "from_query": [
+   "operator-identifying reconstruction with densitometric gate"
+  ]
+ },
+ {
+  "title": "Errors in PDH offset locking due to spurious spectral features",
+  "title_norm": "errors in pdh offset locking due to spurious spectral features",
+  "abstract": "The Pound-Drever-Hall (PDH) technique is widely used to stabilize the frequency of lasers. Here we report on a routinely underestimated source of error in PDH offset-locking: a shift in the lock point due to the unintended interaction between residual optical sidebands and higher-order spatial modes in misaligned Fabry-Perot cavities. Significant frequency deviations-up to 50% of the cavity linewidth-can arise when the optical offset is obtained from a sinusoidally driven EOM. We measure this deviation experimentally, find agreement with a simple model, and show how a spectrally-pure frequency offset can reduce the deviation by an order of magnitude. Our findings draw attention to a systematic effect of importance to precision optical spectroscopy, optical clocks, and quantum information science.",
+  "year": 2025,
+  "venue": "arXiv",
+  "authors": [
+   "Roame A. Hildebrand",
+   "Wance Wang",
+   "Connor Goham",
+   "Alessandro Restelli",
+   "Joseph W. Britton"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2512.03900v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2512.03900v1",
+  "published_iso": "2025-12-03T15:49:39Z",
+  "from_query": [
+   "slab-mean invariance identifies attenuation offset"
+  ]
+ },
+ {
+  "title": "Optimizing Explicit Unit-Distance Lower-Bound Certificates",
+  "title_norm": "optimizing explicit unit distance lower bound certificates",
+  "abstract": "The 2026 disproof of Erdős's unit-distance conjecture and Sawin's quantitative refinement show that the maximum number $u(n)$ of unit distances among $n$ planar points can exceed $n^{1+\\varepsilon}$ for a fixed positive $\\varepsilon$. Sawin's explicit bound gives more than $n^{1.014}$ unit distances for arbitrarily large $n$ and exposes integer parameters whose choice is not fully optimized. This report treats Sawin's parameter selection as a nonlinear integer optimization problem and develops an open-source Python optimization and verification pipeline for certificates involving prime sets $T$ and $S_Q$, integer multiplicities $k(p)$, and a rationally encoded real parameter $R$. After reproducing Sawin's certificate with $δ=0.014114\\ldots$, the pipeline yields improved certificates with the same $T$. We develop a tailored integer evolution strategy achieving a certificate with $δ=0.015263\\ldots$ and supporting the cautious statement $u(n)>n^{1.0152}$ for arbitrarily large $n$. For extended ramified prime ranges, the Emmerich--Cordella certificate obtained with the same framework reports $u(n)>n^{1.031}$ for $\\#T=67$, illustrating the importance of enlarging $T$. Very recent MathOverflow discussions, brought to the author's attention as of version~4, report further improvements, including certificates above $δ>0.035$ and beyond $δ>0.036$. Some of these improvements may rely not only on larger prime ranges but also on modified constraint systems and additional degrees of freedom that deviate from Sawin's original formulation. Beyond this application, the work illustrates how randomized optimization heuristics can improve, verify, and refine explicit certificates for combinatorial geometry through nonlinear integer optimization.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Michael T. M. Emmerich"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2606.03419v5",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2606.03419v5",
+  "published_iso": "2026-06-02T10:05:23Z",
+  "from_query": [
+   "per-scan slice profile identification certificate"
+  ]
+ },
+ {
+  "title": "Residual Stream Duality in Modern Transformer Architectures",
+  "title_norm": "residual stream duality in modern transformer architectures",
+  "abstract": "Recent work has made clear that the residual pathway is not mere optimization plumbing; it is part of the model's representational machinery. We agree, but argue that the cleanest way to organize this design space is through a two-axis view of the Transformer. A decoder evolves information along two ordered dimensions: sequence position and layer depth. Self-attention already provides adaptive mixing along the sequence axis, whereas the residual stream usually performs fixed addition along the depth axis. If we fix a token position and treat layer index as the ordered variable, then a causal depth-wise residual attention read is exactly the same local operator as causal short sliding-window attention (ShortSWA), except written over depth rather than over sequence. This is the core residual stream duality behind Transformer$^2$. This perspective also clarifies the recent literature. ELC-BERT and DenseFormer already show that learned aggregation over depth can outperform uniform residual accumulation, while Vertical Attention, DeepCrossAttention (DCA), MUDDFormer, and Attention Residuals move further toward explicit attention-based routing over earlier layers. The key point, however, is that operator-level duality does not imply systems-level symmetry. For large-scale autoregressive models, sequence-axis ShortSWA is usually the more hardware-friendly placement because it reuses token-side sliding-window kernels, KV-cache layouts, and chunked execution. If the goal is instead to change the shortcut itself, Deep Delta Learning (DDL) is the cleaner intervention because it modifies the residual operator directly rather than adding a separate cross-layer retrieval path. Our recommendation is therefore simple: use DDL when the shortcut is the object of interest, and use sequence-axis ShortSWA when the goal is local adaptive mixing.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Yifan Zhang"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2603.16039v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2603.16039v2",
+  "published_iso": "2026-03-17T00:56:29Z",
+  "from_query": [
+   "displacement versus structural residual decomposition"
+  ]
+ },
+ {
+  "title": "Conservative AI for Safety-Sensitive Medical Image Restoration: Residual-Bounded CT-CTA Enhancement for Intracranial Aneurysm-Relevant Signal Recovery",
+  "title_norm": "conservative ai for safety sensitive medical image restoration residual bounded ",
+  "abstract": "Image restoration models are increasingly applied to degraded medical scans, but in safety-sensitive settings they must improve image quality without uncontrolled modification of clinically important regions. This is especially relevant for intracranial CT and CT angiography (CTA), where small vessels and aneurysm-relevant cues lie near high-contrast anatomical boundaries. We frame medical image restoration as a conservative AI problem and present a residual-bounded 2.5D restoration framework trained on synthetically degraded CT/CTA inputs. The model adds a learned residual to the original center slice through an edit-control map that limits the magnitude and spatial extent of modification. We evaluate the framework using an aneurysm-relevant image-recovery matrix, paired comparison against a Gaussian baseline, Monte Carlo stability testing, anatomical localization of meaningful edits, and external evaluation on low-dose CT. On 50 out-of-distribution CT-CTA cases, the bounded model achieved a mean target gain of 0.0635, a mean PSNR of 37.51 dB, and an iatrogenic-edit rate of 4.0%. Across 1,000 Monte Carlo runs, it remained net positive in 85.4% of runs with no stably negative cases. On external low-dose CT, the model was directionally beneficial and produced a substantially smaller modification footprint than the baseline. Meaningful edits concentrated in brain and skull regions while unrelated anatomy showed negligible change. These findings provide preliminary computational evidence that residual-bounded restoration is feasible in boundary-sensitive vascular imaging, but they do not establish clinical diagnostic performance and require expert review and prospective validation before clinical use.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Weijun Ma"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2605.16458v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2605.16458v1",
+  "published_iso": "2026-05-15T06:03:31Z",
+  "from_query": [
+   "certified emphysema index thick slice CT"
+  ]
+ },
+ {
+  "title": "Reconstruction by Generation: 3D Multi-Object Scene Reconstruction from Sparse Observations",
+  "title_norm": "reconstruction by generation 3d multi object scene reconstruction from sparse ob",
+  "abstract": "Accurately reconstructing complex full multi-object scenes from sparse observations remains a core challenge in computer vision and a key step toward scalable and reliable simulation for robotics. In this work, we introduce RecGen, a generative framework for probabilistic joint estimation of object and part shapes, as well as their pose under occlusion and partial visibility from one or multiple RGB-D images. By leveraging compositional synthetic scene generation and strong 3D shape priors, RecGen generalizes across diverse object types and real-world environments. RecGen achieves state-of-the-art performance on complex, heavily occluded datasets, robustly handling severe occlusions, symmetric objects, object parts, and intricate geometry and texture. Despite using nearly 80% fewer training meshes than the previous state of the art SAM3D, RecGen outperforms it by 30.1% in geometric shape quality, 9.1% in texture reconstruction, and 33.9% in pose estimation.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Andrii Zadaianchuk",
+   "Leonardo Barcellona",
+   "Lennard Schuenemann",
+   "Christian Gumbsch",
+   "Zehao Wang",
+   "Muhammad Zubair Irshad",
+   "Fabien Despinoy",
+   "Rahaf Aljundi",
+   "Stratis Gavves",
+   "Sergey Zakharov"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2604.27106v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2604.27106v1",
+  "published_iso": "2026-04-29T18:51:21Z",
+  "from_query": [
+   "operator-identifying reconstruction with densitometric gate"
+  ]
+ },
+ {
+  "title": "Quasi-Isometry Invariance of discrete Higher Filling Functions",
+  "title_norm": "quasi isometry invariance of discrete higher filling functions",
+  "abstract": "We prove that homological filling functions over a ring $R$ equipped with the discrete norm are quasi-isometry invariants for all groups of type $\\mathrm{FP}_n$. This confirms a conjecture of Bader-Kropholler-Vankov in the case of discrete norms. The proof uses a technique of equipping free chain complexes with a geometric structure, allowing for analogues of cellular constructions in the purely algebraic setting. As a further application we prove quasi-isometry invariance for a weighted version of integral and discrete filling functions originally introduced in the study of the rapid decay property.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Jannis Weis"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2601.15140v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2601.15140v2",
+  "published_iso": "2026-01-21T16:14:18Z",
+  "from_query": [
+   "slab-mean invariance identifies attenuation offset"
+  ]
+ },
+ {
+  "title": "Slice Regular Composition Operators on Quaternionic Fock Spaces via Matrix Realization",
+  "title_norm": "slice regular composition operators on quaternionic fock spaces via matrix reali",
+  "abstract": "We characterize the boundedness and compactness of slice regular composition operators between quaternionic Fock spaces for the full range \\(0<p,q<\\infty\\), without assuming that the composition symbol preserves a fixed complex slice. As applications of the same method, we also obtain corresponding criteria for weighted composition operators and for products of Volterra-type integral operators with slice regular composition operators. The main tool is a fixed-slice matrix realization of the regular product, which represents slice regular composition on a fixed complex slice through a holomorphic \\(2\\times 2\\) matrix functional calculus. This representation reveals a genuinely quaternionic rigidity phenomenon: boundedness imposes affine restrictions on the eigenvalue functions of the associated matrix symbol rather than on the original symbol itself. In particular, the original symbol need not be affine, and affine eigenvalue functions alone do not characterize boundedness.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Zhaopeng Lin",
+   "Yufeng Lu",
+   "Chao Zu"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2606.06182v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2606.06182v2",
+  "published_iso": "2026-06-04T13:54:49Z",
+  "from_query": [
+   "per-scan slice profile identification certificate",
+   "certified emphysema index thick slice CT"
+  ]
+ },
+ {
+  "title": "A generative adversarial network optimization method for damage detection and digital twinning by deep AI fault learning: Z24 Bridge structural health monitoring benchmark validation",
+  "title_norm": "a generative adversarial network optimization method for damage detection and di",
+  "abstract": "The optimization-based damage detection and damage state digital twinning capabilities are examined here of a novel conditional-labeled generative adversarial network methodology. The framework outperforms current approaches for fault anomaly detection as no prior information is required for the health state of the system: a topic of high significance for real-world applications. Specifically, current artificial intelligence-based digital twinning approaches suffer from the uncertainty related to obtaining poor predictions when a low number of measurements is available, physics knowledge is missing, or when the damage state is unknown. To this end, an unsupervised framework is examined and validated rigorously on the benchmark structural health monitoring measurements of Z24 Bridge: a post-tensioned concrete highway bridge in Switzerland. In implementing the approach, firstly, different same damage-level measurements are used as inputs, while the model is forced to converge conditionally to two different damage states. Secondly, the process is repeated for a different group of measurements. Finally, the convergence scores are compared to identify which one belongs to a different damage state. The process for both healthy-to-healthy and damage-to-healthy input data creates, simultaneously, measurements for digital twinning purposes at different damage states, capable of pattern recognition and machine learning data generation. Further to this process, a support vector machine classifier and a principal component analysis procedure is developed to assess the generated and real measurements of each damage category, serving as a secondary new dynamics learning indicator in damage scenarios. Importantly, the approach is shown to capture accurately damage over healthy measurements, providing a powerful tool for vibration-based system-level monitoring and scalable infrastructure resilience.",
+  "year": 2025,
+  "venue": "arXiv",
+  "authors": [
+   "Marios Impraimakis",
+   "Evangelia Nektaria Palkanoglou"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2511.00099v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2511.00099v1",
+  "published_iso": "2025-10-30T16:04:47Z",
+  "from_query": [
+   "displacement versus structural residual decomposition"
+  ]
+ },
+ {
+  "title": "On the Pólya Frequency Order of the de Bruijn--Newman Kernel: Certified Failure at Order Five",
+  "title_norm": "on the pólya frequency order of the de bruijn newman kernel certified failure at",
+  "abstract": "We prove that the classical de Bruijn--Newman kernel $K(u)=Φ(|u|)$ is not a Pólya frequency function of order $5$ (PF$_5$). At $(u_0,h)=(0.01,0.05)$ we exhibit an explicit $5\\times5$ Toeplitz minor whose determinant is rigorously enclosed in $[-1.8472496\\times10^{-9},-1.8472225\\times10^{-9}]$. The certificate uses 80-digit outward-rounded interval arithmetic and a proved truncation bound for the theta series. Eight further configurations are certified by both an explicit Leibniz expansion and an independent interval determinant computation. At the central configuration the determinants $D_2,D_3,D_4$ are positive, but this local sign pattern does not establish that the kernel is PF$_4$ globally. We also derive an exact finite formula for the first coefficient permitted by Vandermonde divisibility in the small-spacing expansion of $D_r(u_0,h)$. High-precision observations concerning the sign change of $C_5(u_0)$ and a Gaussian deformation are reported only as non-certified numerics. Version 2 withdraws the certified global sign and unique-threshold claims for $C_5$ made in version 1 because the derivative-tail enclosure was unsound; the direct PF$_5$ counterexample and its interval certificates are unaffected. The result concerns total positivity of this kernel and does not resolve the Riemann Hypothesis.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Wojciech Michalowski"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2602.20313v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2602.20313v2",
+  "published_iso": "2026-02-23T19:59:05Z",
+  "from_query": [
+   "certified emphysema index thick slice CT"
+  ]
+ },
+ {
+  "title": "Spectral Reconstruction in Fractional Derivative Order",
+  "title_norm": "spectral reconstruction in fractional derivative order",
+  "abstract": "We introduce the spectral reconstruction operator $\\mathcal{S}$, which treats derivative order as a continuous variable and integrates fractional derivative data across all nonnegative real orders to represent analytic functions. Because these derivatives draw on function values across an infinite stretch of the real line, the spectral integrand encodes information about $f$ that no individual integer derivative at the origin can capture. We define an admissible class of fractional derivative families that recover the classical derivative ladder, satisfy the semigroup property, and keep $D^r f(0)$ finite (a condition that excludes monomials), and prove that the operator asymptotically reconstructs the exponential function as $x\\to\\infty$. The spectral operator and the classical Maclaurin series evaluate the same underlying function of derivative order, one by integration and the other by summation; classical summation formulas quantify this discrepancy under their respective hypotheses. Euler--Maclaurin gives a finite correction series with remainder; Abel--Plana gives an exact correction integral. Examples from entire, oscillatory, rapidly decaying, special-function, and finite-radius analytic classes, including a real pole and a complex-conjugate pole pair, demonstrate stable reconstruction; the operator's Abel--Plana correction matches $f$ to full computational precision in every case. The spectral integral and Maclaurin series share the same convergence boundary in the finite-radius examples, though through different mathematics. The discrepancy remains bounded, so the uncorrected operator is already useful where $f(x)$ is large; the leading term $\\mathcal{E}_0=\\frac{1}{2}f(0)$ and higher terms account for the rest near the origin. These results establish derivative order as a meaningful, non-local continuous domain for representing and reconstructing analytic functions.",
+  "year": 2025,
+  "venue": "arXiv",
+  "authors": [
+   "Derek C. Braun"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2512.22329v4",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2512.22329v4",
+  "published_iso": "2025-12-26T16:25:37Z",
+  "from_query": [
+   "operator-identifying reconstruction with densitometric gate"
+  ]
+ },
+ {
+  "title": "General Equilibrium Effects of Carbon Offsets",
+  "title_norm": "general equilibrium effects of carbon offsets",
+  "abstract": "We construct an analytical general equilibrium model of an economy with carbon offsets, and show that increasing the carbon offset price has an ambiguous effect on aggregate emissions and welfare. Using two carbon accounting metrics, we demonstrate that offsets are over-credited under many parameterizations; however, offset under-crediting can also occur. Due to general equilibrium effects, neither carbon accounting metric is a sufficient statistic for welfare. Furthermore, we define four margins whereby offsets can respond to payments, including a margin not previously identified. Our results suggest that market spillover effects warrant consideration when evaluating carbon offset policies.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Isla Globus-Harris",
+   "Daniel H Karney"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2606.25909v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2606.25909v2",
+  "published_iso": "2026-06-24T14:56:50Z",
+  "from_query": [
+   "slab-mean invariance identifies attenuation offset"
+  ]
+ },
+ {
+  "title": "Choric Masking in Ambient Release Systems: A Finite Certificate Calculus for Trace Indistinguishability under Bounded Audiences",
+  "title_norm": "choric masking in ambient release systems a finite certificate calculus for trac",
+  "abstract": "This paper develops a finite certificate calculus for ambient release systems, staged probabilistic environments in which a protected coordinate is not observed directly but can remain statistically readable through visible roles, timing, repeated movement, bounded attention, linked rooms, and post-release state. The security notion, choric masking, requires the trace law induced by a protected locus to lie inside or near the convex hull of admissible cover traces under the tests available to a specified audience. For finite horizons, trace laws form polytopes, audiences induce measurement operators, and masking becomes intersection in the projected measurement space. Exposure is certified by separating hyperplanes, kernel obstructions, hypothesis-testing bounds, Fano-type localization lower bounds, and support separation in downstream rooms. The calculus distinguishes trace residue from carrier localization, full-trace exposure from attention-filtered exposure, first-room masking from delayed post-release exposure, and unresolved system pressure from carrier hazard. It proves measurement-polytope equivalence for exact and approximate masks, dual separation certificates, data-processing laws for attention lenses, aperture identities for gaze-thinned observation, lower bounds for mandatory unique gestures, composition rules for linked releases, and a repeated-room debt theorem showing how unresolved pressure can broaden selection and shift cost onto cover populations without localizing the source. The result is a finite, checkable language for auditing privacy, unlinkability, side-channel leakage, and accountability in public-facing release systems.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Faruk Alpay",
+   "Taylan Alpay"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2606.13967v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2606.13967v1",
+  "published_iso": "2026-06-11T23:17:08Z",
+  "from_query": [
+   "per-scan slice profile identification certificate"
+  ]
+ },
+ {
+  "title": "Foresight Residual RL for Long-Horizon Robot Manipulation with Vision-Language-Action Models",
+  "title_norm": "foresight residual rl for long horizon robot manipulation with vision language a",
+  "abstract": "Vision-Language-Action (VLA) policies offer strong general-purpose manipulation priors, but often fail on tight-tolerance, contact-rich assembly due to long-horizon credit assignment and subtask coupling: a state that is geometrically successful for the current skill can be brittle for downstream skills. We show this failure mode in residual reinforcement learning (RL) over a frozen VLA base policy: constant sparse success rewards improve each subtask in isolation yet yield little or no gain when skills are chained, because terminal state quality is uncontrolled. We propose Foresight Residual RL, which optimizes handoff quality by augmenting each subtask's sparse success reward with an offline-estimated foresight value -- the probability of future subtask success conditioned on the terminal state of the current subtask. Concretely, we (i) train a visual foresight predictor from images of terminal states of the base policy, labeled using downstream rollout statistics, and (ii) train residual policies via backward foresight induction, using the predictor output as a reward multiplier. On a three-phase wrench-based nut-tightening assembly task in Isaac Gym (grasp, move-insert, rotate), our method achieves 85.6% full-task success, outperforming standard subtask residual RL (54.5%) and VLA baselines, while leaving per-subtask success unchanged. These results highlight that improving long-horizon performance requires shaping which successful states are produced at each sub-task, not only whether success occurs.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Yuhan Liu",
+   "Xinyu Zhang",
+   "Litao Liu",
+   "Abdeslam Boularias"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2607.16506v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2607.16506v1",
+  "published_iso": "2026-07-17T21:00:28Z",
+  "from_query": [
+   "displacement versus structural residual decomposition"
+  ]
+ },
+ {
+  "title": "OmniCT: Towards a Unified Slice-Volume LVLM for Comprehensive CT Analysis",
+  "title_norm": "omnict towards a unified slice volume lvlm for comprehensive ct analysis",
+  "abstract": "Computed Tomography (CT) is one of the most widely used and diagnostically information-dense imaging modalities, covering critical organs such as the heart, lungs, liver, and colon. Clinical interpretation relies on both slice-driven local features (e.g., sub-centimeter nodules, lesion boundaries) and volume-driven spatial representations (e.g., tumor infiltration, inter-organ anatomical relations). However, existing Large Vision-Language Models (LVLMs) remain fragmented in CT slice versus volumetric understanding: slice-driven LVLMs show strong generalization but lack cross-slice spatial consistency, while volume-driven LVLMs explicitly capture volumetric semantics but suffer from coarse granularity and poor compatibility with slice inputs. The absence of a unified modeling paradigm constitutes a major bottleneck for the clinical translation of medical LVLMs. We present OmniCT, a powerful unified slice-volume LVLM for CT scenarios, which makes three contributions: (i) Spatial Consistency Enhancement (SCE): volumetric slice composition combined with tri-axial positional embedding that introduces volumetric consistency, and an MoE hybrid projection enables efficient slice-volume adaptation; (ii) Organ-level Semantic Enhancement (OSE): segmentation and ROI localization explicitly align anatomical regions, emphasizing lesion- and organ-level semantics; (iii) MedEval-CT: the largest slice-volume CT dataset and hybrid benchmark integrates comprehensive metrics for unified evaluation. OmniCT consistently outperforms existing methods with a substantial margin across diverse clinical tasks and satisfies both micro-level detail sensitivity and macro-level spatial reasoning. More importantly, it establishes a new paradigm for cross-modal medical imaging understanding. Our project is available at https://github.com/ZJU4HealthCare/OmniCT.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Tianwei Lin",
+   "Zhongwei Qiu",
+   "Wenqiao Zhang",
+   "Jiang Liu",
+   "Yihan Xie",
+   "Mingjian Gao",
+   "Zhenxuan Fan",
+   "Zhaocheng Li",
+   "Sijing Li",
+   "Zhongle Xie",
+   "Peng LU",
+   "Yueting Zhuang",
+   "Ling Zhang",
+   "Beng Chin Ooi",
+   "Yingda Xia"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2602.16110v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2602.16110v2",
+  "published_iso": "2026-02-18T00:42:41Z",
+  "from_query": [
+   "certified emphysema index thick slice CT"
+  ]
+ },
+ {
+  "title": "HDR Reconstruction Boosting with Training-Free and Exposure-Consistent Diffusion",
+  "title_norm": "hdr reconstruction boosting with training free and exposure consistent diffusion",
+  "abstract": "Single LDR to HDR reconstruction remains challenging for over-exposed regions where traditional methods often fail due to complete information loss. We present a training-free approach that enhances existing indirect and direct HDR reconstruction methods through diffusion-based inpainting. Our method combines text-guided diffusion models with SDEdit refinement to generate plausible content in over-exposed areas while maintaining consistency across multi-exposure LDR images. Unlike previous approaches requiring extensive training, our method seamlessly integrates with existing HDR reconstruction techniques through an iterative compensation mechanism that ensures luminance coherence across multiple exposures. We demonstrate significant improvements in both perceptual quality and quantitative metrics on standard HDR datasets and in-the-wild captures. Results show that our method effectively recovers natural details in challenging scenarios while preserving the advantages of existing HDR reconstruction pipelines. Project page: https://github.com/EusdenLin/HDR-Reconstruction-Boosting",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Yo-Tin Lin",
+   "Su-Kai Chen",
+   "Hou-Ning Hu",
+   "Yen-Yu Lin",
+   "Yu-Lun Liu"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2602.19706v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2602.19706v1",
+  "published_iso": "2026-02-23T10:57:22Z",
+  "from_query": [
+   "operator-identifying reconstruction with densitometric gate"
+  ]
+ },
+ {
+  "title": "The MAGPI Survey: Evidence for Non-Universal Resolved Dust Attenuation Relations Beyond the Local Universe",
+  "title_norm": "the magpi survey evidence for non universal resolved dust attenuation relations ",
+  "abstract": "We study the spatially resolved relation between dust attenuation ($A_V$) and star formation rate surface density ($Σ_{\\mathrm{SFR}}$) in galaxies from the MAGPI survey ($0.25 < z < 0.42$). Using Balmer-decrement-based attenuation maps for 178 galaxies, we investigate whether the locally calibrated resolved $A_V$--$Σ_{\\mathrm{SFR}}$ relation remains valid at intermediate redshift by comparing MAGPI with the local relation measured from MaNGA. We find a clear positive correlation between $A_V$ and $Σ_{\\mathrm{SFR}}$ in MAGPI, with systematically higher attenuation than in MaNGA at fixed $Σ_{\\mathrm{SFR}}$. After matching galaxies in stellar mass ($M_{*}$) and offset from the star-forming main sequence ($Δ$SFMS), MAGPI galaxies remain more attenuated than MaNGA galaxies at fixed $Σ_{\\mathrm{SFR}}$. The attenuation excess is strongest for galaxies below the SFMS ($ΔA_V \\sim 0.40$ mag), weaker for galaxies on the SFMS ($ΔA_V \\sim 0.28$ mag), and minimal for galaxies above the SFMS ($ΔA_V \\sim 0.07$ mag). The dependence of the offset on $Δ$SFMS suggests that nebular attenuation on kpc scales is regulated not only by local star formation activity, but also by the global evolutionary state of the host galaxy. Together, these results indicate that the resolved $A_V$--$Σ_{\\mathrm{SFR}}$ relation is not universal, and that locally calibrated attenuation relations may not fully describe galaxies at intermediate redshift. This highlights the need for attenuation calibrations that account for galaxy population and redshift when interpreting spatially resolved galaxy properties.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "A. Mailvaganam",
+   "T. Zafar",
+   "P. Corcho-Caballero",
+   "S. Salim",
+   "Y. Koyama",
+   "K. E. Harborne",
+   "C. D. P. Lagos",
+   "J. T. Mendel",
+   "E. Wisnioski",
+   "I. U. Aalia",
+   "S. Ayyappan",
+   "S. Barsanti",
+   "A. J. Battisti",
+   "J. Bland-Hawthorn",
+   "I. Breda",
+   "S. Carlson",
+   "Q. -H. Chen",
+   "B. Courtney-Barrer",
+   "S. M. Croom",
+   "S. Ellis",
+   "C. Foster",
+   "E. Gjergo",
+   "K. Grasha",
+   "S. Gurung-Lopez",
+   "S. Mobina Hosseini",
+   "S. Jeon",
+   "X. Lyu",
+   "T. Mukherjee",
+   "M. Mun",
+   "Hye-Jin Park",
+   "Y. Peng",
+   "L. A. Porta",
+   "J. Prathap",
+   "A. Raidani",
+   "R. S. Remus",
+   "B. S. Salmasi",
+   "G. Sharma",
+   "Sarah M. Sweet",
+   "Dian P. Triani",
+   "L. M. Valenzuela",
+   "G. van de Ven",
+   "Bodo L. Ziegler"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2607.07122v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2607.07122v1",
+  "published_iso": "2026-07-08T08:03:56Z",
+  "from_query": [
+   "slab-mean invariance identifies attenuation offset"
+  ]
+ },
+ {
+  "title": "Signature Placement in Post-Quantum TLS Certificate Hierarchies: An Experimental Study of ML-DSA and SLH-DSA in TLS 1.3 Authentication",
+  "title_norm": "signature placement in post quantum tls certificate hierarchies an experimental ",
+  "abstract": "Post-quantum migration in TLS 1.3 couples signature-algorithm choice with certificate-hierarchy structure, chain exposure during the handshake, and role-dependent cryptographic cost. In certificate-based authentication, the practical effect of a signature family depends on where it appears in the certification hierarchy, how much of that hierarchy is exposed during the handshake, and how the resulting cryptographic cost is distributed across client and server roles. Post-quantum TLS migration must therefore be evaluated as cryptographic design within authenticated key establishment, with algorithm selection assessed in its deployment context. This paper presents a local experimental study of TLS 1.3 authentication strategies implemented with OpenSSL 3 and oqsprovider. Using a reproducible laboratory setting, it compares ML-DSA and SLH-DSA across multiple certificate placements, hierarchy depths, and key-exchange modes, including classical, hybrid, and pure post-quantum configurations. The analysis is organized into four complementary campaigns: a leaf-only comparison, a full hierarchy strategy matrix, a depth comparison, and a key-exchange exploration. Across the experimental matrix, the main discontinuity appears when SLH-DSA is placed in the server leaf certificate. In that configuration, handshake latency and server-side compute cost increase by orders of magnitude, whereas strategies that confine SLH-DSA to upper trust layers and preserve ML-DSA in the interactive leaf remain within a more plausible operational range. The results also show that transport size alone does not explain the heavy regime: outside leaf-SLH scenarios, transferred bytes and observed chain size track latency closely, but once SLH-DSA reaches the leaf, server-side cryptographic cost becomes dominant.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "José Luis Delgado Jiménez"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2604.06100v3",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2604.06100v3",
+  "published_iso": "2026-04-07T17:13:10Z",
+  "from_query": [
+   "per-scan slice profile identification certificate"
+  ]
+ },
+ {
+  "title": "Residual Symmetries and Their Algebras in the Kerr-Schild Double Copy",
+  "title_norm": "residual symmetries and their algebras in the kerr schild double copy",
+  "abstract": "The Kerr-Schild double copy (KSDC) is well-known for relating exact classical solutions between Yang-Mills theory and theories of gravity. However, whether this correspondence provides a more fundamental mapping between the underlying symmetries of gauge theory and gravity remains an underdeveloped area of research in the contemporary double copy program. In this paper, we demonstrate that the KSDC correspondence does not provide a mapping between the residual symmetry structures of the Kerr-Schild ansatz in Yang-Mills theory and gravity. On the gauge theory side, residual symmetries form an infinite-dimensional algebra of functions along null directions. On the gravitational side, residual diffeomorphisms preserving the Kerr-Schild form of the Schwarzschild metric generate a conformal algebra on $S^2$, which decomposes into Killing vectors and proper conformal Killing vectors (CKVs). While the Killing sector reproduces the expected global isometries, the CKV sector yields an infinite-dimensional algebra after imposing asymptotic flatness and horizon regularity. This appears to contradict the fact that the Schwarzschild solution admits no proper conformal symmetries. We resolve this apparent contradiction by constructing a Weyl-compensated BRST complex, showing that the CKV sector is BRST-exact and therefore trivial in cohomology, so that the physical symmetry algebra reduces to the global isometries of Schwarzschild. This demonstrates that the KSDC introduces an enlarged symmetry structure at the level of the ansatz, but preserves physical symmetries after a cohomological reduction, revealing a fundamental mismatch between Yang-Mills and gravity at the level of residual symmetries.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "B. P. Holton"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2604.05262v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2604.05262v2",
+  "published_iso": "2026-04-06T23:54:45Z",
+  "from_query": [
+   "displacement versus structural residual decomposition"
+  ]
+ },
+ {
+  "title": "Backbone-Conditional Behavior of Modality Gating in Multi-Modal Prostate MRI Segmentation: A 5-Fold Cross-Validation and Gate Mechanism Analysis",
+  "title_norm": "backbone conditional behavior of modality gating in multi modal prostate mri seg",
+  "abstract": "Robust segmentation of clinically significant prostate cancer (csPCa) on multi-parametric MRI must tolerate frequent degradation of its most informative diffusion sequences. Multi-modal fusion commonly employs learned modality gating under the assumption that gates implement per-sample modality quality routing -- rarely tested directly. We ask how gating behaves across backbone architectures. We systematically analyze modality-isolated gated fusion (MIGF) for csPCa segmentation on two backbones (nnU-Net and Mamba) using PI-CAI (n=1500), with cross-cohort validation on Prostate158 (n=158): a factorial ablation over gating, modality dropout, and deep supervision under 5-fold cross-validation (180 trained models), plus a gate-weight and counterfactual analysis of 30 trained gating models. Modality gating is backbone-conditional. On nnU-Net, adding gating reduces the ranking score (marginal effect -0.037; gating configurations p<0.05), whereas on Mamba the gating-plus-dropout configuration improves it (+0.024, p=0.037). Gate-weight analysis explains this: nnU-Net gates collapse into a near-static modality prior (across-case SD 0.0033), while Mamba gates retain sample-dependent variation (0.0365, ~11x larger, non-overlapping); replacing per-sample gates with their training-set mean leaves nnU-Net unchanged but degrades Mamba. Modality dropout is the only component beneficial on both backbones. Under cross-cohort shift, convolutional backbones collapse to case-level specificity near zero, whereas Mamba retains it (MIGF-Mamba highest, 0.31). Learned modality gates do not universally perform per-sample quality routing; their effective behavior is conditional on the backbone's inherent modality awareness. Among tested configurations, MIGF-Mamba is the most cross-cohort robust, and training-time modality dropout is the only component beneficial across both backbones.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Yongbo Shu",
+   "Wenzhao Xie",
+   "Shanhu Yao",
+   "Zirui Xin",
+   "Luo Lei",
+   "Kewen Chen",
+   "Aijing Luo"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2604.10702v4",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2604.10702v4",
+  "published_iso": "2026-04-12T15:54:21Z",
+  "from_query": [
+   "operator-identifying reconstruction with densitometric gate"
+  ]
+ },
+ {
+  "title": "A regularization method for planar offset curves and bi-offset recognition",
+  "title_norm": "a regularization method for planar offset curves and bi offset recognition",
+  "abstract": "Offset curves for planar trajectories are interesting in the generation of tool paths for numerically controlled industrial machines and in trajectory planning methods for autonomous driving systems. Theoretical offset curves may exhibit peculiar singularities, including self-intersections, which limit their use in practical applications. Existing approaches address these issue through geometric filtering techniques to detect and remove undesirable features but the computation of accurate and well-behaved offset curves remains a challenging task. We assume a first stage of functional approximation of trajectories by penalized Hermite spline regression enabling the simultaneous fitting of positions and tangents. The regularization is imposed on the second derivatives, effectively mitigating the jerk effect, which is particularly relevant in motion planning and path smoothing applications. Then, taking into account the geometrical pointwise properties of the resulting curve, we design two offset curves through the simultaneous approximation of function values and derivatives. Then, a mathematical model to obtain the so-called bi-offset as most fitting as with the original generator curve is proposed, also relating the offset range and pointwise curvature values. The adaptive reconstruction of the center line from the external boundaries is a topic of interest and is the main focus of our work. Numerical experiments confirm the reliability of our approach at every stage of the resolution process.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Rosanna Campagna",
+   "Salvatore Mondrone",
+   "Tomas Sauer"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2605.18096v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2605.18096v1",
+  "published_iso": "2026-05-18T09:11:29Z",
+  "from_query": [
+   "slab-mean invariance identifies attenuation offset"
+  ]
+ },
+ {
+  "title": "Kernel-Level Per-Slice UPF Latency Measurement in Containerised 5G Core Networks",
+  "title_norm": "kernel level per slice upf latency measurement in containerised 5g core networks",
+  "abstract": "The 5G Core User Plane Function is responsible for packet forwarding, GTP-U decapsulation, and quality of service enforcement for every user data session. How the UPF behaves under simultaneous multi-slice workloads remains empirically uncharacterised in the open literature. Specifically, how its forwarding latency responds to load, how well it isolates one slice from another, and what timing budgets remain available for intelligent control are all open questions. This paper presents a measurement study conducted on a containerised open5GS deployment with three concurrent network slices. We design and implement a namespace-aware TC-BPF instrumentation framework that resolves the fundamental obstacle preventing existing tools from attributing latency observations to individual containerised network functions. We deploy eMBB, URLLC, and mMTC slices with realistic application traffic under light, medium, and heavy load conditions and collect approximately 28 million matched N3 to N6 forwarding delay pairs. The gathered results reveal that eMBB forwarding delay is load-sensitive with the 99th percentile growing from 574 to 1,243 microseconds across load conditions. URLLC delay is load-insensitive, confirming per-UPF process isolation. mMTC exhibits wide-tail TCP behaviour. On this platform, N4 PFCP session modification latency remains consistently below 200 microseconds regardless of data-plane load, suggesting substantial timing headroom within the two-millisecond budget assumed by AI-driven UPF orchestration designs. The instrumentation framework, experiment scripts, and dataset schema are released at https://github.com/MP-Akhil-5G/open5gs-slice-measurement.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Akhil Dev Mishra",
+   "Mayank Pandey"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2605.28185v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2605.28185v1",
+  "published_iso": "2026-05-27T09:08:43Z",
+  "from_query": [
+   "per-scan slice profile identification certificate"
+  ]
+ },
+ {
+  "title": "Residual subspace evolution strategies for nonlinear inverse problems",
+  "title_norm": "residual subspace evolution strategies for nonlinear inverse problems",
+  "abstract": "Nonlinear inverse problems pervade engineering and science, yet noisy, non-differentiable, or expensive residual evaluations routinely defeat Jacobian-based solvers. Derivative-free alternatives either demand smoothness, require large populations to stabilise covariance estimates, or stall on flat regions where gradient information fades. This paper introduces residual subspace evolution strategies (RSES), a derivative-free solver that draws Gaussian probes around the current iterate, records how residuals change along those directions, and recombines the probes through a least-squares solve to produce an optimal update. The method builds a residual-only surrogate without forming Jacobians or empirical covariances, and each iteration costs just $k+1$ residual evaluations with $O(k^3)$ linear algebra overhead, where $k$ remains far smaller than the parameter dimension. Benchmarks on calibration, regression, and deconvolution tasks show that RSES reduces misfit consistently across deterministic and stochastic settings, matching or exceeding xNES, NEWUOA, Adam, and ensemble Kalman inversion under matched evaluation budgets. The gains are most pronounced when smoothness or covariance assumptions break, suggesting that lightweight residual-difference surrogates can reliably guide descent where heavier machinery struggles.",
+  "year": 2025,
+  "venue": "arXiv",
+  "authors": [
+   "Francesco Alemanno"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2512.10325v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2512.10325v2",
+  "published_iso": "2025-12-11T06:20:13Z",
+  "from_query": [
+   "displacement versus structural residual decomposition"
+  ]
+ },
+ {
+  "title": "An Open Multi-Center Whole-Body FDG PET/CT Foundation Model for Tumor Segmentation",
+  "title_norm": "an open multi center whole body fdg pet ct foundation model for tumor segmentati",
+  "abstract": "The synergistic interpretation of anatomical information from computed tomography (CT) and metabolic information from positron emission tomography (PET) is important to oncologic imaging. However, existing deep learning methods for PET/CT remain largely task-specific, are often trained on single-center cohorts, or adopt dual-branch fusion schemes that delay cross-modal interaction and underutilize early spatial correspondence between PET and CT. To address these limitations, we present an open-source, multi-center, whole-body FDG PET/CT foundation model utilizing 4,997 harmonized scans from four public datasets. Our framework employs hierarchical UNet-shaped backbones with early channel-wise concatenation, enabling anatomical and metabolic features to interact from the first embedding layer onward. We further introduce a masked autoencoding objective based on zero-mean imputation, combined with a weighted global reconstruction loss. This design avoids non-physical intensity discontinuities at masked-region boundaries that arise from learnable mask tokens. On downstream AutoPET lesion segmentation, the proposed models demonstrate strong label efficiency: with only 10\\% of the labeled training data, they achieve performance comparable to models trained from scratch on the full dataset. Under extreme 5-shot linear probing, joint PET/CT pretraining also achieves higher Dice scores than separated-modality pretraining. This multi-center foundation model demonstrates label efficiency and cross-modality representation learning for PET/CT tumor segmentation. It provides a robust, open-source basis for advancing automated oncologic imaging, significantly reducing the need for large-scale manual annotations in clinical practice.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Xiaofeng Liu",
+   "Qianru Zhang",
+   "Thibault Marin",
+   "Menghua Xia",
+   "Chi Liu",
+   "Georges El Fakhri",
+   "Jinsong Ouyang"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2605.21835v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2605.21835v1",
+  "published_iso": "2026-05-20T23:59:50Z",
+  "from_query": [
+   "certified emphysema index thick slice CT"
+  ]
+ },
+ {
+  "title": "Identification Verification for Structural Vector Autoregressions with Sparse Heterogeneous Markov Switching Heteroskedasticity",
+  "title_norm": "identification verification for structural vector autoregressions with sparse he",
+  "abstract": "We propose a structural vector autoregressive model with a new and flexible specification of the volatility process which we call Sparse Heterogeneous Markov-Switching Heteroskedasticity. In this model, the conditional variance of each structural shock changes in time according to its own Markov process. Additionally, it features a sparse representation of Markov processes, in which the number of regimes is set to exceed that of the data-generating process, with some regimes allowed to have zero occurrences throughout the sample. We complement these developments with a definition of a new distribution for normalised conditional variances that facilitates Gibbs sampling and identification verification. In effect, our model: (i) normalises the system and estimates the structural parameters more precisely than popular alternatives; (ii) can be used to verify homoskedasticity reliably and, thus, inform identification through heteroskedasticity; and (iii) features excellent forecasting performance comparable with Stochastic Volatility. Finally, revisiting a prominent macro-financial structural system, we provide evidence for the identification of the US monetary policy shock via heteroskedasticity, with estimates consistent with those reported in the literature.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Fei Shang",
+   "Tomasz Woźniak"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2603.16035v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2603.16035v1",
+  "published_iso": "2026-03-17T00:41:19Z",
+  "from_query": [
+   "per-scan slice profile identification certificate"
+  ]
+ },
+ {
+  "title": "A guided residual search for nonlinear state-space identification",
+  "title_norm": "a guided residual search for nonlinear state space identification",
+  "abstract": "Identifying the parameters of nonlinear state-space models from input-output data typically requires solving a highly non-convex optimization problem, which is prone to slow convergence and suboptimal local solutions. This work improves the reliability and efficiency of the estimation process by decomposing the overall optimization problem into a sequence of tractable subproblems. Starting from a linear baseline model, nonlinear residual dynamics are first estimated using a guided residual search (GRS) and subsequently refined through multiple-shooting optimization. Experiments on two benchmarks show competitive performance with state-of-the-art black-box methods and improved convergence over naive initialization.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Merijn Floren",
+   "Jan Swevers"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2602.22964v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2602.22964v2",
+  "published_iso": "2026-02-26T13:01:42Z",
+  "from_query": [
+   "displacement versus structural residual decomposition"
+  ]
+ },
+ {
+  "title": "ReBrain: Brain MRI Reconstruction from Sparse CT Slice via Retrieval-Augmented Diffusion",
+  "title_norm": "rebrain brain mri reconstruction from sparse ct slice via retrieval augmented di",
+  "abstract": "Magnetic Resonance Imaging (MRI) plays a crucial role in brain disease diagnosis, but it is not always feasible for certain patients due to physical or clinical constraints. Recent studies attempt to synthesize MRI from Computed Tomography (CT) scans; however, low-dose protocols often result in highly sparse CT volumes with poor through-plane resolution, making accurate reconstruction of the full brain MRI volume particularly challenging. To address this, we propose ReBrain, a retrieval-augmented diffusion framework for brain MRI reconstruction. Given any 3D CT scan with limited slices, we first employ a Brownian Bridge Diffusion Model (BBDM) to synthesize MRI slices along the 2D dimension. Simultaneously, we retrieve structurally and pathologically similar CT slices from a comprehensive prior database via a fine-tuned retrieval model. These retrieved slices are used as references, incorporated through a ControlNet branch to guide the generation of intermediate MRI slices and ensure structural continuity. We further account for rare retrieval failures when the database lacks suitable references and apply spherical linear interpolation to provide supplementary guidance. Extensive experiments on SynthRAD2023 and BraTS demonstrate that ReBrain achieves state-of-the-art performance in cross-modal reconstruction under sparse conditions.",
+  "year": 2025,
+  "venue": "arXiv",
+  "authors": [
+   "Junming Liu",
+   "Yifei Sun",
+   "Weihua Cheng",
+   "Yujin Kang",
+   "Yirong Chen",
+   "Ding Wang",
+   "Guosun Zeng"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2511.17068v3",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2511.17068v3",
+  "published_iso": "2025-11-21T09:18:35Z",
+  "from_query": [
+   "certified emphysema index thick slice CT"
+  ]
+ },
+ {
+  "title": "A Strong Gravitational Lensing Model of PSZ2 G118.46+39.32",
+  "title_norm": "a strong gravitational lensing model of psz2 g118 46 39 32",
+  "abstract": "We present the first strong gravitational lensing model for the cluster PSZ2 G118.46+39.32 (z = 0.3967) using new NIRCam imaging from the Strong LensIng and Cluster Evolution (SLICE) JWST program. We leverage the broad coverage of the SLICE ultrawide JWST filters to identify new lensed galaxies, some of which are not visible in HST, to model the cluster's mass distribution. The model was constructed with a total of 11 multiply imaged systems, decomposed into 30 images with 60 clumps used as strong lensing constraints. PSZ2 G118.46+39.32 shows a clear bimodal structure, indicating that it may be undergoing a merger. The predicted mass distribution of the model aligns with the X-ray gas in the cluster, suggesting it is in a pre-merger state.",
+  "year": 2025,
+  "venue": "arXiv",
+  "authors": [
+   "Isaac Smith",
+   "Catherine Cerny",
+   "Keren Sharon",
+   "Guillaume Mahler",
+   "Gourav Khullar",
+   "Benjamin Beauchesne",
+   "The SLICE Collaboration"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2511.08300v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2511.08300v1",
+  "published_iso": "2025-11-11T14:34:26Z",
+  "from_query": [
+   "per-scan slice profile identification certificate"
+  ]
+ },
+ {
+  "title": "On the Structure of Risk Contribution: A Leave-One-Out Decomposition into Inherent and Correlation Risk",
+  "title_norm": "on the structure of risk contribution a leave one out decomposition into inheren",
+  "abstract": "This paper develops a decomposition of standard Risk Contribution (RC) into two economically interpretable components: inherent risk and correlation risk. Using a leave-one-out representation, each position's RC separates into a term reflecting its own volatility contribution independent of the portfolio and a term capturing its covariance with the remainder of the portfolio. The inherent component is always positive, arising from the intrinsic volatility of the position, while the correlation component may amplify or mitigate total portfolio risk depending on how the position moves relative to other holdings. Because the decomposition operates within standard RC, it preserves the property of strict additivity. This separation provides diagnostic insight not visible from aggregate risk contributions alone. It distinguishes whether a position contributes risk because it is volatile in isolation or because it is highly correlated with the rest of the portfolio, and it clarifies when a negatively correlated position functions as an effective hedge. Two approaches to time-series analysis are presented to track how inherent and correlation risk evolve across market regimes, revealing whether changes in portfolio risk during stress periods are driven by volatility shocks, correlation shifts, or both. Empirical illustrations suggest that the decomposition provides stable, transparent, and easily implementable risk diagnostics that can support portfolio risk reporting, stress testing, and performance attribution.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Nolan Alexander",
+   "Frank Fabozzi"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2604.10375v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2604.10375v1",
+  "published_iso": "2026-04-11T23:02:26Z",
+  "from_query": [
+   "displacement versus structural residual decomposition"
+  ]
+ },
+ {
+  "title": "Certified Interventional Fidelity: Anytime-Valid, Adaptive Evaluation of Causal Claims in Mechanistic Interpretability",
+  "title_norm": "certified interventional fidelity anytime valid adaptive evaluation of causal cl",
+  "abstract": "Mechanistic interpretability often evaluates explanations by intervening on a model: swapping hidden states, patching activations, ablating components, or comparing a compressed model to the original one. These experiments are usually summarized by a point estimate, even though the evaluation may be monitored while it runs or adapted toward suspected failures. This makes it hard to tell whether a reported fidelity or patching effect is a stable causal claim or a consequence of finite sampling and evaluation choices. We introduce Certified Interventional Fidelity (CIF), a statistical layer for interventional interpretability evaluations. CIF first writes the quantity being reported as a causal estimand: an expectation of a bounded score over a stated input distribution and a stated intervention distribution. It then provides confidence intervals and anytime-valid confidence sequences for this estimand, including under adaptive intervention sampling via bounded mixture importance weighting. We instantiate CIF with Hoeffding-style sequences and variance-adaptive betting sequences, the latter reducing certification cost by 10-30x in our experiments. On MNIST abstractions and GPT-2 Small IOI circuits, CIF certifies high-fidelity claims, shows when apparent method differences are not statistically supported, and makes sensitivity to the intervention distribution explicit.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Amir Asiaee"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2607.08349v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2607.08349v1",
+  "published_iso": "2026-07-09T10:55:04Z",
+  "from_query": [
+   "certified emphysema index thick slice CT"
+  ]
+ },
+ {
+  "title": "Unconditional Primality Certificates for the Hexagonal 3-smooth Family p = 3m(m+1) + 1: Deterministic Pocklington Witnesses and Arithmetic Filters",
+  "title_norm": "unconditional primality certificates for the hexagonal 3 smooth family p 3m m 1 ",
+  "abstract": "We study the parametric subfamily $p = 3m(m+1) + 1$ with $m = 2^a 3^b - 1$, $a,b \\in \\mathbb{N}^*$, a 3-smooth slice of the centred hexagonal numbers $3m^2 + 3m + 1 = (m+1)^3 - m^3,$ from the point of view of unconditional primality certification via the Pocklington-Lehmer criterion. The 3-smoothness of $m+1 = 2^a 3^b$ yields, for every $(a,b)$, a fully factored divisor $F = 2^a 3^(b+1)$ of $p-1$ satisfying $F > \\sqrt(p)$ unconditionally, reducing the certificate to two witnesses, for $q = 2$ and $q = 3$.\n  Our main new contribution is a complete, deterministic characterisation of the two canonical witnesses. We prove that $w_2 = 5$ is a valid witness if and only if $a - b$ = 1, 2 (mod 4), by quadratic reciprocity; and that $w_3 = 7$ is a valid witness if and only if $m$ is not congruent to 2 (mod 7), by cubic reciprocity in $\\mathbb{Z}[omega]$ using the explicit Eisenstein factorisation $p = ((1+m) - m ω)((1+m) - m ω^2)$. These two results turn the heuristic \"5 and 7 always work\" (which is in fact false) into exact congruence conditions, and yield a deterministic witness-selection rule. Alongside, three elementary arithmetic filters (mod 6, a (-3) quadratic-residue sieve, and a mod-7 forbidden-class test) remove about 87% of candidates at negligible cost. As a demonstration, a multi-core implementation produced four unconditional certificates on consumer hardware, the largest a prime of 29998 decimal digits.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Hassane Bakkaoui"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2606.18859v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2606.18859v1",
+  "published_iso": "2026-06-17T09:41:36Z",
+  "from_query": [
+   "per-scan slice profile identification certificate"
+  ]
+ },
+ {
+  "title": "A Robust Low-Rank Prior Model for Structured Cartoon-Texture Image Decomposition with Heavy-Tailed Noise",
+  "title_norm": "a robust low rank prior model for structured cartoon texture image decomposition",
+  "abstract": "Cartoon-texture image decomposition is a fundamental yet challenging problem in image processing. A significant hurdle in achieving accurate decomposition is the pervasive presence of noise in the observed images, which severely impedes robust results. To address the challenging problem of cartoon-texture decomposition in the presence of heavy-tailed noise, we in this paper propose a robust low-rank prior model. Our approach departs from conventional models by adopting the Huber loss function as the data-fidelity term, rather than the traditional $\\ell_2$-norm, while retaining the total variation norm and nuclear norm to characterize the cartoon and texture components, respectively. Given the inherent structure, we employ two implementable operator splitting algorithms, tailored to different degradation operators. Extensive numerical experiments, particularly on image restoration tasks under high-intensity heavy-tailed noise, efficiently demonstrate the superior performance of our model.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Weihao Tang",
+   "Hongjin He"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2603.27579v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2603.27579v1",
+  "published_iso": "2026-03-29T08:36:23Z",
+  "from_query": [
+   "displacement versus structural residual decomposition"
+  ]
+ },
+ {
+  "title": "Deep Slice Interpolation for Reducing Through-Plane Anisotropy and Noise in Head CT",
+  "title_norm": "deep slice interpolation for reducing through plane anisotropy and noise in head",
+  "abstract": "Head computed tomography (CT) typically uses sub-millimeter in-plane resolution but 2-5 mm through-plane spacing, creating substantial anisotropy that degrades multiplanar reconstructions, volumetric measurements such as hematoma volume estimation, and downstream algorithms that assume near-isotropic voxels. We present a deep learning system that synthesizes intermediate CT slices from pairs of neighboring axial slices, halving the effective through-plane spacing. The system improves three-dimensional visualization while simultaneously producing inherently denoised outputs, yielding two complementary benefits from a single inference pass.\n  To build a reliable system, we systematically evaluate pixel-wise losses, namely mean squared error (MSE) and mean absolute error (L1); structural-similarity losses, namely the structural similarity index (SSIM) and its multi-scale variant (MS-SSIM); and hybrid combinations. On a held-out test set, all converged models outperform classical interpolation baselines and pretrained video frame interpolation methods (RIFE, FILM) on all structural measures, with MS-SSIM+L1 offering the strongest balanced profile. We also document training instability in SSIM-family losses and identify partial remedies: the standard numerical fixes eliminate the dominant failure mode but leave residual divergence at smaller batch sizes. All results are reported with patient-level bootstrap confidence intervals and paired statistical tests.\n  As an illustration, we apply the system to an out-of-distribution head CT series from Hospital Universitario Virgen del Rocío: the model synthesizes intermediate slices and exhibits on the real slices the implicit-denoising signature predicted by our theoretical analysis, supporting in a single external case that interpolation quality and implicit denoising are not confined to the training distribution.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Luis Cortés Ferre",
+   "Miguel A. Gutiérrez-Naranjo",
+   "Marcin Balcerzyk"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2606.09953v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2606.09953v1",
+  "published_iso": "2026-06-08T10:45:51Z",
+  "from_query": [
+   "certified emphysema index thick slice CT"
+  ]
+ },
+ {
+  "title": "Exact Nonnegative Matrix Factorization via Cone-Ray Witnesses: Certificates, a One-Sided Solver, and a Findability Phase Transition",
+  "title_norm": "exact nonnegative matrix factorization via cone ray witnesses certificates a one",
+  "abstract": "We study exact nonnegative matrix factorization (NMF) of small exact-rank-r matrices via the polyhedral cones of nonnegative preimages of the truncated SVD. Restricting each factor to an r-subset of a cone's extreme rays collapses the factorization constraint to entrywise nonnegativity of a single r x r witness matrix; witness feasibility is a certificate that an exact size-r NMF exists, decided in one matrix inverse. A completeness theorem shows every size-r NMF is representable this way, for every m, and a one-sided relaxation gives a closed-form solver that provably dominates the two-sided witness. Our main result concerns findability: at fixed search budget, witness recoverability undergoes a sharp conic phase transition whose width collapses to a step as r grows. We rule out a universal-constant explanation (Goemans-Williamson) and a statistical-dimension one: the statistical dimension is flat across the transition, while the intrinsic-volume profile's variance tracks it. The transition is not an existence boundary; by completeness a ray-economical witness always exists and persists past the threshold, so what decays with m is its density among r-subsets. The threshold is thus budget-relative, moving logarithmically as the pool grows, and combinatorial rather than smooth-conic; one budget law bridges it to the budget-free existence limit. A two-sided union of one-sided relaxations returns an exact, machine-precision factorization with a decidable certificate. That search is itself budget-limited, so its recovery obeys the transition we study: competitive with heuristics on small instances, it needs a budget growing with m as density decays, while a well-initialized coordinate-descent solver, not subject to this threshold, recovers more at larger sizes and faster. Our contribution is the certificate and the transition it exposes, not a faster general-purpose solver.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Mithil Ramteke"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2606.22451v3",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2606.22451v3",
+  "published_iso": "2026-06-21T11:51:35Z",
+  "from_query": [
+   "per-scan slice profile identification certificate"
+  ]
+ },
+ {
+  "title": "Decomposition for Bayesian Networks: Local and Parallel Inference",
+  "title_norm": "decomposition for bayesian networks local and parallel inference",
+  "abstract": "Probabilistic inference in high-dimensional Bayesian networks is difficult because exact manipulation of the joint distribution scales exponentially with network size. We propose a decomposition framework based on directed convex subgraphs and introduce a minimal d-decomposition tree. Together, they provide a principled alternative to classical junction-tree constructions. The proposed framework represents the joint distribution by lower-dimensional sub-models that can be learned and stored separately. This decomposition reduces computational cost and naturally enables parallel computation. Based on a minimal d-decomposition tree, we further develop two parallel algorithms for parameter estimation and probabilistic inference. Experiments show that the proposed method substantially improves computational efficiency over junction-tree methods while maintaining inference accuracy, especially for low-dimensional queries.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Pei Heng",
+   "Xinyi Hu",
+   "Yi Sun"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2607.04650v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2607.04650v1",
+  "published_iso": "2026-07-06T04:08:15Z",
+  "from_query": [
+   "displacement versus structural residual decomposition"
+  ]
+ },
+ {
+  "title": "Geometric and Behavioral Stratification in Transformer Residual Streams",
+  "title_norm": "geometric and behavioral stratification in transformer residual streams",
+  "abstract": "Trained transformer models develop privileged bases: coordinate axes whose statistics differ from the rest of the residual stream. But what kind of direction does such a basis select? We investigate the prediction direction, the unembedding direction of the token a model currently predicts, and find that it functions as a content-defined privileged anchor. Measured with respect to this anchor, residual-stream variation is geometrically and behaviorally stratified by proximity to the prediction.\n  The stratification holds in all eighteen models tested (dense and mixture-of-experts, 7B-120B, base and instruction-tuned). A narrow, scale-invariant prediction interface concentrates readout-relevant structure, while the vast prediction-distal complement expands with model scale. Because the prediction direction sits nearly orthogonal to the principal variance axes, variance-based analyses recover this organization only partly, and the shortfall grows with prompt heterogeneity.\n  Anchoring reveals a steep geometric gradient: prediction-proximal regions are highly structured and cluster related prompts, while the complement is flatter and anti-discriminates among prompt groups. The interface is a narrow slice but functionally decisive. Disrupting the variance directions closest to the prediction causes immediate divergence and frequent task-frame shifts; disrupting the next level down delays divergence and preserves framing. The complement is weakly readout-aligned per direction yet causally and temporally load-bearing, and behavior is driven by direction rather than magnitude.\n  These results establish the prediction direction as a privileged anchor distinct from previously described coordinate axes, and give a geometric account of how high-dimensional computation coexists with linear readout.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Nelson Guda"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2608.12447v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2608.12447v1",
+  "published_iso": "2026-08-12T17:42:20Z",
+  "from_query": [
+   "displacement versus structural residual decomposition"
+  ]
+ }
+]

@@ -1,0 +1,8 @@
+# SCTE-R stage-1 (public pretraining) requirements
+torch>=2.0
+numpy>=1.24
+scipy>=1.10
+PyYAML>=6.0
+tqdm
+SimpleITK        # public DICOM / NIfTI / .mhd -> .npy in prep_public.py
+# scikit-image   # optional, validated SSIM in evaluate

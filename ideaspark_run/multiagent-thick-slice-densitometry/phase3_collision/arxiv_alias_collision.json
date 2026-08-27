@@ -1,0 +1,1763 @@
+[
+ {
+  "title": "A Reciprocity-Law-Compliant Photoacoustic Forward-Adjoint Operator",
+  "title_norm": "a reciprocity law compliant photoacoustic forward adjoint operator",
+  "abstract": "We extend the forward-adjoint operator framework derived in our previous study to photoacoustic tomography (PAT). In that earlier work, the acoustic forward operator included a reception operator that maps, at each time step, the pressure wavefield in free space onto the boundary (receiver surface). It was shown that this reception operator serves as a left-inverse of an emission operator that maps the pressure restricted to the boundary (emitter surface) onto free space, perfectly complying with the reciprocity law of physics. In this study, we define the full PAT forward operator as a composite mapping composed of an acoustic forward operator equipped with a scaled variant of the previously proposed reception operator, and an operator describing the photoacoustic source. Singularities arising both in the reception step (due to the boundary restriction) and in the photoacoustic source (due to its instantaneous nature) are regularized using regularized Dirac delta distributions. The resulting PAT forward-adjoint operator pair satisfies an inner-product relation, which we verify through numerical experiments on a discretized domain. The effectiveness of the proposed operator pair is further demonstrated using an iterative minimization framework that yields both qualitatively and quantitatively accurate reconstructions of an initial pressure distribution from the corresponding Dirichlet-type boundary data.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Ashkan Javaherian"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2604.04022v3",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2604.04022v3",
+  "published_iso": "2026-04-05T08:44:26Z",
+  "from_query": [
+   "self-calibrating forward operator estimation"
+  ]
+ },
+ {
+  "title": "Generalist Vision Foundation Models for Medical Imaging: A Case Study of Segment Anything Model on Zero-Shot Medical Segmentation",
+  "title_norm": "generalist vision foundation models for medical imaging a case study of segment ",
+  "abstract": "In this paper, we examine the recent Segment Anything Model (SAM) on medical images, and report both quantitative and qualitative zero-shot segmentation results on nine medical image segmentation benchmarks, covering various imaging modalities, such as optical coherence tomography (OCT), magnetic resonance imaging (MRI), and computed tomography (CT), as well as different applications including dermatology, ophthalmology, and radiology. Those benchmarks are representative and commonly used in model development. Our experimental results indicate that while SAM presents remarkable segmentation performance on images from the general domain, its zero-shot segmentation ability remains restricted for out-of-distribution images, e.g., medical images. In addition, SAM exhibits inconsistent zero-shot segmentation performance across different unseen medical domains. For certain structured targets, e.g., blood vessels, the zero-shot segmentation of SAM completely failed. In contrast, a simple fine-tuning of it with a small amount of data could lead to remarkable improvement of the segmentation quality, showing the great potential and feasibility of using fine-tuned SAM to achieve accurate medical image segmentation for a precision diagnostics. Our study indicates the versatility of generalist vision foundation models on medical imaging, and their great potential to achieve desired performance through fine-turning and eventually address the challenges associated with accessing large and diverse medical datasets in support of clinical diagnostics.",
+  "year": 2023,
+  "venue": "arXiv",
+  "authors": [
+   "Peilun Shi",
+   "Jianing Qiu",
+   "Sai Mu Dalike Abaxi",
+   "Hao Wei",
+   "Frank P. -W. Lo",
+   "Wu Yuan"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2304.12637v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2304.12637v2",
+  "published_iso": "2023-04-25T08:07:59Z",
+  "from_query": [
+   "model misspecification residual diagnostics"
+  ]
+ },
+ {
+  "title": "Efficient Implementation of the Global Cardinality Constraint with Costs",
+  "title_norm": "efficient implementation of the global cardinality constraint with costs",
+  "abstract": "The success of Constraint Programming relies partly on the global constraints and implementation of the associated filtering algorithms. Recently, new ideas emerged to improve these implementations in practice, especially regarding the all different constraint. In this paper, we consider the cardinality constraint with costs. The cardinality constraint is a generalization of the all different constraint that specifies the number of times each value must be taken by a given set of variables in a solution. The version with costs introduces an assignment cost and bounds the total sum of assignment costs. The arc consistency filtering algorithm of this constraint is difficult to use in practice, as it systematically searches for many shortest paths. We propose a new approach that works with upper bounds on shortest paths based on landmarks. This approach can be seen as a preprocessing. It is fast and avoids, in practice, a large number of explicit computations of shortest paths.",
+  "year": 2025,
+  "venue": "arXiv",
+  "authors": [
+   "Margaux Schmied",
+   "Jean-Charles Regin"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2502.02688v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2502.02688v1",
+  "published_iso": "2025-02-04T20:03:53Z",
+  "from_query": [
+   "moment-preserving deconvolution constraint"
+  ]
+ },
+ {
+  "title": "Explicit Abstention Knobs for Predictable Reliability in Video Question Answering",
+  "title_norm": "explicit abstention knobs for predictable reliability in video question answerin",
+  "abstract": "High-stakes deployment of vision-language models (VLMs) requires selective prediction, where systems abstain when uncertain rather than risk costly errors. We investigate whether confidence-based abstention provides reliable control over error rates in video question answering, and whether that control remains robust under distribution shift. Using NExT-QA and Gemini 2.0 Flash, we establish two findings. First, confidence thresholding provides mechanistic control in-distribution. Sweeping threshold epsilon produces smooth risk-coverage tradeoffs, reducing error rates f",
+  "year": 2025,
+  "venue": "arXiv",
+  "authors": [
+   "Jorge Ortiz"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2601.00138v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2601.00138v2",
+  "published_iso": "2025-12-31T23:27:32Z",
+  "from_query": [
+   "measurement-consistent abstention gating"
+  ]
+ },
+ {
+  "title": "Time-Scaled Intertwining Cocycles and Identifiability of Multi-Semigroup Mixtures on Hilbert Operator Networks",
+  "title_norm": "time scaled intertwining cocycles and identifiability of multi semigroup mixture",
+  "abstract": "We study rigidity phenomena for time-scaled intertwining families of dissipative semigroups $\\mathcal S_i(t)=e^{-tA_i}$ and prove that a network of bounded injective operators satisfying $K_{ij}\\mathcal S_j(t)=\\mathcal S_i(λ_{ij}t)K_{ij}$ and $K_{ik}=K_{ij}K_{jk}$ necessarily admits a multiplicative gauge representation $λ_{ij}=τ_i/τ_j$, if and only if the renormalized generators $\\{τ_iA_i\\}$ form a common isospectral class with matching eigenspace dimensions; in particular, eigenspaces are transported isomorphically across sectors. The operators $K_{ij}$ define parallel transport in a flat Hilbert bundle over the index network, with flatness derived from the intertwining constraints rather than assumed. As an application, the mixture observable $M(t)=\\sum_i w_i\\mathcal B_0K_{0i}\\mathcal S_i(t)ψ_i$ reduces under finite spectral support to a structured exponential sum. Under spectral separation, the modal parameters are uniquely identifiable, with sector tags determined intrinsically by the operator spectra; under eigenspace observability, active state components are uniquely recovered. Finite-window exact reconstruction holds from $2L$ samples, and the stability bound $\\|\\widehatΘ-Θ_\\ast\\|_{\\mathcal X}\\le C_{\\mathrm{stab}}κ_{\\mathrm{exp}}\\varepsilon$ follows with constants explicitly controlled by the spectral geometry and observability of the network.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Anton Alexa"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2603.20322v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2603.20322v2",
+  "published_iso": "2026-03-19T23:56:32Z",
+  "from_query": [
+   "self-calibrating forward operator estimation"
+  ]
+ },
+ {
+  "title": "Efficiency versus Robustness under Tail Misspecification: Importance Sampling and Moment-Based VaR Bracketing",
+  "title_norm": "efficiency versus robustness under tail misspecification importance sampling and",
+  "abstract": "Value-at-Risk (VaR) estimation at high confidence levels is inherently a rare-event problem and is particularly sensitive to tail behavior and model misspecification. This paper studies the performance of two simulation-based VaR estimation approaches, importance sampling and discrete moment matching, under controlled tail misspecification. The analysis separates the nominal model used for estimator construction from the true data-generating process used for evaluation, allowing the effects of heavy-tailed returns to be examined in a transparent and reproducible setting. Daily returns of a broad equity market proxy are used to calibrate a nominal Gaussian model, while true returns are generated from Student-t distributions with varying degrees of freedom to represent increasingly heavy tails. Importance sampling is implemented via exponential tilting of the Gaussian model, and VaR is estimated through likelihood-weighted root-finding. Discrete moment matching constructs deterministic lower and upper VaR bounds by enforcing a finite number of moment constraints on a discretized loss distribution. The results demonstrate a clear trade-off between efficiency and robustness. Importance sampling produces low-variance VaR estimates under the nominal model but systematically underestimates the true VaR under heavy-tailed returns, with bias increasing at higher confidence levels and for thicker tails. In contrast, discrete moment matching yields conservative VaR bracketing that remains robust under tail misspecification. These findings highlight that variance reduction alone is insufficient for reliable tail risk estimation when model uncertainty is significant.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   " Aditri"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2601.09927v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2601.09927v1",
+  "published_iso": "2026-01-14T23:16:52Z",
+  "from_query": [
+   "model misspecification residual diagnostics"
+  ]
+ },
+ {
+  "title": "Blind Image Deconvolution by Generative-based Kernel Prior and Initializer via Latent Encoding",
+  "title_norm": "blind image deconvolution by generative based kernel prior and initializer via l",
+  "abstract": "Blind image deconvolution (BID) is a classic yet challenging problem in the field of image processing. Recent advances in deep image prior (DIP) have motivated a series of DIP-based approaches, demonstrating remarkable success in BID. However, due to the high non-convexity of the inherent optimization process, these methods are notorious for their sensitivity to the initialized kernel. To alleviate this issue and further improve their performance, we propose a new framework for BID that better considers the prior modeling and the initialization for blur kernels, leveraging a deep generative model. The proposed approach pre-trains a generative adversarial network-based kernel generator that aptly characterizes the kernel priors and a kernel initializer that facilitates a well-informed initialization for the blur kernel through latent space encoding. With the pre-trained kernel generator and initializer, one can obtain a high-quality initialization of the blur kernel, and enable optimization within a compact latent kernel manifold. Such a framework results in an evident performance improvement over existing DIP-based BID methods. Extensive experiments on different datasets demonstrate the effectiveness of the proposed method.",
+  "year": 2024,
+  "venue": "arXiv",
+  "authors": [
+   "Jiangtao Zhang",
+   "Zongsheng Yue",
+   "Hui Wang",
+   "Qian Zhao",
+   "Deyu Meng"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2407.14816v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2407.14816v1",
+  "published_iso": "2024-07-20T09:23:56Z",
+  "from_query": [
+   "moment-preserving deconvolution constraint"
+  ]
+ },
+ {
+  "title": "An Explainable Agentic AI Framework for Uncertainty-Aware and Abstention-Enabled Acute Ischemic Stroke Imaging Decisions",
+  "title_norm": "an explainable agentic ai framework for uncertainty aware and abstention enabled",
+  "abstract": "Artificial intelligence models have shown strong potential in acute ischemic stroke imaging, particularly for lesion detection and segmentation using computed tomography and magnetic resonance imaging. However, most existing approaches operate as black box predictors, producing deterministic outputs without explicit uncertainty awareness or structured mechanisms to abstain under ambiguous conditions. This limitation raises serious safety and trust concerns in high risk emergency radiology settings. In this paper, we propose an explainable agentic AI framework for uncertainty aware and abstention enabled decision support in acute ischemic stroke imaging. The framework follows a modular agentic pipeline in which a perception agent performs lesion aware image analysis, an uncertainty estimation agent computes slice level predictive reliability, and a decision agent determines whether to issue a prediction or abstain based on predefined uncertainty thresholds. Unlike prior stroke imaging systems that primarily focus on improving segmentation or classification accuracy, the proposed framework explicitly prioritizes clinical safety, transparency, and clinician aligned decision behavior. Qualitative and case based analyses across representative stroke imaging scenarios demonstrate that uncertainty driven abstention naturally emerges in diagnostically ambiguous regions and low information slices. The framework further integrates visual explanation mechanisms to support both predictive and abstention decisions, addressing a key limitation of existing uncertainty aware medical imaging systems. Rather than introducing a new performance benchmark, this work presents agentic control, uncertainty awareness, and selective abstention as essential design principles for developing safe and trustworthy medical imaging AI systems.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Md Rashadul Islam"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2601.01008v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2601.01008v1",
+  "published_iso": "2026-01-03T00:10:08Z",
+  "from_query": [
+   "measurement-consistent abstention gating"
+  ]
+ },
+ {
+  "title": "Self-Calibrating Conformal Prediction",
+  "title_norm": "self calibrating conformal prediction",
+  "abstract": "In machine learning, model calibration and predictive inference are essential for producing reliable predictions and quantifying uncertainty to support decision-making. Recognizing the complementary roles of point and interval predictions, we introduce Self-Calibrating Conformal Prediction, a method that combines Venn-Abers calibration and conformal prediction to deliver calibrated point predictions alongside prediction intervals with finite-sample validity conditional on these predictions. To achieve this, we extend the original Venn-Abers procedure from binary classification to regression. Our theoretical framework supports analyzing conformal prediction methods that involve calibrating model predictions and subsequently constructing conditionally valid prediction intervals on the same data, where the conditioning set or conformity scores may depend on the calibrated predictions. Real-data experiments show that our method improves interval efficiency through model calibration and offers a practical alternative to feature-conditional validity.",
+  "year": 2024,
+  "venue": "arXiv",
+  "authors": [
+   "Lars van der Laan",
+   "Ahmed M. Alaa"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2402.07307v3",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2402.07307v3",
+  "published_iso": "2024-02-11T21:12:21Z",
+  "from_query": [
+   "self-calibrating forward operator estimation"
+  ]
+ },
+ {
+  "title": "Z-residual diagnostics for detecting misspecification of the functional form of covariates for shared frailty models",
+  "title_norm": "z residual diagnostics for detecting misspecification of the functional form of ",
+  "abstract": "In survival analysis, the hazard function often depends on a set of covariates. Martingale and deviance residual are most widely used for examining the validity of the function form of covariates by checking whether there is a discernible trend in their scatterplot against continuous covariates. However, visual inspection of martingale and deviance residuals is often subjective. In addition, these residuals lack a reference distribution due to censoring. It is therefore challenging to derive numerical statistical tests based on martingale or deviance residuals. In this paper, we extend the idea of randomized survival probability (Li et al. 2021) and develop a residual diagnostic tool that can provide both graphical and numerical tests for checking the covariate functional form in semi-parametric shared frailty models. We develop a general function that calculates Z-residuals for semi-parametric shared frailty models based on the output from the \\texttt{coxph} function in the \\texttt{survival} package in R. Our extensive simulation studies indicate that the derived numerical test based on Z-residuals has great power for checking the functional form of covariates. In a real data application on modelling the survival time of acute myeloid leukemia patients, the Z-residual diagnosis results show that a model with log-transformation is inappropriate for modelling the survival time, which could not be detected by other diagnostic methods.",
+  "year": 2023,
+  "venue": "arXiv",
+  "authors": [
+   "Tingxuan Wu",
+   "Longhai Li",
+   "Cindy Feng"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2302.09106v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2302.09106v1",
+  "published_iso": "2023-02-17T19:27:46Z",
+  "from_query": [
+   "model misspecification residual diagnostics"
+  ]
+ },
+ {
+  "title": "Combining Constraint Programming Reasoning with Large Language Model Predictions",
+  "title_norm": "combining constraint programming reasoning with large language model predictions",
+  "abstract": "Constraint Programming (CP) and Machine Learning (ML) face challenges in text generation due to CP's struggle with implementing \"meaning'' and ML's difficulty with structural constraints. This paper proposes a solution by combining both approaches and embedding a Large Language Model (LLM) in CP. The LLM handles word generation and meaning, while CP manages structural constraints. This approach builds on GenCP, an improved version of On-the-fly Constraint Programming Search (OTFS) using LLM-generated domains. Compared to Beam Search (BS), a standard NLP method, this combined approach (GenCP with LLM) is faster and produces better results, ensuring all constraints are satisfied. This fusion of CP and ML presents new possibilities for enhancing text generation under constraints.",
+  "year": 2024,
+  "venue": "arXiv",
+  "authors": [
+   "Florian Régin",
+   "Elisabetta De Maria",
+   "Alexandre Bonlarron"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2407.13490v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2407.13490v1",
+  "published_iso": "2024-07-18T13:15:55Z",
+  "from_query": [
+   "moment-preserving deconvolution constraint"
+  ]
+ },
+ {
+  "title": "Gated Sparse Attention: Combining Computational Efficiency with Training Stability for Long-Context Language Models",
+  "title_norm": "gated sparse attention combining computational efficiency with training stabilit",
+  "abstract": "The computational burden of attention in long-context language models has motivated two largely independent lines of work: sparse attention mechanisms that reduce complexity by attending to selected tokens, and gated attention variants that improve training sta-bility while mitigating the attention sink phenomenon. We observe that these approaches address complementary weaknesses and propose Gated Sparse Attention (GSA), an architecture that realizes the benefits of both. GSA incorporates a gated lightning indexer with sigmoid activations that produce bounded, interpretable selection scores, an adaptive sparsity controller that modulates the number of attended tokens based on local uncertainty, and dual gating at the value and output stages. We establish theoretical foundations for the approach, including complexity analysis, expressiveness results, and convergence guarantees. In experiments with 1.7B parameter models trained on 400B tokens, GSA matches the efficiency of sparse-only baselines (12-16x speedup at 128K context) while achieving the quality gains associated with gated attention: perplexity improves from 6.03 to 5.70, RULER scores at 128K context nearly double, and attention to the first token, a proxy for attention sinks, drops from 47% to under 4%. Training stability improves markedly, with loss spikes reduced by 98%.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Alfred Shen",
+   "Aaron Shen"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2601.15305v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2601.15305v1",
+  "published_iso": "2026-01-12T20:33:39Z",
+  "from_query": [
+   "measurement-consistent abstention gating"
+  ]
+ },
+ {
+  "title": "Function regression using the forward forward training and inferring paradigm",
+  "title_norm": "function regression using the forward forward training and inferring paradigm",
+  "abstract": "Function regression/approximation is a fundamental application of machine learning. Neural networks (NNs) can be easily trained for function regression using a sufficient number of neurons and epochs. The forward-forward learning algorithm is a novel approach for training neural networks without backpropagation, and is well suited for implementation in neuromorphic computing and physical analogs for neural networks. To the best of the authors' knowledge, the Forward Forward paradigm of training and inferencing NNs is currently only restricted to classification tasks. This paper introduces a new methodology for approximating functions (function regression) using the Forward-Forward algorithm. Furthermore, the paper evaluates the developed methodology on univariate and multivariate functions, and provides preliminary studies of extending the proposed Forward-Forward regression to Kolmogorov Arnold Networks, and Deep Physical Neural Networks.",
+  "year": 2025,
+  "venue": "arXiv",
+  "authors": [
+   "Shivam Padmani",
+   "Akshay Joshi"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2510.06762v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2510.06762v2",
+  "published_iso": "2025-10-08T08:41:14Z",
+  "from_query": [
+   "self-calibrating forward operator estimation"
+  ]
+ },
+ {
+  "title": "Set-Theoretically Perfect Ideals and Residual Intersections",
+  "title_norm": "set theoretically perfect ideals and residual intersections",
+  "abstract": "This paper studies algebraic residual intersections in rings with Serre's condition \\( S_{s} \\). It demonstrates that residual intersections admit free approaches i.e. perfect subideal with the same radical. This fact leads to determining a uniform upper bound for the multiplicity of residual intersections. In positive characteristic, it follows that residual intersections are cohomologically complete intersection and, hence, their variety is connected in codimension one.",
+  "year": 2024,
+  "venue": "arXiv",
+  "authors": [
+   "S. Hamid Hassanzadeh"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2409.05705v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2409.05705v2",
+  "published_iso": "2024-09-09T15:17:04Z",
+  "from_query": [
+   "model misspecification residual diagnostics"
+  ]
+ },
+ {
+  "title": "Decomposition and Preprocessing of Ternary Constraint Networks",
+  "title_norm": "decomposition and preprocessing of ternary constraint networks",
+  "abstract": "Constraint programming is a general and exact method based on constraint propagation and backtracking search. We provide a function decomposing a constraint network into a ternary constraint network (TCN) with a reduced number of operators. TCNs are not new and have been used since the inception of constraint programming, notably in constraint logic programming systems. This work aims to specify formally the decomposition function of discrete constraint network into TCN and its preprocessing. We aim to be self-contained and descriptive enough to serve as the basis of an implementation. Our primary usage of TCN is to obtain a regular data layout of constraints to efficiently execute propagators on graphics processing unit (GPU) hardware.",
+  "year": 2025,
+  "venue": "arXiv",
+  "authors": [
+   "Pierre Talbot"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2511.11872v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2511.11872v1",
+  "published_iso": "2025-11-14T21:02:06Z",
+  "from_query": [
+   "moment-preserving deconvolution constraint"
+  ]
+ },
+ {
+  "title": "Convergence Rates for Softmax Gating Mixture of Experts",
+  "title_norm": "convergence rates for softmax gating mixture of experts",
+  "abstract": "Mixture of experts (MoE) has recently emerged as an effective framework to advance the efficiency and scalability of machine learning models by softly dividing complex tasks among multiple specialized sub-models termed experts. Central to the success of MoE is an adaptive softmax gating mechanism which takes responsibility for determining the relevance of each expert to a given input and then dynamically assigning experts their respective weights. Despite its widespread use in practice, a comprehensive study on the effects of the softmax gating on the MoE has been lacking in the literature. To bridge this gap in this paper, we perform a convergence analysis of parameter estimation and expert estimation under the MoE equipped with the standard softmax gating or its variants, including a dense-to-sparse gating and a hierarchical softmax gating, respectively. Furthermore, our theories also provide useful insights into the design of sample-efficient expert structures. In particular, we demonstrate that it requires polynomially many data points to estimate experts satisfying our proposed \\emph{strong identifiability} condition, namely a commonly used two-layer feed-forward network. In stark contrast, estimating linear experts, which violate the strong identifiability condition, necessitates exponentially many data points as a result of intrinsic parameter interactions expressed in the language of partial differential equations. All the theoretical results are substantiated with a rigorous guarantee.",
+  "year": 2025,
+  "venue": "arXiv",
+  "authors": [
+   "Huy Nguyen",
+   "Nhat Ho",
+   "Alessandro Rinaldo"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2503.03213v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2503.03213v1",
+  "published_iso": "2025-03-05T06:11:24Z",
+  "from_query": [
+   "measurement-consistent abstention gating"
+  ]
+ },
+ {
+  "title": "A Gauge-Covariant Theoretical Framework for Non-Abelian Holonomy Estimation and Feed-Forward Correction in Time-Bin Photonic Qudits",
+  "title_norm": "a gauge covariant theoretical framework for non abelian holonomy estimation and ",
+  "abstract": "We develop a theoretical and computational framework for estimating and correcting non-Abelian geometric distortions in time-bin photonic qudit processing when the relevant encoded object is a transported logical subspace rather than a collection of independent rays. In such settings, for example under mode mixing, multiplexed routing, or effective degeneracies, the geometric contribution is naturally matrix-valued and is described by a Wilczek-Zee holonomy on a rank-$m$ sub-bundle of the ambient Hilbert space. The framework generalises prior Abelian time-bin Pancharatnam-Berry feed-forward calibration, in which geometric distortions are represented by bin-resolved scalar phases, to the non-Abelian, matrix-valued case. We construct a gauge-covariant discrete estimator from overlap matrices between successive subspace frames: the polar factor of each overlap gives a unitary backward frame comparator, and the adjoint comparators compose to approximate the forward path-ordered exponential of the Wilczek-Zee connection. We prove gauge covariance under frame changes, polar optimality of the local comparator, consistency under partition refinement, and perturbative stability under well-conditioned overlap errors. We then formulate left- and right-acting feed-forward correction rules for removing the estimated holonomy from an effective logical operation. The work does not assume a device-specific transfer matrix, loss model, detector model, or experimental calibration pipeline; numerical studies use synthetic non-Abelian transport models to validate covariance, convergence, conditioning dependence, and correction fidelity.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "N. Josef Bruzzese"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2605.26697v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2605.26697v1",
+  "published_iso": "2026-05-26T08:40:26Z",
+  "from_query": [
+   "self-calibrating forward operator estimation"
+  ]
+ },
+ {
+  "title": "From Imitation to Refinement -- Residual RL for Precise Assembly",
+  "title_norm": "from imitation to refinement residual rl for precise assembly",
+  "abstract": "Recent advances in Behavior Cloning (BC) have made it easy to teach robots new tasks. However, we find that the ease of teaching comes at the cost of unreliable performance that saturates with increasing data for tasks requiring precision. The performance saturation can be attributed to two critical factors: (a) distribution shift resulting from the use of offline data and (b) the lack of closed-loop corrective control caused by action chucking (predicting a set of future actions executed open-loop) critical for BC performance. Our key insight is that by predicting action chunks, BC policies function more like trajectory \"planners\" than closed-loop controllers necessary for reliable execution. To address these challenges, we devise a simple yet effective method, ResiP (Residual for Precise Manipulation), that overcomes the reliability problem while retaining BC's ease of teaching and long-horizon capabilities. ResiP augments a frozen, chunked BC model with a fully closed-loop residual policy trained with reinforcement learning (RL) that addresses distribution shifts and introduces closed-loop corrections over open-loop execution of action chunks predicted by the BC trajectory planner. Videos, code, and data: https://residual-assembly.github.io.",
+  "year": 2024,
+  "venue": "arXiv",
+  "authors": [
+   "Lars Ankile",
+   "Anthony Simeonov",
+   "Idan Shenfeld",
+   "Marcel Torne",
+   "Pulkit Agrawal"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2407.16677v4",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2407.16677v4",
+  "published_iso": "2024-07-23T17:44:54Z",
+  "from_query": [
+   "model misspecification residual diagnostics"
+  ]
+ },
+ {
+  "title": "Constraint Model for the Satellite Image Mosaic Selection Problem",
+  "title_norm": "constraint model for the satellite image mosaic selection problem",
+  "abstract": "Satellite imagery solutions are widely used to study and monitor different regions of the Earth. However, a single satellite image can cover only a limited area. In cases where a larger area of interest is studied, several images must be stitched together to create a single larger image, called a mosaic, that can cover the area. Today, with the increasing number of satellite images available for commercial use, selecting the images to build the mosaic is challenging, especially when the user wants to optimize one or more parameters, such as the total cost and the cloud coverage percentage in the mosaic. More precisely, for this problem the input is an area of interest, several satellite images intersecting the area, a list of requirements relative to the image and the mosaic, such as cloud coverage percentage, image resolution, and a list of objectives to optimize. We contribute to the constraint and mixed integer lineal programming formulation of this new problem, which we call the \\textit{satellite image mosaic selection problem}, which is a multi-objective extension of the polygon cover problem. We propose a dataset of realistic and challenging instances, where the images were captured by the satellite constellations SPOT, Pléiades and Pléiades Neo. We evaluate and compare the two proposed models and show their efficiency for large instances, up to 200 images.",
+  "year": 2023,
+  "venue": "arXiv",
+  "authors": [
+   "Manuel Combarro Simón",
+   "Pierre Talbot",
+   "Grégoire Danoy",
+   "Jedrzej Musial",
+   "Mohammed Alswaitti",
+   "Pascal Bouvry"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2312.04210v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2312.04210v1",
+  "published_iso": "2023-12-07T10:52:16Z",
+  "from_query": [
+   "moment-preserving deconvolution constraint"
+  ]
+ },
+ {
+  "title": "Backbone-Conditional Behavior of Modality Gating in Multi-Modal Prostate MRI Segmentation: A 5-Fold Cross-Validation and Gate Mechanism Analysis",
+  "title_norm": "backbone conditional behavior of modality gating in multi modal prostate mri seg",
+  "abstract": "Robust segmentation of clinically significant prostate cancer (csPCa) on multi-parametric MRI must tolerate frequent degradation of its most informative diffusion sequences. Multi-modal fusion commonly employs learned modality gating under the assumption that gates implement per-sample modality quality routing -- rarely tested directly. We ask how gating behaves across backbone architectures. We systematically analyze modality-isolated gated fusion (MIGF) for csPCa segmentation on two backbones (nnU-Net and Mamba) using PI-CAI (n=1500), with cross-cohort validation on Prostate158 (n=158): a factorial ablation over gating, modality dropout, and deep supervision under 5-fold cross-validation (180 trained models), plus a gate-weight and counterfactual analysis of 30 trained gating models. Modality gating is backbone-conditional. On nnU-Net, adding gating reduces the ranking score (marginal effect -0.037; gating configurations p<0.05), whereas on Mamba the gating-plus-dropout configuration improves it (+0.024, p=0.037). Gate-weight analysis explains this: nnU-Net gates collapse into a near-static modality prior (across-case SD 0.0033), while Mamba gates retain sample-dependent variation (0.0365, ~11x larger, non-overlapping); replacing per-sample gates with their training-set mean leaves nnU-Net unchanged but degrades Mamba. Modality dropout is the only component beneficial on both backbones. Under cross-cohort shift, convolutional backbones collapse to case-level specificity near zero, whereas Mamba retains it (MIGF-Mamba highest, 0.31). Learned modality gates do not universally perform per-sample quality routing; their effective behavior is conditional on the backbone's inherent modality awareness. Among tested configurations, MIGF-Mamba is the most cross-cohort robust, and training-time modality dropout is the only component beneficial across both backbones.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Yongbo Shu",
+   "Wenzhao Xie",
+   "Shanhu Yao",
+   "Zirui Xin",
+   "Luo Lei",
+   "Kewen Chen",
+   "Aijing Luo"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2604.10702v4",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2604.10702v4",
+  "published_iso": "2026-04-12T15:54:21Z",
+  "from_query": [
+   "measurement-consistent abstention gating"
+  ]
+ },
+ {
+  "title": "Self-Calibrating Gaussian Splatting for Large Field of View Reconstruction",
+  "title_norm": "self calibrating gaussian splatting for large field of view reconstruction",
+  "abstract": "In this paper, we present a self-calibrating framework that jointly optimizes camera parameters, lens distortion and 3D Gaussian representations, enabling accurate and efficient scene reconstruction. In particular, our technique enables high-quality scene reconstruction from Large field-of-view (FOV) imagery taken with wide-angle lenses, allowing the scene to be modeled from a smaller number of images. Our approach introduces a novel method for modeling complex lens distortions using a hybrid network that combines invertible residual networks with explicit grids. This design effectively regularizes the optimization process, achieving greater accuracy than conventional camera models. Additionally, we propose a cubemap-based resampling strategy to support large FOV images without sacrificing resolution or introducing distortion artifacts. Our method is compatible with the fast rasterization of Gaussian Splatting, adaptable to a wide variety of camera lens distortion, and demonstrates state-of-the-art performance on both synthetic and real-world datasets.",
+  "year": 2025,
+  "venue": "arXiv",
+  "authors": [
+   "Youming Deng",
+   "Wenqi Xian",
+   "Guandao Yang",
+   "Leonidas Guibas",
+   "Gordon Wetzstein",
+   "Steve Marschner",
+   "Paul Debevec"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2502.09563v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2502.09563v2",
+  "published_iso": "2025-02-13T18:15:10Z",
+  "from_query": [
+   "self-calibrating forward operator estimation"
+  ]
+ },
+ {
+  "title": "Residual Stream Duality in Modern Transformer Architectures",
+  "title_norm": "residual stream duality in modern transformer architectures",
+  "abstract": "Recent work has made clear that the residual pathway is not mere optimization plumbing; it is part of the model's representational machinery. We agree, but argue that the cleanest way to organize this design space is through a two-axis view of the Transformer. A decoder evolves information along two ordered dimensions: sequence position and layer depth. Self-attention already provides adaptive mixing along the sequence axis, whereas the residual stream usually performs fixed addition along the depth axis. If we fix a token position and treat layer index as the ordered variable, then a causal depth-wise residual attention read is exactly the same local operator as causal short sliding-window attention (ShortSWA), except written over depth rather than over sequence. This is the core residual stream duality behind Transformer$^2$. This perspective also clarifies the recent literature. ELC-BERT and DenseFormer already show that learned aggregation over depth can outperform uniform residual accumulation, while Vertical Attention, DeepCrossAttention (DCA), MUDDFormer, and Attention Residuals move further toward explicit attention-based routing over earlier layers. The key point, however, is that operator-level duality does not imply systems-level symmetry. For large-scale autoregressive models, sequence-axis ShortSWA is usually the more hardware-friendly placement because it reuses token-side sliding-window kernels, KV-cache layouts, and chunked execution. If the goal is instead to change the shortcut itself, Deep Delta Learning (DDL) is the cleaner intervention because it modifies the residual operator directly rather than adding a separate cross-layer retrieval path. Our recommendation is therefore simple: use DDL when the shortcut is the object of interest, and use sequence-axis ShortSWA when the goal is local adaptive mixing.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Yifan Zhang"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2603.16039v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2603.16039v2",
+  "published_iso": "2026-03-17T00:56:29Z",
+  "from_query": [
+   "model misspecification residual diagnostics"
+  ]
+ },
+ {
+  "title": "EMPEROR: Efficient Moment-Preserving Representation of Distributions",
+  "title_norm": "emperor efficient moment preserving representation of distributions",
+  "abstract": "We introduce EMPEROR (Efficient Moment-Preserving Representation of Distributions), a mathematically rigorous and computationally efficient framework for representing high-dimensional probability measures arising in neural network representations. Unlike heuristic global pooling operations, EMPEROR encodes a feature distribution through its statistical moments. Our approach leverages the theory of sliced moments: features are projected onto multiple directions, lightweight univariate Gaussian mixture models (GMMs) are fit to each projection, and the resulting slice parameters are aggregated into a compact descriptor. We establish determinacy guarantees via Carleman's condition and the Cramér-Wold theorem, ensuring that the GMM is uniquely determined by its sliced moments, and we derive finite-sample error bounds that scale optimally with the number of slices and samples. Empirically, EMPEROR captures richer distributional information than common pooling schemes across various data modalities, while remaining computationally efficient and broadly applicable.",
+  "year": 2025,
+  "venue": "arXiv",
+  "authors": [
+   "Xinran Liu",
+   "Shansita D. Sharma",
+   "Soheil Kolouri"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2509.16379v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2509.16379v1",
+  "published_iso": "2025-09-19T19:42:52Z",
+  "from_query": [
+   "moment-preserving deconvolution constraint"
+  ]
+ },
+ {
+  "title": "Ranking with Abstention",
+  "title_norm": "ranking with abstention",
+  "abstract": "We introduce a novel framework of ranking with abstention, where the learner can abstain from making prediction at some limited cost $c$. We present a extensive theoretical analysis of this framework including a series of $H$-consistency bounds for both the family of linear functions and that of neural networks with one hidden-layer. These theoretical guarantees are the state-of-the-art consistency guarantees in the literature, which are upper bounds on the target loss estimation error of a predictor in a hypothesis set $H$, expressed in terms of the surrogate loss estimation error of that predictor. We further argue that our proposed abstention methods are important when using common equicontinuous hypothesis sets in practice. We report the results of experiments illustrating the effectiveness of ranking with abstention.",
+  "year": 2023,
+  "venue": "arXiv",
+  "authors": [
+   "Anqi Mao",
+   "Mehryar Mohri",
+   "Yutao Zhong"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2307.02035v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2307.02035v1",
+  "published_iso": "2023-07-05T05:37:13Z",
+  "from_query": [
+   "measurement-consistent abstention gating"
+  ]
+ },
+ {
+  "title": "Compactness of composition operators on the Bergman space of the bidisc",
+  "title_norm": "compactness of composition operators on the bergman space of the bidisc",
+  "abstract": "Let $\\varphi$ be a holomorphic self map of the bidisc that is Lipschitz on the closure. We show that the composition operator $C_{\\varphi}$ is compact on the Bergman space if and only if $\\varphi(\\overline{\\mathbb{D}^2})\\cap \\mathbb{T}^2=\\emptyset$ and $\\varphi(\\overline{\\mathbb{D}^2}\\setminus \\mathbb{T}^2)\\cap b\\mathbb{D}^2=\\emptyset$.",
+  "year": 2024,
+  "venue": "arXiv",
+  "authors": [
+   "Timothy G. Clos",
+   "Zeljko Cuckovic",
+   "Sonmez Sahutoglu"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2409.09529v3",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2409.09529v3",
+  "published_iso": "2024-09-14T20:56:43Z",
+  "from_query": [
+   "self-calibrating forward operator estimation"
+  ]
+ },
+ {
+  "title": "Unknown Unknowns: Model Misspecification in Machine Learning for Physics",
+  "title_norm": "unknown unknowns model misspecification in machine learning for physics",
+  "abstract": "Machine learning is now a central tool for solving inverse problems in particle physics and astronomy. Models are trained on simulation and deployed on real data, raising the question not just of whether they fit, but of whether they are wrong in ways we did not anticipate: the unknown unknowns. This challenge of model misspecification is not unique to machine learning. In physics, misspecification is sometimes exactly what we want to find: new discoveries appear as failures of existing models. At other times, we want such effects absorbed into the analysis without biasing the measurement. A robust analysis is one that absorbs the misspecifications we are not interested in, while preserving sensitivity to the ones we are. Machine learning can both amplify misspecification and provide new tools to address it. We discuss the challenges of model misspecification, diagnostics for detecting it, and strategies for mitigation. No single diagnostic can confirm that a model is correctly specified: detection and mitigation are two halves of an iterative loop, in which a battery of complementary diagnostics is applied, the model is updated, and the process repeated. Robustness against unknown unknowns is ultimately less about any single technique than about a disposition: a willingness to suspect one's own model, and to design analyses that can survive being wrong in ways one did not anticipate.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Juan Cruz-Martinez",
+   "Carolina Cuesta-Lazaro",
+   "Alexander Held",
+   "Michael Kagan"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2608.13633v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2608.13633v1",
+  "published_iso": "2026-08-13T15:08:04Z",
+  "from_query": [
+   "model misspecification residual diagnostics"
+  ]
+ },
+ {
+  "title": "Gaussian process deconvolution",
+  "title_norm": "gaussian process deconvolution",
+  "abstract": "Let us consider the deconvolution problem, that is, to recover a latent source $x(\\cdot)$ from the observations $\\mathbf{y} = [y_1,\\ldots,y_N]$ of a convolution process $y = x\\star h + η$, where $η$ is an additive noise, the observations in $\\mathbf{y}$ might have missing parts with respect to $y$, and the filter $h$ could be unknown. We propose a novel strategy to address this task when $x$ is a continuous-time signal: we adopt a Gaussian process (GP) prior on the source $x$, which allows for closed-form Bayesian nonparametric deconvolution. We first analyse the direct model to establish the conditions under which the model is well defined. Then, we turn to the inverse problem, where we study i) some necessary conditions under which Bayesian deconvolution is feasible, and ii) to which extent the filter $h$ can be learnt from data or approximated for the blind deconvolution case. The proposed approach, termed Gaussian process deconvolution (GPDC) is compared to other deconvolution methods conceptually, via illustrative examples, and using real-world datasets.",
+  "year": 2023,
+  "venue": "arXiv",
+  "authors": [
+   "Felipe Tobar",
+   "Arnaud Robert",
+   "Jorge F. Silva"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2305.04871v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2305.04871v2",
+  "published_iso": "2023-05-08T17:17:44Z",
+  "from_query": [
+   "moment-preserving deconvolution constraint"
+  ]
+ },
+ {
+  "title": "Hallucination as output-boundary misclassification: a composite abstention architecture for language models",
+  "title_norm": "hallucination as output boundary misclassification a composite abstention archit",
+  "abstract": "Large language models often produce unsupported claims. We frame this as a misclassification error at the output boundary, where internally generated completions are emitted as if they were grounded in evidence. This motivates a composite intervention that combines instruction-based refusal with a structural abstention gate. The gate computes a support deficit score, St, from three black-box signals: self-consistency (At), paraphrase stability (Pt), and citation coverage (Ct), and blocks output when St exceeds a threshold. In a controlled evaluation across 50 items, five epistemic regimes, and three models, neither mechanism alone was sufficient. Instruction-only prompting reduced hallucination sharply, but still showed over-cautious abstention on answerable items and residual hallucination for GPT-3.5-turbo. The structural gate preserved answerable accuracy across models but missed confident confabulation on conflicting-evidence items. The composite architecture achieved high overall accuracy with low hallucination, while also inheriting some over-abstention from the instruction component. A supplementary 100-item no-context stress test derived from TruthfulQA showed that structural gating provides a capability-independent abstention floor. Overall, instruction-based refusal and structural gating show complementary failure modes, which suggests that effective hallucination control benefits from combining both mechanisms.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Angelina Hintsanen"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2604.06195v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2604.06195v1",
+  "published_iso": "2026-03-12T13:44:47Z",
+  "from_query": [
+   "measurement-consistent abstention gating"
+  ]
+ },
+ {
+  "title": "Positive operator-valued noncommutative polynomials are squares",
+  "title_norm": "positive operator valued noncommutative polynomials are squares",
+  "abstract": "We establish operator-valued versions of the earlier foundational factorization results for noncommutative polynomials due to Helton (Ann.~Math., 2002) and one of the authors (Linear Alg.~Appl., 2001). Specifically, we show that every positive operator-valued noncommutative polynomial $p$ admits a single-square factorization $p=r^{*}r$. An analogous statement holds for operator-valued noncommutative trigonometric polynomials.\n  Our approach follows the now standard sum-of-squares (sos) paradigm but requires new results and constructions tailored to operator coefficients. Assuming a positive $p$ is not sos, Hahn--Banach separation yields a linear functional that is positive on the sos cone and negative on $p$; a Gelfand--Naimark--Segal (GNS) construction then produces a representing tuple $Y$ leading to contradiction since $p$ was assumed positive on $Y$.\n  The main technical input is a canonical tuple $A$ of self-adjoint operators and, in the unitary case, a canonical tuple $U$ of unitaries, both constructed from the left-regular representation on Fock space. We prove that, up to a universal constant, the norms $\\|p(A)\\|$ and $\\|p(U)\\|$ bound the operator norm of any positive semidefinite Gram matrix $G$ representing the sos polynomial $p$. This uniform control is the key input in showing that the cone of (sums of) squares is closed in the product ultraweak topology on the coefficients. A separate approximation argument then produces a separating functional that is continuous for the weak operator topology (WOT). This two-step passage between the ultraweak and WOT topologies constitutes our separation argument and yields the required WOT closedness of the sos cone. With this in hand, the GNS construction associates to such a separating linear functional a finite-rank positive semidefinite noncommutative Hankel matrix and, on its range, produces the desired tuple $Y$.",
+  "year": 2025,
+  "venue": "arXiv",
+  "authors": [
+   "Abhay Jindal",
+   "Igor Klep",
+   "Scott McCullough"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2511.06487v3",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2511.06487v3",
+  "published_iso": "2025-11-09T18:19:31Z",
+  "from_query": [
+   "self-calibrating forward operator estimation"
+  ]
+ },
+ {
+  "title": "Physics Knowledge in Frontier Models: A Diagnostic Study of Failure Modes",
+  "title_norm": "physics knowledge in frontier models a diagnostic study of failure modes",
+  "abstract": "While recent Vision-Language Models (VLMs) have achieved impressive progress, it remains difficult to determine why they succeed or fail on complex reasoning tasks. Traditional benchmarks evaluate what models can answer correctly, not why they succeed or fail. In this work, we perform a failure-mode analysis of six frontier VLMs on three physics-based benchmarks - Physion, Physion++, and CLEVRER - by introducing custom subtests (for Physion and Physion++) and an integration of existing benchmark categories (for CLEVRER) to factor benchmark performance into distinct, testable capabilities. These subtests isolate perception (object, color, and occlusion recognition) and physics understanding (motion prediction and spatial reasoning), enabling us to test whether models attend to the correct entities and dynamics underlying their answers. Counterintuitively, subtest mastery correlates only weakly with benchmark accuracy: models often answer correctly without grounding in perception or physics. This suggests that current VLMs sometimes achieve benchmark scores for the wrong reasons, underscoring the need for diagnostics that expose hidden failure modes beyond aggregate metrics.",
+  "year": 2025,
+  "venue": "arXiv",
+  "authors": [
+   "Ieva Bagdonaviciute",
+   "Vibhav Vineet"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2510.06251v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2510.06251v2",
+  "published_iso": "2025-10-03T22:30:06Z",
+  "from_query": [
+   "model misspecification residual diagnostics"
+  ]
+ },
+ {
+  "title": "Transforming Constraint Programs to Input for Local Search",
+  "title_norm": "transforming constraint programs to input for local search",
+  "abstract": "Applying local search algorithms to combinatorial optimization problems is not an easy feat. Typically, human intervention is required to compile the constraints to input data for some metaheuristic algorithm. In this paper, we establish a link between symmetry properties of constraint optimization problems and local search neighborhoods, and we use this link to automatically generate neighborhoods from a constraint specification in the context of the IDP system. We evaluate the obtained neighborhoods for six classical optimization problems. The resulting observations support the viability of this technique.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Jo Devriendt",
+   "Patrick De Causmaecker",
+   "Marc Denecker"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2605.19671v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2605.19671v1",
+  "published_iso": "2026-05-19T11:02:08Z",
+  "from_query": [
+   "moment-preserving deconvolution constraint"
+  ]
+ },
+ {
+  "title": "Cost-Saving LLM Cascades with Early Abstention",
+  "title_norm": "cost saving llm cascades with early abstention",
+  "abstract": "LLM cascades deploy small LLMs to answer most queries, limiting the use of large and expensive LLMs to difficult queries. This approach can significantly reduce costs without impacting performance. However, risk-sensitive domains such as finance or medicine place an additional premium on avoiding model errors. Since even the most expensive models are susceptible to making mistakes, applications in these domains benefit from allowing LLM systems to completely abstain from answering difficult queries. Introducing abstention poses a design question for LLM cascades: should abstention only be allowed at the final model or also at earlier models? Since the error patterns of small and large models are correlated, allowing earlier models to abstain may reduce inference costs and latency by anticipating abstention decisions by expensive and slow models, thus avoiding the need to run these models. We investigate the benefits of such \"early abstention\" in LLM cascades and find that it reduces overall test loss by 2.2% on average across six benchmarks (GSM8K, MedMCQA, MMLU, TriviaQA, TruthfulQA, and XSum). These gains result from a more effective use of abstention, trading a 4.1% average increase in the overall abstention rate for a 13.0% reduction in cost and a 5.0% reduction in error rate. Our findings demonstrate the possibility of leveraging correlations between the error patterns of different language models to drive performance improvements for LLM systems with abstention.",
+  "year": 2025,
+  "venue": "arXiv",
+  "authors": [
+   "Michael J. Zellinger",
+   "Rex Liu",
+   "Matt Thomson"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2502.09054v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2502.09054v2",
+  "published_iso": "2025-02-13T08:08:39Z",
+  "from_query": [
+   "measurement-consistent abstention gating"
+  ]
+ },
+ {
+  "title": "Foresight Residual RL for Long-Horizon Robot Manipulation with Vision-Language-Action Models",
+  "title_norm": "foresight residual rl for long horizon robot manipulation with vision language a",
+  "abstract": "Vision-Language-Action (VLA) policies offer strong general-purpose manipulation priors, but often fail on tight-tolerance, contact-rich assembly due to long-horizon credit assignment and subtask coupling: a state that is geometrically successful for the current skill can be brittle for downstream skills. We show this failure mode in residual reinforcement learning (RL) over a frozen VLA base policy: constant sparse success rewards improve each subtask in isolation yet yield little or no gain when skills are chained, because terminal state quality is uncontrolled. We propose Foresight Residual RL, which optimizes handoff quality by augmenting each subtask's sparse success reward with an offline-estimated foresight value -- the probability of future subtask success conditioned on the terminal state of the current subtask. Concretely, we (i) train a visual foresight predictor from images of terminal states of the base policy, labeled using downstream rollout statistics, and (ii) train residual policies via backward foresight induction, using the predictor output as a reward multiplier. On a three-phase wrench-based nut-tightening assembly task in Isaac Gym (grasp, move-insert, rotate), our method achieves 85.6% full-task success, outperforming standard subtask residual RL (54.5%) and VLA baselines, while leaving per-subtask success unchanged. These results highlight that improving long-horizon performance requires shaping which successful states are produced at each sub-task, not only whether success occurs.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Yuhan Liu",
+   "Xinyu Zhang",
+   "Litao Liu",
+   "Abdeslam Boularias"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2607.16506v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2607.16506v1",
+  "published_iso": "2026-07-17T21:00:28Z",
+  "from_query": [
+   "model misspecification residual diagnostics"
+  ]
+ },
+ {
+  "title": "On inferring cumulative constraints",
+  "title_norm": "on inferring cumulative constraints",
+  "abstract": "Cumulative constraints are central in scheduling with constraint programming, yet propagation is typically performed per constraint, missing multi-resource interactions and causing severe slowdowns on some benchmarks. I present a preprocessing method for inferring additional cumulative constraints that capture such interactions without search-time probing. This approach interprets cumulative constraints as linear inequalities over occupancy vectors and generates valid inequalities by (i) discovering covers, the sets of tasks that cannot run in parallel, (ii) strengthening the cover inequalities for the discovered sets with lifting, and (iii) injecting the resulting constraints back into the scheduling problem instance. Experiments on standard RCPSP and RCPSP/max test suites show that these inferred constraints improve search performance and tighten objective bounds on favorable instances, while incurring little degradation on unfavorable ones. Additionally, these experiments discover 25 new lower bounds and five new best solutions; eight of the lower bounds are obtained directly from the inferred constraints.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Konstantin Sidorov"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2602.15635v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2602.15635v1",
+  "published_iso": "2026-02-17T15:03:43Z",
+  "from_query": [
+   "moment-preserving deconvolution constraint"
+  ]
+ },
+ {
+  "title": "Bounded-Abstention Pairwise Learning to Rank",
+  "title_norm": "bounded abstention pairwise learning to rank",
+  "abstract": "Ranking systems influence decision-making in high-stakes domains like health, education, and employment, where they can have substantial economic and social impacts. This makes the integration of safety mechanisms essential. One such mechanism is abstention, which enables algorithmic decision-making systems to defer uncertain or low-confidence decisions to human experts. While abstention has been predominantly explored in the context of classification tasks, its application to other machine learning paradigms remains underexplored. In this paper, we introduce a novel method for abstention in pairwise learning-to-rank tasks. Our approach is based on thresholding the ranker's conditional risk: the system abstains from making a decision when the estimated risk exceeds a predefined threshold. Our contributions are threefold: a theoretical characterization of the optimal abstention strategy, a model-agnostic, plug-in algorithm for constructing abstaining ranking models, and a comprehensive empirical evaluation across multiple datasets, demonstrating the effectiveness of our approach.",
+  "year": 2025,
+  "venue": "arXiv",
+  "authors": [
+   "Antonio Ferrara",
+   "Andrea Pugnana",
+   "Francesco Bonchi",
+   "Salvatore Ruggieri"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2505.23437v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2505.23437v2",
+  "published_iso": "2025-05-29T13:35:39Z",
+  "from_query": [
+   "measurement-consistent abstention gating"
+  ]
+ },
+ {
+  "title": "Empirical Calibration and Conditional-Reliability Diagnostics for Bearing RUL Prediction under Operating-Regime Shift",
+  "title_norm": "empirical calibration and conditional reliability diagnostics for bearing rul pr",
+  "abstract": "Remaining useful life (RUL) estimates support reliability and maintenance decisions only if both point accuracy and prediction intervals remain trustworthy when operating conditions change. Convenient mixed splits can hide that failure. This paper studies the question on a documented 10-bearing PHME subset with time-varying load and speed. Derived load-speed regimes define the held-out evaluation units, while models receive only measured load and speed as context. A calibrated predictive-representation model fuses raw vibration windows, engineered descriptors, and operating context, then forms intervals by empirical residual calibration. Under strict train/validation/calibration/test separation, the model reaches normalized MAE 0.1477, empirical 90% coverage 0.900, and retrospective absolute-step MAE 285.26; a 400-tree random forest reaches 0.1538, 0.871, and 294.57. The results do not show uniform dominance: conditional diagnostics expose non-uniform reliability, including 0.666 coverage in a low-load/high-speed cell, and a post-hoc pooled regime-conditioned residual diagnostic raises that cell to 0.941 only as motivation for future pre-specified conditional calibration. Stress tests further identify raw-channel loss as the largest tested reliability failure mode. The contribution is therefore a bounded reliability-evaluation protocol for the processed 10-bearing subset, with conditional undercoverage and raw-channel loss reported explicitly as failure modes rather than deployment guarantees.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Shaoliang Yang",
+   "Jun Wang",
+   "Yunsheng Wang"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2607.08273v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2607.08273v1",
+  "published_iso": "2026-07-09T09:16:36Z",
+  "from_query": [
+   "model misspecification residual diagnostics"
+  ]
+ },
+ {
+  "title": "Deconvolution in unlinked linear models",
+  "title_norm": "deconvolution in unlinked linear models",
+  "abstract": "Unlinked regression, in which covariates and responses are observed separately without known correspondence, has recently gained increasing attention. Deconvolution, on the other hand, is a fundamental and challenging problem in nonparametric statistics with the aim of estimating the distribution of a latent random variable $Z$ based on observations contaminated by some additive noise. The complexity of this task is heavily influenced by the smoothness of the noise distribution and often leads to slow estimation rates. In this paper, we combine the recent unlinked linear regression problem with the classical deconvolution framework. Specifically, we study nonparametric deconvolution under the assumption that $Z$ is a linear function of an observable multidimensional covariate. This structural constraint allows us to introduce a nonparametric estimator of the distribution of $Z$ which achieves the parametric rate of convergence in the Wasserstein distance of order 1, where the smoothness of the noise does not affect the rate. Furthermore, we introduce nonparametric estimators for the unconditional density of $Z$ and the conditional density of $Z$ given an observed response. This allows us to study the problem of estimating the value of the latent linear predictor, whose link to the observed response is not accessible. Through several simulations, we illustrate the fast convergence rate of our deconvolution estimator and the performance of the proposed conditional estimators of the latent predictor in different simulation scenarios.",
+  "year": 2025,
+  "venue": "arXiv",
+  "authors": [
+   "Fadoua Balabdaoui",
+   "Antonio Di Noia",
+   "Cécile Durot"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2512.19929v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2512.19929v2",
+  "published_iso": "2025-12-22T23:07:32Z",
+  "from_query": [
+   "moment-preserving deconvolution constraint"
+  ]
+ },
+ {
+  "title": "TIAR: Trajectory-Informed Advantage Reweighting for LLM Abstention Learning",
+  "title_norm": "tiar trajectory informed advantage reweighting for llm abstention learning",
+  "abstract": "This paper investigates large language model (LLM) abstention learning, specifically using ternary reward, which incentivize truthfulness in large language models. This paper extends that idea by moving from a ternary reward to a Trajectory-Informed advantage reweighting, dynamically re-weights the abstention reward during Group Relative Policy Optimization (GRPO) training. The objective of this work focuses on abstention learning instead of improving truthfulness, serving as an exploration into hallucination reduction. The novelty of this paper lies in methodological innovation, advantage re-weighting, and benchmark selection. Leveraging GRPO's multiple trajectories as a natural abstention signal, this method uses a reward signal to explore knowledge boundaries and encourage consistency. By demonstrating that trajectories can be used as a confidence indicator of the policy relative to the query, they are then used to dynamically calculate the abstention advantage. AbstentionBench is used as the evaluation benchmark, as this work aims to contribute to the field of abstention learning. All datasets on the benchmark were tested against this method and various baselines. Empirical results demonstrate that TIAR achieves state-of-the-art abstention F1 scores across five of six evaluation categories, outperforming the static ternary baseline on 17 of 31 benchmark datasets while fully preserving baseline accuracy.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Muyu Pan",
+   "Shu Zhao",
+   "Nan Zhang",
+   "Philip Shin",
+   "Varun Parekh",
+   "Vijaykrishnan Narayanan",
+   "Rui Zhang"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2605.25850v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2605.25850v1",
+  "published_iso": "2026-05-25T13:42:37Z",
+  "from_query": [
+   "measurement-consistent abstention gating"
+  ]
+ },
+ {
+  "title": "Residual Off-Policy RL for Finetuning Behavior Cloning Policies",
+  "title_norm": "residual off policy rl for finetuning behavior cloning policies",
+  "abstract": "Recent advances in behavior cloning (BC) have enabled impressive visuomotor control policies. However, these approaches are limited by the quality of human demonstrations, the manual effort required for data collection, and the diminishing returns from offline data. In comparison, reinforcement learning (RL) trains an agent through autonomous interaction with the environment and has shown remarkable success in various domains. Still, training RL policies directly on real-world robots remains challenging due to sample inefficiency, safety concerns, and the difficulty of learning from sparse rewards for long-horizon tasks, especially for high-degree-of-freedom (DoF) systems.\n  We present a recipe that combines the benefits of BC and RL through a residual learning framework. Our approach leverages BC policies as black-box bases and learns lightweight per-step residual corrections via sample-efficient off-policy RL. We demonstrate that our method requires only sparse binary reward signals and can effectively improve manipulation policies on high-degree-of-freedom (DoF) systems in both simulation and the real world. In particular, we demonstrate, to the best of our knowledge, the first successful real-world RL training on a humanoid robot with dexterous hands. Our results demonstrate state-of-the-art performance in various vision-based tasks, pointing towards a practical pathway for deploying RL in the real world.",
+  "year": 2025,
+  "venue": "arXiv",
+  "authors": [
+   "Lars Ankile",
+   "Zhenyu Jiang",
+   "Rocky Duan",
+   "Guanya Shi",
+   "Pieter Abbeel",
+   "Anusha Nagabandi"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2509.19301v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2509.19301v2",
+  "published_iso": "2025-09-23T17:59:46Z",
+  "from_query": [
+   "model misspecification residual diagnostics"
+  ]
+ },
+ {
+  "title": "Modern Constraint Programming Education: Lessons for the Future",
+  "title_norm": "modern constraint programming education lessons for the future",
+  "abstract": "This paper details an outlook on modern constraint programming (CP) education through the lens of a CP instructor. A general overview of current CP courses and instructional methods is presented, with a focus on online and virtually-delivered courses. This is followed by a discussion of the novel approach taken to introductory CP education for engineering students at large scale at the Georgia Institute of Technology (Georgia Tech) in Atlanta, GA, USA. The paper summarizes important takeaways from the Georgia Tech CP course and ends with a discussion on the future of CP education. Some ideas for instructional methods, promotional methods, and organizational changes are proposed to aid in the long-term growth of CP education.",
+  "year": 2023,
+  "venue": "arXiv",
+  "authors": [
+   "Tejas Santanam",
+   "Pascal Van Hentenryck"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2306.13676v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2306.13676v2",
+  "published_iso": "2023-06-20T19:42:16Z",
+  "from_query": [
+   "moment-preserving deconvolution constraint"
+  ]
+ },
+ {
+  "title": "Knowing When to Quit: A Principled Framework for Dynamic Abstention in LLM Reasoning",
+  "title_norm": "knowing when to quit a principled framework for dynamic abstention in llm reason",
+  "abstract": "LLMs utilizing chain-of-thought reasoning often waste substantial compute by producing long, incorrect responses. Abstention can mitigate this by withholding outputs unlikely to be correct. While most abstention methods decide to withhold outputs before or after generation, dynamic mid-generation abstention considers early termination of unpromising reasoning traces at each token position. Prior work has explored empirical variants of this idea, but principled guidance for the abstention rule remains lacking. We present a formal analysis of dynamic abstention for LLMs, modeling abstention as an explicit action within a regularized reinforcement learning framework. An abstention reward parameter controls the trade-off between compute and information. We show that abstaining when the value function falls below this reward strictly outperforms natural baselines under general conditions. We further derive a principled and efficient method to approximate the value function. Empirical results on mathematical reasoning and toxicity avoidance tasks support our theory and demonstrate improved selective accuracy over existing methods.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Hen Davidov",
+   "Nachshon Cohen",
+   "Oren Kalinsky",
+   "Yaron Fairstein",
+   "Guy Kushilevitz",
+   "Ram Yazdi",
+   "Patrick Rebeschini"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2604.18419v6",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2604.18419v6",
+  "published_iso": "2026-04-20T15:38:45Z",
+  "from_query": [
+   "measurement-consistent abstention gating"
+  ]
+ },
+ {
+  "title": "Sequential Structure-Sensitive Residual Diagnostics for PDE Inverse Problems",
+  "title_norm": "sequential structure sensitive residual diagnostics for pde inverse problems",
+  "abstract": "Computational models in science and engineering are often assessed by checking whether the residual norm is consistent with the assumed noise level. This can be misleading in smoothing inverse problems: structured model errors may be attenuated in observation space, leaving residual magnitudes below practitioner discrepancy thresholds while coherent residual patterns remain. As a result, residual-norm diagnostics can accept fitted models that still give biased parameters, predictions, or quantities of interest. We propose a structure-sensitive sequential diagnostic based on e-processes. The method uses a portfolio of spatial residual-pattern experts, updates their likelihood-ratio wealth as observations are processed, and rejects the fitted model when the aggregate wealth crosses a prescribed threshold, giving anytime-valid type-I error control for a fixed fitted model. We compare the method with Morozov discrepancy checks, fixed-sample residual tests, and batch projection tests. Across three inverse problems (elliptic diffusion, two-dimensional Stokes flow, and a glaciological ice-stream inversion implemented in the community finite-element model icepack) we demonstrate how standard discrepancy checks accept misspecified fits that produce materially wrong quantities of interest. Structure-sensitive batch tests detect these failures using the full dataset, while the e-process detects them earlier from a fraction of the observations. After rejection, the expert wealth attributes the evidence to residual patterns in the chosen dictionary and provides a basis for exploratory model correction.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Ieva Kazlauskaite"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2607.02101v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2607.02101v1",
+  "published_iso": "2026-07-02T12:36:48Z",
+  "from_query": [
+   "model misspecification residual diagnostics"
+  ]
+ },
+ {
+  "title": "Know Your Limits: A Survey of Abstention in Large Language Models",
+  "title_norm": "know your limits a survey of abstention in large language models",
+  "abstract": "Abstention, the refusal of large language models (LLMs) to provide an answer, is increasingly recognized for its potential to mitigate hallucinations and enhance safety in LLM systems. In this survey, we introduce a framework to examine abstention from three perspectives: the query, the model, and human values. We organize the literature on abstention methods, benchmarks, and evaluation metrics using this framework, and discuss merits and limitations of prior work. We further identify and motivate areas for future research, such as whether abstention can be achieved as a meta-capability that transcends specific tasks or domains, and opportunities to optimize abstention abilities in specific contexts. In doing so, we aim to broaden the scope and impact of abstention methodologies in AI systems.",
+  "year": 2024,
+  "venue": "arXiv",
+  "authors": [
+   "Bingbing Wen",
+   "Jihan Yao",
+   "Shangbin Feng",
+   "Chenjun Xu",
+   "Yulia Tsvetkov",
+   "Bill Howe",
+   "Lucy Lu Wang"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2407.18418v3",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2407.18418v3",
+  "published_iso": "2024-07-25T22:31:50Z",
+  "from_query": [
+   "measurement-consistent abstention gating"
+  ]
+ },
+ {
+  "title": "A Tutorial for Evaluating Cure Model Appropriateness",
+  "title_norm": "a tutorial for evaluating cure model appropriateness",
+  "abstract": "In survival analysis, traditional models assume all individuals will eventually experience the event of interest. However, advances in therapeutics have led to multiple clinical contexts with potentially curative therapies, and in these contexts, certain individuals may never experience the event. Statisticians have developed cure models as a methodology to address this challenge. Nonetheless, despite significant statistical advances in cure models, we have seen more limited uptake in biomedical applications, and we hypothesize that this is caused by limited guidance in the appropriate application of cure models. Cure models require specific identifiability conditions for valid parameter estimation, and previous reports have demonstrated significant issues with the inappropriate application of cure models. Existing tutorials for cure models focus on model implementation and either assume or provide only limited guidance on whether cure modeling is appropriate for the given dataset. This tutorial addresses this gap by describing a systematic procedure that integrates clinical judgment, visual inspection of Kaplan-Meier curves, and quantitative evaluation. We provide a worked example using data from a randomized clinical trial in acute myeloid leukemia, and we also summarize findings from a series of other datasets of hematopoietic cell transplantation to suggest broad practical guidance for choosing to apply cure models. By systematically evaluating cure model appropriateness before fitting these models, researchers can achieve more reliable survival analysis and improved clinical decision-making.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "A Tutorial for Evaluating Cure Model Appropriateness Geethanjalee Mudunkotuwa",
+   "Durbadal Ghosh",
+   "Subodh Selukar"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2605.04999v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2605.04999v2",
+  "published_iso": "2026-05-06T14:59:41Z",
+  "from_query": [
+   "model misspecification residual diagnostics"
+  ]
+ },
+ {
+  "title": "Bounded-Abstention Multi-horizon Time-series Forecasting",
+  "title_norm": "bounded abstention multi horizon time series forecasting",
+  "abstract": "Multi-horizon time-series forecasting involves simultaneously making predictions for a consecutive sequence of subsequent time steps. This task arises in many application domains, such as healthcare and finance, where mispredictions can have a high cost and reduce trust. The learning with abstention framework tackles these problems by allowing a model to abstain from offering a prediction when it is at an elevated risk of making a misprediction. Unfortunately, existing abstention strategies are ill-suited for the multi-horizon setting: they target problems where a model offers a single prediction for each instance. Hence, they ignore the structured and correlated nature of the predictions offered by a multi-horizon forecaster. We formalize the problem of learning with abstention for multi-horizon forecasting setting and show that its structured nature admits a richer set of abstention problems. Concretely, we propose three natural notions of how a model could abstain for multi-horizon forecasting. We theoretically analyze each problem to derive the optimal abstention strategy and propose an algorithm that implements it. Extensive evaluation on 24 datasets shows that our proposed algorithms significantly outperforms existing baselines.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Luca Stradiotti",
+   "Laurens Devos",
+   "Anna Monreale",
+   "Jesse Davis",
+   "Andrea Pugnana"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2602.04714v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2602.04714v1",
+  "published_iso": "2026-02-04T16:25:34Z",
+  "from_query": [
+   "measurement-consistent abstention gating"
+  ]
+ },
+ {
+  "title": "Diagnostics for categorical response models based on quantile residuals and distance measures",
+  "title_norm": "diagnostics for categorical response models based on quantile residuals and dist",
+  "abstract": "Polytomous categorical data are frequent in studies, that can be obtained with an individual or grouped structure. In both structures, the generalized logit model is commonly used to relate the covariates on the response variable. After fitting a model, one of the challenges is the definition of an appropriate residual and choosing diagnostic techniques. Since the polytomous variable is multivariate, raw, Pearson, or deviance residuals are vectors and their asymptotic distribution is generally unknown, which leads to difficulties in graphical visualization and interpretation. Therefore, the definition of appropriate residuals and the choice of the correct analysis in diagnostic tools is important, especially for nominal data, where a restriction of methods is observed. This paper proposes the use of randomized quantile residuals associated with individual and grouped nominal data, as well as Euclidean and Mahalanobis distance measures, as an alternative to reduce the dimension of the residuals. We developed simulation studies with both data structures associated. The half-normal plots with simulation envelopes were used to assess model performance. These studies demonstrated a good performance of the quantile residuals, and the distance measurements allowed a better interpretation of the graphical techniques. We illustrate the proposed procedures with two applications to real data.",
+  "year": 2023,
+  "venue": "arXiv",
+  "authors": [
+   "Patrícia Peres Araripe",
+   "Idemauro Antonio Rodrigues de Lara",
+   "Gabriel Rodrigues Palma",
+   "Niamh Cahill",
+   "Rafael de Andrade Moral"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2307.02966v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2307.02966v1",
+  "published_iso": "2023-07-06T13:05:10Z",
+  "from_query": [
+   "model misspecification residual diagnostics"
+  ]
+ },
+ {
+  "title": "Knowledge Graph Guided Evaluation of Abstention Techniques",
+  "title_norm": "knowledge graph guided evaluation of abstention techniques",
+  "abstract": "To deploy language models safely, it is crucial that they abstain from responding to inappropriate requests. Several prior studies test the safety promises of models based on their effectiveness in blocking malicious requests. In this work, we focus on evaluating the underlying techniques that cause models to abstain. We create SELECT, a benchmark derived from a set of benign concepts (e.g., \"rivers\") from a knowledge graph. Focusing on benign concepts isolates the effect of safety training, and grounding these concepts in a knowledge graph allows us to study the generalization and specificity of abstention techniques. Using SELECT, we benchmark different abstention techniques over six open-weight and closed-source models. We find that the examined techniques indeed cause models to abstain with over $80\\%$ abstention rates. However, these techniques are not as effective for descendants of the target concepts, where abstention rates drop by $19\\%$. We also characterize the generalization-specificity trade-offs for different techniques. Overall, no single technique is invariably better than others, and our findings inform practitioners of the various trade-offs involved.",
+  "year": 2024,
+  "venue": "arXiv",
+  "authors": [
+   "Kinshuk Vasisht",
+   "Navreet Kaur",
+   "Danish Pruthi"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2412.07430v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2412.07430v2",
+  "published_iso": "2024-12-10T11:40:47Z",
+  "from_query": [
+   "measurement-consistent abstention gating"
+  ]
+ },
+ {
+  "title": "Photodiode based multi-modal diagnostic for low-energy neutral beam injection in the LTX-$β$ spherical tokamak",
+  "title_norm": "photodiode based multi modal diagnostic for low energy neutral beam injection in",
+  "abstract": "We present a compact photodiode-based diagnostic array developed to study low-energy neutral beam injection in the LTX-$β$ spherical tokamak. The in-vacuum diagnostic combines filtered soft-x-ray (SXR), narrowband Lyman-$α$, and unfiltered AXUV photodiode rows with partly overlapping, nearly coincident tangential views of the plasma, including the neutral beam path. This geometry provides simultaneous sensitivity to beam-induced SXR emission; neutral-hydrogen line radiation associated with recycling, fast neutrals and fueling; and broadband emission that can include direct neutral impacts from fast-ion charge-exchange losses. Initial measurements from 12-20 keV hydrogen beam operation show beam-synchronous detector responses in all three modalities. The unfiltered AXUV signals exhibit millisecond-scale rise and fall times that are much slower than the detector response, that vary across sightlines, and depend on lithium-conditioning history. Comparison with classical slowing-down time estimates indicates that charge exchange with background neutrals contributes appreciably to the measured decay. The diagnostic can potentially be used to constrain a forward model to estimate the time-resolved balance of beam heating and fueling for small tokamaks.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "A. Maan",
+   "Tosh Le",
+   "D. P. Boyle",
+   "R. Majeski",
+   "S. Banerjee",
+   "G. J. Wilkie",
+   "M. Lampert",
+   "C. Lopez Perez",
+   "R. Shousha",
+   "W. Capecchi",
+   "H. Gajani"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2605.20993v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2605.20993v1",
+  "published_iso": "2026-05-20T10:31:22Z",
+  "from_query": [
+   "model misspecification residual diagnostics"
+  ]
+ },
+ {
+  "title": "Policy Learning with Abstention",
+  "title_norm": "policy learning with abstention",
+  "abstract": "Policy learning algorithms are widely used in areas such as personalized medicine and advertising to develop individualized treatment regimes. However, most methods force a decision even when predictions are uncertain, which is risky in high-stakes settings. We study policy learning with abstention, where a policy may defer to a safe default or an expert. When a policy abstains, it receives a small additive reward on top of the value of a random guess. We propose a two-stage learner that first identifies a set of near-optimal policies and then constructs an abstention rule from their disagreements. We establish fast O(1/n)-type regret guarantees when propensities are known, and extend these guarantees to the unknown-propensity case via a doubly robust (DR) objective. We further show that abstention is a versatile tool with direct applications to other core problems in policy learning: it yields improved guarantees under margin conditions without the common realizability assumption, connects to distributionally robust policy learning by hedging against small data shifts, and supports safe policy improvement by ensuring improvement over a baseline policy with high probability.",
+  "year": 2025,
+  "venue": "arXiv",
+  "authors": [
+   "Ayush Sawarni",
+   "Jikai Jin",
+   "Justin Whitehouse",
+   "Vasilis Syrgkanis"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2510.19672v3",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2510.19672v3",
+  "published_iso": "2025-10-22T15:18:29Z",
+  "from_query": [
+   "measurement-consistent abstention gating"
+  ]
+ },
+ {
+  "title": "Evaluation of Galaxy as a User-friendly Bioinformatics Tool for Enhancing Clinical Diagnostics in Genetics Laboratories",
+  "title_norm": "evaluation of galaxy as a user friendly bioinformatics tool for enhancing clinic",
+  "abstract": "Bioinformatics platforms have significantly changed clinical diagnostics by facilitating the analysis of genomic data, thereby advancing personalized medicine and improving patient care. This study examines the integration, usage patterns, challenges, and impact of the Galaxy platform within clinical diagnostics laboratories. We employed a convergent parallel mixed-methods design, collecting quantitative survey data and qualitative insights from structured interviews with fifteen participants across various clinical roles. The findings indicate a wide adoption of Galaxy, with participants expressing high satisfaction due to its user-friendly interface and notable improvements in workflow efficiency and diagnostic accuracy. Challenges such as data security and training needs were also identified, highlighting the platform's role in simplifying complex data analysis tasks. This study contributes to understanding the transformative potential of Galaxy in clinical practice and offers recommendations for optimizing its integration and functionality. These insights are crucial for advancing clinical diagnostics and enhancing patient outcomes.",
+  "year": 2024,
+  "venue": "arXiv",
+  "authors": [
+   "Hadi Almohab",
+   "Ramzy Al-Othmany"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2409.17253v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2409.17253v1",
+  "published_iso": "2024-09-25T18:11:33Z",
+  "from_query": [
+   "model misspecification residual diagnostics"
+  ]
+ },
+ {
+  "title": "MASH: Modeling Abstention via Selective Help-Seeking",
+  "title_norm": "mash modeling abstention via selective help seeking",
+  "abstract": "LLMs cannot reliably recognize their parametric knowledge boundaries and often hallucinate answers to outside-of-boundary questions. In this paper, we introduce MASH (Modeling Abstention via Selective Help-seeking), a training framework that readily extracts abstentions from LLMs. Our key idea is that any external help-seeking by an LLM, i.e. search tool use, can serve as a proxy for abstention if the external help (search) is appropriately penalized while also rewarding answer accuracy. MASH operationalizes this idea using reinforcement learning with a pay-per-search reward. We run experiments on three knowledge-intensive QA datasets. Our results show that MASH substantially improves upon the selective help-seeking performance of prior efficient search approaches; on multi-hop datasets, it improves answer accuracy by 7.6%. Furthermore, MASH demonstrates strong off-the-shelf abstention performance, showcasing behavior competitive with prior abstention methods that additionally require predetermining model knowledge boundaries to construct training data. Overall, we show MASH training effectively aligns search tool use with parametric knowledge, which can be successfully leveraged for making abstention decisions and efficient search tool use",
+  "year": 2025,
+  "venue": "arXiv",
+  "authors": [
+   "Mustafa Omer Gul",
+   "Claire Cardie",
+   "Tanya Goyal"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2510.01152v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2510.01152v2",
+  "published_iso": "2025-10-01T17:41:54Z",
+  "from_query": [
+   "measurement-consistent abstention gating"
+  ]
+ },
+ {
+  "title": "A view on model misspecification in uncertainty quantification",
+  "title_norm": "a view on model misspecification in uncertainty quantification",
+  "abstract": "Estimating uncertainty of machine learning models is essential to assess the quality of the predictions that these models provide. However, there are several factors that influence the quality of uncertainty estimates, one of which is the amount of model misspecification. Model misspecification always exists as models are mere simplifications or approximations to reality. The question arises whether the estimated uncertainty under model misspecification is reliable or not. In this paper, we argue that model misspecification should receive more attention, by providing thought experiments and contextualizing these with relevant literature.",
+  "year": 2022,
+  "venue": "arXiv",
+  "authors": [
+   "Yuko Kato",
+   "David M. J. Tax",
+   "Marco Loog"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2210.16938v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2210.16938v2",
+  "published_iso": "2022-10-30T20:26:43Z",
+  "from_query": [
+   "model misspecification residual diagnostics"
+  ]
+ },
+ {
+  "title": "When In Doubt, Abstain: The Impact of Abstention on Strategic Classification",
+  "title_norm": "when in doubt abstain the impact of abstention on strategic classification",
+  "abstract": "Algorithmic decision making is increasingly prevalent, but often vulnerable to strategic manipulation by agents seeking a favorable outcome. Prior research has shown that classifier abstention (allowing a classifier to decline making a decision due to insufficient confidence) can significantly increase classifier accuracy. This paper studies abstention within a strategic classification context, exploring how its introduction impacts strategic agents' responses and how principals should optimally leverage it. We model this interaction as a Stackelberg game where a principal, acting as the classifier, first announces its decision policy, and then strategic agents, acting as followers, manipulate their features to receive a desired outcome. Here, we focus on binary classifiers where agents manipulate observable features rather than their true features, and show that optimal abstention ensures that the principal's utility (or loss) is no worse than in a non-abstention setting, even in the presence of strategic agents. We also show that beyond improving accuracy, abstention can also serve as a deterrent to manipulation, making it costlier for agents, especially those less qualified, to manipulate to achieve a positive outcome when manipulation costs are significant enough to affect agent behavior. These results highlight abstention as a valuable tool for reducing the negative effects of strategic behavior in algorithmic decision making systems.",
+  "year": 2025,
+  "venue": "arXiv",
+  "authors": [
+   "Lina Alkarmi",
+   "Ziyuan Huang",
+   "Mingyan Liu"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2510.13327v3",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2510.13327v3",
+  "published_iso": "2025-10-15T09:13:44Z",
+  "from_query": [
+   "measurement-consistent abstention gating"
+  ]
+ },
+ {
+  "title": "Deep Lossy Plus Residual Coding for Lossless and Near-lossless Image Compression",
+  "title_norm": "deep lossy plus residual coding for lossless and near lossless image compression",
+  "abstract": "Lossless and near-lossless image compression is of paramount importance to professional users in many technical fields, such as medicine, remote sensing, precision engineering and scientific research. But despite rapidly growing research interests in learning-based image compression, no published method offers both lossless and near-lossless modes. In this paper, we propose a unified and powerful deep lossy plus residual (DLPR) coding framework for both lossless and near-lossless image compression. In the lossless mode, the DLPR coding system first performs lossy compression and then lossless coding of residuals. We solve the joint lossy and residual compression problem in the approach of VAEs, and add autoregressive context modeling of the residuals to enhance lossless compression performance. In the near-lossless mode, we quantize the original residuals to satisfy a given $\\ell_\\infty$ error bound, and propose a scalable near-lossless compression scheme that works for variable $\\ell_\\infty$ bounds instead of training multiple networks. To expedite the DLPR coding, we increase the degree of algorithm parallelization by a novel design of coding context, and accelerate the entropy coding with adaptive residual interval. Experimental results demonstrate that the DLPR coding system achieves both the state-of-the-art lossless and near-lossless image compression performance with competitive coding speed.",
+  "year": 2022,
+  "venue": "arXiv",
+  "authors": [
+   "Yuanchao Bai",
+   "Xianming Liu",
+   "Kai Wang",
+   "Xiangyang Ji",
+   "Xiaolin Wu",
+   "Wen Gao"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2209.04847v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2209.04847v2",
+  "published_iso": "2022-09-11T12:11:56Z",
+  "from_query": [
+   "model misspecification residual diagnostics"
+  ]
+ },
+ {
+  "title": "The Yes-Man Syndrome: Benchmarking Abstention in Embodied Robotic Agents",
+  "title_norm": "the yes man syndrome benchmarking abstention in embodied robotic agents",
+  "abstract": "Vision-language models (VLMs) are used as high-level planners for embodied agents, translating natural language instructions and visual observations into action plans. While prior work has studied abstention in LLMs, existing benchmarks are largely text-only and do not capture the perceptual grounding and physical constraints inherent to embodied robotics environments. In such settings, abstention requires recognizing when instructions are ambiguous, physically infeasible, based on false premises, or otherwise unresolvable given the available sensory modalities and context. To address this gap, we introduce a taxonomy to categorize abstention in the context of embodied robotics and present RoboAbstention, a scalable and auditable framework for generating abstention instructions grounded in images gathered from five robotics datasets. RoboAbstention instantiates the taxonomy through a three-phase pipeline: (1) structured visual grounding, (2) deterministic constraint derivation, and (3) controlled instruction generation via category-specific templates. This enables the construction of a diverse dataset with verifiable abstention conditions. We evaluate several frontier VLMs and find that all models exhibit significant weaknesses in abstention, including those with advanced reasoning capabilities. The best-performing model, Gemini 2.5 Flash, abstains on only 39.0% of our 6,069 benchmark instructions, while the embodied planner Gemini Robotics ER 1.6 Preview abstains on just 16.5%. We further explore methods for improving abstention in VLM planners, such as defensive prompting and in-context learning, and find that these interventions substantially improve performance, reaching 93.6% abstention rate for Gemini Robotics ER 1.6 Preview and 88.6% for GPT 5.4 Mini, yet no approach fully solves the problem. We open-source RoboAbstention at https://purseclab.github.io/RoboAbstention/.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Doguhan Yeke",
+   "Elif Su Temirel",
+   "Ananth Shreekumar",
+   "Brandon Lee",
+   "Dongyan Xu",
+   "Z Berkay Celik"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2605.20544v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2605.20544v1",
+  "published_iso": "2026-05-19T22:32:44Z",
+  "from_query": [
+   "measurement-consistent abstention gating"
+  ]
+ },
+ {
+  "title": "Assessing Estimation Uncertainty under Model Misspecification",
+  "title_norm": "assessing estimation uncertainty under model misspecification",
+  "abstract": "Model misspecification is ubiquitous in data analysis because the data-generating process is often complex and mathematically intractable. Therefore, assessing estimation uncertainty and conducting statistical inference under a possibly misspecified working model is unavoidable. In such a case, classical methods such as bootstrap and asymptotic theory-based inference frequently fail since they rely heavily on the model assumptions. In this article, we provide a new bootstrap procedure, termed local residual bootstrap, to assess estimation uncertainty under model misspecification for generalized linear models. By resampling the residuals from the neighboring observations, we can approximate the sampling distribution of the statistic of interest accurately. Instead of relying on the score equations, the proposed method directly recreates the response variables so that we can easily conduct standard error estimation, confidence interval construction, hypothesis testing, and model evaluation and selection. It performs similarly to classical bootstrap when the model is correctly specified and provides a more accurate assessment of uncertainty under model misspecification, offering data analysts an easy way to guard against the impact of misspecified models. We establish desirable theoretical properties, such as the bootstrap validity, for the proposed method using the surrogate residuals. Numerical results and real data analysis further demonstrate the superiority of the proposed method.",
+  "year": 2023,
+  "venue": "arXiv",
+  "authors": [
+   "Rong Li",
+   "Yichen Qin",
+   "Yang Li"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2312.11393v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2312.11393v1",
+  "published_iso": "2023-12-18T17:54:30Z",
+  "from_query": [
+   "model misspecification residual diagnostics"
+  ]
+ },
+ {
+  "title": "Bayesian Best-Arm Identification with Abstention: A Polynomial-to-Exponential Phase Transition",
+  "title_norm": "bayesian best arm identification with abstention a polynomial to exponential pha",
+  "abstract": "We study the Bayesian fixed-budget best-arm identification problem in which a learner can abstain from making a terminal recommendation. Subject to an abstention budget $α$, we analyze the probability of undetected error--the risk of recommending a suboptimal arm without abstaining. Our central finding is that abstention induces a phase transition: without abstention, the error probability decays polynomially in the sampling budget $T$; in contrast, introducing any small positive abstention budget shifts this to an exponential decay. For Gaussian priors and rewards, in the regime $T\\to\\infty$ followed by $α\\downarrow0$, we establish exact matching information-theoretic lower bounds and algorithmic upper bounds on the optimal error exponent, which takes the form $\\exp(-\\frac{α^{2}T}{8κ_ν^{2}})$. The hardness parameter $κ_ν$ represents the prior density of the top-two gap at zero, highlighting that nearly tied instances drive the fundamental error. We introduce an adaptive algorithm, PGWS, that successfully achieves this optimal exponent by expending its abstention budget on statistically ambiguous instances. We further demonstrate that this polynomial-to-exponential improvement is exclusively a Bayesian phenomenon--in the frequentist setting, abstention only affects lower-order exponent terms. We also extend our results beyond the Gaussian model.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Yuqi Huang",
+   "Yunlong Hou",
+   "Vincent Y. F. Tan"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2606.29203v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2606.29203v1",
+  "published_iso": "2026-06-28T05:07:27Z",
+  "from_query": [
+   "measurement-consistent abstention gating"
+  ]
+ },
+ {
+  "title": "Weight Decay Regimes in Grokking Transformers: Cheap Online Diagnostics",
+  "title_norm": "weight decay regimes in grokking transformers cheap online diagnostics",
+  "abstract": "Transformers trained on modular arithmetic exhibit sharp transitions between memorization, generalization, and collapse. We show that weight decay acts as a scalar empirical control parameter for these regimes, and introduce two cheap online diagnostics, mean pairwise attention-head cosine similarity and entropy standard deviation, that track training dynamics from attention activations alone and complement loss-landscape diagnostics at lower compute cost. Across eleven experimental conditions and three model scales (0.82M to 85M parameters), the weight-decay axis separates memorization, developmental grokking, and collapse. A near-transition logistic fit localizes the memorization-to-developmental boundary at $λ_c=0.0158$ (95% CI [0.0109, 0.0200], N=210); a power-law fit gives an empirical exponent $ν=0.757$ (CI [0.725, 0.799]). Reference exponents $ν=1/2$ and 3D Ising $ν\\approx 0.63$ lie outside this empirical CI under our four-bin grid, so we report $ν$ as empirical and defer universality-class identification to denser finite-size-scaling work. A horizon-matched multi-task replication (n=280, four modular operations) preserves the weight-decay control pattern; a paired attention-head re-initialization experiment at $λ=0.05$ changes Phase-2 amplitude (Cohen's $d=-1.190$, n=10, $p_t=4.5 \\times 10^{-3}$), while matched weight-norm clipping does not. Three cross-architecture probes (4L MLP, 4L LSTM, and 4L Mamba; each n=70) replicate the weight-decay-controlled transition with architecture-specific $λ_c$ values. Main diagnostic claims are scoped to modular arithmetic in small transformer attention models; the non-attention experiments are scope probes, and architecture-wide, language-model, and universality-class claims are out of scope.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Lucky Verma"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2605.20441v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2605.20441v1",
+  "published_iso": "2026-05-19T19:48:40Z",
+  "from_query": [
+   "model misspecification residual diagnostics"
+  ]
+ },
+ {
+  "title": "Bandits with Abstention under Expert Advice",
+  "title_norm": "bandits with abstention under expert advice",
+  "abstract": "We study the classic problem of prediction with expert advice under bandit feedback. Our model assumes that one action, corresponding to the learner's abstention from play, has no reward or loss on every trial. We propose the CBA algorithm, which exploits this assumption to obtain reward bounds that can significantly improve those of the classical Exp4 algorithm. We can view our problem as the aggregation of confidence-rated predictors when the learner has the option of abstention from play. Importantly, we are the first to achieve bounds on the expected cumulative reward for general confidence-rated predictors. In the special case of specialists we achieve a novel reward bound, significantly improving previous bounds of SpecialistExp (treating abstention as another action). As an example application, we discuss learning unions of balls in a finite metric space. In this contextual setting, we devise an efficient implementation of CBA, reducing the runtime from quadratic to almost linear in the number of contexts. Preliminary experiments show that CBA improves over existing bandit algorithms.",
+  "year": 2024,
+  "venue": "arXiv",
+  "authors": [
+   "Stephen Pasteris",
+   "Alberto Rumi",
+   "Maximilian Thiessen",
+   "Shota Saito",
+   "Atsushi Miyauchi",
+   "Fabio Vitale",
+   "Mark Herbster"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2402.14585v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2402.14585v2",
+  "published_iso": "2024-02-22T14:38:52Z",
+  "from_query": [
+   "measurement-consistent abstention gating"
+  ]
+ },
+ {
+  "title": "Residual subspace evolution strategies for nonlinear inverse problems",
+  "title_norm": "residual subspace evolution strategies for nonlinear inverse problems",
+  "abstract": "Nonlinear inverse problems pervade engineering and science, yet noisy, non-differentiable, or expensive residual evaluations routinely defeat Jacobian-based solvers. Derivative-free alternatives either demand smoothness, require large populations to stabilise covariance estimates, or stall on flat regions where gradient information fades. This paper introduces residual subspace evolution strategies (RSES), a derivative-free solver that draws Gaussian probes around the current iterate, records how residuals change along those directions, and recombines the probes through a least-squares solve to produce an optimal update. The method builds a residual-only surrogate without forming Jacobians or empirical covariances, and each iteration costs just $k+1$ residual evaluations with $O(k^3)$ linear algebra overhead, where $k$ remains far smaller than the parameter dimension. Benchmarks on calibration, regression, and deconvolution tasks show that RSES reduces misfit consistently across deterministic and stochastic settings, matching or exceeding xNES, NEWUOA, Adam, and ensemble Kalman inversion under matched evaluation budgets. The gains are most pronounced when smoothness or covariance assumptions break, suggesting that lightweight residual-difference surrogates can reliably guide descent where heavier machinery struggles.",
+  "year": 2025,
+  "venue": "arXiv",
+  "authors": [
+   "Francesco Alemanno"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2512.10325v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2512.10325v2",
+  "published_iso": "2025-12-11T06:20:13Z",
+  "from_query": [
+   "model misspecification residual diagnostics"
+  ]
+ },
+ {
+  "title": "Generalizing Abstention for Noise-Robust Learning in Medical Image Segmentation",
+  "title_norm": "generalizing abstention for noise robust learning in medical image segmentation",
+  "abstract": "Label noise is a critical problem in medical image segmentation, often arising from the inherent difficulty of manual annotation. Models trained on noisy data are prone to overfitting, which degrades their generalization performance. While a number of methods and strategies have been proposed to mitigate noisy labels in the segmentation domain, this area remains largely under-explored. The abstention mechanism has proven effective in classification tasks by enhancing the capabilities of Cross Entropy, yet its potential in segmentation remains unverified. In this paper, we address this gap by introducing a universal and modular abstention framework capable of enhancing the noise-robustness of a diverse range of loss functions. Our framework improves upon prior work with two key components: an informed regularization term to guide abstention behaviour, and a more flexible power-law-based auto-tuning algorithm for the abstention penalty. We demonstrate the framework's versatility by systematically integrating it with three distinct loss functions to create three novel, noise-robust variants: GAC, SAC, and ADS. Experiments on the CaDIS and DSAD medical datasets show our methods consistently and significantly outperform their non-abstaining baselines, especially under high noise levels. This work establishes that enabling models to selectively ignore corrupted samples is a powerful and generalizable strategy for building more reliable segmentation models. Our code is publicly available at https://github.com/wemous/abstention-for-segmentation.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Wesam Moustafa",
+   "Hossam Elsafty",
+   "Helen Schneider",
+   "Lorenz Sparrenberg",
+   "Rafet Sifa"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2601.14039v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2601.14039v1",
+  "published_iso": "2026-01-20T14:57:56Z",
+  "from_query": [
+   "measurement-consistent abstention gating"
+  ]
+ },
+ {
+  "title": "Mitigating Frequency Learning Bias in Quantum Models via Multi-Stage Residual Learning",
+  "title_norm": "mitigating frequency learning bias in quantum models via multi stage residual le",
+  "abstract": "Quantum machine learning models based on parameterized circuits can be viewed as Fourier series approximators. However, they often struggle to learn functions with multiple frequency components, particularly high-frequency or non-dominant ones; a phenomenon we term the quantum Fourier parameterization bias. Inspired by recent advances in classical Fourier neural operators (FNOs), we adapt the multi-stage residual learning idea to the quantum domain, iteratively training additional quantum modules on the residuals of previous stages. We evaluate our method on a synthetic benchmark composed of spatially localized frequency components with diverse envelope shapes (Gaussian, Lorentzian, triangular). Systematic experiments show that the number of qubits, the encoding scheme, and residual learning are all crucial for resolving multiple frequencies; residual learning alone can improve test MSE significantly over a single-stage baseline trained for the same total number of epochs. Our work provides a practical framework for enhancing the spectral expressivity of quantum models and offers new insights into their frequency-learning behavior.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Ammar Daskin"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2603.10083v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2603.10083v2",
+  "published_iso": "2026-03-10T11:18:20Z",
+  "from_query": [
+   "model misspecification residual diagnostics"
+  ]
+ },
+ {
+  "title": "Answering the Wrong Question: Reasoning Trace Inversion for Abstention in LLMs",
+  "title_norm": "answering the wrong question reasoning trace inversion for abstention in llms",
+  "abstract": "For Large Language Models (LLMs) to be reliably deployed, models must effectively know when not to answer: abstain. Reasoning models, in particular, have gained attention for impressive performance on complex tasks. However, reasoning models have been shown to have worse abstention abilities. Taking the vulnerabilities of reasoning models into account, we propose our Query Misalignment Framework. Hallucinations resulting in failed abstention can be reinterpreted as LLMs answering the wrong question (rather than answering a question incorrectly). Based on this framework, we develop a new class of state-of-the-art abstention methods called Trace Inversion. First, we generate the reasoning trace of a model. Based on only the trace, we then reconstruct the most likely query that the model responded to. Finally, we compare the initial query with the reconstructed query. Low similarity score between the initial query and reconstructed query suggests that the model likely answered the question incorrectly and is flagged to abstain. Extensive experiments demonstrate that Trace Inversion effectively boosts abstention performance in four frontier LLMs across nine abstention QA datasets, beating competitive baselines in 33 out of 36 settings.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Abinitha Gourabathina",
+   "Inkit Padhi",
+   "Manish Nagireddy",
+   "Subhajit Chaudhury",
+   "Prasanna Sattigeri"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2604.02230v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2604.02230v1",
+  "published_iso": "2026-04-02T16:23:46Z",
+  "from_query": [
+   "measurement-consistent abstention gating"
+  ]
+ },
+ {
+  "title": "A guided residual search for nonlinear state-space identification",
+  "title_norm": "a guided residual search for nonlinear state space identification",
+  "abstract": "Identifying the parameters of nonlinear state-space models from input-output data typically requires solving a highly non-convex optimization problem, which is prone to slow convergence and suboptimal local solutions. This work improves the reliability and efficiency of the estimation process by decomposing the overall optimization problem into a sequence of tractable subproblems. Starting from a linear baseline model, nonlinear residual dynamics are first estimated using a guided residual search (GRS) and subsequently refined through multiple-shooting optimization. Experiments on two benchmarks show competitive performance with state-of-the-art black-box methods and improved convergence over naive initialization.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Merijn Floren",
+   "Jan Swevers"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2602.22964v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2602.22964v2",
+  "published_iso": "2026-02-26T13:01:42Z",
+  "from_query": [
+   "model misspecification residual diagnostics"
+  ]
+ },
+ {
+  "title": "Neural Introspection Gating for Adaptive KV-Cache Reuse in Vision-Language-Action Models",
+  "title_norm": "neural introspection gating for adaptive kv cache reuse in vision language actio",
+  "abstract": "Vision-Language-Action(VLA) models map camera images and language instructions directly to motor commands through a single autoregressive transformer. In real-time control, they still spend substantial compute recomputing key-value(KV) representations for visual tokens that barely change across neighboring frames. Recent work such as VLA-Cache reduces that cost by reusing KV states for visually static patches, but its policy relies only on observation-space heuristics and does not account for the model's own uncertainty. We propose Gated VLA-Cache, a lightweight, training-free extension that augments visual-similarity caching with neural introspection. The method monitors the logit margin between the top two predicted action tokens, a zero-cost confidence signal available during decoding. When the margin drops below a threshold, the cache is invalidated and a full recompute is triggered. Evaluated on four LIBERO benchmark suites with both OpenVLA and OpenVLA-OFT, Gated VLA-Cache improves reliability when blind caching hurts. On LIBERO-Goal and LIBERO-Long, it recovers over 100% of the lost accuracy while retaining 80% of the compute savings.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Zhijie Wu",
+   "Kento Kawaharazuka",
+   "Kei Okada"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2608.10824v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2608.10824v1",
+  "published_iso": "2026-08-11T11:53:10Z",
+  "from_query": [
+   "measurement-consistent abstention gating"
+  ]
+ },
+ {
+  "title": "Residual Symmetries and Their Algebras in the Kerr-Schild Double Copy",
+  "title_norm": "residual symmetries and their algebras in the kerr schild double copy",
+  "abstract": "The Kerr-Schild double copy (KSDC) is well-known for relating exact classical solutions between Yang-Mills theory and theories of gravity. However, whether this correspondence provides a more fundamental mapping between the underlying symmetries of gauge theory and gravity remains an underdeveloped area of research in the contemporary double copy program. In this paper, we demonstrate that the KSDC correspondence does not provide a mapping between the residual symmetry structures of the Kerr-Schild ansatz in Yang-Mills theory and gravity. On the gauge theory side, residual symmetries form an infinite-dimensional algebra of functions along null directions. On the gravitational side, residual diffeomorphisms preserving the Kerr-Schild form of the Schwarzschild metric generate a conformal algebra on $S^2$, which decomposes into Killing vectors and proper conformal Killing vectors (CKVs). While the Killing sector reproduces the expected global isometries, the CKV sector yields an infinite-dimensional algebra after imposing asymptotic flatness and horizon regularity. This appears to contradict the fact that the Schwarzschild solution admits no proper conformal symmetries. We resolve this apparent contradiction by constructing a Weyl-compensated BRST complex, showing that the CKV sector is BRST-exact and therefore trivial in cohomology, so that the physical symmetry algebra reduces to the global isometries of Schwarzschild. This demonstrates that the KSDC introduces an enlarged symmetry structure at the level of the ansatz, but preserves physical symmetries after a cohomological reduction, revealing a fundamental mismatch between Yang-Mills and gravity at the level of residual symmetries.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "B. P. Holton"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2604.05262v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2604.05262v2",
+  "published_iso": "2026-04-06T23:54:45Z",
+  "from_query": [
+   "model misspecification residual diagnostics"
+  ]
+ },
+ {
+  "title": "Towards Trustworthy Reranking: A Simple yet Effective Abstention Mechanism",
+  "title_norm": "towards trustworthy reranking a simple yet effective abstention mechanism",
+  "abstract": "Neural Information Retrieval (NIR) has significantly improved upon heuristic-based Information Retrieval (IR) systems. Yet, failures remain frequent, the models used often being unable to retrieve documents relevant to the user's query. We address this challenge by proposing a lightweight abstention mechanism tailored for real-world constraints, with particular emphasis placed on the reranking phase. We introduce a protocol for evaluating abstention strategies in black-box scenarios (typically encountered when relying on API services), demonstrating their efficacy, and propose a simple yet effective data-driven mechanism. We provide open-source code for experiment replication and abstention implementation, fostering wider adoption and application in diverse contexts.",
+  "year": 2024,
+  "venue": "arXiv",
+  "authors": [
+   "Hippolyte Gisserot-Boukhlef",
+   "Manuel Faysse",
+   "Emmanuel Malherbe",
+   "Céline Hudelot",
+   "Pierre Colombo"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2402.12997v5",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2402.12997v5",
+  "published_iso": "2024-02-20T13:25:16Z",
+  "from_query": [
+   "measurement-consistent abstention gating"
+  ]
+ },
+ {
+  "title": "On the Model-Misspecification in Reinforcement Learning",
+  "title_norm": "on the model misspecification in reinforcement learning",
+  "abstract": "The success of reinforcement learning (RL) crucially depends on effective function approximation when dealing with complex ground-truth models. Existing sample-efficient RL algorithms primarily employ three approaches to function approximation: policy-based, value-based, and model-based methods. However, in the face of model misspecification (a disparity between the ground-truth and optimal function approximators), it is shown that policy-based approaches can be robust even when the policy function approximation is under a large locally-bounded misspecification error, with which the function class may exhibit a $Ω(1)$ approximation error in specific states and actions, but remains small on average within a policy-induced state distribution. Yet it remains an open question whether similar robustness can be achieved with value-based and model-based approaches, especially with general function approximation.\n  To bridge this gap, in this paper we present a unified theoretical framework for addressing model misspecification in RL. We demonstrate that, through meticulous algorithm design and sophisticated analysis, value-based and model-based methods employing general function approximation can achieve robustness under local misspecification error bounds. In particular, they can attain a regret bound of $\\widetilde{O}\\left(\\text{poly}(d H)(\\sqrt{K} + Kζ) \\right)$, where $d$ represents the complexity of the function class, $H$ is the episode length, $K$ is the total number of episodes, and $ζ$ denotes the local bound for misspecification error. Furthermore, we propose an algorithmic framework that can achieve the same order of regret bound without prior knowledge of $ζ$, thereby enhancing its practical applicability.",
+  "year": 2023,
+  "venue": "arXiv",
+  "authors": [
+   "Yunfan Li",
+   "Lin Yang"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2306.10694v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2306.10694v2",
+  "published_iso": "2023-06-19T04:31:59Z",
+  "from_query": [
+   "model misspecification residual diagnostics"
+  ]
+ },
+ {
+  "title": "Mitigating LLM Hallucinations via Conformal Abstention",
+  "title_norm": "mitigating llm hallucinations via conformal abstention",
+  "abstract": "We develop a principled procedure for determining when a large language model (LLM) should abstain from responding (e.g., by saying \"I don't know\") in a general domain, instead of resorting to possibly \"hallucinating\" a non-sensical or incorrect answer. Building on earlier approaches that use self-consistency as a more reliable measure of model confidence, we propose using the LLM itself to self-evaluate the similarity between each of its sampled responses for a given query. We then further leverage conformal prediction techniques to develop an abstention procedure that benefits from rigorous theoretical guarantees on the hallucination rate (error rate). Experimentally, our resulting conformal abstention method reliably bounds the hallucination rate on various closed-book, open-domain generative question answering datasets, while also maintaining a significantly less conservative abstention rate on a dataset with long responses (Temporal Sequences) compared to baselines using log-probability scores to quantify uncertainty, while achieveing comparable performance on a dataset with short answers (TriviaQA). To evaluate the experiments automatically, one needs to determine if two responses are equivalent given a question. Following standard practice, we use a thresholded similarity function to determine if two responses match, but also provide a method for calibrating the threshold based on conformal prediction, with theoretical guarantees on the accuracy of the match prediction, which might be of independent interest.",
+  "year": 2024,
+  "venue": "arXiv",
+  "authors": [
+   "Yasin Abbasi Yadkori",
+   "Ilja Kuzborskij",
+   "David Stutz",
+   "András György",
+   "Adam Fisch",
+   "Arnaud Doucet",
+   "Iuliya Beloshapka",
+   "Wei-Hung Weng",
+   "Yao-Yuan Yang",
+   "Csaba Szepesvári",
+   "Ali Taylan Cemgil",
+   "Nenad Tomasev"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2405.01563v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2405.01563v1",
+  "published_iso": "2024-04-04T11:32:03Z",
+  "from_query": [
+   "measurement-consistent abstention gating"
+  ]
+ },
+ {
+  "title": "Analysing the Residual Stream of Language Models Under Knowledge Conflicts",
+  "title_norm": "analysing the residual stream of language models under knowledge conflicts",
+  "abstract": "Large language models (LLMs) can store a significant amount of factual knowledge in their parameters. However, their parametric knowledge may conflict with the information provided in the context. Such conflicts can lead to undesirable model behaviour, such as reliance on outdated or incorrect information. In this work, we investigate whether LLMs can identify knowledge conflicts and whether it is possible to know which source of knowledge the model will rely on by analysing the residual stream of the LLM. Through probing tasks, we find that LLMs can internally register the signal of knowledge conflict in the residual stream, which can be accurately detected by probing the intermediate model activations. This allows us to detect conflicts within the residual stream before generating the answers without modifying the input or model parameters. Moreover, we find that the residual stream shows significantly different patterns when the model relies on contextual knowledge versus parametric knowledge to resolve conflicts. This pattern can be employed to estimate the behaviour of LLMs when conflict happens and prevent unexpected answers before producing the answers. Our analysis offers insights into how LLMs internally manage knowledge conflicts and provides a foundation for developing methods to control the knowledge selection processes.",
+  "year": 2024,
+  "venue": "arXiv",
+  "authors": [
+   "Yu Zhao",
+   "Xiaotang Du",
+   "Giwon Hong",
+   "Aryo Pradipta Gema",
+   "Alessio Devoto",
+   "Hongru Wang",
+   "Xuanli He",
+   "Kam-Fai Wong",
+   "Pasquale Minervini"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2410.16090v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2410.16090v2",
+  "published_iso": "2024-10-21T15:12:51Z",
+  "from_query": [
+   "model misspecification residual diagnostics"
+  ]
+ },
+ {
+  "title": "Knowing When Not to Answer: Evaluating Abstention in Multimodal Reasoning Systems",
+  "title_norm": "knowing when not to answer evaluating abstention in multimodal reasoning systems",
+  "abstract": "Effective abstention (EA), recognizing evidence insufficiency and refraining from answering, is critical for reliable multimodal systems. Yet existing evaluation paradigms for vision-language models (VLMs) and multi-agent systems (MAS) assume answerability, pushing models to always respond. Abstention has been studied in text-only settings but remains underexplored multimodally; current benchmarks either ignore unanswerability or rely on coarse methods that miss realistic failure modes. We introduce MM-AQA, a benchmark that constructs unanswerable instances from answerable ones via transformations along two axes: visual modality dependency and evidence sufficiency. Evaluating three frontier VLMs spanning closed and open-source models and two MAS architectures across 2079 samples, we find: (1) under standard prompting, VLMs rarely abstain; even simple confidence baselines outperform this setup, (2) MAS improves abstention but introduces an accuracy-abstention trade-off, (3) sequential designs match or exceed iterative variants, suggesting the bottleneck is miscalibration rather than reasoning depth, and (4) models abstain when image or text evidence is absent, but attempt reconciliation with degraded or contradictory evidence. Effective multimodal abstention requires abstention-aware training rather than better prompting or more agents.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Nishanth Madhusudhan",
+   "Vikas Yadav",
+   "Alexandre Lacoste"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2604.14799v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2604.14799v1",
+  "published_iso": "2026-04-16T09:23:22Z",
+  "from_query": [
+   "measurement-consistent abstention gating"
+  ]
+ },
+ {
+  "title": "Adaptive Residual-Update Steering for Low-Overhead Hallucination Mitigation in Large Vision Language Models",
+  "title_norm": "adaptive residual update steering for low overhead hallucination mitigation in l",
+  "abstract": "Large Vision-Language Models (LVLMs) typically process visual inputs as a prefix to the language decoder. As the model autoregressively generates text, this initial visual information inevitably undergoes \"dilution\" leading the model to over-rely on language priors and hallucinate objects. Existing interventions attempt to correct this by contrasting logits or iteratively refining outputs, but they incur prohibitive latency costs. We propose Residual-Update Directed DEcoding Regulation (RUDDER), a framework that counters visual dilution by creating a persistent visual anchor. We extract a robust evidence direction (CARD) directly from the model's prefill residual updates, and inject it into the decoding process. This injection is modulated by an adaptive gate, the Beta Gate, which acts as a trust mechanism and ensures the visual reminder is applied only when necessary. Experiments on LLaVA-1.5 (7B/13B), Idefics2, InstructBLIP, and Qwen2.5-VL demonstrate that RUDDER consistently mitigates hallucination (with greedy decoding, RUDDER reduces CHAIR_S by an average of 24.4% and CHAIR_i by 23.6% relative) and scales effectively across architectures, all while maintaining >96.0% throughput.",
+  "year": 2025,
+  "venue": "arXiv",
+  "authors": [
+   "Zhengtao Zou",
+   "Ya Gao",
+   "Jiarui Guan",
+   "Bin Li",
+   "Pekka Marttinen"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2511.10292v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2511.10292v2",
+  "published_iso": "2025-11-13T13:29:38Z",
+  "from_query": [
+   "model misspecification residual diagnostics"
+  ]
+ },
+ {
+  "title": "Hallucinate Less by Thinking More: Aspect-Based Causal Abstention for Large Language Models",
+  "title_norm": "hallucinate less by thinking more aspect based causal abstention for large langu",
+  "abstract": "Large Language Models (LLMs) often produce fluent but factually incorrect responses, a phenomenon known as hallucination. Abstention, where the model chooses not to answer and instead outputs phrases such as \"I don't know\", is a common safeguard. However, existing abstention methods typically rely on post-generation signals, such as generation variations or feedback, which limits their ability to prevent unreliable responses in advance. In this paper, we introduce Aspect-Based Causal Abstention (ABCA), a new framework that enables early abstention by analysing the internal diversity of LLM knowledge through causal inference. This diversity reflects the multifaceted nature of parametric knowledge acquired from various sources, representing diverse aspects such as disciplines, legal contexts, or temporal frames. ABCA estimates causal effects conditioned on these aspects to assess the reliability of knowledge relevant to a given query. Based on these estimates, we enable two types of abstention: Type-1, where aspect effects are inconsistent (knowledge conflict), and Type-2, where aspect effects consistently support abstention (knowledge insufficiency). Experiments on standard benchmarks demonstrate that ABCA improves abstention reliability, achieves state-of-the-art performance, and enhances the interpretability of abstention decisions.",
+  "year": 2025,
+  "venue": "arXiv",
+  "authors": [
+   "Vy Nguyen",
+   "Ziqi Xu",
+   "Jeffrey Chan",
+   "Estrid He",
+   "Feng Xia",
+   "Xiuzhen Zhang"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2511.17170v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2511.17170v1",
+  "published_iso": "2025-11-21T11:42:49Z",
+  "from_query": [
+   "measurement-consistent abstention gating"
+  ]
+ },
+ {
+  "title": "Tests for model misspecification in simulation-based inference: from local distortions to global model checks",
+  "title_norm": "tests for model misspecification in simulation based inference from local distor",
+  "abstract": "Model misspecification analysis strategies, such as anomaly detection, model validation, and model comparison are a key component of scientific model development. Over the last few years, there has been a rapid rise in the use of simulation-based inference (SBI) techniques for Bayesian parameter estimation, applied to increasingly complex forward models. To move towards fully simulation-based analysis pipelines, however, there is an urgent need for a comprehensive simulation-based framework for model misspecification analysis. In this work, we provide a solid and flexible foundation for a wide range of model discrepancy analysis tasks, using distortion-driven model misspecification tests. From a theoretical perspective, we introduce the statistical framework built around performing many hypothesis tests for distortions of the simulation model. We also make explicit analytic connections to classical techniques: anomaly detection, model validation, and goodness-of-fit residual analysis. Furthermore, we introduce an efficient self-calibrating training algorithm that is useful for practitioners. We demonstrate the performance of the framework in multiple scenarios, making the connection to classical results where they are valid. Finally, we show how to conduct such a distortion-driven model misspecification test for real gravitational wave data, specifically on the event GW150914.",
+  "year": 2024,
+  "venue": "arXiv",
+  "authors": [
+   "Noemi Anau Montel",
+   "James Alvey",
+   "Christoph Weniger"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2412.15100v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2412.15100v2",
+  "published_iso": "2024-12-19T17:48:03Z",
+  "from_query": [
+   "model misspecification residual diagnostics"
+  ]
+ },
+ {
+  "title": "Theoretically Grounded Loss Functions and Algorithms for Score-Based Multi-Class Abstention",
+  "title_norm": "theoretically grounded loss functions and algorithms for score based multi class",
+  "abstract": "Learning with abstention is a key scenario where the learner can abstain from making a prediction at some cost. In this paper, we analyze the score-based formulation of learning with abstention in the multi-class classification setting. We introduce new families of surrogate losses for the abstention loss function, which include the state-of-the-art surrogate losses in the single-stage setting and a novel family of loss functions in the two-stage setting. We prove strong non-asymptotic and hypothesis set-specific consistency guarantees for these surrogate losses, which upper-bound the estimation error of the abstention loss function in terms of the estimation error of the surrogate loss. Our bounds can help compare different score-based surrogates and guide the design of novel abstention algorithms by minimizing the proposed surrogate losses. We experimentally evaluate our new algorithms on CIFAR-10, CIFAR-100, and SVHN datasets and the practical significance of our new surrogate losses and two-stage abstention algorithms. Our results also show that the relative performance of the state-of-the-art score-based surrogate losses can vary across datasets.",
+  "year": 2023,
+  "venue": "arXiv",
+  "authors": [
+   "Anqi Mao",
+   "Mehryar Mohri",
+   "Yutao Zhong"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2310.14770v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2310.14770v2",
+  "published_iso": "2023-10-23T10:13:35Z",
+  "from_query": [
+   "measurement-consistent abstention gating"
+  ]
+ },
+ {
+  "title": "Agentic Abstention: Do Agents Know When to Stop Instead of Act?",
+  "title_norm": "agentic abstention do agents know when to stop instead of act",
+  "abstract": "LLM agents are expected to act over multiple turns, using search, browsing interfaces, and terminal tools to complete user goals. Yet not every goal is well specified or achievable in the available environment. In such cases, a reliable agent should recognize that further interaction is unlikely to help and abstain from additional tool calls. We define Agentic Abstention, the problem of deciding when an agent should stop acting under uncertainty. Unlike standard LLM abstention, which is usually evaluated as a single-turn answer-or-abstain decision, agentic abstention is a sequential decision problem: an agent can answer, abstain, or gather more information at each turn, and the need to abstain may only become clear after interacting with the environment. We study this problem across web shopping, terminal environments, and question answering, evaluating 13 LLM-as-agent systems and 2 agent scaffolds on more than 28,000 tasks. Our results show that the main challenge is not only whether agents can abstain, but also when they abstain. Some agents never abstain when they should, while others do so only after many unnecessary interactions. This gap is especially large on tasks where the instruction appears feasible until the environment reveals otherwise (e.g., no valid result matches the instruction). We further find that model scale, reasoning, and agent scaffolding affect abstention in different ways, where larger or more capable models sometimes perform worse at timely abstention. Finally, we introduce CONVOLVE, a context engineering method for improving agentic abstention that distills full interaction trajectories into reusable stopping rules. On WebShop, CONVOLVE substantially improves timely abstention without updating model parameters, raising Llama-3.3-70B's timely recall rate from 26.7 to 57.4. Our dataset and code are available at https://lhannnn.github.io/agentic-abstention",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Han Luo",
+   "Bingbing Wen",
+   "Lucy Lu Wang"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2606.28733v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2606.28733v1",
+  "published_iso": "2026-06-27T04:49:37Z",
+  "from_query": [
+   "measurement-consistent abstention gating"
+  ]
+ },
+ {
+  "title": "Energy Landscapes Enable Reliable Abstention in Retrieval-Augmented Large Language Models for Healthcare",
+  "title_norm": "energy landscapes enable reliable abstention in retrieval augmented large langua",
+  "abstract": "Reliable abstention is critical for retrieval-augmented generation (RAG) systems, particularly in safety-critical domains such as women's health, where incorrect answers can lead to harm. We present an energy-based model (EBM) that learns a smooth energy landscape over a dense semantic corpus of 2.6M guideline-derived questions, enabling the system to decide when to generate or abstain. We benchmark the EBM against a calibrated softmax baseline and a k-nearest neighbour (kNN) density heuristic across both easy and hard abstention splits, where hard cases are semantically challenging near-distribution queries. The EBM achieves superior abstention performance abstention on semantically hard cases, reaching AUROC 0.961 versus 0.950 for softmax, while also reducing FPR@95 (0.235 vs 0.331). On easy negatives, performance is comparable across methods, but the EBM's advantage becomes most pronounced in safety-critical hard distributions. A comprehensive ablation with controlled negative sampling and fair data exposure shows that robustness stems primarily from the energy scoring head, while the inclusion or exclusion of specific negative types (hard, easy, mixed) sharpens decision boundaries but is not essential for generalisation to hard cases. These results demonstrate that energy-based abstention scoring offers a more reliable confidence signal than probability-based softmax confidence, providing a scalable and interpretable foundation for safe RAG systems.",
+  "year": 2025,
+  "venue": "arXiv",
+  "authors": [
+   "Ravi Shankar",
+   "Sheng Wong",
+   "Lin Li",
+   "Magdalena Bachmann",
+   "Alex Silverthorne",
+   "Beth Albert",
+   "Gabriel Davis Jones"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2509.04482v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2509.04482v2",
+  "published_iso": "2025-08-31T10:20:48Z",
+  "from_query": [
+   "measurement-consistent abstention gating"
+  ]
+ },
+ {
+  "title": "Task Abstention for Large Language Models in Code Generation",
+  "title_norm": "task abstention for large language models in code generation",
+  "abstract": "Large language models (LLMs) have revolutionized automated code generation. One serious concern, however, is the so-called ``hallucination'', i.e., LLMs may generate seemingly plausible but functionally incorrect code. In this paper, we study the task abstention problem, i.e., determining whether a given LLM should abstain from performing a specific code generation task to avoid likely hallucination. Our approach features a calibrated abstention rule, grounded in the principles of multiple hypothesis testing. The rule assesses generation consistency through code execution outcomes, allowing it to handle syntactic diversity of semantically equivalent code without reliance on oracle test cases or external databases. We prove that our approach provides a rigorous, distribution-free theoretical guarantee on its abstention decisions. We evaluate our method on benchmark datasets using several open-source code LLMs. Results show that our method allows generative models to more accurately and efficiently identify and abstain from tasks that induce hallucination compared to existing techniques, providing a reliable mechanism for safer and more robust code generation.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Yanke Zhou",
+   "Yuhao Tan",
+   "Senrong Xu",
+   "Zenan Li",
+   "Yuan Yao",
+   "Taolue Chen",
+   "Xiaoxing Ma"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2605.17029v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2605.17029v1",
+  "published_iso": "2026-05-16T14:58:11Z",
+  "from_query": [
+   "measurement-consistent abstention gating"
+  ]
+ },
+ {
+  "title": "KnowGuard: Knowledge-Driven Abstention for Multi-Round Clinical Reasoning",
+  "title_norm": "knowguard knowledge driven abstention for multi round clinical reasoning",
+  "abstract": "In clinical practice, physicians refrain from making decisions when patient information is insufficient. This behavior, known as abstention, is a critical safety mechanism preventing potentially harmful misdiagnoses. Recent investigations have reported the application of large language models (LLMs) in medical scenarios. However, existing LLMs struggle with the abstentions, frequently providing overconfident responses despite incomplete information. This limitation stems from conventional abstention methods relying solely on model self-assessments, which lack systematic strategies to identify knowledge boundaries with external medical evidences. To address this, we propose \\textbf{KnowGuard}, a novel \\textit{investigate-before-abstain} paradigm that integrates systematic knowledge graph exploration for clinical decision-making. Our approach consists of two key stages operating on a shared contextualized evidence pool: 1) an evidence discovery stage that systematically explores the medical knowledge space through graph expansion and direct retrieval, and 2) an evidence evaluation stage that ranks evidence using multiple factors to adapt exploration based on patient context and conversation history. This two-stage approach enables systematic knowledge graph exploration, allowing models to trace structured reasoning paths and recognize insufficient medical evidence. We evaluate our abstention approach using open-ended multi-round clinical benchmarks that mimic realistic diagnostic scenarios, assessing abstention quality through accuracy-efficiency trade-offs beyond existing closed-form evaluations. Experimental evidences clearly demonstrate that KnowGuard outperforms state-of-the-art abstention approaches, improving diagnostic accuracy by 3.93\\% while reducing unnecessary interaction by 7.27 turns on average.",
+  "year": 2025,
+  "venue": "arXiv",
+  "authors": [
+   "Xilin Dang",
+   "Kexin Chen",
+   "Xiaorui Su",
+   "Ayush Noori",
+   "Iñaki Arango",
+   "Lucas Vittor",
+   "Xinyi Long",
+   "Yuyang Du",
+   "Marinka Zitnik",
+   "Pheng Ann Heng"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2509.24816v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2509.24816v1",
+  "published_iso": "2025-09-29T14:03:01Z",
+  "from_query": [
+   "measurement-consistent abstention gating"
+  ]
+ },
+ {
+  "title": "Characterizing LLM Abstention Behavior in Science QA with Context Perturbations",
+  "title_norm": "characterizing llm abstention behavior in science qa with context perturbations",
+  "abstract": "The correct model response in the face of uncertainty is to abstain from answering a question so as not to mislead the user. In this work, we study the ability of LLMs to abstain from answering context-dependent science questions when provided insufficient or incorrect context. We probe model sensitivity in several settings: removing gold context, replacing gold context with irrelevant context, and providing additional context beyond what is given. In experiments on four QA datasets with six LLMs, we show that performance varies greatly across models, across the type of context provided, and also by question type; in particular, many LLMs seem unable to abstain from answering boolean questions using standard QA prompts. Our analysis also highlights the unexpected impact of abstention performance on QA task accuracy. Counter-intuitively, in some settings, replacing gold context with irrelevant context or adding irrelevant context to gold context can improve abstention performance in a way that results in improvements in task performance. Our results imply that changes are needed in QA dataset design and evaluation to more effectively assess the correctness and downstream impacts of model abstention.",
+  "year": 2024,
+  "venue": "arXiv",
+  "authors": [
+   "Bingbing Wen",
+   "Bill Howe",
+   "Lucy Lu Wang"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2404.12452v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2404.12452v2",
+  "published_iso": "2024-04-18T18:26:43Z",
+  "from_query": [
+   "measurement-consistent abstention gating"
+  ]
+ },
+ {
+  "title": "Sacred or Synthetic? Evaluating LLM Reliability and Abstention for Religious Questions",
+  "title_norm": "sacred or synthetic evaluating llm reliability and abstention for religious ques",
+  "abstract": "Despite the increasing usage of Large Language Models (LLMs) in answering questions in a variety of domains, their reliability and accuracy remain unexamined for a plethora of domains including the religious domains. In this paper, we introduce a novel benchmark FiqhQA focused on the LLM generated Islamic rulings explicitly categorized by the four major Sunni schools of thought, in both Arabic and English. Unlike prior work, which either overlooks the distinctions between religious school of thought or fails to evaluate abstention behavior, we assess LLMs not only on their accuracy but also on their ability to recognize when not to answer. Our zero-shot and abstention experiments reveal significant variation across LLMs, languages, and legal schools of thought. While GPT-4o outperforms all other models in accuracy, Gemini and Fanar demonstrate superior abstention behavior critical for minimizing confident incorrect answers. Notably, all models exhibit a performance drop in Arabic, highlighting the limitations in religious reasoning for languages other than English. To the best of our knowledge, this is the first study to benchmark the efficacy of LLMs for fine-grained Islamic school of thought specific ruling generation and to evaluate abstention for Islamic jurisprudence queries. Our findings underscore the need for task-specific evaluation and cautious deployment of LLMs in religious applications.",
+  "year": 2025,
+  "venue": "arXiv",
+  "authors": [
+   "Farah Atif",
+   "Nursultan Askarbekuly",
+   "Kareem Darwish",
+   "Monojit Choudhury"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2508.08287v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2508.08287v1",
+  "published_iso": "2025-08-04T07:27:26Z",
+  "from_query": [
+   "measurement-consistent abstention gating"
+  ]
+ }
+]

@@ -1,0 +1,867 @@
+[
+ {
+  "title": "Unrolled Reconstruction with Integrated Super-Resolution for Accelerated 3D LGE MRI",
+  "title_norm": "unrolled reconstruction with integrated super resolution for accelerated 3d lge ",
+  "abstract": "Accelerated 3D late gadolinium enhancement (LGE) MRI requires robust reconstruction methods to recover thin atrial structures from undersampled k-space data. While unrolled model-based networks effectively integrate physics-driven data consistency with learned priors, they operate at the acquired resolution and may fail to fully recover high-frequency detail. We propose a hybrid unrolled reconstruction framework in which an Enhanced Deep Super-Resolution (EDSR) network replaces the proximal operator within each iteration of the optimization loop, enabling joint super-resolution enhancement and data consistency enforcement. The model is trained end-to-end on retrospectively undersampled preclinical 3D LGE datasets and compared against compressed sensing, Model-Based Deep Learning (MoDL), and self-guided Deep Image Prior (DIP) baselines. Across acceleration factors, the proposed method consistently improves PSNR and SSIM over standard unrolled reconstruction and better preserves fine cardiac structures, leading to improved LA (left atrium) segmentation performance. These results demonstrate that integrating super-resolution priors directly within model-based reconstruction provides measurable gains in accelerated 3D LGE MRI.",
+  "tldr": "This work proposes a hybrid unrolled reconstruction framework in which an Enhanced Deep Super-Resolution (EDSR) network replaces the proximal operator within each iteration of the optimization loop, enabling joint super-resolution enhancement and data consistency enforcement.",
+  "year": 2026,
+  "venue": "arXiv.org",
+  "publication_types": [
+   "JournalArticle"
+  ],
+  "authors": [
+   "M. Hisham",
+   "S. Elhabian",
+   "G. Adluru",
+   "Jason Mendes",
+   "Andrew Arai",
+   "Eugene G. Kholmovski"
+  ],
+  "citations": 0,
+  "source": "semanticscholar",
+  "source_id": "60d246038314d6b7b362b3ab18166e69399cbe78",
+  "paper_id": "dblp:journals/corr/abs-2603-18309",
+  "doi": "10.48550/arXiv.2603.18309",
+  "arxiv_id": "2603.18309",
+  "dblp_key": "journals/corr/abs-2603-18309",
+  "paper_url": "https://www.semanticscholar.org/paper/60d246038314d6b7b362b3ab18166e69399cbe78",
+  "published_iso": "2026-03-18",
+  "from_query": [
+   "unrolled reconstruction network forward operator calibration"
+  ]
+ },
+ {
+  "title": "Conjugate Gradient Unrolled Network with PSF Conditioning for Non-Diagonal Data Fidelity in CASSI Reconstruction",
+  "title_norm": "conjugate gradient unrolled network with psf conditioning for non diagonal data ",
+  "abstract": "Deep unfolding methods achieve state-of-the-art performance in coded aperture snapshot spectral imaging (CASSI) reconstruction but typically rely on closed-form data-fidelity updates that assume an ideal optical system. In practical CASSI systems, the field-dependent and wavelength-dependent point spread function (PSF) introduces convolutional coupling that breaks the diagonal structure of the normal equation, rendering closed-form updates inapplicable. We propose a deep unfolding framework that addresses this fundamental algorithmic challenge through three contributions: (1)~a $K$-step conjugate gradient (CG) unrolling that explicitly solves the non-diagonal normal equation under PSF-inclusive forward operators; (2)~a learned gradient refinement module with wavelength-adaptive step sizes generated from a per-wavelength PSF embedding; and (3)~a PSF-conditioned penalty estimator that adapts the ADMM regularization strength to the optical degradation severity. A Monte Carlo PSF training strategy further improves robustness to manufacturing-induced PSF variations. Our method achieves 30.53~dB on the KAIST dataset, +2.73~dB over the DPU baseline (1.27M) using a comparable number of parameters (1.42M), and +1.70~dB over a larger baseline (DPU-B+, 2.12M) using 33\\% fewer parameters.",
+  "tldr": "A deep unfolding framework is proposed that addresses this fundamental algorithmic challenge through three contributions: a learned gradient refinement module with wavelength-adaptive step sizes generated from a per-wavelength PSF embedding, a PSF-conditioned penalty estimator, and a Monte Carlo PSF training strategy that improves robustness to manufacturing-induced PSF variations.",
+  "year": 2026,
+  "venue": "",
+  "publication_types": [],
+  "authors": [
+   "Xiang Li",
+   "Qiuyu Yue",
+   "Yang Zhang",
+   "Zhenrong Zheng"
+  ],
+  "citations": 0,
+  "source": "semanticscholar",
+  "source_id": "cbd2deb308b38664b8be0fc4b5ec0f3d281dac2f",
+  "paper_id": "arxiv:2607.20138",
+  "doi": "",
+  "arxiv_id": "2607.20138",
+  "dblp_key": "",
+  "paper_url": "https://www.semanticscholar.org/paper/cbd2deb308b38664b8be0fc4b5ec0f3d281dac2f",
+  "published_iso": "2026-07-22",
+  "from_query": [
+   "unrolled reconstruction network forward operator calibration"
+  ]
+ },
+ {
+  "title": "A Learned Three Operator Splitting Network for Accelerated MRI Reconstruction Using Complex-Valued Deep Unrolling",
+  "title_norm": "a learned three operator splitting network for accelerated mri reconstruction us",
+  "abstract": "Magnetic Resonance Imaging (MRI) is the cornerstone of modern medical diagnosis and research, providing high spatial resolution visualization of the anatomical and functional information of the body’s internal structure in a non-ionizing, non-carcinogenic and non-invasive manner. Despite these superior properties, the MRI data acquisition process is inherently slow, limiting this technique in scenarios where time is crucial. Consequently, accelerating MRI through k-space under-sampling at sub-Nyquist rates and reconstructing high-quality images from incomplete measurements has emerged as an active area of research in the past few decades. This paper proposes a learned three-operator splitting algorithm implemented in an unrolled complex-valued deep neural network architecture for accelerated Magnetic Resonance (MR) image reconstruction. Objective results evaluated using Peak Signal–to–Noise Ratio (PSNR), Structural Similarity Index (SSIM) and Normalized Root–Mean–Squared Error (NRMSE) at ×2 to ×5 acceleration show superior reconstruction performance of the proposed network compared to other state–of–the–art learned algorithms at comparable reconstruction time. Subjective results show that the proposed network reconstructed images visually similar to ground truth images. The proposed network has the potential to enable real-time MRI applications with high-quality images.",
+  "tldr": "A learned three-operator splitting algorithm implemented in an unrolled complex-valued deep neural network architecture for accelerated Magnetic Resonance (MR) image reconstruction shows superior reconstruction performance of the proposed network compared to other state–of–the–art learned algorithms at comparable reconstruction time.",
+  "year": 2026,
+  "venue": "International journal of electrical and electronics research",
+  "publication_types": [
+   "JournalArticle"
+  ],
+  "authors": [
+   "David Muigai",
+   "E. Mwangi",
+   "Henry Kiragu"
+  ],
+  "citations": 0,
+  "source": "semanticscholar",
+  "source_id": "52a8bbba86a9f348dabf45d76c8f97fbf6c708f2",
+  "paper_id": "doi:10.37391/ijeer.140223",
+  "doi": "10.37391/ijeer.140223",
+  "arxiv_id": "",
+  "dblp_key": "",
+  "paper_url": "https://ijeer.forexjournal.co.in/papers-pdf/ijeer-140223.pdf",
+  "published_iso": "2026-06-30",
+  "from_query": [
+   "unrolled reconstruction network forward operator calibration"
+  ]
+ },
+ {
+  "title": "Deep Unrolled Networks in Representation Space Applied to MRI Reconstruction",
+  "title_norm": "deep unrolled networks in representation space applied to mri reconstruction",
+  "abstract": "Deep unrolled networks (DUNs) integrate physical forward models with learned regularization in cascaded network architectures, achieving exceptional performance in inverse problems while maintaining interpretability. While most DUNs operate in the object domain (e.g., image space), recent variants explored representation spaces for improved information flow. However, these methods rely on heuristic methods for data consistency (DC), sacrificing fidelity with measurements. In this work, we introduce DUNE (Deep Unrolled Networks in rEpresentation space), a framework that maintains exact adherence to physical measurements while operating in learned representation spaces. By deriving the DC gradient via the chain rule and implementing it through the Vector-Jacobian Product (VJP), we enable exact backpropagation of measurement residuals into the representation space. This formulation supports diverse architectural backbones, including pre-trained encoders to guide the iterative process. We assess DUNE against state-of-the-art baselines on accelerated MRI reconstruction tasks, demonstrating that exact VJP-based gradients yield superior reconstruction quality and structural fidelity across both single-channel portable low-field and multi-channel clinical high-field MRI acquisitions. The code will be available upon publication at https://github.com/EfeIlicak/DUNE.",
+  "tldr": "This work introduces DUNE (Deep Unrolled Networks in rEpresentation space), a framework that maintains exact adherence to physical measurements while operating in learned representation spaces, and assesses DUNE against state-of-the-art baselines on accelerated MRI reconstruction tasks.",
+  "year": 2026,
+  "venue": "arXiv.org",
+  "publication_types": [
+   "JournalArticle"
+  ],
+  "authors": [
+   "E. Ilıcak",
+   "Baris Imre",
+   "C. Najac",
+   "Ruben van den Broek",
+   "B. Lena",
+   "Andrew Webb"
+  ],
+  "citations": 0,
+  "source": "semanticscholar",
+  "source_id": "6c338a8ed3de2374fa6d995d3e19dfe2bcdd241c",
+  "paper_id": "dblp:journals/corr/abs-2606-21602",
+  "doi": "10.48550/arXiv.2606.21602",
+  "arxiv_id": "2606.21602",
+  "dblp_key": "journals/corr/abs-2606-21602",
+  "paper_url": "https://www.semanticscholar.org/paper/6c338a8ed3de2374fa6d995d3e19dfe2bcdd241c",
+  "published_iso": "2026-06-19",
+  "from_query": [
+   "unrolled reconstruction network forward operator calibration"
+  ]
+ },
+ {
+  "title": "Integrated Forward-Inverse Network for Lensless Image Reconstruction",
+  "title_norm": "integrated forward inverse network for lensless image reconstruction",
+  "abstract": "Lensless imaging enables compact and versatile computational cameras by replacing bulky optics with thin coded elements. However, reconstruction from the resulting measurements is challenging: large-footprint point-spread functions (PSFs) produce highly multiplexed observations, making inversion severely ill-conditioned and sensitive to calibration errors and model mismatch. While deep learning approaches, including hybrid models that incorporate physics priors, have shown promise, explicitly maintaining data fidelity throughout the network hierarchy remains difficult. Here, we propose the Integrated Forward-Inverse Network (IFIN), a physics-guided architecture that interleaves differentiable forward projections with learnable inverse updates at every scale, enabling complementary cues to be exploited jointly in the measurement and image domains. This bidirectional coupling supports progressive, physics-consistent refinement and permits system-constrained PSF kernel adaptation under model uncertainty. On challenging lensless benchmarks, including a newly introduced dataset, IFIN achieves state-of-the-art reconstruction quality. We further observe competitive performance on Gaussian deblurring and simulated inline holography reconstruction, suggesting that the same interleaving principle can extend beyond lensless cameras.",
+  "tldr": "The Integrated Forward-Inverse Network (IFIN) is proposed, a physics-guided architecture that interleaves differentiable forward projections with learnable inverse updates at every scale, enabling complementary cues to be exploited jointly in the measurement and image domains.",
+  "year": 2026,
+  "venue": "",
+  "publication_types": [],
+  "authors": [
+   "Donggeon Bae",
+   "Jaewoo Jung",
+   "Yong Guk Kang",
+   "K. Lee",
+   "Taeyoung Kim",
+   "Jongho Kim"
+  ],
+  "citations": 0,
+  "source": "semanticscholar",
+  "source_id": "837ccfea1d2e48a1778d3244e4eae4d0bfebb6aa",
+  "paper_id": "arxiv:2607.04608",
+  "doi": "",
+  "arxiv_id": "2607.04608",
+  "dblp_key": "",
+  "paper_url": "https://www.semanticscholar.org/paper/837ccfea1d2e48a1778d3244e4eae4d0bfebb6aa",
+  "published_iso": "2026-07-06",
+  "from_query": [
+   "unrolled reconstruction network forward operator calibration"
+  ]
+ },
+ {
+  "title": "Amortizing the Calibration Triple: A Projection-Consistent Neural Operator for Local-Stochastic Volatility",
+  "title_norm": "amortizing the calibration triple a projection consistent neural operator for lo",
+  "abstract": "Local-stochastic volatility (LSV) combines vanilla marginals with richer smile dynamics, but calibration requires a slow, noisy and sequential McKean--Vlasov fixed point. We learn a projection-consistent operator for the calibration triple. Given finite quotes and a stochastic-volatility (SV) backbone, it jointly returns an implied-volatility surface subject to static-arbitrage constraints, its Dupire local volatility, LSV leverage and the conditional moment required by the projection identity. Starting from option-price marginals, we derive a division-free Dupire residual in log-implied-variance coordinates and a quotient Fokker--Planck equation after Gy\\\"ongy projection. Deep Operator Network (DeepONet) and Fourier Neural Operator (FNO) implementations enforce quote fit, static-arbitrage, Dupire and projection constraints. For the witness-augmented residual system, we prove conditional identification and empirical consistency under LSV existence and inverse residual stability. In controlled synthetic tests, forward-start and cliquet errors differ from a particle method by 0.1 and 0.2 percentage points, while calibration latency falls from 98.5 to 0.6 ms. Compared with the tested baselines, local-volatility root-mean-square error (RMSE) falls by 36% and leverage RMSE by 7-16%. These results support amortizing the LSV fixed point: the expensive solve moves offline, while online calibration reduces to a single projection-consistent operator evaluation.",
+  "tldr": "These results support amortizing the LSV fixed point: the expensive solve moves offline, while online calibration reduces to a single projection-consistent operator evaluation, and proves conditional identification and empirical consistency under LSV existence and inverse residual stability.",
+  "year": 2026,
+  "venue": "",
+  "publication_types": [],
+  "authors": [
+   "Xiaozhen Wang",
+   "Anais Despres",
+   "Martin Dureau",
+   "Francois Buet-Golfouse"
+  ],
+  "citations": 0,
+  "source": "semanticscholar",
+  "source_id": "de3ea2f9f91f2dba877343f39fa3b013d8db062b",
+  "paper_id": "arxiv:2608.01217",
+  "doi": "",
+  "arxiv_id": "2608.01217",
+  "dblp_key": "",
+  "paper_url": "https://www.semanticscholar.org/paper/de3ea2f9f91f2dba877343f39fa3b013d8db062b",
+  "published_iso": "2026-08-02",
+  "from_query": [
+   "unrolled reconstruction network forward operator calibration"
+  ]
+ },
+ {
+  "title": "CDNet: Complex-Valued Deep Unrolled Composite Denoising Network for Accelerated Magnetic Resonance Image Reconstruction",
+  "title_norm": "cdnet complex valued deep unrolled composite denoising network for accelerated m",
+  "abstract": "Magnetic resonance imaging (MRI) is an essential modality in contemporary medical diagnosis, offering high-resolution images with excellent soft-tissue contrast of internal organs in a non-invasive, non-ionizing, and non-carcinogenic manner. However, the primary drawback of this technique is a lengthy data-acquisition process, which raises the possibility of picking up artefacts as well as discomfort in patients. To accelerate it, data is acquired at sub-Nyquist rates, and the image is recovered from undersampled, noisy measurements using the compressed sensing (CS) technique. Composite priors in CS–MRI have demonstrated superior performance compared to single priors, despite having limited image priors, which also leads to slower reconstruction speed. To date, deep unfolded networks (DUNs), which integrate the powerful data-driven prior of traditional deep learning (DL) with the strong interpretability of optimization algorithms, are the most outstanding reconstruction technology in MRI acceleration, yielding superior and interpretable results. This study proposes the iterative three-operator splitting (TOS) method to solve the composite regularization problem and a composite denoising network (CDNet) that maintains consistent arithmetic structures with it. The CDNet is implemented using complex-valued DL strategies for richer representation of MRI. Extensive experiments using brain and knee raw k-space from the FastMRI dataset with acceleration factors (AF) ranging from ×2 to ×10 and assessed using peak signal–to–noise ratio (PSNR), structural similarity index (SSIM), and normalized root–mean–squared error (NRMSE) validate the CDNet. Across AFs, CDNet achieved dataset-averaged PSNR/SSIM/NRMSE of 26.50–33.47dB/0.7787–0.8992/0.2562–0.1303 for brain MRI and 28.08–35.52dB/0.7069–0.8734/0.1929–0.0950 for knee MRI. The proposed network yields superior reconstruction accuracy and faster reconstruction speed compared to the iterative TOS for composite regularization, demonstrating the effectiveness of deep unrolling in accelerating iterative optimization. Furthermore, CDNet outperforms other state-of-the-art DUNs in reconstruction accuracy at comparable inference speed, demonstrating its vast potential for improving patient care, scanner throughput, and healthcare economics.",
+  "tldr": "The iterative three-operator splitting (TOS) method to solve the composite regularization problem and a composite denoising network (CDNet) that maintains consistent arithmetic structures with it are proposed, demonstrating the effectiveness of deep unrolling in accelerating iterative optimization.",
+  "year": 2026,
+  "venue": "International Journal of Advanced Computer Science and Applications",
+  "publication_types": [
+   "JournalArticle"
+  ],
+  "authors": [
+   "David Muigai",
+   "E. Mwangi",
+   "Henry Kiragu"
+  ],
+  "citations": 0,
+  "source": "semanticscholar",
+  "source_id": "c009e4bbe18df84d5fedceabc7bd3fd50c8f44e2",
+  "paper_id": "doi:10.14569/ijacsa.2026.0170742",
+  "doi": "10.14569/ijacsa.2026.0170742",
+  "arxiv_id": "",
+  "dblp_key": "",
+  "paper_url": "https://doi.org/10.14569/ijacsa.2026.0170742",
+  "published_iso": null,
+  "from_query": [
+   "unrolled reconstruction network forward operator calibration"
+  ]
+ },
+ {
+  "title": "Retrospective detail reconstruction network for mitigating shallow information loss in colorectal polyp segmentation.",
+  "title_norm": "retrospective detail reconstruction network for mitigating shallow information l",
+  "abstract": "Existing medical polyp segmentation networks predominantly rely on hierarchical feature representations to improve boundary delineation. However, we identify a critical yet underexplored issue, termed shallow information loss, wherein low-level layers irreversibly suppress low-contrast but semantically essential edge cues during forward propagation, while attenuated gradients in backpropagation are insufficient to recover such early-stage information loss. This problem is especially severe in polyps exhibiting fractal-like structural characteristics, where cross-scale self-similarity is progressively disrupted across spatial resolutions, ultimately degrading segmentation performance. Moreover, most existing approaches attempt to learn a direct pixel-to-semantic mapping in a single step, lacking progressive feature guidance and resulting in inadequate global semantic awareness. To address these limitations, we propose RDNet, a retrospective detail network composed of a backward detail reconstruction (BDR) module and a cascaded synergistic optimization (CSO) module. The BDR module injects discriminative semantic information backward in a layer-wise manner to recover weak-response regions that are suppressed during forward propagation, while cross-layer feature calibration enables accurate reactivation of shallow structural details. The CSO module further decouples boundary and region representations and employs a conditional gating mechanism to selectively activate complementary features, thereby enhancing structural consistency and semantic discrimination. Extensive experiments conducted on five public benchmark datasets demonstrate that RDNet consistently outperforms state-of-the-art methods, with particularly significant improvements in fractal-like multi-polyp segmentation scenarios, validating its robustness and effectiveness in complex clinical environments.",
+  "tldr": "RDNet is proposed, a retrospective detail network composed of a backward detail reconstruction (BDR) module and a cascaded synergistic optimization (CSO) module that outperforms state-of-the-art methods in fractal-like multi-polyp segmentation scenarios, validating its robustness and effectiveness in complex clinical environments.",
+  "year": 2026,
+  "venue": "Scientific Reports",
+  "publication_types": [
+   "JournalArticle"
+  ],
+  "authors": [
+   "Leiheng Xu",
+   "Chengcheng Li",
+   "Jiancong Chen",
+   "Hoi Leong Lee"
+  ],
+  "citations": 0,
+  "source": "semanticscholar",
+  "source_id": "ea789c60eeed1e23501a550615b922ec142ac302",
+  "paper_id": "doi:10.1038/s41598-026-61004-9",
+  "doi": "10.1038/s41598-026-61004-9",
+  "arxiv_id": "",
+  "dblp_key": "",
+  "paper_url": "https://www.nature.com/articles/s41598-026-61004-9_reference.pdf",
+  "published_iso": "2026-07-07",
+  "from_query": [
+   "unrolled reconstruction network forward operator calibration"
+  ]
+ },
+ {
+  "title": "Lightweight Single Image Super Resolution Based on Deep Feature Calibration Network",
+  "title_norm": "lightweight single image super resolution based on deep feature calibration netw",
+  "abstract": "The current lightweight single image super resolution reconstruction algorithms suffer from the following problems: first, insufficient information richness before each deep feature input node, and second, inaccurate representation of high-frequency components in deep features. In view of this, this study introduces an approach based on a deep feature calibration network. A plug-and-play cross-scale information exchange block is put forward, which serves as a fronting strategy for each deep feature input node, expanding the scope of learnable features and enhancing the richness of features. Meanwhile, a high-frequency feature optimization block, a high-frequency feature calibration attention block, and a dual channel calibration attention block are presented, which model context dependencies from both spatial and frequency domains, and achieve sufficient extraction of high-frequency information, de-redundancy, and accurate calibration. Extensive experimental validation shows that the proposed algorithm achieves a balance between the count of parameters and performance, and especially excels in reconstructing images with complex structures and rich textures. Specifically, the algorithm shows significant superiority and practicality by improving the PSNR on the $\\times 2$ Urban100 dataset by 0.3dB and reducing 231K parameters compared to mainstream method such as NGSwin.",
+  "tldr": "",
+  "year": 2026,
+  "venue": "IEEE transactions on consumer electronics",
+  "publication_types": [
+   "JournalArticle"
+  ],
+  "authors": [
+   "Deqiang Cheng",
+   "Peng Wang",
+   "Xianghe Ma",
+   "Qi-qi Kou",
+   "Guangtao Zhai",
+   "He Jiang"
+  ],
+  "citations": 0,
+  "source": "semanticscholar",
+  "source_id": "d61c6a9fcf5cbca1741df8a4f05b571c1298b539",
+  "paper_id": "dblp:journals/tce/ChengWMKZJ26",
+  "doi": "10.1109/TCE.2026.3684043",
+  "arxiv_id": "",
+  "dblp_key": "journals/tce/ChengWMKZJ26",
+  "paper_url": "https://www.semanticscholar.org/paper/d61c6a9fcf5cbca1741df8a4f05b571c1298b539",
+  "published_iso": "2026-05-01",
+  "from_query": [
+   "unrolled reconstruction network forward operator calibration"
+  ]
+ },
+ {
+  "title": "Learning Structural Eigenmodes with Modal Operator Network (ModalONet)",
+  "title_norm": "learning structural eigenmodes with modal operator network modalonet",
+  "abstract": "Neural operators such as the deep operator network (DeepONet) and the Laplace neural operator (LNO) are effective surrogates, but they are almost exclusively trained to reproduce the forward response of a system rather than its intrinsic structure, such as the modal properties of a structural system. We introduce ModalONet, which puts operator learning to a different use, such as recovering the modal basis, namely: mode shapes, natural frequencies, and damping ratios of a dynamical system directly from its response field, with no eigensolver and no labeled modes. Our key observation is that the DeepONet branch-trunk factorization is itself a learnable form of modal superposition: the trunk supplies continuous, mesh-free mode shapes, while an LNO branch supplies the modal coordinates in pole-residue form, so that each learned pole yields a natural frequency and a damping ratio. Training uses the response field alone, under a composite loss of reconstruction, orthonormality, and temporal projection consistency. The degenerate (equal-frequency) modes are resolved by a separable trunk and a shared frequency parameter, with post-hoc log-envelope regression improves the damping ratio estimates. Across four structural systems, namely: simply supported and cantilever Euler-Bernoulli beams and rectangular and (degenerate) square Kirchhoff plates, the ModalONet recovers the analytical modal basis with modal assurance criterion (MAC) values of at least 0.998 for every mode shape, natural frequency errors within 5%, and damping ratio errors within 7%, demonstrating the potential of neural operators as accurate and interpretable tools for modal identification.",
+  "tldr": "ModalONet recovers the analytical modal basis with modal assurance criterion (MAC) values of at least 0.998 for every mode shape, natural frequency errors within 5%, and damping ratio errors within 7%, demonstrating the potential of neural operators as accurate and interpretable tools for modal identification.",
+  "year": 2026,
+  "venue": "",
+  "publication_types": [],
+  "authors": [
+   "Saad Waheed",
+   "Shabbir Ahmed"
+  ],
+  "citations": 0,
+  "source": "semanticscholar",
+  "source_id": "ee995cb2b8bc038e3bf0de7781600b27abcb799b",
+  "paper_id": "arxiv:2607.28926",
+  "doi": "",
+  "arxiv_id": "2607.28926",
+  "dblp_key": "",
+  "paper_url": "https://www.semanticscholar.org/paper/ee995cb2b8bc038e3bf0de7781600b27abcb799b",
+  "published_iso": "2026-07-31",
+  "from_query": [
+   "unrolled reconstruction network forward operator calibration"
+  ]
+ },
+ {
+  "title": "Efficient Unrolled Networks for Large-Scale 3D Inverse Problems",
+  "title_norm": "efficient unrolled networks for large scale 3d inverse problems",
+  "abstract": "Deep learning-based methods have revolutionized the field of imaging inverse problems, yielding state-of-the-art performance across various imaging domains. The best performing networks incorporate the imaging operator within the network architecture, typically in the form of deep unrolling. However, in large-scale problems, such as 3D imaging, most existing methods fail to incorporate the operator in the architecture due to the prohibitive amount of memory required by global forward operators, which hinder typical patching strategies. In this work, we present a domain partitioning strategy and normal operator approximations that enable the training of end-to-end reconstruction models incorporating forward operators of arbitrarily large problems into their architecture. The proposed method achieves state-of-the-art performance on 3D X-ray cone-beam tomography and 3D multi-coil accelerated MRI, while requiring only a single GPU for both training and inference.",
+  "tldr": "This work presents a domain partitioning strategy and normal operator approximations that enable the training of end-to-end reconstruction models incorporating forward operators of arbitrarily large problems into their architecture and achieves state-of-the-art performance on 3D X-ray cone-beam tomography and 3D multi-coil accelerated MRI.",
+  "year": 2026,
+  "venue": "arXiv.org",
+  "publication_types": [
+   "JournalArticle"
+  ],
+  "authors": [
+   "R. Vo",
+   "Julián Tachella"
+  ],
+  "citations": 3,
+  "source": "semanticscholar",
+  "source_id": "e00fdc97e9635fee95b1be1da60866b2a45443f8",
+  "paper_id": "dblp:journals/corr/abs-2601-02141",
+  "doi": "10.48550/arXiv.2601.02141",
+  "arxiv_id": "2601.02141",
+  "dblp_key": "journals/corr/abs-2601-02141",
+  "paper_url": "https://www.semanticscholar.org/paper/e00fdc97e9635fee95b1be1da60866b2a45443f8",
+  "published_iso": "2026-01-05",
+  "from_query": [
+   "unrolled reconstruction network forward operator calibration"
+  ]
+ },
+ {
+  "title": "EUMD: Event-Based Unrolled Motion Deblurring Via Learnable Prior Optimization",
+  "title_norm": "eumd event based unrolled motion deblurring via learnable prior optimization",
+  "abstract": "Motion blur caused by finite exposure times remains a significant challenge for conventional cameras, degrading image quality and downstream computer vision tasks. Event cameras, which asynchronously report brightness changes with microsecond latency, capture high-frequency temporal dynamics that are lost in standard frame-based sensing. In this work, we propose Event-based Unrolled Motion Deblurring (EUMD), a hybrid, optimization-driven framework that tightly couples the continuous-time blur formation model with asynchronous event dynamics. We formulate deblurring as a maximum a posteriori (MAP) problem built upon a novel, event-conditioned diagonal forward operator. Unlike traditional methods that rely on fixed, handcrafted priors such as image gradients, our framework adopts a flexible design where the prior is modeled via a learnable deep network. To solve the resulting ill-posed inverse problem, we employ Half-Quadratic Splitting (HQS) and unroll its iterations into a K-stage deep network. The proximal operator is implemented using a Transformerenhanced U-Net, which captures both hierarchical local structures (via a CNN backbone) and long-range non-local dependencies (via a Transformer bottleneck), and is adaptively conditioned on event information. This unrolled architecture is interpretable, efficient, and fully end-to-end trainable, allowing both the optimization parameters and the deep prior to be learned jointly. Extensive experiments on synthetic (GoPro) and real-world (EVRB) benchmarks demonstrate that EUMD achieves state-of-the-art performance, outperforming existing event-guided approaches.",
+  "tldr": "",
+  "year": 2026,
+  "venue": "2026 IEEE/CVF Winter Conference on Applications of Computer Vision Workshops (WACVW)",
+  "publication_types": [
+   "Conference"
+  ],
+  "authors": [
+   "Haichuan Zhang",
+   "D. Fu",
+   "Jonathan Miller",
+   "A. Choudhury",
+   "Chul Lee",
+   "Vishal Monga"
+  ],
+  "citations": 0,
+  "source": "semanticscholar",
+  "source_id": "eb76bf852bac1ff8b10c97ed1f8f7514d7b61f33",
+  "paper_id": "doi:10.1109/WACVW68408.2026.00074",
+  "doi": "10.1109/WACVW68408.2026.00074",
+  "arxiv_id": "",
+  "dblp_key": "",
+  "paper_url": "https://www.semanticscholar.org/paper/eb76bf852bac1ff8b10c97ed1f8f7514d7b61f33",
+  "published_iso": "2026-03-01",
+  "from_query": [
+   "unrolled reconstruction network forward operator calibration"
+  ]
+ },
+ {
+  "title": "Unrolled Richardson-Lucy deconvolution network with partially connected layers in computational microscopy.",
+  "title_norm": "unrolled richardson lucy deconvolution network with partially connected layers i",
+  "abstract": "Computational microscopy systems often employ optical encoders with non-localized point spread functions (PSFs) to enable advanced imaging capabilities. A notable example is the multi-cluster PSF, commonly used in light-field microscopes and mask-based integrated microscopes for single-shot 3D imaging. These systems rely on computational decoders to reconstruct high-quality images from complex optical measurements. Traditional iterative optimization methods, while physically interpretable, are computationally intensive. In contrast, deep neural networks offer faster inference but often lack physical interpretability. Physics-informed neural networks aim to bridge this gap by integrating model-based insights into data-driven architectures. Here, we propose an unrolled neural network architecture [partially connected unrolled Richardson-Lucy (RL) network (PC-RLN)], which is inspired by the RL deconvolution algorithm, and tailored for microscopy with non-localized, multi-cluster, and spatial variant PSFs. Each stage of the network mimics an iteration of the RL algorithm, and incorporates a learnable, partially connected layer to model both the forward imaging process and the back-projection. This design enables efficient and interpretable image reconstruction with substantially reduced computational cost compared to the standard RL deconvolution algorithm. We demonstrate the effectiveness of our approach in both Fourier light-field microscopy and mask-based integrated microscopy with microlens array.",
+  "tldr": "An unrolled neural network architecture [partially connected unrolled Richardson-Lucy (RL) network (PC-RLN)], which is inspired by the RL deconvolution algorithm, and tailored for microscopy with non-localized, multi-cluster, and spatial variant PSFs.",
+  "year": 2026,
+  "venue": "Optics Express",
+  "publication_types": [
+   "JournalArticle"
+  ],
+  "authors": [
+   "Feng Tian",
+   "Weijian Yang"
+  ],
+  "citations": 1,
+  "source": "semanticscholar",
+  "source_id": "2ba6a8511db43d7104a3ed7dfd2cfaf36f61aa66",
+  "paper_id": "doi:10.1364/OE.588318",
+  "doi": "10.1364/OE.588318",
+  "arxiv_id": "",
+  "dblp_key": "",
+  "paper_url": "https://doi.org/10.1364/oe.588318",
+  "published_iso": "2026-05-18",
+  "from_query": [
+   "unrolled reconstruction network forward operator calibration"
+  ]
+ },
+ {
+  "title": "FLS-YOLO: a multi-scale subsurface defect detection network via heterogeneous grouping and spatial reconstruction",
+  "title_norm": "fls yolo a multi scale subsurface defect detection network via heterogeneous gro",
+  "abstract": "",
+  "tldr": "This work modify the forward computations of PConv, LWGA, and SCConv to inject GPR-oriented inductive biases to inject GPR-oriented inductive biases in FLS-YOLO, a lightweight detection framework with task-specific refinements to existing neural operators.",
+  "year": 2026,
+  "venue": "Signal, Image and Video Processing",
+  "publication_types": [
+   "JournalArticle"
+  ],
+  "authors": [
+   "Wenbo Zhang",
+   "Zican Liu",
+   "Qing Yang",
+   "Xingyu Qiu"
+  ],
+  "citations": 1,
+  "source": "semanticscholar",
+  "source_id": "04adb4b32d2511af811370c039c548552e68dee6",
+  "paper_id": "dblp:journals/sivp/ZhangLYQ26",
+  "doi": "10.1007/s11760-026-05352-z",
+  "arxiv_id": "",
+  "dblp_key": "journals/sivp/ZhangLYQ26",
+  "paper_url": "https://www.semanticscholar.org/paper/04adb4b32d2511af811370c039c548552e68dee6",
+  "published_iso": "2026-04-15",
+  "from_query": [
+   "unrolled reconstruction network forward operator calibration"
+  ]
+ },
+ {
+  "title": "Sparse View CT Reconstruction with Projection Consistency Constraints",
+  "title_norm": "sparse view ct reconstruction with projection consistency constraints",
+  "abstract": "Sparse-view CT reduces radiation exposure but increases streak artifacts due to insufficient projection angles. Motivated by convolution–self-attention denoising architectures such as CTLformer, this paper proposes a reconstruction framework that uses convolution–attention priors to regularize image updates while enforcing projection-domain consistency through an unrolled optimization scheme. The model alternates between a learned denoising block and a data-consistency step based on the forward projection operator. Experiments are conducted on two sparse-view CT benchmarks totaling 36,000 paired slices, with view counts ranging from 30 to 90. Comparisons against FBP, TV-regularized iterative reconstruction, RED-CNN post-processing, and transformerbased sparse-view models show PSNR gains of 1.2–2.0 dB and SSIM improvements of 0.015–0.028 under 60-view settings, with reduced streak intensity near high-contrast boundaries. ",
+  "tldr": "A reconstruction framework that uses convolution–attention priors to regularize image updates while enforcing projection-domain consistency through an unrolled optimization scheme is proposed.",
+  "year": 2026,
+  "venue": "American journal of electrical engineering and technology",
+  "publication_types": [
+   "JournalArticle"
+  ],
+  "authors": [
+   "James R. Walker",
+   "Emily K. Thompson",
+   "Daniel M. Chen"
+  ],
+  "citations": 0,
+  "source": "semanticscholar",
+  "source_id": "67543e53cd28e503f93f9e7413df8bf544ab1d04",
+  "paper_id": "doi:10.71465/ajeet3631",
+  "doi": "10.71465/ajeet3631",
+  "arxiv_id": "",
+  "dblp_key": "",
+  "paper_url": "https://doi.org/10.71465/ajeet3631",
+  "published_iso": "2026-01-31",
+  "from_query": [
+   "unrolled reconstruction network forward operator calibration"
+  ]
+ },
+ {
+  "title": "Phase-constrained zero-shot self-supervised learning for BLADE liver MRI reconstruction.",
+  "title_norm": "phase constrained zero shot self supervised learning for blade liver mri reconst",
+  "abstract": "",
+  "tldr": "PC ZS-SSL enables high-quality, artifact-suppressed BLADE liver MRI reconstruction without the need for external training data and highlights its potential for clinical translation.",
+  "year": 2026,
+  "venue": "MAGMA",
+  "publication_types": [
+   "JournalArticle"
+  ],
+  "authors": [
+   "Uten Yarach",
+   "Sorravit Akrasirakul",
+   "H. Mattern",
+   "Oliver Speck"
+  ],
+  "citations": 0,
+  "source": "semanticscholar",
+  "source_id": "a787144b7684608729bac601c1ed6ca89f3c0e34",
+  "paper_id": "doi:10.1007/s10334-026-01359-2",
+  "doi": "10.1007/s10334-026-01359-2",
+  "arxiv_id": "",
+  "dblp_key": "",
+  "paper_url": "https://www.semanticscholar.org/paper/a787144b7684608729bac601c1ed6ca89f3c0e34",
+  "published_iso": "2026-04-11",
+  "from_query": [
+   "unrolled reconstruction network forward operator calibration"
+  ]
+ },
+ {
+  "title": "Sinogram-free low-dose CT reconstruction via differentiable radon-regularized optimization unrolling",
+  "title_norm": "sinogram free low dose ct reconstruction via differentiable radon regularized op",
+  "abstract": "Objective. Reducing x-ray dose in computed tomography (CT) is essential for improving patient safety; however, low-dose acquisitions introduce noise and artifacts that degrade diagnostic image quality. Most existing physics-informed reconstruction methods rely on raw projection-domain measurements to enforce data consistency, although such sinogram data are rarely retained in routine clinical workflows. This study addresses this limitation by developing a reconstruction framework that incorporates physical imaging priors without requiring access to projection measurements. Approach. We propose the unrolled radon consistency network (URCN), a reconstruction framework that encodes approximate projection-domain structure as a differentiable spatial regularizer within a learned optimization architecture. At each unrolling stage, a parallel-beam Radon surrogate functioning as a geometry-approximate regularizer rather than an exact forward model computes a projection residual between the current reconstruction estimate and the low-dose input. The backprojected residual generates a spatially structured gradient that guides iterative image updates. Critically, this gradient operates as a structured image-domain regularizer whose spatial support is determined by Radon-domain geometry, rather than as a data-consistency constraint in the classical inverse-problem sense. Main results. Across 30 held-out Mayo Clinic patients, URCN achieved a peak signal-to-noise ratio (PSNR) of 39.4±0.4 dB, structural similarity index of 0.929±0.013, RMSE of 0.035±0.003, and LPIPS of 0.098±0.011 using the VGG backbone. Compared with the strongest sinogram-free baseline, SwinIR-CT, URCN demonstrated a statistically significant improvement in PSNR of 0.7 dB at the patient level ( p<0.01, paired Wilcoxon signed-rank test; Cohen’s d=1.1). Task-based analysis revealed that URCN achieved the lowest noise magnitude among all learning-based approaches evaluated (noise power spectrum peak: 72±11 HU 2⋅mm 2) while preserving spatial resolution close to the filtered back-projection reference (modulation transfer function f50=0.39±0.03 lp mm −1), thereby overcoming the typical resolution-smoothing trade-off observed in CNN-based denoisers. When directly applied to the AAPM dataset without retraining, URCN maintained a 0.6 dB performance advantage and preserved relative ranking trends, indicating robustness to acquisition-domain shift. Significance. The findings demonstrate that reconstruction quality is influenced not merely by the inclusion of physical constraints, but by the manner in which such constraints are embedded within the optimization process. Spatially structured differentiable gradient injection consistently outperformed scalar penalization strategies. Because URCN operates directly on reconstructed DICOM images rather than raw projection data, it is applicable to large-scale retrospective clinical datasets where sinograms are unavailable, overcoming a major practical limitation of existing physics-informed methods. The proposed framework provides a reproducible and computationally tractable pathway toward clinically deployable low-dose CT reconstruction while preserving physically meaningful image characteristics that purely data-driven approaches often fail to maintain.",
+  "tldr": "The unrolled radon consistency network (URCN) is proposed, a reconstruction framework that encodes approximate projection-domain structure as a differentiable spatial regularizer within a learned optimization architecture that demonstrates that reconstruction quality is influenced not merely by the inclusion of physical constraints, but by the manner in which such constraints are embedded within the optimization process.",
+  "year": 2026,
+  "venue": "Physics in Medicine and Biology",
+  "publication_types": [
+   "JournalArticle"
+  ],
+  "authors": [
+   "Manas Kumar Nag",
+   "S. Choudhary",
+   "Bethanney Janney"
+  ],
+  "citations": 0,
+  "source": "semanticscholar",
+  "source_id": "1d69d1827d72a7bc3c5afad242b370590507e359",
+  "paper_id": "doi:10.1088/1361-6560/ae8125",
+  "doi": "10.1088/1361-6560/ae8125",
+  "arxiv_id": "",
+  "dblp_key": "",
+  "paper_url": "https://www.semanticscholar.org/paper/1d69d1827d72a7bc3c5afad242b370590507e359",
+  "published_iso": "2026-06-23",
+  "from_query": [
+   "unrolled reconstruction network forward operator calibration"
+  ]
+ },
+ {
+  "title": "Data-Driven Modeling With Deep Koopman Operator for Robust Path Tracking of Autonomous Vehicles",
+  "title_norm": "data driven modeling with deep koopman operator for robust path tracking of auto",
+  "abstract": "Inherent nonlinearity poses challenges for path tracking control of autonomous vehicles (AVs). Data-driven modeling with Koopman operator offers a new perspective to enhance path tracking accuracy. Nevertheless, poor embedding quality and significant control reconstruction error still limit the final performance. This article introduces an innovative data-driven system modeling framework. A self-supervised transformer (SST) with a memory window is proposed for multiframe state embedding, improving representation and mitigating control phase delay. Besides, a Reversible network (Rev) is developed, where the forward flow is used for control input embedding and the inverse flow is utilized for the lossless reconstruction of optimal control. Furthermore, a quasi-diagonal deep Koopman network (DKN) is proposed to effectively approximate linear system matrices in the embedded space. The identified Koopman model is then integrated with a robust MPC, enabling accurate path tracking under noise and disturbances. Extensive simulations across multiple scenarios are conducted to evaluate the proposed method against several benchmarks. Results demonstrate that our framework outperforms principle-based modeling and state-of-the-art data-driven methods, achieving optimal path tracking accuracy, the fastest calculation speed, and the most stable control inputs. Real-world experiments further confirm that our approach delivers accurate path tracking with notable robustness and real-time performance in practical applications.",
+  "tldr": "",
+  "year": 2026,
+  "venue": "IEEE transactions on industrial electronics (1982. Print)",
+  "publication_types": [
+   "JournalArticle"
+  ],
+  "authors": [
+   "Zhuoxuan Wang",
+   "Shuguo Pan",
+   "Kegen Yu",
+   "Wang Gao",
+   "Zongliang Chen"
+  ],
+  "citations": 3,
+  "source": "semanticscholar",
+  "source_id": "69dce20a4f4cd481e5235e361ac00d6130d30449",
+  "paper_id": "dblp:journals/tie/WangPYGC26",
+  "doi": "10.1109/TIE.2026.3654874",
+  "arxiv_id": "",
+  "dblp_key": "journals/tie/WangPYGC26",
+  "paper_url": "https://www.semanticscholar.org/paper/69dce20a4f4cd481e5235e361ac00d6130d30449",
+  "published_iso": "2026-07-01",
+  "from_query": [
+   "unrolled reconstruction network forward operator calibration"
+  ]
+ },
+ {
+  "title": "A Deep Nonlinear Subspace Modeling and Reconstruction for Diffusion-Weighted Imaging Using Denoising Auto-Encoder.",
+  "title_norm": "a deep nonlinear subspace modeling and reconstruction for diffusion weighted ima",
+  "abstract": "PURPOSE\nTo present a novel, nonlinear subspace modeling and joint k-q-space reconstruction technique for high-resolution, multi-band, multi-shell diffusion-weighted imaging (DWI).\n\n\nMETHODS\nHigh b-value (> 1000 s/mm2), high resolution DWI has the drawback of generally low signal-to-noise ratios (SNRs). We present an approach that leverages a denoising autoencoder (DAE) to learn a latent subspace from biophysically simulated diffusion-weighted signals. The decoder of this network is then used in the forward operator of the image reconstruction process. The decoded latent images are scaled by the b 0 image, phase is added and processed as regular DWI images with the forward operator for multi-shot, multicoil, multi-slice, k-q-undersampled acquisition schemes. The performance is investigated with a multi-shell, multi-direction imaging brain scan and compared to the results of the multiplexed sensitivity-encoding (MUSE) reconstruction and locally low-rank (LLR) regularized reconstruction. The results are further validated by a bias and precision analysis of reconstructed fiber directions.\n\n\nRESULTS\nComparing the reconstructed data using the proposed method shows improved noise suppression compared to MUSE and more details than LLR-reconstructed images. Specifically, in the higher b-value domain, the reconstruction results show improved detectability of small structures. This bias and precision analysis showed minimal bias introduction, but higher precision with the proposed method.\n\n\nCONCLUSION\nOur method combines deep learning, latent signal modeling, joint k-q-space reconstruction, and biophysical simulation for diffusion data and shows strong noise suppression and a high degree of detail in reconstructed diffusion-weighted images.",
+  "tldr": "The method combines deep learning, latent signal modeling, joint k-q-space reconstruction, and biophysical simulation for diffusion data and shows strong noise suppression and a high degree of detail in reconstructed diffusion-weighted images.",
+  "year": 2026,
+  "venue": "Magnetic Resonance in Medicine",
+  "publication_types": [
+   "JournalArticle"
+  ],
+  "authors": [
+   "Julius Glaser",
+   "Zhengguo Tan",
+   "Annika Hofmann",
+   "F. Laun",
+   "Florian Knoll"
+  ],
+  "citations": 0,
+  "source": "semanticscholar",
+  "source_id": "879c7b0d41a21ce08b633680c25f580715d3cc75",
+  "paper_id": "doi:10.1002/mrm.70496",
+  "doi": "10.1002/mrm.70496",
+  "arxiv_id": "",
+  "dblp_key": "",
+  "paper_url": "https://doi.org/10.1002/mrm.70496",
+  "published_iso": "2026-08-04",
+  "from_query": [
+   "unrolled reconstruction network forward operator calibration"
+  ]
+ },
+ {
+  "title": "Wid3R: Wide Field-of-View 3D Reconstruction via Camera Model Conditioning",
+  "title_norm": "wid3r wide field of view 3d reconstruction via camera model conditioning",
+  "abstract": "We present Wid3R, a feed-forward neural network for multi-view visual geometry reconstruction that supports wide field-of-view camera models. Unlike existing methods that assume rectified or pinhole inputs, Wid3R directly models wide-angle imagery without explicit calibration or undistortion. Our approach leverages a ray-based representation with spherical harmonics and introduces a novel camera model token to enable distortion-aware reconstruction. To the best of our knowledge, Wid3R is the first multi-frame feed-forward 3D reconstruction method that supports 360 imagery. Moreover, we show that conditioning on diverse camera types improves generalization to 360 scenes and alleviates data sparsity issues. Wid3R achieves significant performance gains, improving AUC@30 by up to +33.67 on Zip-NeRF (fisheye) and +77.33 on Stanford2D3D (360).",
+  "tldr": "Wid3R is the first multi-frame feed-forward 3D reconstruction method that supports 360 imagery and it is shown that conditioning on diverse camera types improves generalization to 360 scenes and alleviates data sparsity issues.",
+  "year": 2026,
+  "venue": "arXiv.org",
+  "publication_types": [
+   "JournalArticle"
+  ],
+  "authors": [
+   "Dongki Jung",
+   "Jaehoon Choi",
+   "A. Qureshi",
+   "Somi Jeong",
+   "Dinesh Manocha",
+   "Suyong Yeon"
+  ],
+  "citations": 1,
+  "source": "semanticscholar",
+  "source_id": "c42638fb1b6a3135b0db3d1122f655c28e08d580",
+  "paper_id": "dblp:journals/corr/abs-2602-05321",
+  "doi": "10.48550/arXiv.2602.05321",
+  "arxiv_id": "2602.05321",
+  "dblp_key": "journals/corr/abs-2602-05321",
+  "paper_url": "https://www.semanticscholar.org/paper/c42638fb1b6a3135b0db3d1122f655c28e08d580",
+  "published_iso": "2026-02-05",
+  "from_query": [
+   "unrolled reconstruction network forward operator calibration"
+  ]
+ },
+ {
+  "title": "FRUC: Feedforward Dynamic Scene Reconstruction from Uncalibrated Collaborative Driving Views",
+  "title_norm": "fruc feedforward dynamic scene reconstruction from uncalibrated collaborative dr",
+  "abstract": "We present FRUC, a feed-forward 3D Gaussian splatting framework for dynamic scene reconstruction from uncalibrated collaborative driving views. Existing multi-agent reconstruction frameworks are often hindered by rigid prerequisites, demanding precise spatial calibration and slow per-scene optimization. In this paper, we rethink this task by conceptualizing a distributed multi-vehicle network as a spatio-temporally unstructured ego-centric multi-camera system, where the core challenge lies in enhancing ego-centric occluded geometry through collaboration without degrading the ego's accurately observed visible geometry, while preserving reconstruction efficiency. For efficient reconstruction, FRUC is built upon a visual grounded geometric Transformer backbone to enable one-shot, calibration-free inference from a flexible number of multi-vehicle views. To achieve non-destructive geometric supplementation under uncalibrated cross-agent misalignment, FRUC first introduces an ego-centric causal occlusion field that explicitly derives occlusion evolution as latent priors by modeling agent-wise spatio-temporal correlations. Guided by these occlusion priors, it further formulates cross-agent integration as a deterministic residual denoising process via zero-initialized injection, turning challenging cross-agent fusion into bounded residual learning for robust collaborative blind-spot completion. Through extensive evaluations on the real-world V2XReal and UrbanIng-V2X datasets, FRUC is shown to be a new state-of-the-art for the scene reconstruction of dynamic collaborative driving environments, significantly outperforming existing methods in both rendering quality and efficiency.",
+  "tldr": "FRUC is shown to be a new state-of-the-art for the scene reconstruction of dynamic collaborative driving environments, significantly outperforming existing methods in both rendering quality and efficiency.",
+  "year": 2026,
+  "venue": "arXiv.org",
+  "publication_types": [
+   "JournalArticle"
+  ],
+  "authors": [
+   "Yihang Tao",
+   "Yu Guo",
+   "Zhengru Fang",
+   "Haonan An",
+   "Yuguang Fang"
+  ],
+  "citations": 1,
+  "source": "semanticscholar",
+  "source_id": "e2a4e8b07c0e96386ea92b35eaaaaecd4fb2ca23",
+  "paper_id": "dblp:journals/corr/abs-2605-29997",
+  "doi": "10.48550/arXiv.2605.29997",
+  "arxiv_id": "2605.29997",
+  "dblp_key": "journals/corr/abs-2605-29997",
+  "paper_url": "https://www.semanticscholar.org/paper/e2a4e8b07c0e96386ea92b35eaaaaecd4fb2ca23",
+  "published_iso": "2026-05-28",
+  "from_query": [
+   "unrolled reconstruction network forward operator calibration"
+  ]
+ },
+ {
+  "title": "Operator-Split Bayesian Learning for Elliptic PDEs with Unequal Interior and Boundary Data",
+  "title_norm": "operator split bayesian learning for elliptic pdes with unequal interior and bou",
+  "abstract": "We propose an operator-split Bayesian learning framework for second-order uniformly elliptic Dirichlet problems with unequal numbers of interior and boundary observations. The data consist of noisy measurements of the source in the domain and noisy measurements of the boundary values. Independent Bayesian neural-network (BNN) priors are assigned to these two quantities, and the resulting product posterior is pushed forward through the elliptic solution operator. We prove that the posterior induced by this construction contracts around the true solution. The contraction radius separates a domain contribution, governed by the second-order elliptic operator, from a boundary contribution, governed by the intrinsic dimension of the boundary. Together with the minimax lower bound of \\cite{ZhaoLu2026}, this yields a near-minimax upper bound up to logarithmic factors. Our numerical experiments illustrate the propagation of source and boundary uncertainty and the effects of unequal sampling budgets on the posterior reconstruction.",
+  "tldr": "It is proved that the posterior induced by this operator-split Bayesian learning framework for second-order uniformly elliptic Dirichlet problems with unequal numbers of interior and boundary observations contracts around the true solution.",
+  "year": 2026,
+  "venue": "",
+  "publication_types": [],
+  "authors": [
+   "Emmanuel E. Oguadimma"
+  ],
+  "citations": 0,
+  "source": "semanticscholar",
+  "source_id": "6de8163b9cdaa9e9f04b9a7c3034b2765c22229f",
+  "paper_id": "arxiv:2607.14680",
+  "doi": "",
+  "arxiv_id": "2607.14680",
+  "dblp_key": "",
+  "paper_url": "https://www.semanticscholar.org/paper/6de8163b9cdaa9e9f04b9a7c3034b2765c22229f",
+  "published_iso": "2026-07-16",
+  "from_query": [
+   "unrolled reconstruction network forward operator calibration"
+  ]
+ },
+ {
+  "title": "Variational Parameter Calibration with Physics-Aware Latent-Space Surrogates",
+  "title_norm": "variational parameter calibration with physics aware latent space surrogates",
+  "abstract": "Forward and inverse modeling of parametric dynamical systems requires surrogate models that are not only accurate for state prediction, but also informative for parameter calibration. However, a systematic end-to-end differentiable formulation for coupling deep-learning-based reduced-order surrogates with variational parameter estimation remains underdeveloped. In this work, we introduce a physics-aware neural-network-based latent-space framework for reduced-order forward modeling and variational parameter estimation. The proposed autoencoder-based approach yields a differentiable surrogate that maps physical parameters to predicted flow fields through a latent representation. The observable supervision is used during offline training to encourage the latent variables to retain information correlated with system parameters, while the online inverse problem is solved in the parameter space through the surrogate-induced observation operator. The method is evaluated on two computational-fluid-dynamics benchmarks. The results show that reconstruction accuracy alone is insufficient for inverse modeling, owing to the lack of end-to-end differentiability or physics awareness for variational parameter calibration. Quantitative latent-space analysis further shows that observable supervision improves case-level separability and temporal organization of latent representations. Experiments with realistic measurement settings, including noisy, low-resolution, randomly masked, and block-wise partial observations, demonstrate the robustness of the proposed framework and show that it generally reduces calibration error and variability compared with the standard surrogate models.",
+  "tldr": "A physics-aware neural-network-based latent-space framework for reduced-order forward modeling and variational parameter estimation and the robustness of the proposed framework is demonstrated, which generally reduces calibration error and variability compared with the standard surrogate models.",
+  "year": 2026,
+  "venue": "",
+  "publication_types": [],
+  "authors": [
+   "Qiyao Zhou",
+   "Xujia Zhu",
+   "Pierre Joli",
+   "Yu Cong",
+   "Sibo Cheng"
+  ],
+  "citations": 0,
+  "source": "semanticscholar",
+  "source_id": "40da346a7344f3799b0ddb94ba5d0016ea933e7c",
+  "paper_id": "arxiv:2608.11435",
+  "doi": "",
+  "arxiv_id": "2608.11435",
+  "dblp_key": "",
+  "paper_url": "https://www.semanticscholar.org/paper/40da346a7344f3799b0ddb94ba5d0016ea933e7c",
+  "published_iso": "2026-08-11",
+  "from_query": [
+   "unrolled reconstruction network forward operator calibration"
+  ]
+ },
+ {
+  "title": "Assessing Reconstruction Techniques for Estimating Evapotranspiration Time Series under Varying Data Availability",
+  "title_norm": "assessing reconstruction techniques for estimating evapotranspiration time serie",
+  "abstract": ": Evapotranspiration is widely used in agriculture to determine crop water requirements and supporting irrigation scheduling, water budgeting, and drought monitoring. Accurate evapotranspiration estimation requires complete and reliable meteorological and soil data, typically collected by IoT sensors in orchards and commercial fields. However, sensors often produce missing values due to faults, calibration drift, power outages, and network latency, which can compromise estimation accuracy. In this work, we propose a reconstruction method for the four key meteorological variables (air temperature, relative humidity, wind speed and solar radiation) required for reference evapotranspiration estimation using the FAO-Penman-Monteith equation. The method operates on the residual component of each time series after removing linear and seasonal trends at a 20-minute sampling resolution. Its performance is evaluated against two baseline approaches, Linear Interpolation and Last Observation Carried Forward, using IoT data (2022–2025) from an orchard in Seville, Spain, and a nearby reference weather station as ground-truth. Results show lower reconstruction errors and higher correlation across all data-availability scenarios, particularly when availability drops below 70%. Correlation improves by up to 40%, and the error measurements are notably reduced. Reconstructed reference evapotranspiration values preserve seasonal dynamics even with extended gaps, demonstrating robustness and suitability for precision irrigation systems.",
+  "tldr": "",
+  "year": 2026,
+  "venue": "International Conference on Pattern Recognition Applications and Methods",
+  "publication_types": [
+   "JournalArticle"
+  ],
+  "authors": [
+   "J. Torres-Martín",
+   "Yolanda Carrión-García",
+   "José Velarde-Gestera",
+   "M. Chidean",
+   "I. Mora-Jiménez"
+  ],
+  "citations": 0,
+  "source": "semanticscholar",
+  "source_id": "13b51db5437c94f317c343078639861900a56de5",
+  "paper_id": "dblp:conf/icpram/Torres-MartinCV26",
+  "doi": "10.5220/0014469300004067",
+  "arxiv_id": "",
+  "dblp_key": "conf/icpram/Torres-MartinCV26",
+  "paper_url": "https://www.semanticscholar.org/paper/13b51db5437c94f317c343078639861900a56de5",
+  "published_iso": null,
+  "from_query": [
+   "unrolled reconstruction network forward operator calibration"
+  ]
+ },
+ {
+  "title": "CAM3R: Camera-Agnostic Model for 3D Reconstruction",
+  "title_norm": "cam3r camera agnostic model for 3d reconstruction",
+  "abstract": "Recovering dense 3D geometry from unposed images remains a foundational challenge in computer vision. Current state-of-the-art models are predominantly trained on perspective datasets, which implicitly constrains them to a standard pinhole camera geometry. As a result, these models suffer from significant geometric degradation when applied to wide-angle imagery captured via non-rectilinear optics, such as fisheye or panoramic sensors. To address this, we present CAM3R, a Camera-Agnostic, feed-forward Model for 3D Reconstruction capable of processing images from wide-angle camera models without prior calibration. Our framework consists of a two-view network which is bifurcated into a Ray Module (RM) to estimate per-pixel ray directions and a Cross-view Module (CVM) to infer radial distance with confidence maps, pointmaps, and relative poses. To unify these pairwise predictions into a consistent 3D scene, we introduce a Ray-Aware Global Alignment framework for pose refinement and scale optimization while strictly preserving the predicted local geometry. Extensive experiments on various camera model datasets, including panorama, fisheye and pinhole imagery, demonstrate that CAM3R establishes a new state-of-the-art in pose estimation and reconstruction.",
+  "tldr": "This work presents CAM3R, a Camera-Agnostic, feed-forward Model for 3D Reconstruction capable of processing images from wide-angle camera models without prior calibration, and introduces a Ray-Aware Global Alignment framework for pose refinement and scale optimization while strictly preserving the predicted local geometry.",
+  "year": 2026,
+  "venue": "arXiv.org",
+  "publication_types": [
+   "JournalArticle"
+  ],
+  "authors": [
+   "N. Guruprasad",
+   "A. Yadav",
+   "Cheng Peng",
+   "Rama Chellappa"
+  ],
+  "citations": 0,
+  "source": "semanticscholar",
+  "source_id": "dd9ce5e6ae80a85fccac3d07e13ba84fa3f8c337",
+  "paper_id": "dblp:journals/corr/abs-2603-22631",
+  "doi": "10.48550/arXiv.2603.22631",
+  "arxiv_id": "2603.22631",
+  "dblp_key": "journals/corr/abs-2603-22631",
+  "paper_url": "https://www.semanticscholar.org/paper/dd9ce5e6ae80a85fccac3d07e13ba84fa3f8c337",
+  "published_iso": "2026-03-23",
+  "from_query": [
+   "unrolled reconstruction network forward operator calibration"
+  ]
+ },
+ {
+  "title": "CSSL-ISRVN: consistency self-supervised learning integrating ISTANet and sensitivity refinement-enhanced variational network for accelerated MRI reconstruction",
+  "title_norm": "cssl isrvn consistency self supervised learning integrating istanet and sensitiv",
+  "abstract": "Objective. Magnetic resonance imaging is essential in clinical practice due to its non-invasive nature and superior soft-tissue contrast. However, long acquisition times remain a major limitation, leading to motion artifacts and patient discomfort. Most deep learning approaches rely on fully sampled datasets, which are often difficult to obtain. This study aims to develop a self-supervised framework for MRI reconstruction that eliminates dependence on fully sampled training data. Approach. We propose consistency self-supervised learning with ISRVN (CSSL-ISRVN), a novel consistency self-supervised reconstruction framework. At its core lies SRVN, which combines an improved variational network (IVN) with a sensitivity refinement module (SRM). The IVN integrates a feature refinement and denoising module (FRDM), composed of residual blocks (RB) and a Gaussian context transformer (GCT), to jointly extract local and global features. Meanwhile, SRM iteratively refines a task-driven implicit sensitivity modulation variable using the previously reconstructed full k-space in a reconstruction-sensitivity closed loop, adaptively modulating the multi-coil forward model and data consistency to reduce error accumulation induced by fixed auto-calibration signals-based sensitivity estimates under undersampling. Building on ISTANet and SRVN, we develop ISRVN, a heterogeneous alternating cascade of ISTANet and SRVN: ISTANet first suppresses undersampling artifacts in the multi-coil complex domain to provide cleaner intermediates, enabling SRVN to perform encoding-modulated, physics-consistent refinement for improved reconstruction quality and stability. To eliminate dependence on fully sampled data, we introduce a consistency self-supervised scheme that re-undersamples the original k-space to train two pairs of consistency networks using calibration and consistency losses. Results. Experiments on three public datasets show that CSSL-ISRVN consistently surpasses existing self-supervised and scan-specific methods, particularly under 1D undersampling masks. It achieves performance competitive with state-of-the-art supervised models. Significance. CSSL-ISRVN offers an effective solution for accelerated MRI reconstruction without fully sampled labels. Its integration of sensitivity refinement, hybrid modeling, and consistency self-supervision enables robust, high-fidelity reconstructions, underscoring its potential for real-world clinical deployment.",
+  "tldr": "CSSL-ISRVN offers an effective solution for accelerated MRI reconstruction without fully sampled labels and achieves performance competitive with state-of-the-art supervised models.",
+  "year": 2026,
+  "venue": "Physics in Medicine and Biology",
+  "publication_types": [
+   "JournalArticle"
+  ],
+  "authors": [
+   "Jizhong Duan",
+   "Yuqian Chen",
+   "Haibo Tao",
+   "Junfeng Wang",
+   "Yu Liu"
+  ],
+  "citations": 0,
+  "source": "semanticscholar",
+  "source_id": "2a9322227511760fc2c167e837982a3a6f61c6fb",
+  "paper_id": "doi:10.1088/1361-6560/ae50a8",
+  "doi": "10.1088/1361-6560/ae50a8",
+  "arxiv_id": "",
+  "dblp_key": "",
+  "paper_url": "https://doi.org/10.1088/1361-6560/ae50a8",
+  "published_iso": "2026-03-11",
+  "from_query": [
+   "unrolled reconstruction network forward operator calibration"
+  ]
+ },
+ {
+  "title": "Motion-Robust Deep Reconstruction for Free-Breathing Cardiac Cine MRI",
+  "title_norm": "motion robust deep reconstruction for free breathing cardiac cine mri",
+  "abstract": "Conventional cardiac cine MRI relies on breath-hold Cartesian acquisitions, which are vulnerable to motion artifacts and can be uncomfortable or infeasible, particularly for pediatric and other noncompliant patients who cannot reliably hold their breath. Free-breathing radial acquisitions can alleviate these limitations, but robust reconstruction at high acceleration remains challenging due to prominent streak artifacts. To address these limitations, we propose Cine-DL, a clinically oriented framework that couples targeted k-space preprocessing with fast, model-based deep reconstruction. In this pipeline, raw free-breathing radial data undergo retrospective cardiac binning and respiratory gating to resolve cardiac phases and discard motion-corrupted spokes. We then introduce Streak Optimized Coil Compression (SOC), which explicitly preserves cardiac signals while suppressing peripheral interference that typically drives the streak artifacts. The resulting 2D+t cine series is reconstructed with an unrolled network that alternates a ResNet proximal operator with physics-based data consistency updates solved via conjugate gradient. We further employ a memory-efficient training strategy that reduces peak memory usage. We evaluate Cine-DL on free-breathing volunteer data against established baselines (k-t SENSE and iGRASP) and demonstrate clinical translation via hospital deployment on newly acquired patient data. Our experiments show that Cine-DL consistently improves quantitative metrics and visual fidelity, supporting a practical route toward routine, time-sensitive clinical adoption of free-breathing cine MRI.",
+  "tldr": "Cine-DL, a clinically oriented framework that couples targeted k-space preprocessing with fast, model-based deep reconstruction, and introduces Streak Optimized Coil Compression (SOC), which explicitly preserves cardiac signals while suppressing peripheral interference that typically drives the streak artifacts, are proposed.",
+  "year": 2026,
+  "venue": "arXiv.org",
+  "publication_types": [
+   "JournalArticle"
+  ],
+  "authors": [
+   "Mahmut Yurt",
+   "Kanghyun Ryu",
+   "Zhitao Li",
+   "Xucheng Zhu",
+   "Xianglun Mao",
+   "Martin A. Janich"
+  ],
+  "citations": 0,
+  "source": "semanticscholar",
+  "source_id": "75561e796668d0212340de203d7c7e1a1cf57e8c",
+  "paper_id": "dblp:journals/corr/abs-2605-20687",
+  "doi": "10.48550/arXiv.2605.20687",
+  "arxiv_id": "2605.20687",
+  "dblp_key": "journals/corr/abs-2605-20687",
+  "paper_url": "https://www.semanticscholar.org/paper/75561e796668d0212340de203d7c7e1a1cf57e8c",
+  "published_iso": "2026-05-20",
+  "from_query": [
+   "unrolled reconstruction network forward operator calibration"
+  ]
+ },
+ {
+  "title": "Deep learning with fourier features for regressive flow field reconstruction from sparse sensor measurements",
+  "title_norm": "deep learning with fourier features for regressive flow field reconstruction fro",
+  "abstract": "Many applications in computational and experimental fluid mechanics require effective methods for reconstructing the flow fields from limited sensor data. However, this task remains a significant challenge because the measurement operator that provides the punctual sensor measurement for a given state of the flow field is often ill-conditioned and non-invertible. This issue impedes the feasibility of identifying the forward map, which is, theoretically, the inverse of the measurement operator, for field reconstruction purposes. While data-driven methods are available, their generalizability across different flow conditions (e.g., different Reynold numbers) remains questioned. Moreover, they frequently face the problem of spectral bias, which leads to smooth and blurry reconstructed fields, thereby decreasing the accuracy of reconstruction. We introduce FLRNet, a deep learning method for flow field reconstruction from sparse sensor measurements. FLRNet employs a variational autoencoder with Fourier feature layers and incorporates an extra perceptual loss term during training to learn a rich, low-dimensional latent representation of the flow field. The learned latent representation is then correlated to the sensor measurement using an attention-based network. We validated the reconstruction capability and the generalizability of FLRNet under various fluid flow conditions and sensor configurations, including different sensor counts and sensor layouts. Numerical experiments show that in all tested scenarios, FLRNet consistently outperformed other baselines, delivering the most accurate reconstructed flow field and being the most robust to noise.",
+  "tldr": "Numerical experiments show that in all tested scenarios, FLRNet consistently outperformed other baselines, delivering the most accurate reconstructed flow field and being the most robust to noise.",
+  "year": 2026,
+  "venue": "Scientific Reports",
+  "publication_types": [
+   "JournalArticle"
+  ],
+  "authors": [
+   "Phong C. H. Nguyen",
+   "Joseph B. Choi",
+   "Quang-Trung Luu"
+  ],
+  "citations": 3,
+  "source": "semanticscholar",
+  "source_id": "041c8c96430fdc2be83799c9f502123d7a62051f",
+  "paper_id": "doi:10.1038/s41598-026-36301-y",
+  "doi": "10.1038/s41598-026-36301-y",
+  "arxiv_id": "",
+  "dblp_key": "",
+  "paper_url": "https://www.nature.com/articles/s41598-026-36301-y.pdf",
+  "published_iso": "2026-01-22",
+  "from_query": [
+   "unrolled reconstruction network forward operator calibration"
+  ]
+ },
+ {
+  "title": "Geometry Calibration in Tomography with a Differentiable Ray-Based Model",
+  "title_norm": "geometry calibration in tomography with a differentiable ray based model",
+  "abstract": "Geometric misalignments between the nominal and true acquisition parameters in tomography degrade reconstructions. We propose a framework that jointly reconstructs the volume and calibrates the acquisition geometry for arbitrary source--detector configurations. The core of our framework is an x-ray transform operator whose gradients with respect to the acquisition geometry can be efficiently computed with a ray-tracing method of structure and computational complexity similar to those of the forward operator. We represent the volume in a B-spline basis to provide a continuously differentiable model. This results in a better-behaved optimization landscape compared to voxel-based representations. We validate our framework with CT, micro-CT, nano-CT, and positron emission tomography data under a variety of geometric misalignments.",
+  "tldr": "",
+  "year": 2026,
+  "venue": "",
+  "publication_types": [],
+  "authors": [
+   "Youssef Haouchat",
+   "Aleix Boquet-Pujadas",
+   "S. Kashani",
+   "P. Thévenaz",
+   "Michael Unser"
+  ],
+  "citations": 0,
+  "source": "semanticscholar",
+  "source_id": "0d3795c98a2a83d53704e5965e08461bc452dfc1",
+  "paper_id": "arxiv:2606.21405",
+  "doi": "",
+  "arxiv_id": "2606.21405",
+  "dblp_key": "",
+  "paper_url": "https://www.semanticscholar.org/paper/0d3795c98a2a83d53704e5965e08461bc452dfc1",
+  "published_iso": "2026-06-19",
+  "from_query": [
+   "unrolled reconstruction network forward operator calibration"
+  ]
+ },
+ {
+  "title": "Degradation-Aware Sparse Reconstruction for Magneto-Acousto-Electrical Tomography of Magnetic Nanoparticles With Electrode Detection",
+  "title_norm": "degradation aware sparse reconstruction for magneto acousto electrical tomograph",
+  "abstract": "Magneto-acousto-electrical tomography of magnetic nanoparticles with electrode detection (MAET-ED) is a promising imaging modality featuring simplified system configuration and favorable biological safety. However, sparse ultrasonic excitation leads to a rank-deficient forward operator, resulting in an ill-posed reconstruction problem with anisotropic artifacts and severe structural degradation. These degradation characteristics are fundamentally different from those in computed tomography (CT) and magnetic resonance imaging (MRI), limiting the applicability of conventional reconstruction strategies. In this work, we formulate sparse MAET-ED reconstruction from a degradation-aware inverse perspective and develop a physics-derived reconstruction framework. The proposed method follows a two-stage operator-composition strategy, consisting of a physics-constrained projection for measurement consistency and a degradation-aware compensation stage for artifact suppression and structural restoration. Importantly, the compensation network [degradation-aware sparse reconstruction network (DASR-Net)] is explicitly designed based on the identified sparse-excitation-induced degradation mechanisms, establishing a direct correspondence between imaging physics and network architecture. Extensive experiments demonstrate that the proposed method significantly improves the reconstruction quality under limited excitation conditions, achieving 31.27 dB/0.9738 peak signal-to-noise ratio (PSNR)/SSIM in simulations and stable reconstruction at $\\Delta d =5$ mm in phantom studies (19.8 dB/ 0.92 SSIM). These results validate the effectiveness of the proposed physics-driven degradation-aware framework for MAET-ED reconstruction.",
+  "tldr": "",
+  "year": 2026,
+  "venue": "IEEE Transactions on Instrumentation and Measurement",
+  "publication_types": [
+   "JournalArticle"
+  ],
+  "authors": [
+   "Xiaohan Hou",
+   "Xiaoheng Yan",
+   "Weihua Chen",
+   "Ying Xu",
+   "Chuang Li",
+   "Jing Zhong"
+  ],
+  "citations": 0,
+  "source": "semanticscholar",
+  "source_id": "2ac5ce23d6cbd79f8690473b8878f4d3f2db1327",
+  "paper_id": "doi:10.1109/TIM.2026.3709356",
+  "doi": "10.1109/TIM.2026.3709356",
+  "arxiv_id": "",
+  "dblp_key": "",
+  "paper_url": "https://www.semanticscholar.org/paper/2ac5ce23d6cbd79f8690473b8878f4d3f2db1327",
+  "published_iso": null,
+  "from_query": [
+   "unrolled reconstruction network forward operator calibration"
+  ]
+ }
+]

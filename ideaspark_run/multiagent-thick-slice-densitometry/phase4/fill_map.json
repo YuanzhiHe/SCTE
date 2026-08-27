@@ -1,0 +1,230 @@
+{
+ "method_name": "ARC-CT (Arbitrated Reconstruction with Certificates for CT)",
+ "abstract_draft": "Emphysema is quantified from chest CT by a threshold statistic of the lung attenuation histogram — the percentage of voxels below -950 HU (LAA-950) and the 15th percentile of lung attenuation — but most archived chest CT is reconstructed at 5-8 mm slice thickness, where slab averaging biases both. Deep restoration of thick-slice CT is now clinically validated on diagnostic endpoints (openalex:W4404646478) and benchmarked on real 1 mm/5 mm pairs (dblp:journals/corr/abs-2206-06253), yet both are optimised and judged as images. Because the map from a reconstruction to a threshold statistic is many-to-one, a restoration that DISPLACES the histogram and one that RECOVERS its low-attenuation tail are indistinguishable to every objective and metric currently used: in our preliminary run on real 5 mm data, the entire LAA-950 gain from real-pair fine-tuning was reproduced by changing a single output-bias scalar by -12.2 HU, while the reconstructed histogram stayed too narrow. ARC-CT decomposes the pipeline into three solvers that exchange a typed, machine-checkable artifact instead of activations: a non-learned solver identifies the through-plane acquisition per scan (effective slice width, noise, unexplained-residual fraction), the network reconstructs conditioned on that identification, and a moment-based solver decomposes the data-consistency residual into a displacement term and a structural term — the displacement term being invariant to the width estimate because slab averaging preserves slab means. The arbiter certifies, flags or abstains per scan, with no thin-slice reference. Falsification: on held-out real pairs, the displacement term must separate a genuinely improved model from a displacement-improved one, and freezing the operator identification at the nominal width must return LAA-950 concordance to the un-adapted regime. Expected outcome: densitometric values from restored thick-slice CT that carry evidence, rather than accuracy of unknown provenance.",
+ "motivation.problem_framing": "Quantitative CT densitometry is a threshold statistic: LAA-950 counts the fraction of lung voxels below -950 HU, and Perc15 reads the 15th percentile of the same histogram. Thick-slice acquisition averages along the through-plane axis, which narrows that histogram and therefore biases both numbers — an effect measured repeatedly across slice thickness, kernel and dose (openalex:W4404646478 for the restoration side; the diagnostic-side literature documents the bias but stops there). Two research lines respond. The restoration line synthesises thin slices from thick ones and is now validated multi-centre on DIAGNOSTIC endpoints (openalex:W4404646478) with a real-paired benchmark that exposes a simulated-versus-real domain gap (dblp:journals/corr/abs-2206-06253). The densitometry line leaves the image alone and corrects the scalar: kernel conversion to a reference protocol (openalex:W4407122143), or statistical correction of the density summary for volume, noise and inter-scanner bias.\n\nNeither line can answer the question a trial actually asks. Because the map from a reconstruction to a threshold statistic is many-to-one, a global attenuation displacement and a genuine recovery of the low-attenuation tail produce the same LAA-950 and are indistinguishable to a voxel-wise or perceptual objective, to PSNR/SSIM, and to a reader study. This is not hypothetical: in our preliminary run, fine-tuning a densitometry-guarded restoration model on real 1 mm/5 mm pairs improved LAA-950 mean absolute error from 0.56 to 0.41 percentage points and concordance from 0.47 to 0.84 — and a tensor-level comparison showed that the ONLY weight that moved beyond float32 noise was the output bias, by -12.2 HU. Replacing that single scalar in the un-fine-tuned model reproduced the entire gain, while the reconstruction's lung standard deviation stayed at 54.9 HU against the reference's 58.6 HU.\n\nThe structural reason is that the reconstruction's own physics is never held accountable. The acquisition operator is assumed — nominally 5 mm, when a fit on 50 real pairs gives an effective width of 6.25 mm — so the data-consistency residual conflates operator error with reconstruction error, and a displacement large enough to move the endpoint hides inside it. The model-based lines that do relax the operator assumption (arxiv:2503.21501v1, arxiv:2403.04847v2, semanticscholar:0d3795c98a2a83d53704e5965e08461bc452dfc1) recover physical parameters for their own sake and never ask what a per-scan estimate must be accountable to, while the safety-oriented line bounds edits in the image domain (arxiv:2605.16458v1), which neither implies nor detects a bound on the functional that is actually read.",
+ "motivation.why_now": "Three things converged inside the last twelve months. First, thick-slice restoration crossed from image quality into clinical validation (openalex:W4404646478, npj Digital Medicine 2024), so its outputs are now candidates for measurement, not only for viewing. Second, the field acquired the instruments to name this failure: a cross-modality benchmark showing that deployed reconstruction networks collapse under operator mismatch (arxiv:2603.04538v1, 2026-03), and a physics-informed benchmark for detecting and grading CT degradation (arxiv:2605.16431v1, 2026-05) — both measure the disease, neither closes the loop back into the reconstruction or into a clinical quantity. Third, the agentic turn reached medical imaging (arxiv:2605.22208v2, arxiv:2606.29763v1, 2026), which makes it timely to ask what a multi-solver decomposition must own to be more than pipeline orchestration. Meanwhile the only public real-paired 1 mm/5 mm chest CT benchmark was released in full (dblp:journals/corr/abs-2206-06253), so the sim-versus-real question can now be answered on public data instead of behind institutional walls.",
+ "motivation.why_prior_stopped[0].what_they_did": "Built and multi-centre-validated a convolution-transformer network that synthesises 1 mm chest CT from 5 mm input, showing improved reader diagnosis and improved downstream AI performance.",
+ "motivation.why_prior_stopped[0].what_they_did_not_do": "Never evaluated a densitometric endpoint — LAA-950, Perc15 and the lung attenuation distribution appear nowhere in the paper — so nothing distinguishes a reconstruction that restores the histogram from one that relocates it.",
+ "motivation.why_prior_stopped[0].structural_reason_they_stopped": "Missing measurement: their success criterion is diagnostic, and a diagnostic criterion is insensitive to a global attenuation offset that moves a threshold count.",
+ "motivation.why_prior_stopped[1].what_they_did": "Released the first real-paired 1 mm/5 mm chest CT benchmark and demonstrated that models trained on simulated degradation transfer poorly to real thick series.",
+ "motivation.why_prior_stopped[1].what_they_did_not_do": "Left the gap as a PSNR/SSIM deficit without attributing it to a physical cause or attaching a clinical quantity to it.",
+ "motivation.why_prior_stopped[1].structural_reason_they_stopped": "Missing mechanism: the benchmark has no per-scan estimate of the acquisition, so the observed gap cannot be decomposed into operator error and reconstruction error.",
+ "motivation.why_prior_stopped[2].what_they_did": "Constructed a cross-modality benchmark quantifying how far reconstruction networks fall when the assumed forward operator deviates from the physical one.",
+ "motivation.why_prior_stopped[2].what_they_did_not_do": "Did not feed the mismatch estimate back into reconstruction, and did not connect it to any downstream measurement whose bias the mismatch must explain.",
+ "motivation.why_prior_stopped[2].structural_reason_they_stopped": "Missing mechanism: the benchmark's unit of analysis is the network's image error, so a mismatch that matters only through a functional of the output has no place to be reported.",
+ "motivation.why_prior_stopped[3].what_they_did": "Inferred image and measurement operator jointly under a generative prior over operators, so a blind inverse problem can be solved without calibration.",
+ "motivation.why_prior_stopped[3].what_they_did_not_do": "Did not construct the projection of the residual onto the direction that moves a downstream functional, so an operator error and an image offset remain exchangeable inside one posterior.",
+ "motivation.why_prior_stopped[3].structural_reason_they_stopped": "Missing measurement: with no functional to defend, there is no reason to privilege the mean direction of the residual over any other.",
+ "motivation.why_prior_stopped[4].what_they_did": "Argued that a restoration model in a safety-sensitive setting is not free to rewrite its input, and constrained the magnitude, location and stability of its edits.",
+ "motivation.why_prior_stopped[4].what_they_did_not_do": "Bounded edits in the image domain only; a small, spatially diffuse, entirely admissible edit is exactly what moves a -950 HU threshold count.",
+ "motivation.why_prior_stopped[4].structural_reason_they_stopped": "Missing assumption-relaxation: the safety criterion is stated over voxels, not over the functional the clinician reads, so the bound cannot be transferred to the measurement.",
+ "motivation.why_prior_stopped[5].what_they_did": "Converted reconstruction kernels across hospitals to one reference setting and showed the resulting emphysema extent correlates better with clinical parameters.",
+ "motivation.why_prior_stopped[5].what_they_did_not_do": "Harmonised the kernel only, left slice thickness untouched, and fitted one global mapping rather than estimating what the current scan's acquisition actually was.",
+ "motivation.why_prior_stopped[5].structural_reason_they_stopped": "Missing tool: without a per-scan estimate of the acquisition there is nothing to harmonise TOWARD except a reference protocol that archived data does not have.",
+ "motivation.why_prior_stopped[6].what_they_did": "Coupled Bayesian spectral deconvolution with an expert-reasoning loop that revises the physical model when automated deconvolution fails on unknown background or noise.",
+ "motivation.why_prior_stopped[6].what_they_did_not_do": "Bound neither the reasoner's proposals to a data-consistency contract nor the loop to a quantity of record, so a disagreement between reasoner and measurement has no adjudicator.",
+ "motivation.why_prior_stopped[6].structural_reason_they_stopped": "Missing mechanism: the loop optimises the fit of a 1-D model, and there is no functional whose correctness the revised model must still defend.",
+ "motivation.why_prior_stopped[7].what_they_did": "Built a self-evolving multimodal-LLM restoration agent that selects tools and their application order for coupled degradations, learning from past trajectories.",
+ "motivation.why_prior_stopped[7].what_they_did_not_do": "Spent agency on tool selection over an existing restoration toolbox; no agent owns a physical estimand, nothing binds the plan to the observation, and no measured quantity has to survive it.",
+ "motivation.why_prior_stopped[7].structural_reason_they_stopped": "Missing assumption-relaxation: with the degradation model outside the agents' remit, the plan can only be judged by the restored image, which is the very criterion that cannot see a displacement.",
+ "motivation.what_changes_when_gap_closes": "A densitometric value read off a restored thick-slice volume becomes reportable evidence rather than a number of unknown provenance: each scan carries a per-scan statement of how much of its LAA-950 is attributable to a global attenuation displacement and how much of the observation the identified acquisition cannot explain, so a multi-centre study can decide scan-by-scan whether a value may be pooled instead of relying on protocol paperwork. It also makes the restoration literature cumulative in a way it currently is not — an effective slice width and an unexplained-residual fraction are comparable across papers, scanners and thicknesses, whereas a PSNR on a private cohort is not. Finally it gives the field a way to test, rather than assert, that a restoration recovered structure: any method claiming tail recovery can be asked for the same certificate.",
+ "core_claim": "Because slab averaging preserves slab means for every slice-profile width, the mean direction of a reconstruction's data-consistency residual identifies a global attenuation displacement independently of the acquisition estimate — so a thick-slice restoration can state, per scan and without a thin-slice reference, whether its emphysema index is carried by a displacement of the attenuation histogram or by evidence the measurement actually supports.",
+ "sub_claims": [
+  {
+   "id": "SC1",
+   "statement": "On real 5 mm chest CT, the LAA-950 improvement obtained by fine-tuning a densitometry-guarded restoration model on real pairs is reproduced by changing one scalar — the network's output bias — leaving the reconstructed lung histogram's width unchanged.",
+   "supports_which_aspect": "the empirical reveal in the hook; motivates why a threshold statistic needs a provenance statement"
+  },
+  {
+   "id": "SC2",
+   "statement": "The displacement term of the residual, computed over the eroded interior of the lung set, is invariant to the operator width estimate (measured spread 0.04 HU across 4-10 mm on a real pair) while the un-eroded version varies by 9.4 HU over the same range.",
+   "supports_which_aspect": "the identifiability pivot: what makes the certificate meaningful under an unknown acquisition"
+  },
+  {
+   "id": "SC3",
+   "statement": "The effective through-plane width of a real 5 mm series is identifiable per scan from the series itself (median 6.25 mm over 50 real pairs, versus the 5.00 mm nominal value), and conditioning the reconstruction on it is separable from using it to audit the reconstruction.",
+   "supports_which_aspect": "the audit leg — the fixed-operator assumption is false and its relaxation is testable"
+  },
+  {
+   "id": "SC4",
+   "statement": "A per-scan certify/flag/abstain verdict computable without any thin-slice reference separates a genuinely improved model from a displacement-improved one on held-out real pairs.",
+   "supports_which_aspect": "the deployment claim: the verdict leg, and the falsification's outcome metric"
+  }
+ ],
+ "key_equations": [
+  {
+   "id": "E1",
+   "linked_step_id": "S2",
+   "latex": "A_w(x)[k] = \\frac{1}{r}\\sum_{j=0}^{r-1} (k_w * x)[rk + j], \\qquad \\sum_i k_w[i] = 1",
+   "description": "The through-plane acquisition model: a normalised Gaussian slice-sensitivity profile of full-width-half-maximum w applied along z, followed by an average over r thin slices per thick slice.",
+   "description_zh": "层厚采集模型：沿 z 方向做归一化高斯层敏感度卷积（半高全宽 w），再对每 r 层薄层取平均得到一层厚层。"
+  },
+  {
+   "id": "E2",
+   "linked_step_id": "S2",
+   "latex": "\\hat{w} = \\arg\\min_{w \\in \\mathcal{W}} \\|A_w(\\tilde{x}) - y\\|_2^2, \\qquad \\rho = \\frac{\\|A_{\\hat{w}}(\\hat{x}) - y\\|_2}{\\|y - \\bar{y}\\|_2}",
+   "description": "The operator solver: a grid fit of the effective width from the observed thick series itself, plus the fraction of the observation the fitted physics cannot explain.",
+   "description_zh": "算子求解器：直接从观测到的厚层序列网格拟合有效层厚，并给出该物理模型无法解释的观测占比。"
+  },
+  {
+   "id": "E3",
+   "linked_step_id": "S4",
+   "latex": "\\hat{\\delta} = \\operatorname*{mean}_{L_e}\\big(A_{\\hat{w}}(\\hat{x}) - y\\big), \\qquad \\operatorname*{mean}_{L_e} A_w(x) = \\operatorname*{mean}_{L_e} x \\;\\; \\forall w",
+   "description": "The displacement term and the invariance it rests on: over the eroded interior L_e of the lung set, the slab average preserves the mean for every width, so a global attenuation offset is identified independently of the width estimate.",
+   "description_zh": "位移项及其依据的不变性：在肺区集合的腐蚀内部 L_e 上，厚层平均对任意层厚都保持均值，因此全局 HU 偏移的识别与层厚估计无关。"
+  },
+  {
+   "id": "E4",
+   "linked_step_id": "S6",
+   "latex": "\\text{verdict} = \\begin{cases} \\textsf{certified} & |\\hat{\\delta}| \\le \\tau_\\delta \\wedge \\rho_{\\text{struct}} \\le \\tau_\\rho \\wedge |s| \\le \\tau_s \\\\ \\textsf{flagged} & \\text{otherwise} \\\\ \\textsf{abstain} & |L_e| = 0 \\end{cases}",
+   "description": "The arbiter: a feasibility verdict on the certificate rather than a score, naming the dominant violated term when it flags.",
+   "description_zh": "仲裁器：对证书做可行性判定而非打分，判为 flagged 时给出主导违反项。"
+  },
+  {
+   "id": "E5",
+   "linked_step_id": "S5",
+   "latex": "\\mathcal{L} = \\mathcal{L}_{\\text{vox}} + w_{dc}\\mathcal{L}_{dc} + w_{traj}\\mathcal{L}_{traj} + w_{nps}\\mathcal{L}_{nps} + \\lambda_\\delta |\\hat{\\delta}|",
+   "description": "The single new training term: the displacement penalty, which bills the free lunch the trajectory guardrail otherwise takes.",
+   "description_zh": "训练侧唯一新增项：位移惩罚，用来对轨迹护栏原本可以白拿的那部分收益计价。"
+  }
+ ],
+ "method_flow.high_level_pipeline": "A thick-slice chest CT series arrives with no phantom, no reference protocol and no thin-slice counterpart. A non-learned operator solver first asks what acquisition could have produced it, fitting an effective through-plane width and noise level from the series itself and reporting how much of the observation that fitted physics cannot explain. The reconstruction network is then conditioned on that identification rather than on a nominal slice width, and returns a 1 mm volume. A moment-based densitometry solver takes the reconstruction back through the identified acquisition and splits the disagreement with the observation into a global displacement term — the one direction slab averaging leaves invariant, so it is readable no matter what width was fitted — and a structural remainder, adding a protocol-calibrated tail-recovery term when a calibration for this protocol exists. The arbiter reads the resulting certificate and returns certify, flag or abstain together with the emphysema index, so the number leaves the pipeline with its provenance attached.",
+ "method_flow.steps": [
+  {
+   "step_id": "S1",
+   "title": "Build real thin/thick pairs and a matched simulated arm",
+   "what_changes": "Turns raw paired NIfTI volumes into z-aligned, integer-ratio .npy pairs plus a per-case audit row, and creates a simulated arm from the same anatomy with a KNOWN operator.",
+   "why_this_step": "The confound-isolating separation the audit leg owes needs two arms that differ only in whether the acquisition is known.",
+   "linked_component": "controlled_diagnostic_design leg",
+   "linked_falsification": "supplies the held-out real pairs the falsification experiment runs on",
+   "input": "RPLHR-CT 1 mm and 5 mm volumes",
+   "output": "aligned pairs (D_thin = r*D_thick), pair_audit.csv"
+  },
+  {
+   "step_id": "S2",
+   "title": "Identify the acquisition per scan (operator solver)",
+   "what_changes": "Fits the effective through-plane width by grid search over 2.00-12.00 mm and estimates the through-plane noise, reporting the unexplained-residual fraction and whether the fit sits at a grid endpoint.",
+   "why_this_step": "Every certificate term is computed under this estimate; a nominal width both hides a displacement inside the residual and mis-conditions the network.",
+   "linked_component": "assumption_audit_and_pivot leg",
+   "linked_falsification": "the negative control freezes this step at the nominal 5.00 mm",
+   "input": "thick volume y, current thin estimate x_tilde",
+   "output": "(w_hat, sigma_hat, rho) + the full fit profile"
+  },
+  {
+   "step_id": "S3",
+   "title": "Condition the reconstruction on the identified acquisition",
+   "what_changes": "Replaces the constant nominal-width conditioning of the network's identification module with (w_hat, sigma_hat), which changes the reconstructed volume and therefore every statistic read off it.",
+   "why_this_step": "Separates identification-for-conditioning from identification-for-auditing, which ablation (c) then measures.",
+   "linked_component": "decompose_and_delegate leg",
+   "linked_falsification": "ablation (c) removes this conditioning while keeping the certificate",
+   "input": "y, (w_hat, sigma_hat)",
+   "output": "x_hat on the 1 mm grid"
+  },
+  {
+   "step_id": "S4",
+   "title": "Fit the tail-recovery calibration on training pairs only",
+   "what_changes": "Regresses the thin-slice through-plane lung variance on quantities observable at inference and measures the held-out residual spread, refusing to ship the term when the relation carries no information.",
+   "why_this_step": "The closed-form attenuation identity is false by an order of magnitude on real data, so the tail-recovery evidence must be empirical and scoped.",
+   "linked_component": "self_supervised_signal_engineering leg",
+   "linked_falsification": "the tail-recovery term is one of the quantities the falsification compares across arms",
+   "input": "paired training volumes",
+   "output": "fitted relation f, its residual spread sigma_v, the protocol tag"
+  },
+  {
+   "step_id": "S5",
+   "title": "Compute the certificate (densitometry solver)",
+   "what_changes": "Builds the eroded interior of the lung set, computes the displacement term, the structural remainder and — when calibrated — the tail-recovery term, emitting ABSTAIN on an empty set and UNAVAILABLE without a calibration.",
+   "why_this_step": "This is the typed artifact that crosses the boundary between the learned and the physical parts of the pipeline.",
+   "linked_component": "reframe_as_solvable_object companion",
+   "linked_falsification": "the displacement term is the load-bearing variable of the falsification",
+   "input": "x_hat, y, w_hat, lung set",
+   "output": "(w_hat, sigma_hat, rho, delta_hat, rho_struct, s)"
+  },
+  {
+   "step_id": "S6",
+   "title": "Validate the estimators on a known-perfect reconstruction",
+   "what_changes": "Runs the certificate with the TRUE thin volume in place of the reconstruction on held-out pairs; any term that does not return its null value is reported as estimator bias before any model claim is made.",
+   "why_this_step": "This check is what exposed the two defects in the first version of the mechanism, and it is cheap enough to be mandatory.",
+   "linked_component": "controlled_diagnostic_design leg",
+   "linked_falsification": "establishes the null values against which the falsification's arms are read",
+   "input": "held-out real pairs",
+   "output": "per-term bias floor (e.g. the -0.55 HU displacement floor measured on a real pair)"
+  },
+  {
+   "step_id": "S7",
+   "title": "Add the displacement penalty and re-train",
+   "what_changes": "Adds lambda_delta |delta_hat| to the existing composite loss; the gradient flows through the identified acquisition into the network and shifts the reconstruction's lung mean, changing the LAA-950 count it produces.",
+   "why_this_step": "It bills the one direction the trajectory guardrail could otherwise use to buy densitometric accuracy for free.",
+   "linked_component": "decompose_and_delegate leg",
+   "linked_falsification": "ablation (b) sets lambda_delta = 0",
+   "input": "training pairs, certificate module",
+   "output": "trained weights"
+  },
+  {
+   "step_id": "S8",
+   "title": "Arbitrate and gate the reported value",
+   "what_changes": "Implements certify / flag / abstain as a pure function of the certificate and the three thresholds, emitting the verdict, the dominant violated term and the gated densitometric value.",
+   "why_this_step": "Converts a disagreement between assumed physics and observation into a statement about the number a clinician reads.",
+   "linked_component": "self_supervised_signal_engineering leg",
+   "linked_falsification": "the verdict is the per-scan output whose separation power the experiment tests",
+   "input": "certificate, thresholds",
+   "output": "verdict + gated LAA-950 / Perc15"
+  },
+  {
+   "step_id": "S9",
+   "title": "Evaluate five arms under one harness",
+   "what_changes": "Computes endpoint metrics and the certificate jointly for the trilinear baseline, the restoration model, its real-pair fine-tuned version, its output-bias-only recalibration and ARC-CT; no arm may report an endpoint without its certificate.",
+   "why_this_step": "The bias-only arm is the positive control that makes the hook's claim checkable.",
+   "linked_component": "controlled_diagnostic_design leg",
+   "linked_falsification": "this harness IS the falsification experiment",
+   "input": "all trained arms, held-out real pairs",
+   "output": "joint endpoint+certificate table"
+  },
+  {
+   "step_id": "S10",
+   "title": "Ablate the decomposition",
+   "what_changes": "Freezes the operator solver at the nominal width, zeroes the displacement penalty, removes the conditioning while keeping the certificate, and sweeps the erosion radius over 4-12 voxels.",
+   "why_this_step": "Isolates the marginal contribution of each solver, which is what separates a decomposition from an assembly.",
+   "linked_component": "decompose_and_delegate leg",
+   "linked_falsification": "the frozen-operator run is the falsification's negative control",
+   "input": "trained arms",
+   "output": "ablation table"
+  },
+  {
+   "step_id": "S11",
+   "title": "Repeat at 8 mm without retuning",
+   "what_changes": "Runs the whole pipeline at r = 8 on simulated 8 mm slabs and checks that the operator solver returns a wider width and the thresholds still apply.",
+   "why_this_step": "Cross-thickness transfer is the practical reason the operator is identified rather than assumed.",
+   "linked_component": "assumption_audit_and_pivot leg",
+   "linked_falsification": "an out-of-training-regime check on the same load-bearing variable",
+   "input": "thin volumes, r = 8",
+   "output": "8 mm endpoint + certificate table"
+  },
+  {
+   "step_id": "S12",
+   "title": "Report certificate distributions per arm",
+   "what_changes": "Contrasts the certificate distribution on the simulated arm (operator known) against the real arm (operator identified), which is the confound-isolating separation the audit leg promised.",
+   "why_this_step": "Shows whether the residual the identified operator cannot explain is what separates simulated from real performance.",
+   "linked_component": "controlled_diagnostic_design leg",
+   "linked_falsification": "supports the mechanism claim beyond the single load-bearing variable",
+   "input": "all evaluation outputs",
+   "output": "per-arm certificate distributions"
+  }
+ ],
+ "method_flow.design_reasoning_echo": "The design starts from a measured failure rather than from an architecture: on real thick-slice data the apparent densitometric gain of real-pair fine-tuning was carried by a single output-bias scalar, which means the objective could buy the endpoint without buying the evidence. The naive fix — add a data-consistency loss under the nominal operator and report its residual — fails because the nominal operator is wrong (5.00 mm assumed against 6.25 mm fitted, with 12.8% of the thick signal unexplained), so the residual conflates operator error with reconstruction error and the displacement hides inside it. The mechanism therefore identifies the operator per scan and then decomposes the residual along the direction that moves a threshold count. Two design decisions are deliberate: the tail-recovery term is report-only and never trained on, because a model can satisfy a variance target by injecting through-plane noise; and the reconstruction is NOT projected onto exact data consistency, because doing so would hard-code the fitted operator into the output and make the certificate vacuous by construction. The mechanism also stays off three occupied positions in the field's lineage: deconvolving with a phantom-measured profile, harmonising to a reference kernel or protocol, and letting a reasoning agent select restoration tools.",
+ "feasibility_validation.data.verdict": "feasible",
+ "feasibility_validation.data.rationale": "Everything the mechanism needs is public and already downloaded: RPLHR-CT supplies 250 chest CT cases with REAL paired 1 mm and 5 mm reconstructions (CC-BY-4.0), and LIDC-IDRI/LUNA16 supply thin-slice volumes for scaling the simulated arm; no private or credentialed data is required for any claim in the falsification.",
+ "feasibility_validation.theoretical.verdict": "feasible",
+ "feasibility_validation.theoretical.rationale": "The only load-bearing analytic statement is the mean-preservation property of a normalised blur followed by average pooling, together with the support condition under which it survives masking — both elementary, and both already checked numerically against a real pair rather than assumed.",
+ "feasibility_validation.engineering.verdict": "feasible",
+ "feasibility_validation.engineering.rationale": "The operator solver is a 41-point grid search over an existing differentiable forward operator, the certificate is a handful of masked moments, and the arbiter is a pure function; the only non-trivial engineering is the paired-data preparation, which is already implemented and run.",
+ "feasibility_validation.falsification.verdict": "feasible",
+ "feasibility_validation.falsification.rationale": "The experiment names its dataset split, its five arms, its outcome metric with direction, one load-bearing variable, a negative control that intervenes on that variable's producer and a positive control that is a single-scalar recalibration — all runnable on the hardware already in use.",
+ "feasibility_validation.overall": "feasible",
+ "reviewer_concerns_and_responses[0].response": "The defense is anchored in core_mechanism and in the differentiation_from_lit entry for arxiv:2503.21501v1: a joint posterior over (operator, image) can trade an operator error against a global image offset with no observable signature, whereas the mechanism's claim is that ONE direction of the residual — the slab-mean direction — is invariant to the operator estimate and therefore isolates exactly the offset that moves a threshold count. The Phase 3.2 audit reached the same conclusion (addressable_via = not_needed): the threat becomes subsuming only if that mean-direction ambiguity is shown to vanish under their operator prior, which their paper neither claims nor tests, and the width-sweep ablation in method_flow.steps S10 is what would expose it if it did.",
+ "reviewer_concerns_and_responses[1].response": "A scoop-check on model-misspecification diagnostics for inverse problems and simulation-based inference must establish that no existing goodness-of-fit or posterior-predictive residual test already supplies a per-instance statistic that is provably invariant to the estimated forward operator AND tied to a downstream functional of the recovered signal; if one does, the contribution narrows to its instantiation for through-plane CT densitometry. This check has not been run yet and is not claimed to have passed.",
+ "reviewer_concerns_and_responses[2].response": "The distinction from agentic imaging systems is made testable rather than positional in differentiation_from_lit: their artifact is a plan judged by the restored image, while ours is a physical quantity with a checkable invariance — the displacement term is flat to 0.04 HU across operator widths of 4-10 mm on a real pair, whereas any tool-selection signal moves with the acquisition assumption it never estimates. method_flow.steps S10's width sweep is the experiment that separates them.",
+ "reviewer_concerns_and_responses[3].response": "The identifiability claim is stated at conditional strength in core_mechanism, with its conditions named (eroded interior support, normalised kernel, replicate padding) and its measured bias floor quoted (-0.55 HU on a real pair) rather than asserted as exact. Crucially the condition is both ENFORCED by the estimator (the erosion is part of the definition) and VERIFIED before any model claim by step S6, which runs the certificate on a known-perfect reconstruction — the theory-practice disconnect this reject lesson describes is what that step exists to prevent.",
+ "reviewer_concerns_and_responses[4].response": "The manufactured signal is split by validity: the displacement term depends on no calibration property of the network and is validated exactly where its assumption is weakest (a perfect reconstruction, across the full operator range), while the tail-recovery term was found by the coherence gate's executed dry run to rest on a stationarity premise that fails by an order of magnitude on real data. Rather than keep it as a derived identity, core_mechanism now states it as a protocol-calibrated empirical relation with a held-out residual spread, an explicit non-transfer warning, and an UNAVAILABLE state when no calibration exists — and it is never used as a training loss, so the degenerate solution of injecting noise cannot be reached.",
+ "domain_landscape.position_note": "The area's retrieved literature is carried by controlled_diagnostic_design (32%, papers that MEASURE how acquisition parameters bias a quantitative readout) and architectural_operator_substitution (26%, papers that swap the restoration backbone); this candidate sits in neither lane, composing decompose_and_delegate (4%) with reframe_as_solvable_object (7%) and an assumption_audit_and_pivot leg that is essentially untested here (1 paper), while using the area's dominant diagnostic pattern only as the companion that supplies its controlled separation."
+}

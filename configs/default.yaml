@@ -1,0 +1,25 @@
+# SCTE-R default config
+data:
+  downsample: 5            # thick_spacing / thin_spacing (5.0mm / 1.0mm)
+  slice_fwhm_mm: 5.0       # nominal effective slice width of the thick series
+  patch: [40, 64, 64]      # (D, H, W) training patch on the 1mm grid
+  hu_clip: [-1000, 200]
+
+model:
+  base_ch: 32
+  n_blocks: 6
+  cond_dim: 32
+  dc_steps: 1              # data-consistency projection steps (M3)
+  n_kernels: 16
+
+loss:
+  w_dc: 1.0               # M3 data consistency
+  w_traj: 0.5            # M4 functional-trajectory guardrail
+  w_nps: 0.1             # M4 noise/NPS calibration
+  ladder: [0.0, 1.0, 2.0, 3.0]
+
+train:
+  epochs: 50
+  batch_size: 2
+  lr: 1.0e-3
+  compute: "<=4x A100"

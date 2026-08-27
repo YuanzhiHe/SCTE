@@ -1,0 +1,37 @@
+# ---- patient data and anything derived from it -------------------------------
+# PRIVATE/ is where prepared hospital pairs and ID_MAP_DO_NOT_EXPORT.csv land.
+# It must never be tracked, not even when it only holds rehearsal symlinks.
+PRIVATE/
+*_thin.npy
+*_thick.npy
+*_lung.npy
+*_base.npy
+ID_MAP_DO_NOT_EXPORT.csv
+
+# ---- bulk data ---------------------------------------------------------------
+DATA/
+*.nii
+*.nii.gz
+*.dcm
+
+# ---- checkpoints and run logs (rebuildable; hundreds of MB) -------------------
+runs/
+*.pt
+!.gitkeep
+
+# ---- internal material that must not be redistributed ------------------------
+*.pptx
+*.ppt
+
+# ---- scratch -----------------------------------------------------------------
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# the shipped public weights are small enough to track
+!public.pt
+!public_flow.pt
+!public_8mm.pt
+!public_realft.pt
+!public_forward_op.pt
+baselines/i3net/

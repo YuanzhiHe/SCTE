@@ -1,0 +1,1003 @@
+[
+ {
+  "title": "LegSegNet: A Public Deep Learning System for Lower Extremity CT Tissue Segmentation and Quantification",
+  "title_norm": "legsegnet a public deep learning system for lower extremity ct tissue segmentati",
+  "abstract": "Lower extremity computed tomography (CT) contains clinically relevant information for body composition analysis, sarcopenia assessment, and musculoskeletal disease monitoring, but extracting these measurements at scale requires accurate tissue segmentation and an automated quantification workflow. Existing public segmentation tools are not designed for comprehensive lower extremity CT analysis, particularly for clinically important inter/intramuscular adipose tissue, and most public methods only provide mask prediction rather than an end-to-end quantification system. To address this problem, we present LegSegNet, a deep learning system for lower extremity CT tissue segmentation and body composition quantification. Given an input CT scan, LegSegNet segments bone, skeletal muscle, subcutaneous adipose tissue, and inter/intramuscular adipose tissue. It then computes quantitative tissue measurements for downstream analysis. We developed the segmentation model using 1,302 manually annotated CT slices and evaluated it on 900 held-out test slices, with all annotations reviewed by radiologists. We benchmark LegSegNet against a broad set of 2D segmentation methods, including CNN-based models, transformer-based models, and finetuned foundation models, and further evaluate its generalization on an external public CT dataset. LegSegNet achieves the best overall segmentation performance, with an average Dice score of 89.31 on the held-out test set. To our knowledge, LegSegNet is the first publicly available end-to-end system for lower extremity CT tissue segmentation and quantification, providing a practical evaluation tool for future computer vision research in medical image analysis. The code and model weights are available at: https://github.com/mazurowski-lab/LegSegNet",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Yuwen Chen",
+   "Yaqian Chen",
+   "Roy Colglazier",
+   "Haoyu Dong",
+   "Hanxue Gu",
+   "Maciej A. Mazurowski",
+   "Kevin W. Southerland"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2605.30829v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2605.30829v1",
+  "published_iso": "2026-05-29T04:33:56Z",
+  "from_query": [
+   "CT slice thickness emphysema quantification bias"
+  ]
+ },
+ {
+  "title": "Conservative AI for Safety-Sensitive Medical Image Restoration: Residual-Bounded CT-CTA Enhancement for Intracranial Aneurysm-Relevant Signal Recovery",
+  "title_norm": "conservative ai for safety sensitive medical image restoration residual bounded ",
+  "abstract": "Image restoration models are increasingly applied to degraded medical scans, but in safety-sensitive settings they must improve image quality without uncontrolled modification of clinically important regions. This is especially relevant for intracranial CT and CT angiography (CTA), where small vessels and aneurysm-relevant cues lie near high-contrast anatomical boundaries. We frame medical image restoration as a conservative AI problem and present a residual-bounded 2.5D restoration framework trained on synthetically degraded CT/CTA inputs. The model adds a learned residual to the original center slice through an edit-control map that limits the magnitude and spatial extent of modification. We evaluate the framework using an aneurysm-relevant image-recovery matrix, paired comparison against a Gaussian baseline, Monte Carlo stability testing, anatomical localization of meaningful edits, and external evaluation on low-dose CT. On 50 out-of-distribution CT-CTA cases, the bounded model achieved a mean target gain of 0.0635, a mean PSNR of 37.51 dB, and an iatrogenic-edit rate of 4.0%. Across 1,000 Monte Carlo runs, it remained net positive in 85.4% of runs with no stably negative cases. On external low-dose CT, the model was directionally beneficial and produced a substantially smaller modification footprint than the baseline. Meaningful edits concentrated in brain and skull regions while unrelated anatomy showed negligible change. These findings provide preliminary computational evidence that residual-bounded restoration is feasible in boundary-sensitive vascular imaging, but they do not establish clinical diagnostic performance and require expert review and prospective validation before clinical use.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Weijun Ma"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2605.16458v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2605.16458v1",
+  "published_iso": "2026-05-15T06:03:31Z",
+  "from_query": [
+   "slice sensitivity profile estimation CT deconvolution",
+   "CT slice thickness emphysema quantification bias",
+   "CT reconstruction kernel conversion emphysema index"
+  ]
+ },
+ {
+  "title": "Automated classification method of COVID-19 cases from chest CT volumes using 2D and 3D hybrid CNN for anisotropic volumes",
+  "title_norm": "automated classification method of covid 19 cases from chest ct volumes using 2d",
+  "abstract": "This paper proposes an automated classification method of chest CT volumes based on likelihood of COVID-19 cases. Novel coronavirus disease 2019 (COVID-19) spreads over the world, causing a large number of infected patients and deaths. Sudden increase in the number of COVID-19 patients causes a manpower shortage in medical institutions. Computer-aided diagnosis (CAD) system provides quick and quantitative diagnosis results. CAD system for COVID-19 enables efficient diagnosis workflow and contributes to reduce such manpower shortage. This paper proposes an automated classification method of chest CT volumes for COVID-19 diagnosis assistance. We propose a COVID-19 classification convolutional neural network (CNN) that has a 2D/3D hybrid feature extraction flows. The 2D/3D hybrid feature extraction flows are designed to effectively extract image features from anisotropic volumes such as chest CT volumes for diagnosis. The flows extract image features on three mutually perpendicular planes in CT volumes and then combine the features to perform classification. Classification accuracy of the proposed method was evaluated using a dataset that contains 1288 CT volumes. An averaged classification accuracy was 83.3%. The accuracy was higher than that of a classification CNN which does not have 2D and 3D hybrid feature extraction flows.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Masahiro Oda",
+   "Tong Zheng",
+   "Yuichiro Hayashi",
+   "Yoshito Otake",
+   "Masahiro Hashimoto",
+   "Toshiaki Akashi",
+   "Shigeki Aoki",
+   "Kensaku Mori"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2607.28950v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2607.28950v1",
+  "published_iso": "2026-07-31T02:12:14Z",
+  "from_query": [
+   "through-plane super resolution anisotropic chest CT volume"
+  ]
+ },
+ {
+  "title": "Gradient Step Plug-and-Play Model for Dental Cone-Beam CT Reconstruction",
+  "title_norm": "gradient step plug and play model for dental cone beam ct reconstruction",
+  "abstract": "The goal of this work is to reduce the effect of photon noise in dental cone-beam CT reconstruction. We consider an inverse problem formulation and develop a databased prior. To this end, we simulate fan-beam acquisitions and add photon noise to the projection data. The prior is obtained by training a gradient-step denoiser using reconstructed simulated acquisitions. The trained model is integrated into a plug-and-play gradient-step algorithm to reconstruct images from simulated projections. Experiments on synthetic data demonstrate the denoising capabilities of the trained model, while qualitative evaluations on real images showcase the algorithm's performance and generalization ability.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Idris Tatachak",
+   "Luis Kabongo",
+   "Nicolas Papadakis",
+   "Xavier Ripoche",
+   "Simon Rit"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2605.28124v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2605.28124v1",
+  "published_iso": "2026-05-27T08:15:05Z",
+  "from_query": [
+   "CT reconstruction kernel conversion emphysema index",
+   "slice sensitivity profile estimation CT deconvolution",
+   "CT slice thickness emphysema quantification bias"
+  ]
+ },
+ {
+  "title": "Time-Scaled Intertwining Cocycles and Identifiability of Multi-Semigroup Mixtures on Hilbert Operator Networks",
+  "title_norm": "time scaled intertwining cocycles and identifiability of multi semigroup mixture",
+  "abstract": "We study rigidity phenomena for time-scaled intertwining families of dissipative semigroups $\\mathcal S_i(t)=e^{-tA_i}$ and prove that a network of bounded injective operators satisfying $K_{ij}\\mathcal S_j(t)=\\mathcal S_i(λ_{ij}t)K_{ij}$ and $K_{ik}=K_{ij}K_{jk}$ necessarily admits a multiplicative gauge representation $λ_{ij}=τ_i/τ_j$, if and only if the renormalized generators $\\{τ_iA_i\\}$ form a common isospectral class with matching eigenspace dimensions; in particular, eigenspaces are transported isomorphically across sectors. The operators $K_{ij}$ define parallel transport in a flat Hilbert bundle over the index network, with flatness derived from the intertwining constraints rather than assumed. As an application, the mixture observable $M(t)=\\sum_i w_i\\mathcal B_0K_{0i}\\mathcal S_i(t)ψ_i$ reduces under finite spectral support to a structured exponential sum. Under spectral separation, the modal parameters are uniquely identifiable, with sector tags determined intrinsically by the operator spectra; under eigenspace observability, active state components are uniquely recovered. Finite-window exact reconstruction holds from $2L$ samples, and the stability bound $\\|\\widehatΘ-Θ_\\ast\\|_{\\mathcal X}\\le C_{\\mathrm{stab}}κ_{\\mathrm{exp}}\\varepsilon$ follows with constants explicitly controlled by the spectral geometry and observability of the network.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Anton Alexa"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2603.20322v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2603.20322v2",
+  "published_iso": "2026-03-19T23:56:32Z",
+  "from_query": [
+   "unrolled reconstruction network forward operator calibration"
+  ]
+ },
+ {
+  "title": "The Zero Slice of Quaternionic Real Bordism",
+  "title_norm": "the zero slice of quaternionic real bordism",
+  "abstract": "Using the Hill-Hopkins-Ravenel norm, one can produce a $Q_8$-spectrum $N_{C_2}^{Q_8} \\text{MU}\\mathbb{R}$, where $Q_8$ is the quaternion group. Working towards a computation of the slice spectral sequence for $N_{C_2}^{Q_8} \\text{MU}\\mathbb{R}$, we compute the zero slice of $N_{C_2}^{Q_8} \\text{MU}\\mathbb{R}$ and a bigraded subring of the $\\text{RO}(Q_8)$-graded homotopy Mackey functors of this slice.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Bertrand J. Guillou",
+   "Jesse Keyes",
+   "David Mehrle"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2605.01174v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2605.01174v1",
+  "published_iso": "2026-05-02T00:41:06Z",
+  "from_query": [
+   "CT slice thickness emphysema quantification bias",
+   "slice sensitivity profile estimation CT deconvolution"
+  ]
+ },
+ {
+  "title": "The Eleventh NTIRE 2026 Efficient Super-Resolution Challenge Report",
+  "title_norm": "the eleventh ntire 2026 efficient super resolution challenge report",
+  "abstract": "This paper reviews the NTIRE 2026 challenge on efficient single-image super-resolution with a focus on the proposed solutions and results. The aim of this challenge is to devise a network that reduces one or several aspects, such as runtime, parameters, and FLOPs, while maintaining PSNR of around 26.90 dB on the DIV2K_LSDIR_valid dataset, and 26.99 dB on the DIV2K_LSDIR_test dataset. The challenge had 95 registered participants, and 15 teams made valid submissions. They gauge the state-of-the-art results for efficient single-image super-resolution.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Bin Ren",
+   "Hang Guo",
+   "Yan Shu",
+   "Jiaqi Ma",
+   "Ziteng Cui",
+   "Shuhong Liu",
+   "Guofeng Mei",
+   "Lei Sun",
+   "Zongwei Wu",
+   "Fahad Shahbaz Khan",
+   "Salman Khan",
+   "Radu Timofte",
+   "Yawei Li",
+   "Hongyuan Yu",
+   "Pufan Xu",
+   "Chen Wu",
+   "Long Peng",
+   "Jiaojiao Yi",
+   "Siyang Yi",
+   "Yuning Cui",
+   "Jingyuan Xia",
+   "Xing Mou",
+   "Keji He",
+   "Jinlin Wu",
+   "Zongang Gao",
+   "Sen Yang",
+   "Rui Zheng",
+   "Fengguo Li",
+   "Yecheng Lei",
+   "Wenkai Min",
+   "Jie Liu",
+   "Keye Cao",
+   "Shubham Sharma",
+   "Manish Prasad",
+   "Haobo Li",
+   "Matin Fazel",
+   "Abdelhak Bentaleb",
+   "Rui Chen",
+   "Shurui Shi",
+   "Zitao Dai",
+   "Qingliang Liu",
+   "Yang Cheng",
+   "Jing Hu",
+   "Xuan Zhang",
+   "Rui Ding",
+   "Tingyi Zhang",
+   "Hui Deng",
+   "Mengyang Wang",
+   "Fulin Liu",
+   "Jing Wei",
+   "Qian Wang",
+   "Hongying Liu",
+   "Mingyang Li",
+   "Guanglu Dong",
+   "Zheng Yang",
+   "Chao Ren",
+   "Hongbo Fang",
+   "Lingxuan Li",
+   "Lin Si",
+   "Pan Gao",
+   "Moncef Gabbouj",
+   "Watchara Ruangsang",
+   "Supavadee Aramvith"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2604.03198v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2604.03198v1",
+  "published_iso": "2026-04-03T17:17:26Z",
+  "from_query": [
+   "through-plane super resolution anisotropic chest CT volume"
+  ]
+ },
+ {
+  "title": "An Open Multi-Center Whole-Body FDG PET/CT Foundation Model for Tumor Segmentation",
+  "title_norm": "an open multi center whole body fdg pet ct foundation model for tumor segmentati",
+  "abstract": "The synergistic interpretation of anatomical information from computed tomography (CT) and metabolic information from positron emission tomography (PET) is important to oncologic imaging. However, existing deep learning methods for PET/CT remain largely task-specific, are often trained on single-center cohorts, or adopt dual-branch fusion schemes that delay cross-modal interaction and underutilize early spatial correspondence between PET and CT. To address these limitations, we present an open-source, multi-center, whole-body FDG PET/CT foundation model utilizing 4,997 harmonized scans from four public datasets. Our framework employs hierarchical UNet-shaped backbones with early channel-wise concatenation, enabling anatomical and metabolic features to interact from the first embedding layer onward. We further introduce a masked autoencoding objective based on zero-mean imputation, combined with a weighted global reconstruction loss. This design avoids non-physical intensity discontinuities at masked-region boundaries that arise from learnable mask tokens. On downstream AutoPET lesion segmentation, the proposed models demonstrate strong label efficiency: with only 10\\% of the labeled training data, they achieve performance comparable to models trained from scratch on the full dataset. Under extreme 5-shot linear probing, joint PET/CT pretraining also achieves higher Dice scores than separated-modality pretraining. This multi-center foundation model demonstrates label efficiency and cross-modality representation learning for PET/CT tumor segmentation. It provides a robust, open-source basis for advancing automated oncologic imaging, significantly reducing the need for large-scale manual annotations in clinical practice.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Xiaofeng Liu",
+   "Qianru Zhang",
+   "Thibault Marin",
+   "Menghua Xia",
+   "Chi Liu",
+   "Georges El Fakhri",
+   "Jinsong Ouyang"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2605.21835v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2605.21835v1",
+  "published_iso": "2026-05-20T23:59:50Z",
+  "from_query": [
+   "CT reconstruction kernel conversion emphysema index",
+   "CT slice thickness emphysema quantification bias",
+   "slice sensitivity profile estimation CT deconvolution"
+  ]
+ },
+ {
+  "title": "InverseNet: Benchmarking Operator Mismatch and Calibration Across Compressive Imaging Modalities",
+  "title_norm": "inversenet benchmarking operator mismatch and calibration across compressive ima",
+  "abstract": "State-of-the-art EfficientSCI loses 20.58 dB when its assumed forward operator deviates from physical reality in just eight parameters, yet no existing benchmark quantifies operator mismatch, the default condition in deployed compressive imaging systems. We introduce InverseNet, the first cross-modality benchmark for operator mismatch, spanning CASSI, CACTI, and single-pixel cameras. Evaluating 12 methods under a four-scenario protocol (ideal, mismatched, oracle-corrected, blind calibration) across 27 simulated scenes and 9 real hardware captures, we find: (1) deep learning methods lose 10-21 dB under mismatch, eliminating their advantage over classical baselines; (2) performance and robustness are inversely correlated across modalities (Spearman r_s = -0.71, p < 0.01); (3) mask-oblivious architectures recover 0% of mismatch losses regardless of calibration quality, while operator-conditioned methods recover 41-90%; (4) blind grid-search calibration recovers 85-100% of the oracle bound without ground truth. Real hardware experiments confirm that simulation trends transfer to physical data. Code will be released upon acceptance.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Chengshuai Yang",
+   "Xin Yuan"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2603.04538v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2603.04538v1",
+  "published_iso": "2026-03-04T19:25:32Z",
+  "from_query": [
+   "unrolled reconstruction network forward operator calibration"
+  ]
+ },
+ {
+  "title": "Slice Regular Composition Operators on Quaternionic Fock Spaces via Matrix Realization",
+  "title_norm": "slice regular composition operators on quaternionic fock spaces via matrix reali",
+  "abstract": "We characterize the boundedness and compactness of slice regular composition operators between quaternionic Fock spaces for the full range \\(0<p,q<\\infty\\), without assuming that the composition symbol preserves a fixed complex slice. As applications of the same method, we also obtain corresponding criteria for weighted composition operators and for products of Volterra-type integral operators with slice regular composition operators. The main tool is a fixed-slice matrix realization of the regular product, which represents slice regular composition on a fixed complex slice through a holomorphic \\(2\\times 2\\) matrix functional calculus. This representation reveals a genuinely quaternionic rigidity phenomenon: boundedness imposes affine restrictions on the eigenvalue functions of the associated matrix symbol rather than on the original symbol itself. In particular, the original symbol need not be affine, and affine eigenvalue functions alone do not characterize boundedness.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Zhaopeng Lin",
+   "Yufeng Lu",
+   "Chao Zu"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2606.06182v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2606.06182v2",
+  "published_iso": "2026-06-04T13:54:49Z",
+  "from_query": [
+   "slice sensitivity profile estimation CT deconvolution",
+   "CT slice thickness emphysema quantification bias"
+  ]
+ },
+ {
+  "title": "DRIFT: Difficulty-aware Rectified Flows for Through-plane MRI Super-Resolution",
+  "title_norm": "drift difficulty aware rectified flows for through plane mri super resolution",
+  "abstract": "Magnetic Resonance Imaging (MRI) is often acquired with anisotropic resolution to reduce scan time, producing stair-step artifacts along the through-plane direction. In through-plane MRI super-resolution, an efficiency-fidelity trade-off arises: feed-forward regressors are fast but oversmooth at large slice-thicknesses, while sampling-based methods improve fidelity at high inference cost. We propose DRIFT, a two-stage thickness-conditioned rectified flow framework for through-plane MRI super-resolution with continuous input slice-thickness. Stage 1 employs an Anatomical Projection Network (APN) to map low-resolution patches to a coarse high-resolution manifold, providing a deterministic anatomical initialization that shortens the residual transport of Stage 2 and stabilizes slice-wise refinement. Stage 2 refines details via rectified flow and introduces a Physics-Aware Difficulty (PAD) metric derived from slice-thickness induced through-plane bandwidth deficit to guide an Adaptive Integration Scheduler (AIS), allocating ODE steps by thickness. A Consistent Endpoint Trajectory Alignment (CETA) loss enforces thickness-consistent reconstructions. Experiments show that DRIFT outperforms super-resolution baselines while reducing inference cost. Code, models, and interactive demos are available at https://yoonseokchoi-ai.github.io/drift-eccv2026/.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Yoonseok Choi",
+   "Eun-Gyu Ha",
+   "Daniel Kim",
+   "Mohammed A. Al-masni",
+   "Ming-Hsuan Yang",
+   "Dong-Hyun Kim"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2607.16649v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2607.16649v1",
+  "published_iso": "2026-07-18T05:47:12Z",
+  "from_query": [
+   "through-plane super resolution anisotropic chest CT volume"
+  ]
+ },
+ {
+  "title": "A Reciprocity-Law-Compliant Photoacoustic Forward-Adjoint Operator",
+  "title_norm": "a reciprocity law compliant photoacoustic forward adjoint operator",
+  "abstract": "We extend the forward-adjoint operator framework derived in our previous study to photoacoustic tomography (PAT). In that earlier work, the acoustic forward operator included a reception operator that maps, at each time step, the pressure wavefield in free space onto the boundary (receiver surface). It was shown that this reception operator serves as a left-inverse of an emission operator that maps the pressure restricted to the boundary (emitter surface) onto free space, perfectly complying with the reciprocity law of physics. In this study, we define the full PAT forward operator as a composite mapping composed of an acoustic forward operator equipped with a scaled variant of the previously proposed reception operator, and an operator describing the photoacoustic source. Singularities arising both in the reception step (due to the boundary restriction) and in the photoacoustic source (due to its instantaneous nature) are regularized using regularized Dirac delta distributions. The resulting PAT forward-adjoint operator pair satisfies an inner-product relation, which we verify through numerical experiments on a discretized domain. The effectiveness of the proposed operator pair is further demonstrated using an iterative minimization framework that yields both qualitatively and quantitatively accurate reconstructions of an initial pressure distribution from the corresponding Dirichlet-type boundary data.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Ashkan Javaherian"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2604.04022v3",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2604.04022v3",
+  "published_iso": "2026-04-05T08:44:26Z",
+  "from_query": [
+   "unrolled reconstruction network forward operator calibration"
+  ]
+ },
+ {
+  "title": "Deep Slice Interpolation for Reducing Through-Plane Anisotropy and Noise in Head CT",
+  "title_norm": "deep slice interpolation for reducing through plane anisotropy and noise in head",
+  "abstract": "Head computed tomography (CT) typically uses sub-millimeter in-plane resolution but 2-5 mm through-plane spacing, creating substantial anisotropy that degrades multiplanar reconstructions, volumetric measurements such as hematoma volume estimation, and downstream algorithms that assume near-isotropic voxels. We present a deep learning system that synthesizes intermediate CT slices from pairs of neighboring axial slices, halving the effective through-plane spacing. The system improves three-dimensional visualization while simultaneously producing inherently denoised outputs, yielding two complementary benefits from a single inference pass.\n  To build a reliable system, we systematically evaluate pixel-wise losses, namely mean squared error (MSE) and mean absolute error (L1); structural-similarity losses, namely the structural similarity index (SSIM) and its multi-scale variant (MS-SSIM); and hybrid combinations. On a held-out test set, all converged models outperform classical interpolation baselines and pretrained video frame interpolation methods (RIFE, FILM) on all structural measures, with MS-SSIM+L1 offering the strongest balanced profile. We also document training instability in SSIM-family losses and identify partial remedies: the standard numerical fixes eliminate the dominant failure mode but leave residual divergence at smaller batch sizes. All results are reported with patient-level bootstrap confidence intervals and paired statistical tests.\n  As an illustration, we apply the system to an out-of-distribution head CT series from Hospital Universitario Virgen del Rocío: the model synthesizes intermediate slices and exhibits on the real slices the implicit-denoising signature predicted by our theoretical analysis, supporting in a single external case that interpolation quality and implicit denoising are not confined to the training distribution.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Luis Cortés Ferre",
+   "Miguel A. Gutiérrez-Naranjo",
+   "Marcin Balcerzyk"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2606.09953v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2606.09953v1",
+  "published_iso": "2026-06-08T10:45:51Z",
+  "from_query": [
+   "slice sensitivity profile estimation CT deconvolution",
+   "CT slice thickness emphysema quantification bias",
+   "through-plane super resolution anisotropic chest CT volume"
+  ]
+ },
+ {
+  "title": "Cardiac MRI Through-Plane Super-Resolution Guided by Reference and Memory",
+  "title_norm": "cardiac mri through plane super resolution guided by reference and memory",
+  "abstract": "Clinical cardiac MRI is commonly acquired with high in-plane resolution but coarse through-plane resolution to reduce scan time and accommodate breath-hold and cardiac-motion constraints, which limits 3D analysis and diagnostic accuracy. We propose STRMSR, a reference- and memory-guided through-plane super-resolution (SR) framework that reconstructs high-resolution (HR) cardiac volumes by leveraging HR reference views acquired from the same subject and intermediate SR results as the memory. Our method uses coarse-to-fine contextual matching to establish robust correspondence between low-resolution target and reference/memory images under spatial misalignment. A learnable patch-wise dynamic feature aggregation module predicts content-adaptive mixture weights for each local patch, effectively fusing dynamic information while suppressing unreliable feature transfers. The intermediate SR results stored in the memory bank ensure slice-to-slice consistency for the super-resolved 3D volume. Experiments on the WHS cardiac MRI dataset under two reference protocols, orthogonal-plane views and long-axis chamber views, demonstrate consistent improvements over baselines at 4x and 8x upsampling factors.Code is available at https://github.com/030108ming/STRMSR",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Shaoming Pan",
+   "Chenchuhui Hu",
+   "Leon Axel",
+   "Meng Ye"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2607.07581v3",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2607.07581v3",
+  "published_iso": "2026-07-08T16:04:06Z",
+  "from_query": [
+   "through-plane super resolution anisotropic chest CT volume"
+  ]
+ },
+ {
+  "title": "Conditional Diffusion Posterior Alignment for Sparse-View CT Reconstruction",
+  "title_norm": "conditional diffusion posterior alignment for sparse view ct reconstruction",
+  "abstract": "Computed Tomography (CT) is a widely used imaging modality in medical and industrial applications. To limit radiation exposure and measurement time, there is a growing interest in sparse-view CT, where the number of projection views is significantly reduced. Deep neural networks have shown great promise in improving reconstruction quality in sparse-view CT, especially generative diffusion models. However, these methods struggle to scale to large 3D volumes due to several reasons: (i) the high memory and computational requirements of 3D models, (ii) the lack of large 3D training datasets, and (iii) the inconsistencies across slices when using 2D models independently on each slice. We overcome these limitations and scale diffusion-based sparse-view CT reconstruction to large 3D volumes by combining conditional diffusion with explicit data consistency. We propose Conditional Diffusion Posterior Alignment (CDPA) to enable scalable 3D sparse-view CT reconstruction. A 2D U-Net diffusion model is conditioned on an initial 3D reconstruction to improve inter-slice consistency, combined with data-consistency alignment to match measured projections. Experiments on synthetic and real Cone Beam CT (CBCT) data show state-of-the-art performance, with ablations that confirm the synergistic effects of the proposed pipeline. Finally, we show that the same principles also strengthen fast denoising U-Nets, yielding near-diffusion quality at a fraction of the computational cost.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Luis Barba",
+   "Johannes Kirschner",
+   "Benjamin Bejar"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2604.21960v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2604.21960v2",
+  "published_iso": "2026-04-23T14:09:13Z",
+  "from_query": [
+   "CT reconstruction kernel conversion emphysema index"
+  ]
+ },
+ {
+  "title": "Midterm Status Report of the ILC Technology Network Activities",
+  "title_norm": "midterm status report of the ilc technology network activities",
+  "abstract": "The ILC Technology Network (ITN) was established in 2022 by the ILC International Development Team, a subcommittee of the International Committee for Future Accelerators, to advance engineering studies toward the realisation of the International Linear Collider (ILC). While the ITN work packages focus on engineering activities for the ILC, their topics are also relevant to a broad range of accelerator applications in particle physics and beyond. These work packages are being carried out now by laboratories in Asia and Europe in close collaboration. This report summarises the current status of the ITN activities.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "ILC Technology Network"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2603.01172v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2603.01172v1",
+  "published_iso": "2026-03-01T16:22:42Z",
+  "from_query": [
+   "unrolled reconstruction network forward operator calibration"
+  ]
+ },
+ {
+  "title": "Simon-SR: Spatially Adaptive Modulation and Visual Prompt Adaptation for Text-Reinforced Super-Resolution",
+  "title_norm": "simon sr spatially adaptive modulation and visual prompt adaptation for text rei",
+  "abstract": "Single Image Super-Resolution (SISR) reconstructs high-quality images from low-resolution inputs. While recent multi-modal methods improve perceptual quality, they remain sensitive to erroneous priors and require expensive annotations. To address these issues, we propose Simon-SR, a multi-modal SISR framework leveraging learnable prompts for efficient semantic mining and robust text-image fusion. Our approach combines Contrastive Prompt Learning with Prompt-Guided Spatially Adaptive Refinement to enhance multi-modal alignment. Experiments demonstrate that Simon-SR surpasses state-of-the-art methods, achieving maximum improvements of 0.50 dB in PSNR, 0.0133 in SSIM, and 0.0695 in LPIPS. Code will be released.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Haotong Cheng",
+   "Yuxuan Li",
+   "Zijie Cui",
+   "Rongling Tan",
+   "Chenyuan Wang"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2607.09351v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2607.09351v1",
+  "published_iso": "2026-07-10T12:30:00Z",
+  "from_query": [
+   "through-plane super resolution anisotropic chest CT volume"
+  ]
+ },
+ {
+  "title": "Reconstruction by Generation: 3D Multi-Object Scene Reconstruction from Sparse Observations",
+  "title_norm": "reconstruction by generation 3d multi object scene reconstruction from sparse ob",
+  "abstract": "Accurately reconstructing complex full multi-object scenes from sparse observations remains a core challenge in computer vision and a key step toward scalable and reliable simulation for robotics. In this work, we introduce RecGen, a generative framework for probabilistic joint estimation of object and part shapes, as well as their pose under occlusion and partial visibility from one or multiple RGB-D images. By leveraging compositional synthetic scene generation and strong 3D shape priors, RecGen generalizes across diverse object types and real-world environments. RecGen achieves state-of-the-art performance on complex, heavily occluded datasets, robustly handling severe occlusions, symmetric objects, object parts, and intricate geometry and texture. Despite using nearly 80% fewer training meshes than the previous state of the art SAM3D, RecGen outperforms it by 30.1% in geometric shape quality, 9.1% in texture reconstruction, and 33.9% in pose estimation.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Andrii Zadaianchuk",
+   "Leonardo Barcellona",
+   "Lennard Schuenemann",
+   "Christian Gumbsch",
+   "Zehao Wang",
+   "Muhammad Zubair Irshad",
+   "Fabien Despinoy",
+   "Rahaf Aljundi",
+   "Stratis Gavves",
+   "Sergey Zakharov"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2604.27106v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2604.27106v1",
+  "published_iso": "2026-04-29T18:51:21Z",
+  "from_query": [
+   "CT reconstruction kernel conversion emphysema index"
+  ]
+ },
+ {
+  "title": "Deep Unrolled Networks in Representation Space Applied to MRI Reconstruction",
+  "title_norm": "deep unrolled networks in representation space applied to mri reconstruction",
+  "abstract": "Deep unrolled networks (DUNs) integrate physical forward models with learned regularization in cascaded network architectures, achieving exceptional performance in inverse problems while maintaining interpretability. While most DUNs operate in the object domain (e.g., image space), recent variants explored representation spaces for improved information flow. However, these methods rely on heuristic methods for data consistency (DC), sacrificing fidelity with measurements.\n  In this work, we introduce DUNE (Deep Unrolled Networks in rEpresentation space), a framework that maintains exact adherence to physical measurements while operating in learned representation spaces. By deriving the DC gradient via the chain rule and implementing it through the Vector-Jacobian Product (VJP), we enable exact backpropagation of measurement residuals into the representation space. This formulation supports diverse architectural backbones, including pre-trained encoders to guide the iterative process.\n  We assess DUNE against state-of-the-art baselines on accelerated MRI reconstruction tasks, demonstrating that exact VJP-based gradients yield superior reconstruction quality and structural fidelity across both single-channel portable low-field and multi-channel clinical high-field MRI acquisitions. The code will be available upon publication at https://github.com/EfeIlicak/DUNE.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Efe Ilıcak",
+   "Baris Imre",
+   "Chloé Najac",
+   "Ruben van den Broek",
+   "Beatrice Lena",
+   "Andrew Webb",
+   "Marius Staring"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2606.21602v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2606.21602v1",
+  "published_iso": "2026-06-19T17:01:41Z",
+  "from_query": [
+   "unrolled reconstruction network forward operator calibration"
+  ]
+ },
+ {
+  "title": "Kernel-Level Per-Slice UPF Latency Measurement in Containerised 5G Core Networks",
+  "title_norm": "kernel level per slice upf latency measurement in containerised 5g core networks",
+  "abstract": "The 5G Core User Plane Function is responsible for packet forwarding, GTP-U decapsulation, and quality of service enforcement for every user data session. How the UPF behaves under simultaneous multi-slice workloads remains empirically uncharacterised in the open literature. Specifically, how its forwarding latency responds to load, how well it isolates one slice from another, and what timing budgets remain available for intelligent control are all open questions. This paper presents a measurement study conducted on a containerised open5GS deployment with three concurrent network slices. We design and implement a namespace-aware TC-BPF instrumentation framework that resolves the fundamental obstacle preventing existing tools from attributing latency observations to individual containerised network functions. We deploy eMBB, URLLC, and mMTC slices with realistic application traffic under light, medium, and heavy load conditions and collect approximately 28 million matched N3 to N6 forwarding delay pairs. The gathered results reveal that eMBB forwarding delay is load-sensitive with the 99th percentile growing from 574 to 1,243 microseconds across load conditions. URLLC delay is load-insensitive, confirming per-UPF process isolation. mMTC exhibits wide-tail TCP behaviour. On this platform, N4 PFCP session modification latency remains consistently below 200 microseconds regardless of data-plane load, suggesting substantial timing headroom within the two-millisecond budget assumed by AI-driven UPF orchestration designs. The instrumentation framework, experiment scripts, and dataset schema are released at https://github.com/MP-Akhil-5G/open5gs-slice-measurement.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Akhil Dev Mishra",
+   "Mayank Pandey"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2605.28185v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2605.28185v1",
+  "published_iso": "2026-05-27T09:08:43Z",
+  "from_query": [
+   "CT slice thickness emphysema quantification bias",
+   "slice sensitivity profile estimation CT deconvolution"
+  ]
+ },
+ {
+  "title": "OARS: Process-Aware Online Alignment for Generative Real-World Image Super-Resolution",
+  "title_norm": "oars process aware online alignment for generative real world image super resolu",
+  "abstract": "Aligning generative real-world image super-resolution models with human visual preference is challenging due to the perception--fidelity trade-off and diverse, unknown degradations. Prior approaches rely on offline preference optimization and static metric aggregation, which are often non-interpretable and prone to pseudo-diversity under strong conditioning. We propose OARS, a process-aware online alignment framework built on COMPASS, a MLLM-based reward that evaluates the LR to SR transition by jointly modeling fidelity preservation and perceptual gain with an input-quality-adaptive trade-off. To train COMPASS, we curate COMPASS-20K spanning synthetic and real degradations, and introduce a three-stage perceptual annotation pipeline that yields calibrated, fine-grained training labels. Guided by COMPASS, OARS performs progressive online alignment from cold-start flow matching to full-reference and finally reference-free RL via shallow LoRA optimization for on-policy exploration. Extensive experiments and user studies demonstrate consistent perceptual improvements while maintaining fidelity, achieving state-of-the-art performance on Real-ISR benchmarks.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Shijie Zhao",
+   "Xuanyu Zhang",
+   "Bin Chen",
+   "Weiqi Li",
+   "Qunliang Xing",
+   "Kexin Zhang",
+   "Yan Wang",
+   "Junlin Li",
+   "Li Zhang",
+   "Jian Zhang",
+   "Tianfan Xue"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2603.12811v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2603.12811v1",
+  "published_iso": "2026-03-13T09:12:46Z",
+  "from_query": [
+   "through-plane super resolution anisotropic chest CT volume"
+  ]
+ },
+ {
+  "title": "Efficient Flow Matching for Sparse-View CT Reconstruction",
+  "title_norm": "efficient flow matching for sparse view ct reconstruction",
+  "abstract": "Generative models, particularly Diffusion Models (DM), have shown strong potential for Computed Tomography (CT) reconstruction serving as expressive priors for solving ill-posed inverse problems. However, diffusion-based reconstruction relies on Stochastic Differential Equations (SDEs) for forward diffusion and reverse denoising, where such stochasticity can interfere with repeated data consistency corrections in CT reconstruction. Since CT reconstruction is often time-critical in clinical and interventional scenarios, improving reconstruction efficiency is essential. In contrast, Flow Matching (FM) models sampling as a deterministic Ordinary Differential Equation (ODE), yielding smooth trajectories without stochastic noise injection. This deterministic formulation is naturally compatible with repeated data consistency operations. Furthermore, we observe that FM-predicted velocity fields exhibit strong correlations across adjacent steps. Motivated by this, we propose an FM-based CT reconstruction framework (FMCT) and an efficient variant (EFMCT) that reuses previously predicted velocity fields over consecutive steps to substantially reduce the number of Neural network Function Evaluations (NFEs), thereby improving inference efficiency. We provide theoretical analysis showing that the error introduced by velocity reuse is bounded when combined with data consistency operations. Extensive experiments demonstrate that FMCT/EFMCT achieve competitive reconstruction quality while significantly improving computational efficiency compared with diffusion-based methods. The codebase is open-sourced at https://github.com/EFMCT/EFMCT.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Jiayang Shi",
+   "Lincen Yang",
+   "Zhong Li",
+   "Tristan van Leeuwen",
+   "Daniel M. Pelt",
+   "K. Joost Batenburg"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2603.00205v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2603.00205v2",
+  "published_iso": "2026-02-27T11:13:43Z",
+  "from_query": [
+   "CT reconstruction kernel conversion emphysema index"
+  ]
+ },
+ {
+  "title": "Unrolled Reconstruction with Integrated Super-Resolution for Accelerated 3D LGE MRI",
+  "title_norm": "unrolled reconstruction with integrated super resolution for accelerated 3d lge ",
+  "abstract": "Accelerated 3D late gadolinium enhancement (LGE) MRI requires robust reconstruction methods to recover thin atrial structures from undersampled k-space data. While unrolled model-based networks effectively integrate physics-driven data consistency with learned priors, they operate at the acquired resolution and may fail to fully recover high-frequency detail. We propose a hybrid unrolled reconstruction framework in which an Enhanced Deep Super-Resolution (EDSR) network replaces the proximal operator within each iteration of the optimization loop, enabling joint super-resolution enhancement and data consistency enforcement. The model is trained end-to-end on retrospectively undersampled preclinical 3D LGE datasets and compared against compressed sensing, Model-Based Deep Learning (MoDL), and self-guided Deep Image Prior (DIP) baselines. Across acceleration factors, the proposed method consistently improves PSNR and SSIM over standard unrolled reconstruction and better preserves fine cardiac structures, leading to improved LA (left atrium) segmentation performance. These results demonstrate that integrating super-resolution priors directly within model-based reconstruction provides measurable gains in accelerated 3D LGE MRI.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Md Hasibul Husain Hisham",
+   "Shireen Elhabian",
+   "Ganesh Adluru",
+   "Jason Mendes",
+   "Andrew Arai",
+   "Eugene Kholmovski",
+   "Ravi Ranjan",
+   "Edward DiBella"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2603.18309v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2603.18309v1",
+  "published_iso": "2026-03-18T21:48:48Z",
+  "from_query": [
+   "unrolled reconstruction network forward operator calibration"
+  ]
+ },
+ {
+  "title": "Evaluation of Silicon-Based Photon-Counting CT for Coronary Stenosis Quantification with Realistic Coronary Artery Phantoms",
+  "title_norm": "evaluation of silicon based photon counting ct for coronary stenosis quantificat",
+  "abstract": "Objective: To quantify the impact of high-resolution deep silicon photon-counting CT (dSi-PCCT) on coronary stenosis quantification in anatomically realistic calcified coronary artery phantoms using Micro-CT as ground truth. Methods: Twelve vessel sections representing four calcification geometries (Type I-IV) and three luminal iodine concentrations (10, 15, and 20 mg/mL) were scanned under static conditions using energy-integrating detector CT (EID-CT), dSi-PCCT, and Micro-CT. Images were registered to Micro-CT and segmented using an automated threshold-based pipeline. The primary analysis compared longitudinal profiles of Micro-CT-referenced percent area stenosis and segmented vessel area. A secondary analysis evaluated ellipse-derived percent area stenosis and percent vessel-area deviation at the maximum-calcification cross-section. Results: dSi-PCCT reduced whole-profile mean absolute error in Micro-CT-referenced percent area stenosis from 3.10% with EID-CT to 1.62% (p=0.027) and reduced segmented vessel-area error from 0.55 to 0.31 mm2 (p=0.001). In the secondary analysis, absolute deviations in ellipse-derived percent area stenosis ranged from 0.1% to 6.5% for dSi-PCCT and from 0.8% to 24.2% for EID-CT (p<0.001). Mean absolute differences in percent vessel-area deviation from Micro-CT were also lower with dSi-PCCT than with EID-CT (15.0% vs 26.6%, p<0.001). Conclusion: Under static, resolution-optimized conditions, dSi-PCCT improved task-based coronary stenosis quantification and vessel delineation relative to EID-CT, supporting further evaluation in dynamic phantoms and clinical CCTA.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Maria Jose Medrano",
+   "Jed Pack",
+   "Stephen Araujo",
+   "Grant M. Stevens",
+   "Koen Nieman",
+   "Ge Wang",
+   "Bruno De Man",
+   "Adam S. Wang"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2608.06158v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2608.06158v1",
+  "published_iso": "2026-08-06T15:27:31Z",
+  "from_query": [
+   "CT slice thickness emphysema quantification bias"
+  ]
+ },
+ {
+  "title": "Classification of COVID-19 cases from chest CT volumes using hybrid model of 3D CNN and 3D MLP-Mixer",
+  "title_norm": "classification of covid 19 cases from chest ct volumes using hybrid model of 3d ",
+  "abstract": "This paper proposes an automated classification method of COVID-19 chest CT volumes using improved 3D MLP-Mixer. Novel coronavirus disease 2019 (COVID-19) spreads over the world, causing a large number of infected patients and deaths. Sudden increase in the number of COVID-19 patients causes a manpower shortage in medical institutions. Computer-aided diagnosis (CAD) system provides quick and quantitative diagnosis results. CAD system for COVID-19 enables efficient diagnosis workflow and contributes to reduce such manpower shortage. In image-based diagnosis of viral pneumonia cases including COVID-19, both local and global image features are important because viral pneumonia cause many ground glass opacities and consolidations in large areas in the lung. This paper proposes an automated classification method of chest CT volumes for COVID-19 diagnosis assistance. MLP-Mixer is a recent method of image classification using Vision Transformer-like architecture. It performs classification using both local and global image features. To classify 3D CT volumes, we developed a hybrid classification model that consists of both a 3D convolutional neural network (CNN) and a 3D version of the MLP-Mixer. Classification accuracy of the proposed method was evaluated using a dataset that contains 1205 CT volumes and obtained 79.5% of classification accuracy. The accuracy was higher than that of conventional 3D CNN models consists of 3D CNN layers and simple MLP layers.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Masahiro Oda",
+   "Tong Zheng",
+   "Yuichiro Hayashi",
+   "Yoshito Otake",
+   "Masahiro Hashimoto",
+   "Toshiaki Akashi",
+   "Shigeki Aoki",
+   "Kensaku Mori"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2607.28978v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2607.28978v1",
+  "published_iso": "2026-07-31T03:06:07Z",
+  "from_query": [
+   "through-plane super resolution anisotropic chest CT volume"
+  ]
+ },
+ {
+  "title": "Foundation VAEs for 3D CT Reconstruction, Augmentation, and Generation",
+  "title_norm": "foundation vaes for 3d ct reconstruction augmentation and generation",
+  "abstract": "Variational autoencoders (VAEs) compress high resolution CT volumes into compact latents while preserving clinically relevant structure. However, training CT-specific VAEs from scratch or heavily fine-tuning them incurs substantial computational and engineering cost, and often degrades under heterogeneous scanners, protocols, and diseases. This paper makes a progressive stride toward training-free medical VAEs by leveraging a critical observation: a single Foundation VAE, pretrained at scale on natural images and videos, can serve as a unified interface for CT Reconstruction, Augmentation, and Generation. With both encoder and decoder frozen, the Foundation VAE reconstructs CT volumes with preserved anatomy while suppressing acquisition noise; training segmentation models on these reconstructions improves surface accuracy by 3.9% NSD on average for pancreatic tumor and lung tumor. Within the same Foundation VAE latent space, a conditional latent diffusion model achieves 3.9% lower average FVD with 36.2% higher CT CLIP score, and improves multi-disease generation faithfulness across 18 types by 2.76% AUC. These results demonstrate Foundation VAEs as a practical interface for scalable CT representation reuse and faithful CT generation. Our code and demo are available at https://github.com/qic999/Foundation-VAE.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Qi Chen",
+   "Shuhan Ding",
+   "Yu Gu",
+   "Nan Liu",
+   "Jiang Bian",
+   "Alan Yuille",
+   "Zongwei Zhou",
+   "Jingjing Fu"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2605.30893v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2605.30893v1",
+  "published_iso": "2026-05-29T06:28:57Z",
+  "from_query": [
+   "CT reconstruction kernel conversion emphysema index"
+  ]
+ },
+ {
+  "title": "Enabling Beyond-Visual-Line-of-Sight Drones Operation over Open RAN 5G Networks with Slicing",
+  "title_norm": "enabling beyond visual line of sight drones operation over open ran 5g networks ",
+  "abstract": "Among the foretold claims of the transition from 5G to 6G, Beyond-Visual-Line-of-Sight (BVLoS) drone operation has emerged as a prominent Internet-of-Robots enabler. However, safety concerns have been raised since BVLoS imposes strict requirements on performance and dependability on the technology, and requires robust regulatory frameworks. While current 5G technologies promise to meet the performance requirements in terms of throughput and latency, there is a lack of studies regarding how to achieve full reliability in practice. To address this challenge, the research community is actively working on open-source projects that allow for experimental validation in the field. Fortunately, new Open RAN (O-RAN) standards are paving the way for such approaches in an integrated, native manner. In this work, we deploy a state-of-the-art 5G O-RAN open-source BVLoS operational system, report current limitations, and address them via advanced capabilities natively available in O-RAN: Slicing. Our proposed deployment minimizes trajectory errors due to 5G link congestion and keeps latency well below the 3GPP limits defined for BVLoS operation. Finally, we discuss on the challenges ahead and the opportunities that 5G O-RAN-enabled networks may bring to BVLoS drone operation.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Pau Baguer",
+   "Esteban Municio",
+   "Gines Garcia-Aviles",
+   "Xavier Costa-Pérez"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2608.09481v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2608.09481v1",
+  "published_iso": "2026-08-10T11:47:27Z",
+  "from_query": [
+   "unrolled reconstruction network forward operator calibration"
+  ]
+ },
+ {
+  "title": "CT-DegradBench: A Physics-Informed Benchmark for CT Degradation Detection and Severity Estimation",
+  "title_norm": "ct degradbench a physics informed benchmark for ct degradation detection and sev",
+  "abstract": "Computed tomography (CT) images are frequently degraded by acquisition artifacts, including noise, blur, streaking, aliasing, and metal artifacts. Yet CT enhancement is still largely evaluated using image quality metrics with limited perceptual and clinical validity, while existing datasets remain focused on isolated restoration tasks, hindering unified benchmarking across diverse degradation types. We present CT-DegradBench, a dataset and benchmark for CT degradation detection and severity estimation under controlled single- and mixed-artifact settings. CT-DegradBench enables systematic evaluation across multiple degradation families and severity levels within a common experimental framework. We further propose SeSpeCT (Semantic-Spectral CT degradation estimation), a framework that combines semantic priors from medical vision-language models with complementary frequency-domain cues for artifact analysis. SeSpeCT constructs a training-free semantic quality axis in the multimodal embedding space using radiology-informed text prompts, without task-specific fine-tuning, and combines it with spectral features that capture degradation-specific frequency patterns. The resulting representation enables joint prediction of artifact type and severity. Experimental results show that SeSpeCT consistently outperforms the evaluated baselines under both single- and mixed-degradation settings. The framework is available at https://github.com/yousranb/CT-DEGRADBENCH.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Yousra Nabila Taifour",
+   "Marouane Tliba",
+   "Zuheng Ming",
+   "Marie Luong",
+   "Nour Aburaed",
+   "Aladine Chetouani",
+   "Gorkem Durak",
+   "Alessandro Bruno",
+   "Faouzi Alaya Cheikh",
+   "Habib Zaidi",
+   "Ulas Bagci",
+   "Azeddine Beghdadi"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2605.16431v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2605.16431v1",
+  "published_iso": "2026-05-14T19:30:00Z",
+  "from_query": [
+   "slice sensitivity profile estimation CT deconvolution"
+  ]
+ },
+ {
+  "title": "CORTEX: A Structured Reasoning Benchmark for Trustworthy 3D Chest CT MLLMs",
+  "title_norm": "cortex a structured reasoning benchmark for trustworthy 3d chest ct mllms",
+  "abstract": "Reasoning in multimodal large language models (MLLMs) has shown strong promise in medical imaging. However, this reasoning is usually free-form text judged only by its final answer, making it hard to interpret and verify, especially in 3D radiology, where a diagnosis should be traceable to evidence in the scan. Existing chest CT question-answering datasets compound this by reducing expert radiology reports to answer-only pairs, dropping the reasoning that links findings to conclusions and omitting the patient history clinicians rely on. As a result, reasoning-capable 3D chest CT MLLMs remain out of reach, as neither the structured supervision needed to train them nor the protocol needed to verify their reasoning yet exists. We introduce CORTEX (Clinically Organized Reasoning and sTructured EXplanation), a structured reasoning benchmark for 3D chest CT. For each question, CORTEX restores the missing reasoning as a four-stage diagnostic trace mirroring a radiologist's workflow: task understanding, visual observation, diagnostic reasoning, and answer synthesis. We generate these traces using frontier large language models with broad medical and general-domain knowledge, then filter and verify them with a stage-level evaluation protocol combining automated rubric scoring with expert radiologist review. Crucially, both the reasoning structure and evaluation rubrics are designed in close collaboration with clinicians. Built on CT-RATE, a large, publicly available chest CT dataset without reasoning annotations, CORTEX comprises 76,177 validated reasoning traces across open-ended VQA, closed-ended VQA, and report generation, providing both the structured supervision and the stage-level evaluation protocol needed to build and evaluate trustworthy reasoning models for 3D chest CT. Our dataset and evaluation code will be made publicly available upon acceptance.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Hashmat Shadab Malik",
+   "Anees Ur Rehman Hashmi",
+   "Numan Saeed",
+   "Muzammal Naseer",
+   "Salman Khan",
+   "Christoph Lippert"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2606.27264v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2606.27264v2",
+  "published_iso": "2026-06-25T16:47:05Z",
+  "from_query": [
+   "through-plane super resolution anisotropic chest CT volume"
+  ]
+ },
+ {
+  "title": "Memory-efficient optimization of implicit neural representations for CT reconstruction",
+  "title_norm": "memory efficient optimization of implicit neural representations for ct reconstr",
+  "abstract": "Implicit neural representations (INRs) provide a parameter-efficient and fully differentiable image model for CT reconstruction. However, optimizing INRs for CT reconstruction using standard auto-differentiation techniques can be prohibitively GPU memory-intensive, especially in 3D imaging, due to the large number of INR evaluations needed to simulate ray projections. To address this issue, we propose a memory-efficient stochastic gradient approximation based on decomposing the gradient into a Jacobian-vector product that is amenable to stochastic subsampling. This approximation allows the user to trade-off between GPU memory usage and gradient approximation accuracy. Our experiments on synthetic 2D data demonstrate that gradient approximation uses far less GPU memory than standard INR training, while yielding reconstructions that are comparable in convergence behavior and mean squared error. Finally, we demonstrate that the proposed approach allows for memory-efficient 3D cone beam CT reconstruction in a sparse-view setting.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Mahrokh Najaf",
+   "Gregory Ongie"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2604.09884v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2604.09884v1",
+  "published_iso": "2026-04-10T20:24:11Z",
+  "from_query": [
+   "CT reconstruction kernel conversion emphysema index"
+  ]
+ },
+ {
+  "title": "SO-Mamba: State-Ownership Mamba for Unrolled MRI Reconstruction",
+  "title_norm": "so mamba state ownership mamba for unrolled mri reconstruction",
+  "abstract": "Accelerated MRI reconstruction requires recovering missing details while preserving anatomically coherent structures across large spatial regions. State-space models such as Mamba provide efficient long-range modeling, making them attractive learned regularizers for unrolled reconstruction. However, in a data-consistency-coupled unrolled solver, different stages operate on different reconstruction iterates, where the resident carrier should preserve coherent reconstruction content across stages while stage-dependent non-resident evidence is tied to the current update. Treating these roles uniformly can place persistent resident-carrier evidence and update-dependent non-resident evidence into the same recurrent content route. We therefore propose SO-Mamba, a state-ownership Mamba regularizer that assigns reconstruction evidence within each Mamba stage to recurrent residency, state-interface access, and non-state output correction. SO-Mamba implements this ownership rule with a State-Ownership Router (SOR), which constructs a resident carrier for recurrent content and routes non-resident evidence to affine modulation of the B/C state interfaces and an output correction outlet. The resident carrier supplies the Mamba content route, while the non-resident evidence stream adapts the state interfaces and contributes through the output outlet without entering the recurrent content route. We further introduce a two-level outer-band leakage diagnostic that separates hidden-state storage from readout expression by measuring outer-band energy in the selective-scan state trajectory and the post-scan Mamba readout. Experiments on five public MRI reconstruction benchmarks spanning diverse anatomies, sampling patterns, and coil configurations show that SO-Mamba consistently improves over CNN-, Transformer-, and Mamba-based baselines with competitive computational efficiency.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Pengcheng Fang",
+   "Hongli Chen",
+   "Fangfang Tang",
+   "Feng Liu",
+   "Xiaohao Cai",
+   "Shanshan Shan"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2605.22031v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2605.22031v1",
+  "published_iso": "2026-05-21T06:00:35Z",
+  "from_query": [
+   "unrolled reconstruction network forward operator calibration"
+  ]
+ },
+ {
+  "title": "Integrating Bayesian Spectral Deconvolution and Expert Scientific Reasoning for Robust Peak Estimation",
+  "title_norm": "integrating bayesian spectral deconvolution and expert scientific reasoning for ",
+  "abstract": "Spectral deconvolution is essential for extracting peak structures that encode material properties and chemical structures, but conventional automated methods often fail when spectra contain high-intensity noise or unknown background components. In practice, scientists rarely interpret spectra in isolation. Instead, they identify physically meaningful peaks by relating spectral structures to auxiliary information such as physical-property values, chemical structures, and trends across related measurements. Here, we propose a Bayesian framework that integrates spectral deconvolution with a model of expert scientific reasoning. In this work, expert scientific reasoning refers to the practice of evaluating candidate spectral structures by their consistency with independently measured physical-property values, rather than to manual expert intervention during inference. We formalize this reasoning as a physical-property regression layer, implemented using Gaussian process regression, and couple it with Bayesian spectral deconvolution. By averaging the physical-property likelihood over posterior predictive spectra inferred from Bayesian spectral deconvolution, the proposed method selects spectral models according to the consistency between inferred spectral structures and physical-property information. We validate the framework using synthetic spectra with high-intensity noise or unknown backgrounds and infrared spectra of poly(lactic acid). The method recovers physically meaningful peak structures that conventional Bayesian spectral deconvolution misses or misidentifies from spectra alone, including weak peaks in poly(lactic acid) IR spectra related to measured degradation rates. These results demonstrate that integrating expert scientific reasoning with Bayesian spectral deconvolution enables robust peak estimation under conditions where spectrum-only inference is unreliable.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Hayato Okubo",
+   "Yoshifumi Amamoto",
+   "Toshimitsu Aritake",
+   "Hiroyuki Kumazoe",
+   "Shiryu Nakano",
+   "Evan Jamison",
+   "Satoshi Tanaka",
+   "Yoh-ichi Mototake"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2605.17518v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2605.17518v1",
+  "published_iso": "2026-05-17T16:03:13Z",
+  "from_query": [
+   "slice sensitivity profile estimation CT deconvolution"
+  ]
+ },
+ {
+  "title": "FaCT-GS: Fast and Scalable CT Reconstruction with Gaussian Splatting",
+  "title_norm": "fact gs fast and scalable ct reconstruction with gaussian splatting",
+  "abstract": "Gaussian Splatting (GS) has emerged as a dominating technique for image rendering and has quickly been adapted for the X-ray Computed Tomography (CT) reconstruction task. However, despite being on par or better than many of its predecessors, the benefits of GS are typically not substantial enough to motivate a transition from well-established reconstruction algorithms. This paper addresses the most significant remaining limitations of the GS-based approach by introducing FaCT-GS, a framework for fast and flexible CT reconstruction. Enabled by an in-depth optimization of the voxelization and rasterization pipelines, our new method is significantly faster than its predecessors and scales well with projection and output volume size. Furthermore, the improved voxelization enables rapid fitting of Gaussians to pre-existing volumes, which can serve as a prior for warm-starting the reconstruction, or simply as an alternative, compressed representation. FaCT-GS is over 4X faster than the State of the Art GS CT reconstruction on standard 512x512 projections, and over 13X faster on 2k projections. Implementation available at: https://github.com/PaPieta/fact-gs.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Pawel Tomasz Pieta",
+   "Rasmus Juul Pedersen",
+   "Sina Borgi",
+   "Jakob Sauer Jørgensen",
+   "Jens Wenzel Andreasen",
+   "Vedrana Andersen Dahl"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2604.01844v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2604.01844v1",
+  "published_iso": "2026-04-02T09:58:00Z",
+  "from_query": [
+   "CT reconstruction kernel conversion emphysema index"
+  ]
+ },
+ {
+  "title": "Integrated Forward-Inverse Network for Lensless Image Reconstruction",
+  "title_norm": "integrated forward inverse network for lensless image reconstruction",
+  "abstract": "Lensless imaging enables compact and versatile computational cameras by replacing bulky optics with thin coded elements. However, reconstruction from the resulting measurements is challenging: large-footprint point-spread functions (PSFs) produce highly multiplexed observations, making inversion severely ill-conditioned and sensitive to calibration errors and model mismatch. While deep learning approaches, including hybrid models that incorporate physics priors, have shown promise, explicitly maintaining data fidelity throughout the network hierarchy remains difficult. Here, we propose the Integrated Forward-Inverse Network (IFIN), a physics-guided architecture that interleaves differentiable forward projections with learnable inverse updates at every scale, enabling complementary cues to be exploited jointly in the measurement and image domains. This bidirectional coupling supports progressive, physics-consistent refinement and permits system-constrained PSF kernel adaptation under model uncertainty. On challenging lensless benchmarks, including a newly introduced dataset, IFIN achieves state-of-the-art reconstruction quality. We further observe competitive performance on Gaussian deblurring and simulated inline holography reconstruction, suggesting that the same interleaving principle can extend beyond lensless cameras.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Donggeon Bae",
+   "Jaewoo Jung",
+   "Yong Guk Kang",
+   "Kyung Chul Lee",
+   "Taeyoung Kim",
+   "Jongho Kim",
+   "Sangjun Byun",
+   "Joonsik Park",
+   "Seung Ah Lee"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2607.04608v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2607.04608v1",
+  "published_iso": "2026-07-06T02:28:30Z",
+  "from_query": [
+   "unrolled reconstruction network forward operator calibration"
+  ]
+ },
+ {
+  "title": "A Representation-Level Assessment of Bias Mitigation in Foundation Models",
+  "title_norm": "a representation level assessment of bias mitigation in foundation models",
+  "abstract": "We investigate how successful bias mitigation reshapes the embedding space of encoder-only and decoder-only foundation models, offering an internal audit of model behaviour through representational analysis. Using BERT and Llama2 as representative architectures, we assess the shifts in associations between gender and occupation terms by comparing baseline and bias-mitigated variants of the models. Our findings show that bias mitigation reduces gender-occupation disparities in the embedding space, leading to more neutral and balanced internal representations. These representational shifts are consistent across both model types, suggesting that fairness improvements can manifest as interpretable and geometric transformations. These results position embedding analysis as a valuable tool for understanding and validating the effectiveness of debiasing methods in foundation models. To further promote the assessment of decoder-only models, we introduce WinoDec, a dataset consisting of 4,000 sequences with gender and occupation terms, and release it to the general public. (https://github.com/winodec/wino-dec)",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Svetoslav Nizhnichenkov",
+   "Rahul Nair",
+   "Elizabeth Daly",
+   "Brian Mac Namee"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2604.08561v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2604.08561v1",
+  "published_iso": "2026-03-17T12:43:52Z",
+  "from_query": [
+   "CT slice thickness emphysema quantification bias"
+  ]
+ },
+ {
+  "title": "Global Sensitivity Analysis: a novel generation of mighty estimators based on rank statistics",
+  "title_norm": "global sensitivity analysis a novel generation of mighty estimators based on ran",
+  "abstract": "We propose a new statistical estimation framework for a large family of global sensitivity analysis indices. Our approach is based on rank statistics and uses an empirical correlation coefficient recently introduced by Chatterjee [9]. We show how to apply this approach to compute not only the Cram{é}r-von-Mises indices, which are directly related to Chatterjee's notion of correlation, but also first-order Sobol indices, general metric space indices and higher-order moment indices. We establish consistency of the resulting estimators and demonstrate their numerical efficiency, especially for small sample sizes. In addition, we prove a central limit theorem for the estimators of the first-order Sobol indices.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Fabrice Gamboa",
+   "Pierre Gremaud",
+   "Thierry Klein",
+   "Agnès Lagnoux"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2605.23760v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2605.23760v1",
+  "published_iso": "2026-05-22T15:32:44Z",
+  "from_query": [
+   "slice sensitivity profile estimation CT deconvolution"
+  ]
+ },
+ {
+  "title": "EXACT: an explainable anomaly-aware vision foundation model for analysis of 3D chest CT",
+  "title_norm": "exact an explainable anomaly aware vision foundation model for analysis of 3d ch",
+  "abstract": "Chest computed tomography (CT) is central to the detection and management of thoracic disease, yet the growing scale and complexity of volumetric imaging increasingly exceed what can be addressed by scan-level prediction alone. Clinically useful AI for CT must not only recognize disease across the whole volume, but also localize abnormalities and provide interpretable visual evidence. Existing vision-language foundation models typically compress scans and reports into global image-text representations, limiting their ability to preserve spatial evidence and support clinically meaningful interpretation. Here we developed EXACT, an explainable anomaly-aware foundation model for three-dimensional chest CT that learns spatially resolved representations from paired clinical scans and radiology reports. EXACT was pre-trained on 25,692 CT-reports pairs using anatomy-aware weak supervision, jointly learning organ segmentation and multi-instance anomaly localization without manual voxel-level annotations. The resulting organ-specific anomaly-aware maps assign each voxel a disease-specific anomaly score confined to its corresponding anatomy, jointly encoding lesion extent and organ-level context. In retrospective multinational and multi-center evaluations, EXACT showed broad and consistent improvements across clinically relevant CT tasks, spanning multi-disease diagnosis, zero-shot anomaly localization, downstream adaptation, and visually grounded report generation, outperforming existing three-dimensional medical foundation models. By transforming routine clinical CT scans and free-text reports into explainable voxel-level representations, EXACT establishes a scalable paradigm for trustworthy volumetric medical AI.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Xuguang Bai",
+   "Mingxuan Liu",
+   "Tongxi Song",
+   "Yifei Chen",
+   "Hongjia Yang",
+   "Kasidit Anmahapong",
+   "Zihan Li",
+   "Ying Zhou",
+   "Qiyuan Tian"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2604.24146v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2604.24146v1",
+  "published_iso": "2026-04-27T07:57:47Z",
+  "from_query": [
+   "through-plane super resolution anisotropic chest CT volume"
+  ]
+ },
+ {
+  "title": "Tracing the Oracle: Improving Diffusion Timestep Scheduling for 3D CT Reconstruction",
+  "title_norm": "tracing the oracle improving diffusion timestep scheduling for 3d ct reconstruct",
+  "abstract": "Pretrained diffusion models demonstrate impressive potential in solving highly ill-posed 3D computed tomography (CT) inverse problems, while the inference process suffers from significant computational overhead. Furthermore, existing uniform timestep schedules fail to capture the non-uniform evolution of the reverse conditional diffusion stochastic differential equation, thereby introducing substantial truncation errors. To overcome this limitation, we propose Tracing the Oracle (TrO), a plug-and-play framework for improved timestep scheduling. Specifically, we treat densely sampled numerical integration trajectories on a few samples as the reference oracle. The optimized schedule is extracted by leveraging dynamic programming to globally minimize the cumulative error between the few-step approximation and the oracle. This mechanism precisely allocates the limited sampling steps to critical evolution stages that are highly susceptible to truncation errors. Our extensive experiments on the AAPM dataset across multiple 3D CT reconstruction tasks demonstrate that, when combined with the state-of-the-art 3D CT reconstruction method DDS, our optimized timesteps significantly improve reconstruction fidelity and computational efficiency compared to existing heuristic schedules, especially under a strict budget of no more than 10 sampling steps.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Yujia Wu",
+   "Zhaoqiang Liu"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2606.06236v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2606.06236v1",
+  "published_iso": "2026-06-04T14:41:26Z",
+  "from_query": [
+   "CT reconstruction kernel conversion emphysema index"
+  ]
+ },
+ {
+  "title": "Bias-Constrained Diffusion Schedules for PDE Emulations: Reconstruction Error Minimization and Efficient Unrolled Training",
+  "title_norm": "bias constrained diffusion schedules for pde emulations reconstruction error min",
+  "abstract": "Conditional Diffusion Models are powerful surrogates for emulating complex spatiotemporal dynamics, yet they often fail to match the accuracy of deterministic neural emulators for high-precision tasks. In this work, we address two critical limitations of autoregressive PDE diffusion models: their sub-optimal single-step accuracy and the prohibitive computational cost of unrolled training. First, we characterize the relationship between the noise schedule, the reconstruction error reduction rate and the diffusion exposure bias, demonstrating that standard schedules lead to suboptimal reconstruction error. Leveraging this insight, we propose an \\textit{Adaptive Noise Schedule} framework that minimizes inference reconstruction error by dynamically constraining the model's exposure bias. We further show that this optimized schedule enables a fast \\textit{Proxy Unrolled Training} method to stabilize long-term rollouts without the cost of full Markov Chain sampling. Both proposed methods enable significant improvements in short-term accuracy and long-term stability over diffusion and deterministic baselines on diverse benchmarks, including forced Navier-Stokes, Kuramoto-Sivashinsky and Transonic Flow.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Constantin Le Cleï",
+   "Nils Thuerey",
+   "Xiaoxiang Zhu"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2604.08357v2",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2604.08357v2",
+  "published_iso": "2026-04-09T15:21:31Z",
+  "from_query": [
+   "unrolled reconstruction network forward operator calibration"
+  ]
+ },
+ {
+  "title": "From Skill Extraction to Multistakeholder Recommendation: A Two-Stage Framework for Bias Governance in Skills-Based Job Matching",
+  "title_norm": "from skill extraction to multistakeholder recommendation a two stage framework f",
+  "abstract": "AI-based labor-market systems or platforms can affect access to job opportunities prior to organizational candidate rankings or hiring decisions. Such applications warrant caution, as biases in skill extraction, profile formation, and candidate-job matching may contribute to unfair treatment of candidates. In this paper, we propose a two-stage framework for detecting and governing bias in skills-based job matching. Stage 1, skill extraction and profile formation, addresses how candidates provide skills and preferences to the system, how the system extracts and structures this information, and the bias risks this entails, with a focus on chatbot-based elicitation. Stage 2, multistakeholder candidate-job recommendation, would embed this information in a recommender system in which candidate, company, and regulatory objectives are represented by separate agents, each producing an independent candidate-job ranking; these rankings would be combined through social choice-based aggregation into a single, auditable recommendation. The two stages are connected by a shared distinction between hard constraints, which require correction before processing continues, and soft constraints, which are logged to inform later decisions. Following an AI Act-aligned assessment methodology (based on the Fraunhofer AI Assessment Catalog), we propose using distributional auditing and counterfactual testing to produce a Stage 1 bias inventory sorted into hard and soft constraints, with the latter informing fairness thresholds for Stage 2. The same logic would apply to Stage 2: fairness metrics crossing predefined thresholds would trigger an adapted recommendation process, while smaller deviations would be logged as bias reports and persistent fairness states.",
+  "year": 2026,
+  "venue": "arXiv",
+  "authors": [
+   "Andrea Forster",
+   "Gregor Autischer",
+   "Dominik Kowald",
+   "Simone Kopeinik"
+  ],
+  "citations": null,
+  "source": "arxiv",
+  "source_id": "2607.15707v1",
+  "doi": "",
+  "paper_url": "https://arxiv.org/abs/2607.15707v1",
+  "published_iso": "2026-07-17T07:37:17Z",
+  "from_query": [
+   "CT slice thickness emphysema quantification bias"
+  ]
+ }
+]

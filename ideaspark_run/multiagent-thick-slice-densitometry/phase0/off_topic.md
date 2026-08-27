@@ -1,0 +1,116 @@
+# Off-topic papers removed from the gap corpus (Phase 0.4 host partition)
+
+These were retrieved by a connector but the host judged them outside the research direction (cross-domain "memory-augmented" false positives, surveys, unrelated fields). They are archived here for transparency but do NOT feed Phase 1 or the deep-read pool.
+
+- **Amortizing the Calibration Triple: A Projection-Consistent Neural Operator for Local-Stochastic Vola** (`semanticscholar:de3ea2f9f91f2dba877343f39fa3b013d8db062b`)
+  - local-stochastic-volatility calibration in quantitative finance — cross-domain keyword match on "calibration"
+- **Retrospective detail reconstruction network for mitigating shallow information loss in colorectal po** (`semanticscholar:ea789c60eeed1e23501a550615b922ec142ac302`)
+  - colorectal polyp segmentation — unrelated task
+- **Lightweight Single Image Super Resolution Based on Deep Feature Calibration Network** (`semanticscholar:d61c6a9fcf5cbca1741df8a4f05b571c1298b539`)
+  - lightweight single-image super-resolution for natural images; "calibration" used in an unrelated sense
+- **Learning Structural Eigenmodes with Modal Operator Network (ModalONet)** (`semanticscholar:ee995cb2b8bc038e3bf0de7781600b27abcb799b`)
+  - structural eigenmodes / neural operators for mechanics
+- **FLS-YOLO: a multi-scale subsurface defect detection network via heterogeneous grouping and spatial r** (`semanticscholar:04adb4b32d2511af811370c039c548552e68dee6`)
+  - YOLO-based subsurface defect detection
+- **Data-Driven Modeling With Deep Koopman Operator for Robust Path Tracking of Autonomous Vehicles** (`semanticscholar:69dce20a4f4cd481e5235e361ac00d6130d30449`)
+  - Koopman-operator path tracking for autonomous vehicles
+- **FRUC: Feedforward Dynamic Scene Reconstruction from Uncalibrated Collaborative Driving Views** (`semanticscholar:e2a4e8b07c0e96386ea92b35eaaaaecd4fb2ca23`)
+  - driving-scene 3D Gaussian splatting from uncalibrated views
+- **Operator-Split Bayesian Learning for Elliptic PDEs with Unequal Interior and Boundary Data** (`semanticscholar:6de8163b9cdaa9e9f04b9a7c3034b2765c22229f`)
+  - Bayesian learning for elliptic PDEs
+- **Assessing Reconstruction Techniques for Estimating Evapotranspiration Time Series under Varying Data** (`semanticscholar:13b51db5437c94f317c343078639861900a56de5`)
+  - evapotranspiration time-series reconstruction
+- **CAM3R: Camera-Agnostic Model for 3D Reconstruction** (`semanticscholar:dd9ce5e6ae80a85fccac3d07e13ba84fa3f8c337`)
+  - camera-agnostic 3D reconstruction in computer vision
+- **Deep learning with fourier features for regressive flow field reconstruction from sparse sensor meas** (`semanticscholar:041c8c96430fdc2be83799c9f502123d7a62051f`)
+  - flow-field reconstruction from sparse fluid sensors
+- **Dual‐energy CT for proton therapy: Impact of advanced slice‐wise patient‐thickness estimation method** (`semanticscholar:e58f34841dcf63f3f28ed305b509abc0156f36c7`)
+  - dual-energy CT stopping-power prediction for proton therapy
+- **Improved organ absorbed dose estimation in abdominal CT using DICOM header‐based tube current modula** (`semanticscholar:fe2f510b94110f8cd57caabd0ca3fca10a258968`)
+  - organ absorbed dose estimation in abdominal CT
+- **Development of an AI-based model for sex estimation using CT-derived metrics from paranasal sinuses** (`semanticscholar:019e9308137b6c4b6d45d0f1a35ba1e76f77127d`)
+  - forensic sex estimation from paranasal sinuses
+- **18F-FDG PET-CT in Re-staging Post-operative Renal Cell Carcinoma: A Five-year Experience in INMAS Dh** (`semanticscholar:0928c06b963ff65a2034e544eb32cb185c448952`)
+  - FDG PET-CT restaging of renal cell carcinoma
+- **Classification of uterine sarcoma and leiomyoma with quantitative CT and dual-energy iodine mapping.** (`semanticscholar:7c09cf53dc15586d1aaf0453ffed10e99b4045f3`)
+  - uterine sarcoma vs leiomyoma with dual-energy CT
+- **Weakly Supervised Detection of Pheochromocytomas and Paragangliomas in CT** (`semanticscholar:4165a63c83fe88f4c0f991a7b58923487490fbaa`)
+  - weakly supervised detection of adrenal tumours
+- **Automatic Lung Tumor Volume Estimation Using PSO-TSVM Method** (`semanticscholar:ce0d29d18560031ef6a157d52cff1c07698b89cf`)
+  - lung tumour volume estimation with PSO-TSVM
+- **Segmentation-Guided Hybrid Deep Learning for Pulmonary Nodule Detection and Risk Prediction from Mul** (`semanticscholar:963ceb16a5ffb520b521d8dfe90ce1b4787cc171`)
+  - pulmonary nodule detection and risk prediction
+- **Preliminary evidence that bilateral scaphoid symmetry is not affected by hand dominance or biologica** (`semanticscholar:f9681ea26ef32793b507c39e4fe9ad681457ebe3`)
+  - scaphoid bone symmetry analysis
+- **Non-invasive characterization of intratumoral CD8+ T cells using standard-of-care (SOC) CT and ⁸⁹Zr-** (`semanticscholar:64328631855806c7514a0b5403c506a3239620f9`)
+  - CD8 PET radiomics in solid tumours
+- **Deep learning-based image analysis of pretreatment FDG-PET/CT predicts CAR-T cell treatment outcome ** (`semanticscholar:32acaafc46fce240a9cccae10e0a629835123102`)
+  - PET/CT prediction of CAR-T outcome
+- **Benchmark of cellular deconvolution methods using a multi-assay dataset from postmortem human prefro** (`openalex:W4409216919`)
+  - cellular deconvolution of bulk RNA-seq
+- **New imaging techniques and trends in radiology** (`openalex:W4406432534`)
+  - general radiology technology review
+- **Spatially Aware Domain Adaptation Enables Cell Type Deconvolution from Multi‐Modal Spatially Resolve** (`openalex:W4404978347`)
+  - cell-type deconvolution from spatial transcriptomics
+- **Photon-counting CT: An updated review of clinical results** (`openalex:W4410596104`)
+  - clinical review of photon-counting CT
+- **MRI-scale histology validates spatial sensitivity of in-vivo MRI-based axon radius estimation** (`openalex:W4416014262`)
+  - MRI axon-radius estimation validated against histology
+- **Photon-Counting CT Iodine Maps for Diagnosing Chronic Pulmonary Thromboembolism** (`openalex:W4404125146`)
+  - photon-counting iodine maps for pulmonary thromboembolism
+- **Future Applications of Cardiothoracic CT** (`openalex:W4411179771`)
+  - review of future cardiothoracic CT applications
+- **Deep learning-based image reconstruction for electrical capacitance tomography** (`openalex:W4410352636`)
+  - electrical capacitance tomography reconstruction
+- **Multi-omics analyses identify gut microbiota-fecal metabolites-brain-cognition pathways in the Alzhe** (`openalex:W4407056429`)
+  - gut microbiota and Alzheimer disease multi-omics
+- **Deep Learning Integration in Optical Microscopy: Advancements and Applications** (`openalex:W7118187015`)
+  - review of deep learning in optical microscopy
+- **LegSegNet: A Public Deep Learning System for Lower Extremity CT Tissue Segmentation and Quantificati** (`arxiv:2605.30829v1`)
+  - lower-extremity CT tissue segmentation
+- **Automated classification method of COVID-19 cases from chest CT volumes using 2D and 3D hybrid CNN f** (`arxiv:2607.28950v1`)
+  - COVID-19 classification from chest CT volumes
+- **Time-Scaled Intertwining Cocycles and Identifiability of Multi-Semigroup Mixtures on Hilbert Operato** (`arxiv:2603.20322v2`)
+  - operator-algebra mathematics
+- **The Zero Slice of Quaternionic Real Bordism** (`arxiv:2605.01174v1`)
+  - algebraic topology
+- **The Eleventh NTIRE 2026 Efficient Super-Resolution Challenge Report** (`arxiv:2604.03198v1`)
+  - natural-image efficient super-resolution challenge report
+- **An Open Multi-Center Whole-Body FDG PET/CT Foundation Model for Tumor Segmentation** (`arxiv:2605.21835v1`)
+  - PET/CT foundation model for tumour segmentation
+- **Slice Regular Composition Operators on Quaternionic Fock Spaces via Matrix Realization** (`arxiv:2606.06182v2`)
+  - quaternionic composition operators
+- **Midterm Status Report of the ILC Technology Network Activities** (`arxiv:2603.01172v1`)
+  - particle-accelerator technology status report
+- **Simon-SR: Spatially Adaptive Modulation and Visual Prompt Adaptation for Text-Reinforced Super-Resol** (`arxiv:2607.09351v1`)
+  - text-guided natural-image super-resolution
+- **Reconstruction by Generation: 3D Multi-Object Scene Reconstruction from Sparse Observations** (`arxiv:2604.27106v1`)
+  - multi-object scene reconstruction in computer vision
+- **Kernel-Level Per-Slice UPF Latency Measurement in Containerised 5G Core Networks** (`arxiv:2605.28185v1`)
+  - 5G core network slice latency measurement
+- **OARS: Process-Aware Online Alignment for Generative Real-World Image Super-Resolution** (`arxiv:2603.12811v1`)
+  - real-world image super-resolution preference alignment
+- **Evaluation of Silicon-Based Photon-Counting CT for Coronary Stenosis Quantification with Realistic C** (`arxiv:2608.06158v1`)
+  - photon-counting CT coronary stenosis phantom study
+- **Classification of COVID-19 cases from chest CT volumes using hybrid model of 3D CNN and 3D MLP-Mixer** (`arxiv:2607.28978v1`)
+  - COVID-19 classification with 3D MLP-Mixer
+- **Enabling Beyond-Visual-Line-of-Sight Drones Operation over Open RAN 5G Networks with Slicing** (`arxiv:2608.09481v1`)
+  - drone operation over 5G networks
+- **CORTEX: A Structured Reasoning Benchmark for Trustworthy 3D Chest CT MLLMs** (`arxiv:2606.27264v2`)
+  - chest-CT reasoning benchmark for multimodal LLMs
+- **A Representation-Level Assessment of Bias Mitigation in Foundation Models** (`arxiv:2604.08561v1`)
+  - bias mitigation in language foundation models
+- **Global Sensitivity Analysis: a novel generation of mighty estimators based on rank statistics** (`arxiv:2605.23760v1`)
+  - global sensitivity analysis estimators
+- **Bias-Constrained Diffusion Schedules for PDE Emulations: Reconstruction Error Minimization and Effic** (`arxiv:2604.08357v2`)
+  - diffusion schedules for PDE emulation
+- **From Skill Extraction to Multistakeholder Recommendation: A Two-Stage Framework for Bias Governance ** (`arxiv:2607.15707v1`)
+  - skills-based job matching fairness
+- **Advancing MRI reconstruction: A systematic review of deep learning and compressed sensing integratio** (`openalex:W4406840661`)
+  - systematic review of MRI reconstruction
+- **A review of deep learning-based reconstruction methods for accelerated MRI using spatiotemporal and ** (`openalex:W4402643263`)
+  - review of deep-learning accelerated MRI
+- **A Review on the Applications of GANs for 3D Medical Image Analysis** (`openalex:W4415357402`)
+  - review of GANs for 3D medical imaging
+- **Deep LearnIng and Machine Learning for Brain Tumor Detection: A Review, Challenges, and Future Direc** (`openalex:W4415502441`)
+  - review of deep learning for brain tumour detection

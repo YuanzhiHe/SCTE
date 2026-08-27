@@ -1,0 +1,130 @@
+{
+  "gap_closure_reject_check": {
+    "entries": [
+      {
+        "gap": "No retrieved frontier leaf can establish WHY its reconstruction's threshold statistic is correct — i.e. none separates 'the low-attenuation tail of the lung histogram was recovered' from 'the histogram was displaced until the threshold count matched', and none reports a quantity that would distinguish them on a scan whose reference is unavailable — stakes: this is exactly the failure we measured on real scanner output, where the entire apparent gain of real-pair fine-tuning was reproduced by a single -12.2 HU output-bias change while the reconstructed histogram stayed too narrow (54.9 vs 58.6 HU); a centre that adopts such a model gets an emphysema index that is right on the validation cohort and drifts arbitrarily on the next scanner, and intellectually every published thick-slice-restoration densitometry result is uninterpretable because the two explanations were never separated.",
+        "main_pattern": "decompose_and_delegate",
+        "sub_pattern": "C25 (Decompose and Delegate to Solvers)",
+        "tactical_failure_mode_quoted": "The recurring failure is assembling a decompose-and-delegate pipeline whose components are all off-the-shelf, so that no single piece is shown to be both novel and load-bearing, and the intermediate artifact stays advisory rather than closed by a verification signal. Most damaging, authors skip the ablation that isolates the decomposition's marginal contribution.",
+        "reject_lessons_evaluated": [
+          {"lesson_quoted": "A decomposition that merely chains off-the-shelf agents or engines, with no single component demonstrated to be both novel and load-bearing, reads as engineering assembly rather than a contribution.", "candidate_match": "no", "reasoning": "The load-bearing component is named and testable in isolation — the displacement term delta_hat and its identification under a per-scan fitted operator — and ablation 8(a) (freeze w_hat at the nominal width) plus 8(b) (lambda_delta = 0) are exactly the removals that should collapse it."},
+          {"lesson_quoted": "Delegating a sub-problem to a sound but costly solver (NP-hard search, materialized intermediate state) sinks the contribution when latency and scalability are left unexamined.", "candidate_match": "no", "reasoning": "The delegated solver is a 41-point 1-D grid search costing one blur-plus-pool pass per point; compute_budget states it explicitly as seconds per case."},
+          {"lesson_quoted": "Without an ablation isolating the decomposition's marginal effect from extra data, more epochs, or the base model's prior knowledge, the reported gains read as confounded and unattributable.", "candidate_match": "no", "reasoning": "Step 8 carries three ablations and step 7 forces the same evaluation harness across five arms including an output-bias-only recalibration, which is the confound most likely to explain the gain."},
+          {"lesson_quoted": "Re-deriving a routing move that a closely neighboring published system already demonstrated, while showing only marginal gains, fails the novelty bar regardless of engineering polish.", "candidate_match": "borderline", "reasoning": "arxiv:2605.22208v2 and arxiv:2606.29763v1 already route work between agents in imaging; the candidate's differentiation (agents own physical estimands under a data-consistency contract rather than selecting tools) is stated in differentiation_from_lit, but it is a positioning claim that the experiments do not yet test against an agentic baseline."},
+          {"lesson_quoted": "A self-improvement or decomposition loop whose reliability hinges on an unvalidated data-generation, retrieval, or filtering component invites rejection when error propagation across iterations is never analyzed.", "candidate_match": "borderline", "reasoning": "Every certificate term is computed under w_hat, and the candidate itself notes the fit is exercised with a good x_tilde; error propagation from a poor initial estimate into delta_hat is acknowledged but not analysed."}
+        ],
+        "verdict": "borderline"
+      },
+      {
+        "gap": "No retrieved leaf tests whether the through-plane acquisition operator has to be treated as KNOWN (or as one globally learned mapping) at all — every restoration leaf inherits that assumption from the shared interpolation/deconvolution ancestor, and the model-based leaves that do relax it (arxiv:2503.21501v1, arxiv:2403.04847v2, semanticscholar:0d3795c98a2a83d53704e5965e08461bc452dfc1) recover physical parameters for their own sake, without asking what a per-scan estimate would have to be accountable to — stakes: practitioners inherit a model whose degradation assumption is unfalsifiable at inference time, so a scanner whose true slice profile or noise texture sits outside the training distribution fails silently rather than loudly; intellectually, the field cannot report an operator estimate as evidence, which is why the same restoration paper can be published for 5 mm and re-published for 8 mm with no cumulative knowledge about the operator itself.",
+        "main_pattern": "assumption_audit_and_pivot",
+        "sub_pattern": "C05 (Audit and Pivot an Assumption)",
+        "tactical_failure_mode_quoted": "The signature failure is an identifiability claim that outruns its proof — asserting recovery while the decisive object is never established, or imposing structural constraints without proving they are SUFFICIENT for recovery. A second shape is proving conditions the algorithm neither enforces nor verifies.",
+        "reject_lessons_evaluated": [
+          {"lesson_quoted": "Advertising an identifiability or 'consistency' property while the proof omits the decisive object — never proving latent identifiability, or excluding part of the model from the guarantee — collapses the contribution the moment a reviewer checks the theorem.", "candidate_match": "borderline", "reasoning": "The displacement half now states its conditions explicitly (eroded interior support, normalised kernel, replicate padding) and quotes the measured bias floor, but the guarantee covers only the displacement direction — the tail-recovery direction is asserted through the variance leg, which is the object the executed blocking evidence shows is not established."},
+          {"lesson_quoted": "Proving identifiability conditions the algorithm neither enforces nor verifies creates a theory-practice disconnect that undermines both the soundness and the significance of the claim.", "candidate_match": "no", "reasoning": "The condition is enforced by construction (the erosion is part of the estimator) and verified by step 4b, which runs the certificate on a known-perfect reconstruction before any model is trained."},
+          {"lesson_quoted": "Imposing structural constraints to claim interpretability or disentanglement without proving those constraints are sufficient for recovery leaves the result indistinguishable from a post-hoc heuristic.", "candidate_match": "no", "reasoning": "Sufficiency of the mean-preservation constraint for recovering the displacement is exhibited empirically at the estimator level (flat across w in [4,10] mm on a real pair), not merely asserted."},
+          {"lesson_quoted": "Stacking two established frameworks and re-proving identifiability of the union reads as incremental unless the pivoted assumption was genuinely load-bearing and the union admits a regime neither framework could reach alone.", "candidate_match": "no", "reasoning": "The pivot is not a union of frameworks: it removes the phantom/nominal-SSP assumption and replaces it with a property of slab averaging, and the reachable regime (archived series with no phantom and no reference protocol) is unreachable for both parents."}
+        ],
+        "verdict": "borderline"
+      },
+      {
+        "gap": "No retrieved leaf produces, per scan and without a reference, an adjudicated verdict about its own output — the model-based line ends at a residual norm, the agentic line (arxiv:2605.22208v2, arxiv:2606.29763v1) ends at a plan, and neither converts a disagreement between the physics it assumed and the observation it was given into an actionable statement about the number a clinician will read — stakes: in a multi-centre trial the practical question is not 'is the image nicer' but 'may I pool this scan's emphysema index with the others', and today that question is answered by protocol paperwork rather than by the reconstruction; without it, restoration cannot enter a densitometry endpoint pipeline at all, whatever its PSNR.",
+        "main_pattern": "self_supervised_signal_engineering",
+        "sub_pattern": "C07 (Manufacture the Supervisory Signal)",
+        "tactical_failure_mode_quoted": "The recurring failure shape is a manufactured internal signal whose validity silently rests on an assumption that does not survive deployment, so the surrogate degrades precisely when the deployment premise is violated. A candidate should self-check whether the internal signal remains valid when its weakest assumption is violated.",
+        "reject_lessons_evaluated": [
+          {"lesson_quoted": "A label-free signal whose validity depends on model calibration silently fails on exactly the deep networks known to be poorly calibrated — validate a surrogate where its core assumption is weakest, not where it is convenient.", "candidate_match": "borderline", "reasoning": "The displacement component does not depend on model calibration and IS validated where its assumption is weakest (perfect reconstruction, widest operator range), but the variance component's stationarity premise is violated in exactly the deployment setting and the supplied executed evidence shows it rejects ground truth — the surrogate is half-validated, which is the shape this lesson warns about."},
+          {"lesson_quoted": "Using target or test-set information during adaptation invites a label-leakage objection that undermines the very source-free, label-free deployment setting the method claims.", "candidate_match": "no", "reasoning": "Every certificate term is a function of the thick series and the reconstruction only; no thin-slice reference enters at inference, and step 4b's use of the true thin volume is an estimator-validation run on held-out data, not part of the deployed signal."},
+          {"lesson_quoted": "Importing a generic continual-learning blending or interpolation technique into a new modality without identifying that modality's specific dynamics lever reads as recombination, not contribution.", "candidate_match": "no", "reasoning": "The lever is modality-specific: the mean-preservation property of slab averaging, which exists because of how a thick CT slice is formed."},
+          {"lesson_quoted": "A multi-branch or ensemble reweighting mechanism that overlaps with standard multi-task/mixture-of-experts ensembling must explicitly beat both the single-model and the standard-ensemble baselines, or the gain is credited to prior art.", "candidate_match": "no", "reasoning": "No ensembling is involved; the comparison arms include the single-model baseline and its bias-recalibrated variant."}
+        ],
+        "verdict": "borderline"
+      }
+    ],
+    "verdict": "borderline",
+    "reasoning": "No Reject lesson is matched outright, so the hard floor does not fire; the aggregate is carried by two borderlines. The heaviest is C07's 'A label-free signal whose validity depends on model calibration silently fails ... validate a surrogate where its core assumption is weakest' applied to the variance leg, which the supplied executed evidence shows rejects a perfect reconstruction; the second is C25's 'Re-deriving a routing move that a closely neighboring published system already demonstrated', since the delta versus agentic imaging systems is argued but not measured."
+  },
+
+  "recipe_application_check": {
+    "entries": [
+      {
+        "gap": "No retrieved frontier leaf can establish WHY its reconstruction's threshold statistic is correct ...",
+        "sub_pattern": "C25 (Decompose and Delegate to Solvers)",
+        "tactical_pattern_quoted": "Have the learned model emit a structured, machine-checkable intermediate artifact at the decomposition boundary in place of a final answer, then route that artifact to a sound solver; the load-bearing move is closing the loop with the solver's verifiable output and using that signal for credit assignment applied DURING construction rather than only post-hoc.",
+        "instantiation_in_core_mechanism": "Performed: the boundary artifact is the typed record (w_hat, sigma_hat, rho, delta_hat, rho_struct, s, verdict) rather than a picture, the sound solver is the non-learned operator fit plus the moment-based densitometry solver, and the loop is closed twice — mid-construction through lambda_delta |delta_hat| entering the training gradient (credit assignment on the displacement direction specifically), and at inference through the arbiter's certify/flag/abstain verdict. This is the cluster's distinctive move, not the parent's generic 'split the task'.",
+        "verdict": "applied"
+      },
+      {
+        "gap": "No retrieved leaf tests whether the through-plane acquisition operator has to be treated as KNOWN ...",
+        "sub_pattern": "C05 (Audit and Pivot an Assumption)",
+        "tactical_pattern_quoted": "Take an existing identifiability or recovery result and pivot on the assumption it requires, with the dominant swap trading a distributional or metadata assumption for a structural, architectural, or geometric one, then re-derive recovery up to the field's standard ambiguity class and operationalise it as an estimator.",
+        "instantiation_in_core_mechanism": "Performed: the traded assumption is 'the slice-sensitivity profile is known (phantom-measured or nominal)', and the substitute is structural — slab averaging preserves means for every width, so the mean direction identifies the displacement independent of the width estimate. Recovery is stated up to an explicit ambiguity class (the operator's non-Gaussian residual, quoted as a bias floor) and operationalised as the delta_hat estimator plus its training penalty, which is the cluster's 'operationalized as a regularizer or estimator' ending.",
+        "verdict": "applied"
+      },
+      {
+        "gap": "No retrieved leaf produces, per scan and without a reference, an adjudicated verdict about its own output ...",
+        "sub_pattern": "C07 (Manufacture the Supervisory Signal)",
+        "tactical_pattern_quoted": "Pair a mechanistic diagnosis that localizes the failure to a specific structural site with a surgically confined correction on a minimal lever, and bolt on an explicit stabilizer because a label-free internal signal invites a degenerate solution; the verbs are diagnose-localize, minimize-on-a-tiny-lever, stabilize-against-collapse.",
+        "instantiation_in_core_mechanism": "Performed: diagnose-localize is the residual decomposition into displacement / structural / operator terms; minimize-on-a-tiny-lever is the single scalar penalty lambda_delta |delta_hat| acting on one direction of the output rather than a general fidelity term; stabilize-against-collapse is the explicit decision to keep s report-only because training on it invites the degenerate solution of injecting through-plane noise. Note the stabilizer currently rests on the leg the blocking evidence invalidates.",
+        "verdict": "applied"
+      }
+    ],
+    "verdict": "applied",
+    "reasoning": "All three entries perform their cluster's distinctive move rather than the parent's generic idea; the C07 entry is the clearest instance (diagnose-localize / tiny lever / explicit anti-collapse choice), though its stabilizer is the term under revision."
+  },
+
+  "anti_pattern_check": {
+    "composition_set": ["decompose_and_delegate", "reframe_as_solvable_object", "assumption_audit_and_pivot", "controlled_diagnostic_design", "self_supervised_signal_engineering"],
+    "matched_pattern_id": null,
+    "required_mitigation_quoted": null,
+    "mitigation_substantively_delivered": "n/a",
+    "reasoning": "All three documented reject-favored compositions require heterogeneous_decomposition (or its pairing with architectural_operator_substitution) as a member; none of the five patterns in this composition set is heterogeneous_decomposition, so no 2-way subset matches."
+  },
+
+  "paper_pointed_threat": {
+    "threat_paper_id": "arxiv:2503.21501v1",
+    "threat_source": "lit_table",
+    "threat_channel": null,
+    "subsumption_argument": "Double Blind Imaging with Generative Modeling infers the image and the measurement operator jointly under a generative prior over operators, which is the strongest existing claim on the same territory: if a reader accepts that a joint posterior over (operator, image) already tells you when a reconstruction is unsupported by the measurement, the candidate's separation of estimands looks like an implementation detail. The candidate stands because the joint posterior produces no statement about a DOWNSTREAM FUNCTIONAL — it can trade an operator error against an image offset with no observable signature, whereas the candidate's claim is precisely that one direction of the residual (the slab-mean direction) is invariant to the operator estimate and therefore isolates the displacement that moves a threshold count. That is a construction their formulation does not contain, and it is what makes a per-scan verdict possible. The threat is real but not subsuming: it would become subsuming if their operator prior were shown to make the mean-direction ambiguity vanish, which their paper neither claims nor tests.",
+    "addressable_via": "not_needed",
+    "parametric_family_concern": "Model-misspecification diagnostics for inverse problems / simulation-based inference — a statistics family the retrieval pool only grazed (the alias channel returned generic 'tests for model misspecification in simulation-based inference' hits). Scoop-check vocabulary before investing: 'misspecification diagnostics posterior predictive residual' and 'goodness-of-fit test for measurement operator'."
+  },
+
+  "falsification_structure_check": {
+    "minimal_experiment_named": "yes",
+    "outcome_metric_named": "yes",
+    "load_bearing_variable": "delta_hat, the lung-masked mean of the data-consistency residual",
+    "negative_control_target": "outcome_metric",
+    "numeric_bar_provenance": "none",
+    "verdict": "sound",
+    "reasoning": "The paragraph names the dataset, the three arms and the comparison; states the direction (LAA-950 concordance rises while |delta_hat| stays small); pivots on one named variable; and the negative control (freeze the operator solver at the nominal width) predicts a DOWNSTREAM effect — concordance falls back toward the un-fine-tuned regime — rather than a change in delta_hat itself, so it is not tautological. No numeric outcome bar is asserted anywhere."
+  },
+
+  "blocking_findings_disposition": [
+    {
+      "finding_ref": "The C_var leg of the certificate is not a valid relation: 'v_hat = Var_lung(y) / kappa(w_hat, r)'",
+      "status": "upheld",
+      "basis": "The evidence is executed and self-contained: on a real RPLHR pair with the project's own operator, a PERFECT reconstruction scores s = +0.905 under the total-variance reading and +0.945 under the through-plane reading against a stated threshold tau_s = 0.15, with the cause measured in the same run (the in-plane component of the thick lung variance alone is 24542 HU^2, i.e. the divisor kappa is being applied to a quantity it does not describe). I can find no formalization mismatch against the quoted step text, no arithmetic error, and no premise violation in the instance — the instance is exactly the setting the candidate targets. Because s is the only certificate term that speaks to the tail-recovery half of the anchor gap, the mechanism as written detects displacement but cannot certify recovery, which caps the verdict below advance."
+    }
+  ],
+
+  "verdict": "revise",
+  "verdict_layer": "soft_judgment",
+  "verdict_rationale": "The hard floor does not fire: no Reject lesson is matched outright (gap_closure_reject_check.verdict = borderline), anti_pattern_check.matched_pattern_id is null, and paper_pointed_threat.addressable_via = not_needed. But the supplied blocking finding is upheld with executed evidence showing the variance leg rejects a perfect reconstruction (s = +0.905 / +0.945 against tau_s = 0.15), and C07's lesson 'A label-free signal whose validity depends on model calibration silently fails ... validate a surrogate where its core assumption is weakest' bites on exactly that leg — so the manufactured signal is only half-validated. The confrontation is writable as a field-level rework of the densitometry solver's tail-recovery evidence rather than a redesign of what the mechanism is (the operator identification, the residual decomposition, the displacement penalty and the arbiter all stand unchanged), so the route is revise, not abandon.",
+
+  "revision_targets": [
+    {
+      "scope": "tactical",
+      "field": "core_mechanism (the C_var paragraph of the densitometry solver) and the corresponding clause of core_mechanism_steps step 4",
+      "issue": "Upheld blocking finding — the derived identity v_hat = Var_lung(y)/kappa(w_hat, r) assigns a variance deficit of +0.905 (total) / +0.945 (through-plane) to a perfect reconstruction, so the tail-recovery half of the certificate is unestablished; C07's weakest-assumption lesson bites here.",
+      "fix_direction": "Replace the closed-form kappa identity with a PROTOCOL-CALIBRATED tail-recovery relation and say so at the honest claim strength: fit, on paired training data only (the simulated arm where the operator is known plus the real training pairs), a low-dimensional regression v_hat = f(Var_z(y), w_hat, sigma_hat) predicting the thin-slice through-plane lung variance from quantities observable at inference, report its held-out residual spread sigma_v on cases never used for the fit, and define the tail-recovery term as a standardised deviation s = (v_hat - Var_z(x_hat)) / sigma_v with tau_s expressed in units of sigma_v (default 2, swept 1-3) instead of an absolute fraction. State explicitly that this term is empirical and protocol-scoped — it does not transfer to an unseen scanner/protocol without refitting, and the certificate must expose that scope — and keep it report-only (not a training loss) for the anti-collapse reason already given. Retain step 4b unchanged: the calibrated relation must be validated on a known-perfect reconstruction before any model result is reported, and if it fails that test the tail-recovery term is reported as unavailable rather than as satisfied."
+    },
+    {
+      "scope": "tactical",
+      "field": "differentiation_from_lit",
+      "issue": "C25 borderline — 'Re-deriving a routing move that a closely neighboring published system already demonstrated' — the delta against agentic imaging systems (arxiv:2605.22208v2, arxiv:2606.29763v1) is argued in prose but nothing in the experimental plan distinguishes them.",
+      "fix_direction": "Sharpen the entry for arxiv:2605.22208v2 to state the testable distinction rather than the positional one: an agentic tool-selection system cannot produce a per-scan quantity that is invariant to the acquisition estimate, so the two are separable by a concrete observable — the width-sweep flatness of the reported quantity — and name that observable in the entry so a reviewer can check it against the ablation that sweeps w."
+    }
+  ]
+}

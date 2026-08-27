@@ -1,0 +1,94 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=1.55cm]{geometry}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{fontspec}
+\usepackage[CJKmath=true]{xeCJK}
+% CJK main font is resolved at COMPILE time on the actual machine, not baked in at
+% generation time, so a .tex generated on one OS still renders on another (the older
+% Python-side probe hardcoded one OS's font name into the file and broke when moved).
+% Walk a cross-platform priority list and use the first font that exists; AutoFakeBold
+% + AutoFakeSlant give bold/italic CJK even on faces that ship no bold/italic cut.
+\newcommand{\setCJKto}[1]{\setCJKmainfont{#1}[AutoFakeBold=true,AutoFakeSlant=0.2]}
+\IfFontExistsTF{Noto Sans CJK SC}{\setCJKto{Noto Sans CJK SC}}{%        % Linux (fonts-noto-cjk); cross-platform if installed
+ \IfFontExistsTF{Source Han Sans SC}{\setCJKto{Source Han Sans SC}}{%   % Adobe 思源黑体; cross-platform
+  \IfFontExistsTF{PingFang SC}{\setCJKto{PingFang SC}}{%               % macOS 10.11+
+   \IfFontExistsTF{Hiragino Sans GB}{\setCJKto{Hiragino Sans GB}}{%    % older macOS
+    \IfFontExistsTF{Microsoft YaHei}{\setCJKto{Microsoft YaHei}}{%     % Windows
+     \IfFontExistsTF{WenQuanYi Micro Hei}{\setCJKto{WenQuanYi Micro Hei}}{% % older Linux
+      \setCJKto{Songti SC}}}}}}}                                       % macOS bottom fallback
+\definecolor{cblue}{HTML}{4C72B0}
+\setlength{\parskip}{3pt}\setlength{\parindent}{0pt}
+\setlist[enumerate]{topsep=2pt,itemsep=2pt,parsep=1pt,partopsep=0pt}
+\setlist[itemize]{topsep=2pt,itemsep=2pt,parsep=1pt,partopsep=0pt}
+% Let prose-embedded inline math break across lines and absorb small overflows, so simple
+% formulas inserted mid-sentence stop running past the right margin.
+\tolerance=1200
+\emergencystretch=2.5em
+\relpenalty=20
+\binoppenalty=40
+\hfuzz=1pt
+\begin{document}
+
+\section*{用残差仲裁为厚层 CT 的肺气肿定量结果出具证书}
+\textbf{方法名称：} ARC-CT (Arbitrated Reconstruction with Certificates for CT)
+\section*{研究动机}
+医生在胸部 CT 上量肺气肿，靠的是数一数肺内有多少体素比 -950 HU 更「黑」（密度更低），这个比例叫 LAA-950；另一个常用指标 Perc15 则是肺密度分布的第 15 百分位数。两者本质上都是从密度直方图上读出来的数。可是医院里存下来的大多是 5 mm 或 8 mm 的厚层重建，而不是 1 mm 薄层------厚层就是把一段组织平均掉，平均会把直方图压窄，于是这两个数都会偏。
+
+一条研究路线是训练神经网络把厚层「还原」成薄层，现在已经证明能帮助医生读片；另一条路线不动图像，只在事后对那个数做统计校正。两条路都回答不了临床试验真正关心的问题，原因是算术上的：很多不同的重建会给出完全相同的 LAA-950。特别是，一个只把整张密度直方图整体往下挪、直到计数对上的网络，在所有图像质量指标上、在所有读片医生眼里，都和一个真正把平均掉的低密度区域找回来的网络长得一模一样。
+
+这不是空想。我们自己的预实验里，用真实厚薄层配对去微调一个重建模型，肺气肿指标确实大幅变好------但把微调前后的权重逐张量比对后发现，真正变了的只有一个数：输出偏置，大约 -12 HU。把这一个数抄回没微调的模型，全部收益就复现了，而重建图像的密度离散度依然偏窄。更深一层的原因是：网络对「厚层是怎么形成的」这个假设从来没被检验过------它假设 5 mm 的平均窗口，而在 50 对真实配对上拟合出来的有效窗口相当于 6.25 mm。假设错了，网络输出与实际扫描之间的不一致就把两种误差混在一起，足以改变结论的整体偏移就藏在里面。
+\section*{方法}
+\subsection*{M-OP}
+\emph{仅凭厚层扫描本身推断它到底是怎么采集的，并说明这个解释还漏掉了多少。}
+\begin{enumerate}[leftmargin=*,start=1]
+  \item 在 2 到 12 mm 之间以 0.25 mm 为步长逐个试：用该宽度模糊薄层估计、再平均成厚层，看哪个宽度最能重现真实厚层。保留最优值、整条误差曲线、稳健的噪声估计，以及最优解释仍解释不了的比例。【作者需决定：拟合时用三线性上采样的厚层，还是用网络自身输出，二者偏差不同，须在结果中注明】
+\noindent\emph{层厚采集模型：沿 z 方向做归一化高斯层敏感度卷积（半高全宽 w），再对每 r 层薄层取平均得到一层厚层。}
+\par\noindent{\small\ttfamily [eq~1, raw LaTeX, not typeset] A\_w(x)[k] = \textbackslash\{\}frac\{1\}\{r\}\textbackslash\{\}sum\_\{j=0\}\textasciicircum{}\{r-1\} (k\_w * x)[rk + j], \textbackslash\{\}qquad \textbackslash\{\}sum\_i k\_w[i] = 1}
+\noindent\emph{算子求解器：直接从观测到的厚层序列网格拟合有效层厚，并给出该物理模型无法解释的观测占比。}
+\par\noindent{\small\ttfamily [eq~2, raw LaTeX, not typeset] \textbackslash\{\}hat\{w\} = \textbackslash\{\}arg\textbackslash\{\}min\_\{w \textbackslash\{\}in \textbackslash\{\}mathcal\{W\}\} \textbackslash\{\}|A\_w(\textbackslash\{\}tilde\{x\}) - y\textbackslash\{\}|\_2\textasciicircum{}2, \textbackslash\{\}qquad \textbackslash\{\}rho = \textbackslash\{\}frac\{\textbackslash\{\}|A\_\{\textbackslash\{\}hat\{w\}\}(\textbackslash\{\}hat\{x\}) - y\textbackslash\{\}|\_2\}\{\textbackslash\{\}|y - \textbackslash\{\}bar\{y\}\textbackslash\{\}|\_2\}}
+\par\emph{为什么：} 后面所有判断都以这个估计为准；如果直接用标称层厚，假设误差和网络误差就被混在一起了。
+  \item 把网络里写死的标称层厚换成刚刚从这次扫描估计出来的值，训练与推理使用同一套标准化统计量。
+\par\emph{为什么：} 网络应该重建「这次扫描真实采集方式」所蕴含的体数据，而不是设备标签上写的那一个。
+\end{enumerate}
+\subsection*{M-CERT}
+\emph{把剩下的不一致变成几个有名字的数，其中一个无论层厚估计成多少都能读出来。}
+\begin{enumerate}[leftmargin=*,start=3]
+  \item 只用训练集的配对学出「厚层暗示薄层应有多少纵向纹理」这一关系，并在没见过的病例上测出它的典型误差；如果这个预测并不比直接猜平均值更好，就不要发布这一项。【作者需决定：标定意义上的「同一 protocol」如何界定】
+\noindent\emph{位移项及其依据的不变性：在肺区集合的腐蚀内部 \(L_{e}\) 上，厚层平均对任意层厚都保持均值，因此全局 HU 偏移的识别与层厚估计无关。}
+\par\noindent{\small\ttfamily [eq~3, raw LaTeX, not typeset] \textbackslash\{\}hat\{\textbackslash\{\}delta\} = \textbackslash\{\}operatorname*\{mean\}\_\{L\_e\}\textbackslash\{\}big(A\_\{\textbackslash\{\}hat\{w\}\}(\textbackslash\{\}hat\{x\}) - y\textbackslash\{\}big), \textbackslash\{\}qquad \textbackslash\{\}operatorname*\{mean\}\_\{L\_e\} A\_w(x) = \textbackslash\{\}operatorname*\{mean\}\_\{L\_e\} x \textbackslash\{\};\textbackslash\{\}; \textbackslash\{\}forall w}
+\par\emph{为什么：} 教科书公式算出的纹理衰减量在真实数据上差了一个数量级，所以这把尺子必须实测而不是推导，并且要带上它应有的误差棒。
+  \item 在厚层网格上标出肺区，向内腐蚀掩膜使参与平均的体素不会借到区外信息，然后算三个数：整体平移、剩余结构失配、以及（若已标定）纹理项，并把它们与肺气肿指标写进同一行 CSV。
+\noindent\emph{训练侧唯一新增项：位移惩罚，用来对轨迹护栏原本可以白拿的那部分收益计价。}
+\par\noindent{\small\ttfamily [eq~4, raw LaTeX, not typeset] \textbackslash\{\}mathcal\{L\} = \textbackslash\{\}mathcal\{L\}\_\{\textbackslash\{\}text\{vox\}\} + w\_\{dc\}\textbackslash\{\}mathcal\{L\}\_\{dc\} + w\_\{traj\}\textbackslash\{\}mathcal\{L\}\_\{traj\} + w\_\{nps\}\textbackslash\{\}mathcal\{L\}\_\{nps\} + \textbackslash\{\}lambda\_\textbackslash\{\}delta |\textbackslash\{\}hat\{\textbackslash\{\}delta\}|}
+\par\emph{为什么：} 整体平移正是那个能把肺气肿指标「做对」的假动作，而且无论层厚估计成多少，它都能被读出来。
+  \item 把真实薄层直接当作「重建结果」送进去，检查证书里每一项是否都回到完美答案该有的取值；若某一项连完美答案都判不合格，就把它作为量尺自身的局限如实报告，而不用它去评判模型。
+\noindent\emph{仲裁器：对证书做可行性判定而非打分，判为 flagged 时给出主导违反项。}
+\par\noindent{\small\ttfamily [eq~5, raw LaTeX, not typeset] \textbackslash\{\}text\{verdict\} = \textbackslash\{\}begin\{cases\} \textbackslash\{\}textsf\{certified\} \& |\textbackslash\{\}hat\{\textbackslash\{\}delta\}| \textbackslash\{\}le \textbackslash\{\}tau\_\textbackslash\{\}delta \textbackslash\{\}wedge \textbackslash\{\}rho\_\{\textbackslash\{\}text\{struct\}\} \textbackslash\{\}le \textbackslash\{\}tau\_\textbackslash\{\}rho \textbackslash\{\}wedge |s| \textbackslash\{\}le \textbackslash\{\}tau\_s \textbackslash\{\}\textbackslash\{\} \textbackslash\{\}textsf\{flagged\} \& \textbackslash\{\}text\{otherwise\} \textbackslash\{\}\textbackslash\{\} \textbackslash\{\}textsf\{abstain\} \& |L\_e| = 0 \textbackslash\{\}end\{cases\}}
+\par\emph{为什么：} 如果这把尺子连完美答案都判不合格，那它量的是估计器自身的偏差而不是模型的行为------设计过程中这一步就抓出了两个这样的错误。
+\end{enumerate}
+\subsection*{M-GATE}
+\emph{训练时对整体平移计价，部署时给报告出去的肺气肿数值附上通过/标记/弃权的结论。}
+\begin{enumerate}[leftmargin=*,start=6]
+  \item 把整体平移的绝对值加进训练损失，让梯度经过模糊+平均算子回传，但不对层厚估计本身求导，并对该项权重做扫描。
+\par\emph{为什么：} 这堵死了训练过程中「不劳而获」把指标做好看的最便宜那条路。
+  \item 用给定阈值把证书变成通过/标记/弃权，并给出「通过比例 --- 通过者精度」的整条权衡曲线，而不是只报一个阈值下的结果。
+\par\emph{为什么：} 临床试验需要知道这一例的数值能不能和其它例合并统计，而这个判断应该来自数据本身，而不是来自 protocol 文书。
+\end{enumerate}
+\subsection*{M-EVID}
+\emph{证明真正起作用的是这套分解，并且换一种层厚它依然成立。}
+\begin{enumerate}[leftmargin=*,start=8]
+  \item 读取每一对厚/薄层序列，先换算回真实 HU，再把两者裁到同一个肺部包围盒；在 \(\pm 4\) 层范围内平移厚层找到最佳对齐，裁到薄层层数正好是厚层的 r 倍，成对保存并写一行审计记录。合成臂用同样的薄层裁块、以已知的模糊宽度生成。
+\par\emph{为什么：} 你需要两种只在「生成过程是否已知」上有差别的情形，否则永远分不清失败是物理建模错了还是网络错了。
+  \item 用完全相同的评测代码跑这五个版本，并且每个版本都必须同时报出指标和证书。【作者需决定：仅校正偏置的那个版本允许用多少对真实配对来拟合这一个标量】
+\par\emph{为什么：} 其中一个版本是「只把输出偏置校正了」的原模型------如果它就能追平完整微调，本文的核心论断就被证实了。
+  \item 每次只关掉一个组件并重跑同一张表，让读者直接看出结果由哪一部分承担。
+\par\emph{为什么：} 这才能说明起作用的是这套分解，而不是更多数据或更长的训练。
+  \item 在 8 mm 层厚上原样重跑，不调任何超参，并报同一张表。【作者需决定：8 mm 的结论应限定在合成数据上，因为没有公开的真实 8 mm 配对】
+\par\emph{为什么：} 如果层厚真的是估出来的而不是假设的，那么更厚的序列应该只是报出一个更大的层厚，然后照常工作。
+  \item 对比证书各项在合成臂与真实臂上的分布，并检验「解释不了的那部分」能否逐例预测肺气肿指标变差的程度。
+\par\emph{为什么：} 这能直接看出：合成到真实的性能落差，有多少是由「估计出的物理解释不了的那部分」造成的。
+\end{enumerate}
+\end{document}

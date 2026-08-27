@@ -1,0 +1,94 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=1.55cm]{geometry}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{fontspec}
+\usepackage[CJKmath=true]{xeCJK}
+% CJK main font is resolved at COMPILE time on the actual machine, not baked in at
+% generation time, so a .tex generated on one OS still renders on another (the older
+% Python-side probe hardcoded one OS's font name into the file and broke when moved).
+% Walk a cross-platform priority list and use the first font that exists; AutoFakeBold
+% + AutoFakeSlant give bold/italic CJK even on faces that ship no bold/italic cut.
+\newcommand{\setCJKto}[1]{\setCJKmainfont{#1}[AutoFakeBold=true,AutoFakeSlant=0.2]}
+\IfFontExistsTF{Noto Sans CJK SC}{\setCJKto{Noto Sans CJK SC}}{%        % Linux (fonts-noto-cjk); cross-platform if installed
+ \IfFontExistsTF{Source Han Sans SC}{\setCJKto{Source Han Sans SC}}{%   % Adobe 思源黑体; cross-platform
+  \IfFontExistsTF{PingFang SC}{\setCJKto{PingFang SC}}{%               % macOS 10.11+
+   \IfFontExistsTF{Hiragino Sans GB}{\setCJKto{Hiragino Sans GB}}{%    % older macOS
+    \IfFontExistsTF{Microsoft YaHei}{\setCJKto{Microsoft YaHei}}{%     % Windows
+     \IfFontExistsTF{WenQuanYi Micro Hei}{\setCJKto{WenQuanYi Micro Hei}}{% % older Linux
+      \setCJKto{Songti SC}}}}}}}                                       % macOS bottom fallback
+\definecolor{cblue}{HTML}{4C72B0}
+\setlength{\parskip}{3pt}\setlength{\parindent}{0pt}
+\setlist[enumerate]{topsep=2pt,itemsep=2pt,parsep=1pt,partopsep=0pt}
+\setlist[itemize]{topsep=2pt,itemsep=2pt,parsep=1pt,partopsep=0pt}
+% Let prose-embedded inline math break across lines and absorb small overflows, so simple
+% formulas inserted mid-sentence stop running past the right margin.
+\tolerance=1200
+\emergencystretch=2.5em
+\relpenalty=20
+\binoppenalty=40
+\hfuzz=1pt
+\begin{document}
+
+\section*{Certifying Emphysema Densitometry from Thick-Slice CT by Residual Arbitration}
+\textbf{Method.} ARC-CT (Arbitrated Reconstruction with Certificates for CT)
+\section*{Motivation}
+Doctors measure emphysema on a chest CT scan by counting how many lung voxels are darker (less dense) than -950 Hounsfield Units, a number called LAA-950, and by reading the 15th percentile of the lung density distribution, called Perc15. Both are just readings off a histogram of densities. Most hospitals, however, store CT reconstructed in thick slices (5 mm or 8 mm) instead of thin ones (1 mm), and a thick slice is an average over the tissue inside it. Averaging narrows the histogram, so both numbers come out wrong.
+
+One research line trains neural networks to turn thick slices back into thin ones;\allowbreak{} this now demonstrably helps doctors read the scan. Another line leaves the picture alone and statistically corrects the number afterwards. Neither can answer the question that matters for a clinical trial, and the reason is arithmetic: many different reconstructions give exactly the same LAA-950. In particular, a network that simply shifts the whole density histogram down until the count comes out right looks identical, on every image-quality measure and to every reader, to a network that genuinely restored the dark low-density regions that averaging erased.
+
+This is not a hypothetical worry. In our own preliminary run, fine-tuning a restoration model on real thick/thin scan pairs improved its emphysema numbers a lot - and when we compared the weights before and after, the ONLY thing that had really changed was a single number, the output bias, by about -12 HU. Copying that one number into the un-tuned model reproduced the whole improvement, while the restored image's density spread stayed too narrow. The deeper cause is that the network's assumption about how the thick slice was formed is never checked: it assumes a 5 mm averaging window when a fit on 50 real scan pairs says the real window behaves like 6.25 mm. Under a wrong assumption, the mismatch between the network's output and the scan it was given mixes two different errors together, and a shift big enough to change the diagnosis hides inside it.
+\section*{Method}
+\subsection*{M-OP}
+\emph{Work out, from the thick scan alone, how it was actually acquired, and say how much of it that explanation misses.}
+\begin{enumerate}[leftmargin=*,start=1]
+  \item Try every candidate slice width from 2 to 12 mm in 0.25 mm steps: blur the thin estimate by that width, average it down to thick slices, and see which width best reproduces the actual thick scan. Keep the winner, the whole error curve, a robust noise estimate, and the fraction of the scan the winner still fails to explain. 【author decision: fit against the simple up-sampled thick scan, or against the network's own output - report which】
+\noindent\emph{The through-plane acquisition model: a normalised Gaussian slice-sensitivity profile of full-width-half-maximum w applied along z, followed by an average over r thin slices per thick slice.}
+\par\noindent{\small\ttfamily [eq~1, raw LaTeX, not typeset] A\_w(x)[k] = \textbackslash\{\}frac\{1\}\{r\}\textbackslash\{\}sum\_\{j=0\}\textasciicircum{}\{r-1\} (k\_w * x)[rk + j], \textbackslash\{\}qquad \textbackslash\{\}sum\_i k\_w[i] = 1}
+\noindent\emph{The operator solver: a grid fit of the effective width from the observed thick series itself, plus the fraction of the observation the fitted physics cannot explain.}
+\par\noindent{\small\ttfamily [eq~2, raw LaTeX, not typeset] \textbackslash\{\}hat\{w\} = \textbackslash\{\}arg\textbackslash\{\}min\_\{w \textbackslash\{\}in \textbackslash\{\}mathcal\{W\}\} \textbackslash\{\}|A\_w(\textbackslash\{\}tilde\{x\}) - y\textbackslash\{\}|\_2\textasciicircum{}2, \textbackslash\{\}qquad \textbackslash\{\}rho = \textbackslash\{\}frac\{\textbackslash\{\}|A\_\{\textbackslash\{\}hat\{w\}\}(\textbackslash\{\}hat\{x\}) - y\textbackslash\{\}|\_2\}\{\textbackslash\{\}|y - \textbackslash\{\}bar\{y\}\textbackslash\{\}|\_2\}}
+\par\emph{Why:} Everything downstream is judged against this estimate;\allowbreak{} if you assume the nominal width instead, the assumption error and the network error get mixed together.
+  \item Swap the fixed slice-width number the network is told for the one just estimated from this scan, standardised the same way for training and inference.
+\par\emph{Why:} The network should reconstruct the volume implied by the acquisition this scan actually had, not by the one written on the box.
+\end{enumerate}
+\subsection*{M-CERT}
+\emph{Turn the leftover disagreement into a small set of named numbers, one of which is readable no matter what acquisition was estimated.}
+\begin{enumerate}[leftmargin=*,start=3]
+  \item Learn, from training scans only, how much through-plane texture the thick scan implies the thin one should have, and measure how far off that prediction typically is on scans it never saw;\allowbreak{} if the prediction is no better than guessing the average, do not ship this term at all. 【author decision: what counts as one protocol for calibration purposes】
+\noindent\emph{The displacement term and the invariance it rests on: over the eroded interior \(L_{e}\) of the lung set, the slab average preserves the mean for every width, so a global attenuation offset is identified independently of the width estimate.}
+\par\noindent{\small\ttfamily [eq~3, raw LaTeX, not typeset] \textbackslash\{\}hat\{\textbackslash\{\}delta\} = \textbackslash\{\}operatorname*\{mean\}\_\{L\_e\}\textbackslash\{\}big(A\_\{\textbackslash\{\}hat\{w\}\}(\textbackslash\{\}hat\{x\}) - y\textbackslash\{\}big), \textbackslash\{\}qquad \textbackslash\{\}operatorname*\{mean\}\_\{L\_e\} A\_w(x) = \textbackslash\{\}operatorname*\{mean\}\_\{L\_e\} x \textbackslash\{\};\textbackslash\{\}; \textbackslash\{\}forall w}
+\par\emph{Why:} The textbook formula for how much texture averaging removes is off by an order of magnitude on real data, so this yardstick has to be measured rather than derived, and it must carry the honest error bar that comes with that.
+  \item Mark the lung voxels on the thick grid, shrink that mask inward so no averaged voxel borrows from outside it, then compute three numbers: the plain overall shift, the leftover structural mismatch, and (if calibrated) the texture term - and write them into the same CSV row as the emphysema numbers.
+\noindent\emph{The single new training term: the displacement penalty, which bills the free lunch the trajectory guardrail otherwise takes.}
+\par\noindent{\small\ttfamily [eq~4, raw LaTeX, not typeset] \textbackslash\{\}mathcal\{L\} = \textbackslash\{\}mathcal\{L\}\_\{\textbackslash\{\}text\{vox\}\} + w\_\{dc\}\textbackslash\{\}mathcal\{L\}\_\{dc\} + w\_\{traj\}\textbackslash\{\}mathcal\{L\}\_\{traj\} + w\_\{nps\}\textbackslash\{\}mathcal\{L\}\_\{nps\} + \textbackslash\{\}lambda\_\textbackslash\{\}delta |\textbackslash\{\}hat\{\textbackslash\{\}delta\}|}
+\par\emph{Why:} The overall shift is the part that fakes a good emphysema number, and it is the one part that can be read off no matter which averaging width was estimated.
+  \item Feed the real thin scan in place of a reconstruction and check each certificate number returns the value it should for a perfect answer;\allowbreak{} if a number condemns the perfect answer, report it as a limitation of the measuring stick rather than using it to judge models.
+\noindent\emph{The arbiter: a feasibility verdict on the certificate rather than a score, naming the dominant violated term when it flags.}
+\par\noindent{\small\ttfamily [eq~5, raw LaTeX, not typeset] \textbackslash\{\}text\{verdict\} = \textbackslash\{\}begin\{cases\} \textbackslash\{\}textsf\{certified\} \& |\textbackslash\{\}hat\{\textbackslash\{\}delta\}| \textbackslash\{\}le \textbackslash\{\}tau\_\textbackslash\{\}delta \textbackslash\{\}wedge \textbackslash\{\}rho\_\{\textbackslash\{\}text\{struct\}\} \textbackslash\{\}le \textbackslash\{\}tau\_\textbackslash\{\}rho \textbackslash\{\}wedge |s| \textbackslash\{\}le \textbackslash\{\}tau\_s \textbackslash\{\}\textbackslash\{\} \textbackslash\{\}textsf\{flagged\} \& \textbackslash\{\}text\{otherwise\} \textbackslash\{\}\textbackslash\{\} \textbackslash\{\}textsf\{abstain\} \& |L\_e| = 0 \textbackslash\{\}end\{cases\}}
+\par\emph{Why:} If the yardstick condemns a perfect answer, it is measuring your estimator's bias rather than the model's behaviour - this check caught exactly that twice while designing the method.
+\end{enumerate}
+\subsection*{M-GATE}
+\emph{Penalise the cheap shift during training, and at deployment attach a certify / flag / abstain verdict to the reported emphysema value.}
+\begin{enumerate}[leftmargin=*,start=6]
+  \item Add the size of the overall shift to the training loss, letting gradients flow through the blur-and-pool operator but not through the width estimate itself, and sweep how strongly it is weighted.
+\par\emph{Why:} It removes the cheapest way for training to make the emphysema number look right without earning it.
+  \item Turn the certificate into certified / flagged / abstain with stated thresholds, and publish the whole trade-off curve between how many scans get certified and how accurate the certified ones are.
+\par\emph{Why:} A trial needs to know whether this scan's value may be pooled with the others, and that decision should come from the data, not from paperwork.
+\end{enumerate}
+\subsection*{M-EVID}
+\emph{Show the decomposition is what does the work, and that it survives a different slice thickness.}
+\begin{enumerate}[leftmargin=*,start=8]
+  \item Load each thick/thin pair, convert to real HU units, crop both to the same lung box, slide the thick series by up to +-4 slices to find the alignment that matches best, cut both so the thin one is exactly r times as many slices, and save them as a pair with a one-line audit record. Build the simulated arm from the same thin crops using a known blur width.
+\par\emph{Why:} You need two situations that differ only in whether the averaging process is known, otherwise you can never tell whether a failure came from the physics or from the network.
+  \item Run all five versions through exactly the same evaluation code, and report the emphysema numbers together with the certificate for every one of them. 【author decision: how many real pairs the bias-only version is allowed to use】
+\par\emph{Why:} One of the five is the un-tuned model with only its output bias corrected - if that alone matches the fine-tuned model, the whole argument of the paper is confirmed.
+  \item Turn off one component at a time and re-run the same table, so a reader can see exactly which part carries the result.
+\par\emph{Why:} This is what shows the decomposition is doing the work, rather than extra data or a longer training schedule.
+  \item Do the whole thing again for 8 mm slices with nothing retuned, and report the same table. 【author decision: keep the 8 mm claim to simulated data, since public real 8 mm pairs do not exist】
+\par\emph{Why:} If the width really is estimated rather than assumed, a thicker series should just report a wider width and keep working.
+  \item Compare the certificate's spread on simulated versus real scans and check whether the unexplained part predicts, case by case, how much worse the emphysema number gets.
+\par\emph{Why:} This shows directly how much of the simulated-to-real performance drop is explained by the part of the scan the estimated physics cannot account for.
+\end{enumerate}
+\end{document}

@@ -1,0 +1,627 @@
+[
+ {
+  "paper_id": "semanticscholar:60d246038314d6b7b362b3ab18166e69399cbe78",
+  "relevance": "core",
+  "reason": "unrolled model-based recon with integrated super-resolution \u2014 the through-plane SR + data-consistency mechanism, in MRI"
+ },
+ {
+  "paper_id": "semanticscholar:cbd2deb308b38664b8be0fc4b5ec0f3d281dac2f",
+  "relevance": "core",
+  "reason": "unrolled network CONDITIONED on the measured PSF for non-diagonal data fidelity \u2014 direct analogue of conditioning on the slice-sensitivity profile"
+ },
+ {
+  "paper_id": "semanticscholar:52a8bbba86a9f348dabf45d76c8f97fbf6c708f2",
+  "relevance": "adjacent",
+  "reason": "generic unrolled MRI reconstruction backbone; no operator identification"
+ },
+ {
+  "paper_id": "semanticscholar:6c338a8ed3de2374fa6d995d3e19dfe2bcdd241c",
+  "relevance": "adjacent",
+  "reason": "unrolled MRI in representation space; architectural variant, no operator estimation"
+ },
+ {
+  "paper_id": "semanticscholar:837ccfea1d2e48a1778d3244e4eae4d0bfebb6aa",
+  "relevance": "core",
+  "reason": "integrated forward+inverse network \u2014 learns the forward operator jointly with reconstruction (self-calibration family)"
+ },
+ {
+  "paper_id": "semanticscholar:de3ea2f9f91f2dba877343f39fa3b013d8db062b",
+  "relevance": "off_topic",
+  "reason": "local-stochastic-volatility calibration in quantitative finance \u2014 cross-domain keyword match on \"calibration\""
+ },
+ {
+  "paper_id": "semanticscholar:c009e4bbe18df84d5fedceabc7bd3fd50c8f44e2",
+  "relevance": "adjacent",
+  "reason": "complex-valued unrolled MRI denoising; backbone-level relevance only"
+ },
+ {
+  "paper_id": "semanticscholar:ea789c60eeed1e23501a550615b922ec142ac302",
+  "relevance": "off_topic",
+  "reason": "colorectal polyp segmentation \u2014 unrelated task"
+ },
+ {
+  "paper_id": "semanticscholar:d61c6a9fcf5cbca1741df8a4f05b571c1298b539",
+  "relevance": "off_topic",
+  "reason": "lightweight single-image super-resolution for natural images; \"calibration\" used in an unrelated sense"
+ },
+ {
+  "paper_id": "semanticscholar:ee995cb2b8bc038e3bf0de7781600b27abcb799b",
+  "relevance": "off_topic",
+  "reason": "structural eigenmodes / neural operators for mechanics"
+ },
+ {
+  "paper_id": "semanticscholar:e00fdc97e9635fee95b1be1da60866b2a45443f8",
+  "relevance": "core",
+  "reason": "unrolled networks for LARGE-SCALE 3D inverse problems \u2014 the memory/compute regime our 3D volume restoration sits in"
+ },
+ {
+  "paper_id": "semanticscholar:eb76bf852bac1ff8b10c97ed1f8f7514d7b61f33",
+  "relevance": "adjacent",
+  "reason": "event-based unrolled motion deblurring; unrolled deconvolution but a different imaging chain"
+ },
+ {
+  "paper_id": "semanticscholar:2ba6a8511db43d7104a3ed7dfd2cfaf36f61aa66",
+  "relevance": "core",
+  "reason": "unrolled Richardson-Lucy deconvolution driven by a known non-local PSF \u2014 the deconvolution-with-measured-kernel analogue"
+ },
+ {
+  "paper_id": "semanticscholar:04adb4b32d2511af811370c039c548552e68dee6",
+  "relevance": "off_topic",
+  "reason": "YOLO-based subsurface defect detection"
+ },
+ {
+  "paper_id": "semanticscholar:67543e53cd28e503f93f9e7413df8bf544ab1d04",
+  "relevance": "adjacent",
+  "reason": "sparse-view CT with projection-consistency constraints; data-consistency baseline, different degradation"
+ },
+ {
+  "paper_id": "semanticscholar:a787144b7684608729bac601c1ed6ca89f3c0e34",
+  "relevance": "adjacent",
+  "reason": "zero-shot self-supervised BLADE liver MRI reconstruction"
+ },
+ {
+  "paper_id": "semanticscholar:1d69d1827d72a7bc3c5afad242b370590507e359",
+  "relevance": "adjacent",
+  "reason": "low-dose CT unrolling without projection data; CT recon baseline"
+ },
+ {
+  "paper_id": "semanticscholar:69dce20a4f4cd481e5235e361ac00d6130d30449",
+  "relevance": "off_topic",
+  "reason": "Koopman-operator path tracking for autonomous vehicles"
+ },
+ {
+  "paper_id": "semanticscholar:879c7b0d41a21ce08b633680c25f580715d3cc75",
+  "relevance": "adjacent",
+  "reason": "diffusion-weighted MRI subspace modelling"
+ },
+ {
+  "paper_id": "semanticscholar:c42638fb1b6a3135b0db3d1122f655c28e08d580",
+  "relevance": "adjacent",
+  "reason": "wide-FOV 3D reconstruction conditioned on the camera model \u2014 operator-conditioning idea, but computer-vision geometry"
+ },
+ {
+  "paper_id": "semanticscholar:e2a4e8b07c0e96386ea92b35eaaaaecd4fb2ca23",
+  "relevance": "off_topic",
+  "reason": "driving-scene 3D Gaussian splatting from uncalibrated views"
+ },
+ {
+  "paper_id": "semanticscholar:6de8163b9cdaa9e9f04b9a7c3034b2765c22229f",
+  "relevance": "off_topic",
+  "reason": "Bayesian learning for elliptic PDEs"
+ },
+ {
+  "paper_id": "semanticscholar:40da346a7344f3799b0ddb94ba5d0016ea933e7c",
+  "relevance": "adjacent",
+  "reason": "variational parameter calibration with latent surrogates \u2014 joint calibration family, but dynamical-systems setting"
+ },
+ {
+  "paper_id": "semanticscholar:13b51db5437c94f317c343078639861900a56de5",
+  "relevance": "off_topic",
+  "reason": "evapotranspiration time-series reconstruction"
+ },
+ {
+  "paper_id": "semanticscholar:dd9ce5e6ae80a85fccac3d07e13ba84fa3f8c337",
+  "relevance": "off_topic",
+  "reason": "camera-agnostic 3D reconstruction in computer vision"
+ },
+ {
+  "paper_id": "semanticscholar:2a9322227511760fc2c167e837982a3a6f61c6fb",
+  "relevance": "adjacent",
+  "reason": "self-supervised accelerated MRI reconstruction"
+ },
+ {
+  "paper_id": "semanticscholar:75561e796668d0212340de203d7c7e1a1cf57e8c",
+  "relevance": "adjacent",
+  "reason": "motion-robust cardiac cine MRI reconstruction"
+ },
+ {
+  "paper_id": "semanticscholar:041c8c96430fdc2be83799c9f502123d7a62051f",
+  "relevance": "off_topic",
+  "reason": "flow-field reconstruction from sparse fluid sensors"
+ },
+ {
+  "paper_id": "semanticscholar:0d3795c98a2a83d53704e5965e08461bc452dfc1",
+  "relevance": "core",
+  "reason": "joint reconstruction AND acquisition-geometry calibration in tomography with a differentiable operator \u2014 the \"estimate the operator while reconstructing\" family, in CT"
+ },
+ {
+  "paper_id": "semanticscholar:2ac5ce23d6cbd79f8690473b8878f4d3f2db1327",
+  "relevance": "adjacent",
+  "reason": "degradation-aware sparse reconstruction for magneto-acousto-electrical tomography"
+ },
+ {
+  "paper_id": "semanticscholar:9621965ed894aeca4f557ccb6a8d4475645d979a",
+  "relevance": "core",
+  "reason": "effect of SLICE THICKNESS on threshold-based quantification of lung disease \u2014 the exact bias our work targets, in ILD"
+ },
+ {
+  "paper_id": "semanticscholar:02f48e3fa041a99ffb7c44b0431e98cb818919d5",
+  "relevance": "core",
+  "reason": "practical measurement of the CT slice sensitivity profile (tilted-wire) \u2014 what M1 must estimate blind"
+ },
+ {
+  "paper_id": "semanticscholar:d74be52ba0f218a2a036eae2a46bdc1142db0cf6",
+  "relevance": "core",
+  "reason": "simultaneous volume, noise and scanner-bias correction for emphysema density progression \u2014 the strongest non-restoration competitor"
+ },
+ {
+  "paper_id": "semanticscholar:be3a0b7d2040debd5819a39c1f3a9afdc67d29f8",
+  "relevance": "core",
+  "reason": "accuracy of slice sensitivity profile measurement methods in CT"
+ },
+ {
+  "paper_id": "semanticscholar:7f22c1b4799df5beabe7ba755657f2287ed7be01",
+  "relevance": "core",
+  "reason": "impact of slice thickness / kernel / FOV on emphysema index quantification in COPD \u2014 the bias table our claim rests on"
+ },
+ {
+  "paper_id": "semanticscholar:e58f34841dcf63f3f28ed305b509abc0156f36c7",
+  "relevance": "off_topic",
+  "reason": "dual-energy CT stopping-power prediction for proton therapy"
+ },
+ {
+  "paper_id": "semanticscholar:e77f0decb841e34d885a123c68b2d55b2752b199",
+  "relevance": "core",
+  "reason": "virtual imaging trial framework for longitudinal emphysema quantification \u2014 simulation-based control of scanner variation"
+ },
+ {
+  "paper_id": "semanticscholar:fe2f510b94110f8cd57caabd0ca3fca10a258968",
+  "relevance": "off_topic",
+  "reason": "organ absorbed dose estimation in abdominal CT"
+ },
+ {
+  "paper_id": "semanticscholar:4797d960ff27c1aaa817d80418cfd8d506e992cf",
+  "relevance": "core",
+  "reason": "slice thickness changes a threshold-based quantitative score (calcium scoring) on photon-counting CT \u2014 same bias mechanism, different endpoint"
+ },
+ {
+  "paper_id": "semanticscholar:b09c6588b37ff104bf84a6a1ed1e0fe895eeed43",
+  "relevance": "core",
+  "reason": "deep slice interpolation reducing through-plane anisotropy AND noise in head CT \u2014 closest restoration-side neighbour"
+ },
+ {
+  "paper_id": "semanticscholar:85f72d75e3ed3c0e18239b700e27336d3805a724",
+  "relevance": "core",
+  "reason": "deep-learning image conversion so a threshold-based quantitative score survives thin-slice/sharp-kernel input \u2014 the harmonisation escape route"
+ },
+ {
+  "paper_id": "semanticscholar:019e9308137b6c4b6d45d0f1a35ba1e76f77127d",
+  "relevance": "off_topic",
+  "reason": "forensic sex estimation from paranasal sinuses"
+ },
+ {
+  "paper_id": "semanticscholar:71e18e872f7a53dffbc5d8361527aa547537a386",
+  "relevance": "adjacent",
+  "reason": "photon-counting CT calcium scoring protocol variability"
+ },
+ {
+  "paper_id": "semanticscholar:205992b1c8bb578c9f58b6ae21aeb683820f10b1",
+  "relevance": "adjacent",
+  "reason": "ultra-high-resolution multi-energy photon-counting cardiac CT"
+ },
+ {
+  "paper_id": "semanticscholar:a45c0286cee7fd25fc0145fd9c64fa3fa23ef7c3",
+  "relevance": "adjacent",
+  "reason": "clinical quantitative CT of emphysema in AATD; endpoint context, no restoration mechanism"
+ },
+ {
+  "paper_id": "semanticscholar:0928c06b963ff65a2034e544eb32cb185c448952",
+  "relevance": "off_topic",
+  "reason": "FDG PET-CT restaging of renal cell carcinoma"
+ },
+ {
+  "paper_id": "semanticscholar:0bedeb752e94ab8c47a071ab21c24d09f7e969af",
+  "relevance": "adjacent",
+  "reason": "CT indices predicting airflow limitation; clinical use of emphysema quantification"
+ },
+ {
+  "paper_id": "semanticscholar:e5b9534f584e4c1df0ea732cb56287087ee9c5ff",
+  "relevance": "adjacent",
+  "reason": "Fourier-based image-quality assessment of virtual monoenergetic images; noise-metric methodology"
+ },
+ {
+  "paper_id": "semanticscholar:f11e4a4364dea7cce88fdf7704eb6830fec37570",
+  "relevance": "core",
+  "reason": "slice thickness changes CT-perfusion-derived ischemic core volume \u2014 the same acquisition-parameter-to-quantitative-endpoint bias"
+ },
+ {
+  "paper_id": "semanticscholar:7c09cf53dc15586d1aaf0453ffed10e99b4045f3",
+  "relevance": "off_topic",
+  "reason": "uterine sarcoma vs leiomyoma with dual-energy CT"
+ },
+ {
+  "paper_id": "semanticscholar:a8885a5a134f7fbd0750a7cec8c558371ad8ca92",
+  "relevance": "core",
+  "reason": "CT acquisition parameters bias quantitative body-composition measures \u2014 same class of parameter-induced quantification bias"
+ },
+ {
+  "paper_id": "semanticscholar:4165a63c83fe88f4c0f991a7b58923487490fbaa",
+  "relevance": "off_topic",
+  "reason": "weakly supervised detection of adrenal tumours"
+ },
+ {
+  "paper_id": "semanticscholar:a62ce68aec882f49bf5986e22b819eec0ee6a0af",
+  "relevance": "adjacent",
+  "reason": "photon-counting coronary CT overestimation bias vs invasive reference"
+ },
+ {
+  "paper_id": "semanticscholar:ce0d29d18560031ef6a157d52cff1c07698b89cf",
+  "relevance": "off_topic",
+  "reason": "lung tumour volume estimation with PSO-TSVM"
+ },
+ {
+  "paper_id": "semanticscholar:2be2f2e52876a321a85eef269b7cbd87e7e45c1d",
+  "relevance": "adjacent",
+  "reason": "causal-inference analysis of air pollution and emphysema progression; endpoint epidemiology"
+ },
+ {
+  "paper_id": "semanticscholar:963ceb16a5ffb520b521d8dfe90ce1b4787cc171",
+  "relevance": "off_topic",
+  "reason": "pulmonary nodule detection and risk prediction"
+ },
+ {
+  "paper_id": "semanticscholar:f9681ea26ef32793b507c39e4fe9ad681457ebe3",
+  "relevance": "off_topic",
+  "reason": "scaphoid bone symmetry analysis"
+ },
+ {
+  "paper_id": "semanticscholar:64328631855806c7514a0b5403c506a3239620f9",
+  "relevance": "off_topic",
+  "reason": "CD8 PET radiomics in solid tumours"
+ },
+ {
+  "paper_id": "semanticscholar:02e51f717b0b60565cda3389ecdaa169372967e7",
+  "relevance": "adjacent",
+  "reason": "deep-learning reconstruction for thin-slice abdominal CT dose reduction"
+ },
+ {
+  "paper_id": "semanticscholar:32acaafc46fce240a9cccae10e0a629835123102",
+  "relevance": "off_topic",
+  "reason": "PET/CT prediction of CAR-T outcome"
+ },
+ {
+  "paper_id": "openalex:W4404646478",
+  "relevance": "core",
+  "reason": "deep-learning spatial-resolution enhancement of THICK-SLICE chest CT validated on diagnosis \u2014 the closest prior work (same authors as the RPLHR-CT dataset)"
+ },
+ {
+  "paper_id": "openalex:W4409216919",
+  "relevance": "off_topic",
+  "reason": "cellular deconvolution of bulk RNA-seq"
+ },
+ {
+  "paper_id": "openalex:W4406432534",
+  "relevance": "off_topic",
+  "reason": "general radiology technology review"
+ },
+ {
+  "paper_id": "openalex:W4408775015",
+  "relevance": "core",
+  "reason": "Fleischner Society position paper on CT densitometry for emphysema in trials \u2014 the normative definition of the endpoint we must preserve"
+ },
+ {
+  "paper_id": "openalex:W4405564553",
+  "relevance": "adjacent",
+  "reason": "photon-counting vs energy-integrating CT image-quality comparison"
+ },
+ {
+  "paper_id": "openalex:W4407536951",
+  "relevance": "core",
+  "reason": "physics-informed generative model synthesising SCANNER- and ALGORITHM-specific low-dose CT \u2014 the forward-model realism problem our sim-to-real gap is about"
+ },
+ {
+  "paper_id": "openalex:W4407122143",
+  "relevance": "core",
+  "reason": "kernel conversion improves emphysema-extent correlation with clinical parameters \u2014 the harmonisation solution family named in its own vocabulary"
+ },
+ {
+  "paper_id": "openalex:W4404039283",
+  "relevance": "adjacent",
+  "reason": "pulmonary microvascular blood volume vs percent emphysema; endpoint epidemiology"
+ },
+ {
+  "paper_id": "openalex:W4404978347",
+  "relevance": "off_topic",
+  "reason": "cell-type deconvolution from spatial transcriptomics"
+ },
+ {
+  "paper_id": "openalex:W4405637693",
+  "relevance": "core",
+  "reason": "emphysema extent varies across CT radiation-dose protocols \u2014 protocol-induced densitometry variability"
+ },
+ {
+  "paper_id": "openalex:W4405355158",
+  "relevance": "adjacent",
+  "reason": "physics-driven state-space models for medical image reconstruction"
+ },
+ {
+  "paper_id": "openalex:W4410596104",
+  "relevance": "off_topic",
+  "reason": "clinical review of photon-counting CT"
+ },
+ {
+  "paper_id": "openalex:W4416014262",
+  "relevance": "off_topic",
+  "reason": "MRI axon-radius estimation validated against histology"
+ },
+ {
+  "paper_id": "openalex:W4404088652",
+  "relevance": "adjacent",
+  "reason": "diffusion foundation model for medical images"
+ },
+ {
+  "paper_id": "openalex:W4404125146",
+  "relevance": "off_topic",
+  "reason": "photon-counting iodine maps for pulmonary thromboembolism"
+ },
+ {
+  "paper_id": "openalex:W4404516649",
+  "relevance": "adjacent",
+  "reason": "unrolled deep learning reconstruction for distortion-free diffusion MRI"
+ },
+ {
+  "paper_id": "openalex:W4415501758",
+  "relevance": "adjacent",
+  "reason": "parametric response mapping of small airway disease and emphysema; endpoint methodology"
+ },
+ {
+  "paper_id": "openalex:W4406898407",
+  "relevance": "adjacent",
+  "reason": "dual-domain photon-counting CT data correction"
+ },
+ {
+  "paper_id": "openalex:W4411179771",
+  "relevance": "off_topic",
+  "reason": "review of future cardiothoracic CT applications"
+ },
+ {
+  "paper_id": "openalex:W4410352636",
+  "relevance": "off_topic",
+  "reason": "electrical capacitance tomography reconstruction"
+ },
+ {
+  "paper_id": "openalex:W4407056429",
+  "relevance": "off_topic",
+  "reason": "gut microbiota and Alzheimer disease multi-omics"
+ },
+ {
+  "paper_id": "openalex:W7118187015",
+  "relevance": "off_topic",
+  "reason": "review of deep learning in optical microscopy"
+ },
+ {
+  "paper_id": "openalex:W4403561997",
+  "relevance": "adjacent",
+  "reason": "CT phenotypes vs serum biomarkers in ILD"
+ },
+ {
+  "paper_id": "openalex:W4404920229",
+  "relevance": "adjacent",
+  "reason": "learning the regularisation parameter for sparse reconstruction \u2014 hyper-parameter self-calibration, different modality"
+ },
+ {
+  "paper_id": "openalex:W4402266707",
+  "relevance": "adjacent",
+  "reason": "quantitative CT of IPF vs lung function"
+ },
+ {
+  "paper_id": "arxiv:2605.30829v1",
+  "relevance": "off_topic",
+  "reason": "lower-extremity CT tissue segmentation"
+ },
+ {
+  "paper_id": "arxiv:2605.16458v1",
+  "relevance": "core",
+  "reason": "restoration with a BOUNDED residual so clinically important signal cannot be silently altered \u2014 the guardrail-on-restoration mechanism"
+ },
+ {
+  "paper_id": "arxiv:2607.28950v1",
+  "relevance": "off_topic",
+  "reason": "COVID-19 classification from chest CT volumes"
+ },
+ {
+  "paper_id": "arxiv:2605.28124v1",
+  "relevance": "adjacent",
+  "reason": "plug-and-play prior for dental cone-beam CT"
+ },
+ {
+  "paper_id": "arxiv:2603.20322v2",
+  "relevance": "off_topic",
+  "reason": "operator-algebra mathematics"
+ },
+ {
+  "paper_id": "arxiv:2605.01174v1",
+  "relevance": "off_topic",
+  "reason": "algebraic topology"
+ },
+ {
+  "paper_id": "arxiv:2604.03198v1",
+  "relevance": "off_topic",
+  "reason": "natural-image efficient super-resolution challenge report"
+ },
+ {
+  "paper_id": "arxiv:2605.21835v1",
+  "relevance": "off_topic",
+  "reason": "PET/CT foundation model for tumour segmentation"
+ },
+ {
+  "paper_id": "arxiv:2603.04538v1",
+  "relevance": "core",
+  "reason": "benchmark of OPERATOR MISMATCH and calibration across imaging modalities \u2014 names and measures exactly the failure our sim-to-real gap exhibits"
+ },
+ {
+  "paper_id": "arxiv:2606.06182v2",
+  "relevance": "off_topic",
+  "reason": "quaternionic composition operators"
+ },
+ {
+  "paper_id": "arxiv:2607.16649v1",
+  "relevance": "core",
+  "reason": "through-plane super-resolution with an efficiency-fidelity trade-off at large slice thickness \u2014 the closest methodological neighbour in MRI"
+ },
+ {
+  "paper_id": "arxiv:2604.04022v3",
+  "relevance": "adjacent",
+  "reason": "photoacoustic forward-adjoint operator formulation"
+ },
+ {
+  "paper_id": "arxiv:2607.07581v3",
+  "relevance": "core",
+  "reason": "through-plane super-resolution guided by a reference and memory \u2014 iterative/reference-conditioned restoration of anisotropic volumes"
+ },
+ {
+  "paper_id": "arxiv:2604.21960v2",
+  "relevance": "adjacent",
+  "reason": "diffusion posterior alignment for sparse-view CT"
+ },
+ {
+  "paper_id": "arxiv:2603.01172v1",
+  "relevance": "off_topic",
+  "reason": "particle-accelerator technology status report"
+ },
+ {
+  "paper_id": "arxiv:2607.09351v1",
+  "relevance": "off_topic",
+  "reason": "text-guided natural-image super-resolution"
+ },
+ {
+  "paper_id": "arxiv:2604.27106v1",
+  "relevance": "off_topic",
+  "reason": "multi-object scene reconstruction in computer vision"
+ },
+ {
+  "paper_id": "arxiv:2605.28185v1",
+  "relevance": "off_topic",
+  "reason": "5G core network slice latency measurement"
+ },
+ {
+  "paper_id": "arxiv:2603.12811v1",
+  "relevance": "off_topic",
+  "reason": "real-world image super-resolution preference alignment"
+ },
+ {
+  "paper_id": "arxiv:2603.00205v2",
+  "relevance": "adjacent",
+  "reason": "flow matching for sparse-view CT reconstruction"
+ },
+ {
+  "paper_id": "arxiv:2608.06158v1",
+  "relevance": "off_topic",
+  "reason": "photon-counting CT coronary stenosis phantom study"
+ },
+ {
+  "paper_id": "arxiv:2607.28978v1",
+  "relevance": "off_topic",
+  "reason": "COVID-19 classification with 3D MLP-Mixer"
+ },
+ {
+  "paper_id": "arxiv:2605.30893v1",
+  "relevance": "adjacent",
+  "reason": "foundation VAEs for 3D CT compression/generation"
+ },
+ {
+  "paper_id": "arxiv:2608.09481v1",
+  "relevance": "off_topic",
+  "reason": "drone operation over 5G networks"
+ },
+ {
+  "paper_id": "arxiv:2605.16431v1",
+  "relevance": "core",
+  "reason": "physics-informed benchmark for CT DEGRADATION DETECTION and severity estimation \u2014 the identification task M1 performs, benchmarked"
+ },
+ {
+  "paper_id": "arxiv:2606.27264v2",
+  "relevance": "off_topic",
+  "reason": "chest-CT reasoning benchmark for multimodal LLMs"
+ },
+ {
+  "paper_id": "arxiv:2604.09884v1",
+  "relevance": "adjacent",
+  "reason": "memory-efficient implicit neural representations for CT reconstruction"
+ },
+ {
+  "paper_id": "arxiv:2605.22031v1",
+  "relevance": "adjacent",
+  "reason": "state-space regulariser inside an unrolled MRI reconstruction"
+ },
+ {
+  "paper_id": "arxiv:2605.17518v1",
+  "relevance": "core",
+  "reason": "couples a Bayesian physical deconvolution with an expert-reasoning loop that revises the physical model \u2014 the closest instance of agents negotiating over an inverse problem"
+ },
+ {
+  "paper_id": "arxiv:2604.01844v1",
+  "relevance": "adjacent",
+  "reason": "Gaussian-splatting CT reconstruction"
+ },
+ {
+  "paper_id": "arxiv:2604.08561v1",
+  "relevance": "off_topic",
+  "reason": "bias mitigation in language foundation models"
+ },
+ {
+  "paper_id": "arxiv:2605.23760v1",
+  "relevance": "off_topic",
+  "reason": "global sensitivity analysis estimators"
+ },
+ {
+  "paper_id": "arxiv:2604.24146v1",
+  "relevance": "adjacent",
+  "reason": "anomaly-aware chest CT foundation model; analysis rather than restoration"
+ },
+ {
+  "paper_id": "arxiv:2606.06236v1",
+  "relevance": "adjacent",
+  "reason": "diffusion timestep scheduling for 3D CT reconstruction"
+ },
+ {
+  "paper_id": "arxiv:2604.08357v2",
+  "relevance": "off_topic",
+  "reason": "diffusion schedules for PDE emulation"
+ },
+ {
+  "paper_id": "arxiv:2607.15707v1",
+  "relevance": "off_topic",
+  "reason": "skills-based job matching fairness"
+ },
+ {
+  "paper_id": "openalex:W4406840661",
+  "relevance": "off_topic",
+  "reason": "systematic review of MRI reconstruction"
+ },
+ {
+  "paper_id": "openalex:W4402643263",
+  "relevance": "off_topic",
+  "reason": "review of deep-learning accelerated MRI"
+ },
+ {
+  "paper_id": "openalex:W4415357402",
+  "relevance": "off_topic",
+  "reason": "review of GANs for 3D medical imaging"
+ },
+ {
+  "paper_id": "openalex:W4415502441",
+  "relevance": "off_topic",
+  "reason": "review of deep learning for brain tumour detection"
+ }
+]
