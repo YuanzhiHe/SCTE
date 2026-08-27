@@ -43,7 +43,8 @@ regression we trained lands on a ~20 HU displaced solution regardless of the los
 | `scte_r/` | model, losses, metrics, certificate (`agentic.py`), flow decoder |
 | `scripts/` | data prep, operator fitting, certification, inference, figures |
 | `baselines/` | vendored published networks (see `baselines/README.md`) |
-| `PRIVATE_RUNBOOK.md` | the on-site procedure for the hospital cohorts |
+| `DEPLOY.md` | **deployment and on-site execution — start here** |
+| `PRIVATE_RUNBOOK.md` | background and rationale for the on-site procedure |
 | `STAGE1_执行报告.md` | full experimental record, including the negative results |
 
 ## Setup
@@ -51,7 +52,12 @@ regression we trained lands on a ~20 HU displaced solution regardless of the los
 ```bash
 pip install -r requirements.txt
 bash scripts/fetch_baselines.sh      # I3Net is fetched, not redistributed
+python scripts/preflight.py          # proves the pipeline works before you rely on it
 ```
+
+`preflight.py` builds a synthetic pair with a known sub-slab z offset, runs the real
+stage-1 code on it and checks the offset is recovered exactly, then fits the operator
+and runs the certificate. See [DEPLOY.md](DEPLOY.md).
 
 Going to a machine with no internet: `bash scripts/make_bundle.sh` builds a
 self-contained tarball (code, weights, TotalSegmentator weights, wheels).
