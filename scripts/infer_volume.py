@@ -34,6 +34,33 @@ ap.add_argument('--interp', default=None,
 ap.add_argument('--data_range', type=float, default=2000.0,
                 help='HU range for PSNR/SSIM (2000 = the [-1000,1000] convention used '
                      'throughout this repo; pass 4095 for the 12-bit convention)')
+ap.add_argument('--save_std', action='store_true',
+                help='with --samples N, also write <case>_std.npy (per-voxel spread '
+                     'across samples) and keep sample 1 as the reconstruction. A real '
+                     'structure is pinned down by the measurement and should repeat; a '
+                     'fabricated one is a draw from the sampler and should not. Unlike '
+                     'the data-consistency residual, this does not require the error to '
+                     'violate the observation - which is exactly why that one failed.')
+ap.add_argument('--save_recon', default=None, metavar='DIR',
+                help='write <case>_rec.npy so the reconstruction can be audited for '
+                     'fabricated / erased lesions (scripts/hallucination.py)')
+ap.add_argument('--paren_gate', type=float, default=None, metavar='HU',
+                help='inject the generative residual only in lung PARENCHYMA: inside the '
+                     'lung and below this HU on the backbone reconstruction, so vessels '
+                     'and airway walls are left to the backbone. Gating by DIFFICULTY '
+                     '(--grad_gate) does the opposite and was measured to halve the '
+                     'LAA concordance: the hardest voxels (vessels, gradient ~125 HU) '
+                     'carry no LAA signal, and the voxels that do (parenchyma, gradient '
+                     '~43 HU) are the ones difficulty-gating discards.')
+ap.add_argument('--grad_gate', type=float, default=0.0, metavar='Q',
+                help='inject the generative residual only where the OBSERVABLE '
+                     'through-plane gradient (from the thick series, so available at '
+                     'inference) is above its Q-th percentile inside the lung. '
+                     'Measured: in the flattest 20%% of voxels the sampler is 2%% WORSE '
+                     'than the backbone, while the top 20%% carry 56%% of the benefit.')
+ap.add_argument('--grad_steps', default=None, metavar='LO,HI',
+                help='per-slab adaptive Euler steps: LO steps for slabs whose '
+                     'high-gradient fraction is small, HI for the rest')
 ap.add_argument('--lung_blend', type=int, default=0, metavar='DILATE',
                 help='inject the generative residual only inside the lung, dilated by '
                      'DILATE voxels. The mask is derived from the BASE RECONSTRUCTION '
@@ -118,6 +145,19 @@ if not a.interp:
         if not any(k.startswith('net.') for k in sd): sd = {f'net.{k}': v for k, v in sd.items()}
         model.load_state_dict(sd, strict=False)
 
+def z_gradient(thick_hu, out_depth, op):
+    """|d/dz| of the THICK series on the thin grid - an inference-time difficulty map.
+
+    It explains the per-structure error almost exactly (pulmonary veins MAE 128 HU at
+    gradient 129; aorta 18 HU at gradient 22), which is why this is a gradient gate and
+    not an anatomy gate: 'hard' means 'changes fast through-plane', and vessels are hard
+    because they run obliquely, not because they are vessels.
+    """
+    g = np.abs(np.diff(thick_hu, axis=0, prepend=thick_hu[:1]))
+    return op.upsample_to_grid(torch.from_numpy(g[None, None] / 1000.),
+                               out_depth)[0, 0].numpy() * 1000.
+
+
 def lung_from(vol_hu, dilate):
     """Reference-free lung mask: air-window threshold on the reconstruction itself,
     largest connected component, hole-filled, then dilated so no seam lands on a
@@ -154,9 +194,12 @@ for ci, f in enumerate(cases, 1):
     thin = np.load(os.path.join(a.root, f))
     thick = np.load(os.path.join(a.root, f.replace('_thin', '_thick')))
     mp = os.path.join(a.root, f.replace('_thin', '_lung'))
-    if not os.path.exists(mp):
+    has_mask = os.path.exists(mp)
+    if not has_mask and not a.save_recon:
         print('[skip] %s: no lung mask' % f); continue
-    lung = np.load(mp)
+    # Reconstructing needs no lung mask - it only enters the metrics. Cohorts scored by
+    # lesion survival rather than densitometry (LUNA16) have no reason to carry one.
+    lung = np.load(mp) if has_mask else np.zeros(0, np.uint8)
     base_vol = None
     if a.base_recon:
         bp = os.path.join(a.root, f.replace('_thin', '_base'))
@@ -164,12 +207,25 @@ for ci, f in enumerate(cases, 1):
             print('[skip] %s: no cached base reconstruction' % f); continue
         base_vol = np.load(bp).astype(np.float32)
     D = thin.shape[0]
+    grad = None
+    if a.grad_gate or a.grad_steps:
+        from scte_r.forward_operator import SSPForwardOperator
+        grad = z_gradient(thick.astype(np.float32), thin.shape[0],
+                          SSPForwardOperator(slice_fwhm_mm=5.0, downsample=r))
     if a.interp:                                  # classical baseline: one matmul, no slabs
         W = interp_matrix(D, thick.shape[0], r, a.interp)
         rec = np.tensordot(W, thick.astype(np.float32), axes=(1, 0))
         starts = []
     else:
         rec = None
+    gthr = None; slab_steps = []; sacc = None
+    if grad is not None:
+        # threshold inside a REFERENCE-FREE lung region: the stored _lung.npy comes
+        # from TotalSegmentator run on the 1 mm reference, which is not available when
+        # this actually runs on a 5 mm-only archive.
+        lm = (lung_from(base_vol, 2) if base_vol is not None
+              else ((lung > 0) if has_mask else np.ones(thin.shape, bool)))
+        gthr = float(np.percentile(grad[lm], a.grad_gate if a.grad_gate else 80.0))
     acc = np.zeros(thin.shape, np.float32); wacc = np.zeros(D, np.float32) + 1e-8
     step = a.slab - a.overlap
     starts = list(range(0, max(D - a.slab, 0) + 1, step))
@@ -182,21 +238,56 @@ for ci, f in enumerate(cases, 1):
             if yt.shape[2] * r != a.slab: continue
             bs = None if base_vol is None else torch.from_numpy(
                 base_vol[z0:z0 + a.slab])[None, None].to(a.device) / 1000.
+            w_hann = hann_z(a.slab, a.overlap)
+            steps_here = None
+            if a.grad_steps and grad is not None:
+                lo, hi = (int(v) for v in a.grad_steps.split(','))
+                gs = grad[z0:z0 + a.slab]
+                frac = float((gs > gthr).mean()) if gthr is not None else 1.0
+                steps_here = hi if frac > 0.05 else lo
+                slab_steps.append(steps_here)
+                model.steps = steps_here
             if a.samples <= 1:
                 xs = model(yt)['x_hat'] if bs is None else model(yt, base=bs)['x_hat']
             else:
-                acc_s = None
-                for _ in range(a.samples):
+                s1 = ssum = ssq = None
+                for si in range(a.samples):
                     o = model(yt)['x_hat'] if bs is None else model(yt, base=bs)['x_hat']
-                    acc_s = o if acc_s is None else acc_s + o
-                xs = acc_s / a.samples
-            w = hann_z(a.slab, a.overlap)
-            acc[z0:z0 + a.slab] += xs[0, 0].cpu().numpy() * 1000. * w[:, None, None]
-            wacc[z0:z0 + a.slab] += w
+                    if si == 0: s1 = o
+                    ssum = o if ssum is None else ssum + o
+                    ssq = o * o if ssq is None else ssq + o * o
+                mean = ssum / a.samples
+                if a.save_std:
+                    var = (ssq / a.samples - mean * mean).clamp_min(0)
+                    sd = var.sqrt()
+                    if sacc is None:
+                        sacc = np.zeros(thin.shape, np.float32)
+                    sacc[z0:z0 + a.slab] += sd[0, 0].cpu().numpy() * 1000. * w_hann[:, None, None]
+                    xs = s1                       # audit sample 1, not the mean
+                else:
+                    xs = mean
+            w_hann = hann_z(a.slab, a.overlap)
+            acc[z0:z0 + a.slab] += xs[0, 0].cpu().numpy() * 1000. * w_hann[:, None, None]
+            wacc[z0:z0 + a.slab] += w_hann
     if rec is None: rec = acc / wacc[:, None, None]
     if a.lung_blend and base_vol is not None:
         bm = lung_from(base_vol, a.lung_blend)
+        if a.grad_gate and grad is not None:
+            bm &= grad > gthr        # and only where it is actually hard
+        if a.paren_gate is not None:
+            bm &= base_vol < a.paren_gate     # gate by CONSEQUENCE, not difficulty
         rec = np.where(bm, rec, base_vol)                 # backbone keeps the rest
+    if a.save_recon:
+        os.makedirs(a.save_recon, exist_ok=True)
+        np.save(os.path.join(a.save_recon, f.replace('_thin', '_rec')),
+                rec.astype(np.float16))
+        if sacc is not None:
+            np.save(os.path.join(a.save_recon, f.replace('_thin', '_std')),
+                    (sacc / wacc[:, None, None]).astype(np.float16))
+    if not has_mask:
+        print('[%2d/%d] %-16s cached (no mask -> no metrics)'
+              % (ci, len(cases), row_case if False else f[:-9]), flush=True)
+        continue
     m = lung > 0
     if m.sum() < 1000: print('[skip] %s: empty lung' % f); continue
     t = lambda v: torch.from_numpy(v.astype(np.float32) / 1000.)
@@ -217,9 +308,11 @@ for ci, f in enumerate(cases, 1):
         row['laa950_ref_' + ln] = metrics.laa950(t(thin), sel).item() if sel.sum() > 1000 else float('nan')
         row['laa950_rec_' + ln] = metrics.laa950(t(rec), sel).item() if sel.sum() > 1000 else float('nan')
     rows.append(row)
-    print('[%2d/%d] %-14s LAA950 ref %6.2f%% rec %6.2f%%  PSNR %5.2f  lungPSNR %5.2f  SSIM %.4f'
+    ss = ('  steps %d-%d avg %.0f' % (min(slab_steps), max(slab_steps),
+          np.mean(slab_steps))) if slab_steps else ''
+    print('[%2d/%d] %-14s LAA950 ref %6.2f%% rec %6.2f%%  PSNR %5.2f  lungPSNR %5.2f  SSIM %.4f%s'
           % (ci, len(cases), row['case'], row['laa950_ref'], row['laa950_rec'],
-             pw, pl, sw), flush=True)
+             pw, pl, sw, ss), flush=True)
 
 A = lambda k: np.array([x[k] for x in rows], dtype=float)
 print('\nn=%d  WHOLE-LUNG (TotalSegmentator mask)' % len(rows))

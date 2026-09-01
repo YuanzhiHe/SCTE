@@ -118,7 +118,11 @@ EXT_CAL=50 bash scripts/run_private.sh full /data/hebei hebei /data/henan
 | 8 | 骨干：本队列训 CTHNet，缓存重建后冻结 | TRAIN | 2–3 h |
 | 9 | 生成级：冻结骨干上训流匹配残差 | TRAIN | 1 h |
 | 10 | 证书 + 确定性回归对照 | TRAIN→TEST | 1 h |
-| 11 | 整卷：同一模型两个输出 + Lanczos / CTHNet 对照 | TEST | 3–5 h |
+| 11 | 整卷：同一模型两个输出 + Lanczos / CTHNet 对照 | TEST | **6–10 h** |
+
+> 阶段 11 的耗时按**面内尺寸**平方增长。上表按 512×512 估（你们的数据），
+> 公开数据（约 275×382）只要一半。实测：512×512 单采样约 6 min/例，
+> 4 采样约 24 min/例。时间紧时先出单采样（报指标用），4 采样那一路可以事后补。
 
 跑完自动写出 `results/SUMMARY.txt`。
 

@@ -63,6 +63,64 @@ def read_dicom_series(folder):
     return r.Execute()
 
 
+# DICOM tags describing the SCANNER AND THE ACQUISITION - never the patient.
+# This is a strict allow-list, not an exclusion list: adding a tag is a deliberate
+# act, so no patient attribute can arrive by default. Free-text fields
+# (SeriesDescription, ProtocolName, StudyDescription) are deliberately NOT here -
+# badly configured sites put names and IDs in them.
+PROTOCOL_TAGS = {
+    "0008|0070": "manufacturer",
+    "0008|1090": "model",
+    "0018|1210": "kernel",             # ConvolutionKernel
+    "0018|0060": "kvp",
+    "0018|1151": "tube_current_mA",
+    "0018|1152": "exposure_mAs",
+    "0018|0050": "slice_thickness_mm",
+    "0018|0088": "spacing_between_slices_mm",
+    "0018|1100": "recon_diameter_mm",
+    "0018|1160": "filter_type",
+    "0018|1020": "software_version",
+    "0018|9305": "revolution_time_s",
+    "0018|9311": "spiral_pitch",
+}
+
+
+def protocol_fingerprint(path):
+    """Scanner/acquisition metadata for one series, from the allow-list above.
+
+    Recorded because the certificate's constants are PROTOCOL properties, not global
+    ones: across the protocols measured so far the displacement threshold tau_delta
+    spans 0.26 - 4.33 HU, a 17x range. Fitting them needs paired 1 mm data, which the
+    deployment target (a hospital with only thick-slice CT) does not have - so the
+    only route to certifying a scan there is to match its protocol against cohorts
+    where the constants WERE measured. That match is impossible to reconstruct after
+    the fact, hence capturing it now.
+    """
+    out = {}
+    if not os.path.isdir(path):
+        return out
+    r = sitk.ImageSeriesReader()
+    ids = r.GetGDCMSeriesIDs(path)
+    if not ids:
+        return out
+    files, n = None, -1
+    for sid in ids:
+        f = r.GetGDCMSeriesFileNames(path, sid)
+        if len(f) > n:
+            files, n = f, len(f)
+    try:
+        rd = sitk.ImageFileReader()
+        rd.SetFileName(files[0]); rd.LoadPrivateTagsOff(); rd.ReadImageInformation()
+        for tag, name in PROTOCOL_TAGS.items():
+            if rd.HasMetaDataKey(tag):
+                v = rd.GetMetaData(tag).strip()
+                if v:
+                    out[name] = v
+    except Exception as e:
+        out["fingerprint_error"] = str(e)[:80]
+    return out
+
+
 def series_geometry(path):
     """(n_slices, z_spacing_mm) for a file or a DICOM series directory."""
     img = read_dicom_series(path) if os.path.isdir(path) else sitk.ReadImage(path)
@@ -164,6 +222,10 @@ def main():
     ap.add_argument("--slice_fwhm", type=float, default=5.0)
     ap.add_argument("--min_slices", type=int, default=40)
     ap.add_argument("--max_offset", type=int, default=4)
+    ap.add_argument("--protocol_meta", action="store_true", default=True,
+                    help="record scanner/acquisition metadata per case (allow-listed "
+                         "DICOM tags only, never patient attributes)")
+    ap.add_argument("--no_protocol_meta", dest="protocol_meta", action="store_false")
     args = ap.parse_args()
     os.makedirs(args.out, exist_ok=True)
     r = args.downsample
@@ -213,9 +275,14 @@ def main():
             np.save(os.path.join(args.out, f"{case}_thin.npy"), x)
             np.save(os.path.join(args.out, f"{case}_thick.npy"), y)
             lung = float(((x > -990) & (x < -500)).mean())
-            rows.append(dict(case=case, offset=off, sub_offset=sub, match_mse=round(err, 6),
-                             thin_shape=str(x.shape), thick_shape=str(y.shape),
-                             lung_frac=round(lung, 4)))
+            rec = dict(case=case, offset=off, sub_offset=sub, match_mse=round(err, 6),
+                       thin_shape=str(x.shape), thick_shape=str(y.shape),
+                       lung_frac=round(lung, 4))
+            if args.protocol_meta:
+                for role, pth in (("thin", thin_p), ("thick", thick_p)):
+                    for k, v in protocol_fingerprint(pth).items():
+                        rec[f"{role}_{k}"] = v
+            rows.append(rec)
             ok += 1
             print(f"[ok]   {case}: thin {x.shape} thick {y.shape} off={off:+d} sub={sub:+d} "
                   f"mse={err:.5f} lung={lung:.2f} HU[{x.min():.0f},{x.max():.0f}]")
@@ -235,7 +302,10 @@ def main():
         print("wrote ID_MAP_DO_NOT_EXPORT.csv (keep it on the secure machine)")
     if rows:
         with open(os.path.join(args.out, "pair_audit.csv"), "w", newline="") as f:
-            w = csv.DictWriter(f, fieldnames=list(rows[0].keys())); w.writeheader()
+            keys = list(rows[0].keys())
+            for r_ in rows:                          # cases can differ in which tags exist
+                keys += [k for k in r_ if k not in keys]
+            w = csv.DictWriter(f, fieldnames=keys, restval=""); w.writeheader()
             w.writerows(rows)
     offs = [r_["offset"] for r_ in rows]
     print(f"\ndone: {ok} pairs, {skip} skipped -> {args.out}")
