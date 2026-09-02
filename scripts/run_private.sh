@@ -193,18 +193,22 @@ $PY scripts/certify.py --root "$TEST" --oracle --calibration "$PROTO" \
     --learned_op "$FWDOP" $MASK --csv "$RES/cert_oracle.csv" 2>&1 | tail -4 | tee -a "$RES/06_oracle.log"
 fi
 
-echo "== [7/11] THE HEADLINE: does a public-pretrained model displace on THIS scanner?"
+echo "== [7/11] THE HEADLINE: zero-shot, i.e. the deployment scenario"
+# A township hospital has no paired 1 mm data, so the model it runs must have been
+# trained somewhere else. That is this stage: public weights, applied to a scanner they
+# have never seen. It needs no training, so it also front-loads the most important
+# result - if the machine time runs out here, the primary claim is already measured.
 CERT="--calibration $PROTO --learned_op $FWDOP $MASK --per_lobe"
 if skip "$RES/cert_public_zeroshot.csv"; then echo "   (already done)"; else
 $PY scripts/certify.py --root "$TEST" --ckpt public.pt $CERT \
     --csv "$RES/cert_public_zeroshot.csv" 2>&1 | tee "$RES/07_zeroshot.log"
-echo "-- the flow decoder, zero-shot, same scan set"
+echo "-- 生成级零样本"
 $PY scripts/certify.py --root "$TEST" --ckpt public_flow.pt --flow --residual_scale $SR \
     --flow_steps $STEPS $CERT --csv "$RES/cert_flow_zeroshot.csv" 2>&1 | tee "$RES/07_flow_zeroshot.log"
-echo "-- classical non-learned control (cannot displace by construction)"
+echo "-- 经典非学习对照（构造上不可能平移）"
 $PY scripts/baseline_deconv.py --root "$TEST" --calibration "$PROTO" \
     --csv "$RES/cert_landweber.csv" 2>&1 | tee "$RES/07_landweber.log"
-echo "-- one-scalar control: how few pairs reproduce a fine-tune?"
+echo "-- 单标量对照：几对配对就能复现一次微调？"
 for N in 1 3 5 10; do
   $PY scripts/certify.py --root "$TEST" --ckpt public.pt $CERT \
       --bias_from "$TRAIN" --bias_pairs $N --csv "$RES/cert_biasonly_n$N.csv" \
@@ -212,7 +216,46 @@ for N in 1 3 5 10; do
 done
 fi
 
-echo "== [8/11] backbone: train CTHNet on this cohort, then cache its reconstructions"
+echo "-- 证书常数能否跨设备迁移？两种标定各跑一遍"
+# The certificate's constants are fitted with paired 1 mm data, which the deployment
+# site will not have. So test both: constants measured here (what the study can do) and
+# constants carried over from the public cohort (what deployment would have to do).
+if skip "$RES/cert_publiccal.csv"; then echo "   (already done)"; else
+$PY scripts/certify.py --root "$TEST" --ckpt public_flow.pt --flow --residual_scale $SR \
+    --flow_steps $STEPS --calibration runs/protocol_rplhr_5mm.json \
+    --learned_op public_forward_op.pt $MASK \
+    --csv "$RES/cert_publiccal.csv" 2>&1 | tee "$RES/07_publiccal.log"
+fi
+
+echo "== [7b/11] 零样本整卷评测（主结果）"
+if skip "$RES/volume_zs_ours.csv"; then echo "   (already done)"; else
+if [ ! -s public_cthnet.pt ]; then
+  echo "!! public_cthnet.pt 缺失 —— 零样本骨干臂无法运行。"
+  echo "   它是主结果所需，不是可选项。检查仓库是否完整 clone。"
+else
+  echo "-- 骨干零样本 + 缓存重建"
+  $PY scripts/baseline_nets.py infer --net cthnet --root "$TEST" --ckpt public_cthnet.pt \
+      --crop 256 --z_shift 2 --amp --grad_ckpt --n $NVOL --save_recon "$TEST" \
+      --csv "$RES/volume_zs_cthnet.csv" 2>&1 | tail -9 | tee "$RES/07b_cthnet.log"
+  echo "-- 我们的方法零样本（单采样，报指标用）"
+  $PY scripts/infer_volume.py --root "$TEST" --ckpt public_flow.pt --flow --base_recon \
+      --residual_scale $SR --flow_steps $STEPS --lung_blend 1 --samples 1 \
+      --learned_op $FWDOP --calibration "$PROTO" --n $NVOL \
+      --csv "$RES/volume_zs_ours.csv" 2>&1 | tail -9 | tee "$RES/07b_ours.log"
+fi
+echo "-- 插值对照"
+$PY scripts/infer_volume.py --root "$TEST" --interp lanczos --n $NVOL \
+    --csv "$RES/volume_lanczos.csv" 2>&1 | tail -6 | tee "$RES/07b_lanczos.log"
+fi
+
+echo "== [8/11] 可选：本地训练（仅在零样本不够好时才需要）"
+# Stages 8-10 answer a different question - "how good could it be WITH local paired
+# data" - which is not the deployment scenario. Run them only if stage 7b came out
+# short; they cost 3-4 h of scarce on-site GPU time. Set LOCAL=1 to enable.
+if [ "${LOCAL:-0}" != 1 ]; then
+  echo "   跳过（LOCAL=1 启用）。零样本结果已在阶段 7/7b。"
+else
+echo "-- backbone: train CTHNet on this cohort, then cache its reconstructions"
 # The generative stage models the residual a STRONG reconstruction leaves behind,
 # so the backbone comes first and is then frozen. Caching its output lets the flow
 # train on 64^3 crops even though CTHNet's patch embedding is locked to 256 in-plane.
@@ -246,7 +289,10 @@ $PY scripts/certify.py --root "$TEST" --ckpt "$OUT/det.pt" $CERT \
     --csv "$RES/cert_deterministic.csv" 2>&1 | tee -a "$RES/10_cert_ours.log"
 fi
 
-echo "== [11/11] whole-volume: BOTH outputs of the same model, plus the baselines"
+fi   # end of the optional local-training block
+
+echo "== [11/11] 可选：本地训练模型的整卷评测"
+if [ "${LOCAL:-0}" != 1 ]; then echo "   跳过（LOCAL=1 启用）"; else
 if skip "$RES/volume_ours_s1.csv"; then echo "   (already done)"; else
 $PY scripts/infer_volume.py --root "$TEST" --interp lanczos --n $NVOL \
     --csv "$RES/volume_lanczos.csv" 2>&1 | tail -6 | tee "$RES/11_lanczos.log"
@@ -263,8 +309,31 @@ $PY scripts/infer_volume.py $COMMON --samples 4 --csv "$RES/volume_ours_s4.csv" 
     2>&1 | tail -8 | tee "$RES/11_ours_s4.log"
 fi
 
+fi   # end of the optional stage-11 block
+
 echo
-$PY - "$RES" <<'PYEOF' | tee "$RES/SUMMARY.txt"
+: > "$RES/SUMMARY.txt"          # truncate: a previous dryrun in this tag would otherwise
+                               # leave its "these numbers are meaningless" banner sitting
+                               # above a real run's results
+if [ "$MODE" = dryrun ]; then
+  cat <<'WARN' | tee -a "$RES/SUMMARY.txt"
+
+################################################################################
+  这是 DRY RUN。下面每一个数字都不可解读，原因具体：
+
+    * 采样步数 16 而非 64  -> 采样远未收敛，注入的是噪声不是结构，
+                              我们这一臂的 PSNR 会低于插值、LAA 偏差会翻号
+    * 骨干训练 30 步        -> 相当于随机权重
+    * 证书阈值来自 3 例     -> |mean|+2sd 在 n=3 上极不稳定，
+                              连完美重建都可能通不过（实测：同一模型
+                              4 例零分布下 4/4，8 例下 0/8）
+
+  dry run 只回答一件事：管路通不通。任何"效果好不好"的判断都要等正式跑。
+################################################################################
+
+WARN
+fi
+$PY - "$RES" <<'PYEOF' | tee -a "$RES/SUMMARY.txt"
 import csv, glob, os, sys, numpy as np
 R = sys.argv[1]
 sp = os.path.join(R, '03_split.txt')
@@ -283,7 +352,9 @@ print('== per-scan certificate (patch level)')
 print(f"{'arm':22s} {'|delta| HU':>10s} {'LAA MAE':>8s} {'certified':>10s}")
 for f, n in [('cert_oracle.csv','perfect recon (null)'), ('cert_landweber.csv','Landweber (control)'),
              ('cert_public_zeroshot.csv','public.pt zero-shot'),
-             ('cert_deterministic.csv','deterministic regression'), ('cert_ours.csv','OURS (backbone+flow)')]:
+             ('cert_flow_zeroshot.csv','flow zero-shot'),
+             ('cert_publiccal.csv','flow, PUBLIC calibration'),
+             ('cert_deterministic.csv','deterministic (local)'), ('cert_ours.csv','OURS (local)')]:
     r = rd(f)
     if not r: continue
     mae = np.mean(np.abs(g(r,'laa_rec') - g(r,'laa_ref'))) if 'laa_rec' in r[0] else float('nan')
@@ -305,19 +376,21 @@ if r and 'laa_ref' in r[0]:
         z = f'{np.mean(np.abs(g(r0, "laa_rec")[m] - ref[m])):14.2f}' if r0 and len(g(r0,'laa_rec')) == len(ref) else f'{"-":>14s}'
         print(f"{n + f' (<={hi:.2f}%)':22s} {m.sum():4d} {ref[m].mean():9.2f} {f_mae:9.2f} {z}")
 
-print('\n== whole volume: image quality and densitometry, all arms')
-print(f"{'arm':24s} {'PSNR':>7s} {'lungPSNR':>9s} {'SSIM':>7s} {'LAA950':>7s} {'LAA910':>7s} {'P15':>6s}")
-for f, n in [('volume_lanczos.csv','Lanczos-3'), ('volume_cthnet.csv','CTHNet backbone'),
-             ('volume_ours_s4.csv','OURS 4-sample (view)'), ('volume_ours_s1.csv','OURS 1-sample (report)')]:
+print('\n== 零样本整卷（主结果：模型从未见过这台设备）')
+print(f"{'arm':26s} {'PSNR':>7s} {'lungPSNR':>9s} {'SSIM':>7s} {'LAA950':>7s} {'LAA910':>7s} {'P15':>6s}")
+for f, n in [('volume_lanczos.csv','Lanczos-3'), ('volume_zs_cthnet.csv','CTHNet zero-shot'),
+             ('volume_zs_ours.csv','OURS zero-shot'),
+             ('volume_cthnet.csv','CTHNet local-trained'),
+             ('volume_ours_s1.csv','OURS local-trained')]:
     r = rd(f)
     if not r: continue
     e = lambda k: np.mean(np.abs(g(r, k+'_rec') - g(r, k+'_ref')))
-    print(f"{n:24s} {g(r,'psnr').mean():7.2f} {g(r,'lung_psnr').mean():9.2f} "
+    print(f"{n:26s} {g(r,'psnr').mean():7.2f} {g(r,'lung_psnr').mean():9.2f} "
           f"{g(r,'ssim').mean():7.4f} {e('laa950'):7.2f} {e('laa910'):7.2f} {e('p15'):6.2f}")
 print('\n== whole-lung bias (recon - 1 mm reference); LAA<0 and Perc>0 both mean "reports LESS emphysema"')
 print(f"{'arm':24s} {'LAA950':>8s} {'LAA910':>8s} {'Perc15':>8s} {'Perc10':>8s}")
-for f, n in [('volume_lanczos.csv','Lanczos-3'), ('volume_cthnet.csv','CTHNet backbone'),
-             ('volume_ours_s1.csv','OURS 1-sample (report)')]:
+for f, n in [('volume_lanczos.csv','Lanczos-3'), ('volume_zs_cthnet.csv','CTHNet zero-shot'),
+             ('volume_zs_ours.csv','OURS zero-shot')]:
     r = rd(f)
     if not r: continue
     b = [np.mean(g(r,k+'_rec') - g(r,k+'_ref')) for k in ('laa950','laa910','p15','p10')]
