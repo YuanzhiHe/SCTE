@@ -60,6 +60,9 @@ for f in files:
     up = op.upsample_to_grid(torch.from_numpy(thick / 1000.)[None, None],
                              thin.shape[0])[0, 0].numpy() * 1000.
     arms = {'ref': thin, 'up': up}
+    bp = os.path.join(a.root, f.replace('_thin', '_base'))
+    if os.path.exists(bp):                       # the frozen backbone, on its own
+        arms['base'] = np.load(bp).astype(np.float32)
     if a.recon_dir:
         rp = os.path.join(a.recon_dir, f.replace('_thin', '_rec'))
         if os.path.exists(rp): arms[a.label] = np.load(rp).astype(np.float32)
@@ -80,25 +83,28 @@ for f in files:
         if 'ref_peak' in rec: rows.append(rec)
 
 A = lambda k: np.array([r[k] for r in rows if k in r], float)
-arm_keys = ['up'] + ([a.label] if a.recon_dir else [])
+arm_keys = ['up'] + (['base'] if any('base_peak' in r for r in rows) else []) \
+           + ([a.label] if a.recon_dir else [])
 print(f"\nLUNA16 逐结节存活（{len(set(r['uid'] for r in rows))} 例，{len(rows)} 个标注结节）\n")
 print(f"{'臂':<18s}{'峰值HU':>9s}{'均值HU':>9s}{'对比度HU':>10s}{'对比度保留':>11s}{'可检出率':>10s}")
 ref_c = A('ref_contrast')
 print(f"{'真实1mm(真值)':<18s}{A('ref_peak').mean():9.0f}{A('ref_mean').mean():9.0f}"
       f"{ref_c.mean():10.0f}{'100%':>11s}{100*np.mean(ref_c > a.margin):9.1f}%")
 for k in arm_keys:
-    c = A(k + '_contrast'); nm = {'up': '5mm 上采样(现状)'}.get(k, k)
+    c = A(k + '_contrast')
+    nm = {'up': '5mm 上采样(现状)', 'base': 'CTHNet 单独'}.get(k, k)
     print(f"{nm:<18s}{A(k+'_peak').mean():9.0f}{A(k+'_mean').mean():9.0f}"
           f"{c.mean():10.0f}{100*c.mean()/ref_c.mean():10.0f}%{100*np.mean(c > a.margin):9.1f}%")
 d = np.array([r['diameter_mm'] for r in rows])
 print(f"\n按结节直径分层的可检出率（对比度 > {a.margin:.0f} HU）")
-print(f"{'直径':<12s}{'n':>5s}{'真实1mm':>9s}" + ''.join(f"{ {'up':'5mm上采样'}.get(k,k):>12s}" for k in arm_keys))
+_nm = {'up': '5mm上采样', 'base': 'CTHNet'}
+print(f"{'直径':<12s}{'n':>5s}{'真实1mm':>9s}" + ''.join(f"{_nm.get(k,k):>13s}" for k in arm_keys))
 for lo, hi, nm in [(0, 6, '<6mm'), (6, 10, '6-10mm'), (10, 99, '>=10mm')]:
     m = (d >= lo) & (d < hi)
     if m.sum() < 2: continue
     line = f"{nm:<12s}{m.sum():5d}{100*np.mean(ref_c[m] > a.margin):8.1f}%"
     for k in arm_keys:
-        line += f"{100*np.mean(A(k+'_contrast')[m] > a.margin):11.1f}%"
+        line += f"{100*np.mean(A(k+'_contrast')[m] > a.margin):12.1f}%"
     print(line)
 if a.csv:
     with open(a.csv, 'w', newline='') as fh:

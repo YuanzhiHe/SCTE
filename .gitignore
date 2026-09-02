@@ -36,3 +36,5 @@ __pycache__/
 !public_forward_op.pt
 baselines/i3net/
 RECON/
+reader_manifest_DO_NOT_EXPORT.csv
+READER/
