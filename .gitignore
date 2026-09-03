@@ -34,6 +34,9 @@ __pycache__/
 !public_8mm.pt
 !public_realft.pt
 !public_forward_op.pt
+# the zero-shot backbone: stage 7b is the primary on-site result and cannot run
+# without it, so it belongs in the clone rather than in a side channel
+!public_cthnet.pt
 baselines/i3net/
 RECON/
 reader_manifest_DO_NOT_EXPORT.csv
