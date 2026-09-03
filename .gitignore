@@ -23,6 +23,12 @@ runs/
 *.pptx
 *.ppt
 
+# ---- idea-generation working files -------------------------------------------
+# Literature-retrieval dumps and idea cards from the ideation phase. They are working
+# notes, not part of the method or its evidence, and the conclusions that survived are
+# in STAGE1_执行报告.md.
+ideaspark_run/
+
 # ---- scratch -----------------------------------------------------------------
 __pycache__/
 *.pyc
