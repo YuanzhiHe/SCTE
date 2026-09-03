@@ -1100,8 +1100,7 @@ CCC 单独一个数不足以说服临床审稿人，且它被受试者间方差�
 | `scripts/froc_luna.py` | FROC 式检出（保留，作为检测器局限的记录） |
 | `scripts/agreement.py` | Bland-Altman + bootstrap CI + 逐例配对检验 |
 | `scripts/export_reader_study.py` | 三臂盲法阅片素材导出 |
-| `CLAIM.md` | CLAIM 清单，标注哪些条目**必须在院内完成** |
-| `READER_STUDY.md` | 阅片研究方案 |
+| `上机手册.md` | 单文件上机手册；CLAIM 清单与阅片研究方案已并入其附录 A/B |
 
 ### 13.4 LUNA16 的边界
 
@@ -1112,4 +1111,4 @@ CCC 单独一个数不足以说服临床审稿人，且它被受试者间方差�
 因此：**LUNA16 给出病灶级的必要条件，私有队列的真实 5 mm/1 mm 配对才是充分条件。**
 
 另外，"可检出率"是对比度 > 100 HU 的**代理判据**，不是医师实际能否检出；真实检出率
-只能由阅片研究给出（方案见 `READER_STUDY.md`）。
+只能由阅片研究给出（方案见 `上机手册.md` 附录 B）。
