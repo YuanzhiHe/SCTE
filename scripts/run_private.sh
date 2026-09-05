@@ -78,8 +78,25 @@ $PY scripts/realign_pairs.py --src "$PAIRS" --check --limit 20 2>&1 | tail -4 | 
 if grep -q "ALIGNMENT CHECK FAILED" "$RES/01_align_check.log"; then
   echo "!! stage 1 did not align the pairs - stopping. See $RES/01_align_check.log"; exit 1
 fi
-[ -n "$EXT" ] && { $PY scripts/realign_pairs.py --src "$PAIRS_EXT" --check --limit 20 2>&1 \
-    | tail -3 | tee -a "$RES/01_align_check.log"; }
+if [ -n "$EXT" ]; then
+  # The external cohort carries the PRIMARY result, so its check must gate too. An
+  # earlier version only logged it, and a real run continued past a genuine sub-slab
+  # offset on the external cohort - the one cohort whose numbers are the contribution.
+  $PY scripts/realign_pairs.py --src "$PAIRS_EXT" --check --limit 20 2>&1 \
+      | tail -4 | tee "$RES/01_align_check_ext.log"
+  if grep -q "ALIGNMENT CHECK FAILED" "$RES/01_align_check_ext.log"; then
+    echo
+    echo "!! 外部队列未落在算子网格上。主结果全部出自这个队列，不能带着偏移跑。"
+    echo "   修法（精确重切，不插值，不会引入新误差；掩膜会一并重切）："
+    echo "     $PY scripts/realign_pairs.py --src $PAIRS_EXT --dst ${PAIRS_EXT}_aligned"
+    echo "     mv $PAIRS_EXT ${PAIRS_EXT}_misaligned && mv ${PAIRS_EXT}_aligned $PAIRS_EXT"
+    echo "     rm -f $RES/03_split.txt   # 然后重跑同一条命令，阶段 1-2 会自动跳过"
+    echo
+    echo "   确实要带着偏移继续（不推荐，会污染主结果）：ALLOW_MISALIGNED=1"
+    [ "${ALLOW_MISALIGNED:-0}" = 1 ] || exit 1
+    echo "   !! ALLOW_MISALIGNED=1 —— 外部队列结果已被污染，报告时必须声明"
+  fi
+fi
 
 MASK=""; ls "$PAIRS"/*_lung.npy >/dev/null 2>&1 && MASK="--lung_mask"
 [ -z "$MASK" ] && echo "!! no lung masks found — proceeding WITHOUT --lung_mask"
