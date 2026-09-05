@@ -82,6 +82,13 @@ PROTOCOL_TAGS = {
     "0018|1020": "software_version",
     "0018|9305": "revolution_time_s",
     "0018|9311": "spiral_pitch",
+    # Acquisition identity, not patient identity: these tell whether the two series are
+    # two reconstructions of ONE acquisition or two separate scans. A hospital archive
+    # does not guarantee the former, and nothing else in the header reveals it.
+    "0020|0012": "acquisition_number",
+    "0008|0022": "acquisition_date",
+    "0008|0032": "acquisition_time",
+    "0020|000e": "series_uid",
 }
 
 
