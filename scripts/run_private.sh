@@ -15,7 +15,11 @@
 #      Henan 491 external). Without $4 the single cohort is split 50/50 instead.
 #
 # Re-running skips every stage whose output already exists; FORCE=1 re-does all.
-set -euo pipefail
+# NOT `set -e`: a single non-zero exit from one arm - a case list too short for one
+# baseline, a TotalSegmentator hiccup - would otherwise abandon a run that is hours in
+# and mostly complete. The gates that MUST stop the run (alignment, missing weights)
+# call `exit 1` explicitly, so stopping stays a decision rather than a side effect.
+set -uo pipefail
 MODE=${1:?usage: run_private.sh dryrun|full <cases_dir> <cohort_tag>}
 CASES=${2:?}
 TAG=${3:?}
@@ -117,7 +121,15 @@ if [ -n "$EXT" ]; then
     CAL=$PAIRS_EXT/cal; TEST=$PAIRS_EXT/test
     mkdir -p "$CAL" "$TEST"
     $PY - "$PAIRS_EXT" "$CAL" "$TEST" "${EXT_CAL}" <<'PYEOF' | tee "$RES/03_split.txt"
-import glob, os, sys
+import glob, os, shutil, sys
+
+
+def link_or_copy(src, dst):
+    if os.path.exists(dst): return
+    try: os.symlink(os.path.abspath(src), dst)
+    except (OSError, NotImplementedError, AttributeError): shutil.copy2(src, dst)
+
+
 ext, cal, tst, k = sys.argv[1], sys.argv[2], sys.argv[3], int(sys.argv[4])
 cases = sorted(os.path.basename(f)[:-9] for f in glob.glob(os.path.join(ext, '*_thin.npy')))
 k = min(k, max(len(cases) - 10, 0))                      # never starve the reported set
@@ -128,8 +140,7 @@ for c in cases:
     for suf in ('_thin.npy', '_thick.npy', '_lung.npy', '_base.npy'):
         src = os.path.join(ext, c + suf)
         if os.path.exists(src):
-            link = os.path.join(dst, c + suf)
-            if not os.path.exists(link): os.symlink(os.path.abspath(src), link)
+            link_or_copy(src, os.path.join(dst, c + suf))
 n_c = len(glob.glob(os.path.join(cal, '*_thin.npy')))
 n_t = len(glob.glob(os.path.join(tst, '*_thin.npy')))
 print(f'EXTERNAL+CAL: model from the internal cohort; external {len(cases)} cases '
@@ -155,7 +166,16 @@ else
 if skip "$RES/03_split.txt"; then echo "   (already done)"; else
 mkdir -p "$TRAIN" "$TEST"
 $PY - "$PAIRS" "$TRAIN" "$TEST" <<'PYEOF' | tee "$RES/03_split.txt"
-import glob, os, sys
+import glob, os, shutil, sys
+
+
+def link_or_copy(src, dst):
+    # Windows refuses symlinks without Developer Mode; a copy is equivalent here.
+    if os.path.exists(dst): return
+    try: os.symlink(os.path.abspath(src), dst)
+    except (OSError, NotImplementedError, AttributeError): shutil.copy2(src, dst)
+
+
 pairs, tr, te = sys.argv[1:4]
 cases = sorted(os.path.basename(f)[:-9] for f in glob.glob(os.path.join(pairs, '*_thin.npy')))
 # every other case -> test; deterministic, balanced, and robust to small cohorts
@@ -164,8 +184,7 @@ for i, c in enumerate(cases):
     for suf in ('_thin.npy', '_thick.npy', '_lung.npy'):
         src = os.path.join(pairs, c + suf)
         if os.path.exists(src):
-            link = os.path.join(dst, c + suf)
-            if not os.path.exists(link): os.symlink(os.path.abspath(src), link)
+            link_or_copy(src, os.path.join(dst, c + suf))
 n_tr = len(glob.glob(os.path.join(tr, '*_thin.npy')))
 n_te = len(glob.glob(os.path.join(te, '*_thin.npy')))
 print(f'{len(cases)} cases -> TRAIN {n_tr} / TEST {n_te}')

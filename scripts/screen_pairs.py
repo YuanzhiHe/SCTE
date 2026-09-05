@@ -31,6 +31,23 @@ ap.add_argument('--csv', default=None)
 a = ap.parse_args()
 r = a.downsample
 
+def link_or_copy(src, dst):
+    """Symlink when the platform allows it, copy when it does not.
+
+    Windows refuses symlinks without Developer Mode or admin rights, and these splits
+    are pure views over the prepared pairs - so falling back to a copy costs disk but
+    never correctness. Patching this by hand on the analysis machine would be undone by
+    the next git pull.
+    """
+    import os, shutil
+    if os.path.exists(dst):
+        return
+    try:
+        os.symlink(os.path.abspath(src), dst)
+    except (OSError, NotImplementedError, AttributeError):
+        shutil.copy2(src, dst)
+
+
 files = sorted(f for f in os.listdir(a.root) if f.endswith('_thin.npy'))
 rows, keep = [], []
 for i, f in enumerate(files, 1):
@@ -76,7 +93,7 @@ if a.out and keep:
             src = os.path.join(a.root, f.replace('_thin.npy', suf))
             if os.path.exists(src):
                 dst = os.path.join(a.out, os.path.basename(src))
-                if not os.path.exists(dst): os.symlink(os.path.abspath(src), dst)
+                link_or_copy(src, dst)
     ap_src = os.path.join(a.root, 'pair_audit.csv')
     if os.path.exists(ap_src): shutil.copy(ap_src, a.out)
     print(f'-> {a.out}')
