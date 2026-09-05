@@ -128,6 +128,51 @@ def protocol_fingerprint(path):
     return out
 
 
+def true_z_spacing(path):
+    """Median gap between consecutive slice centres, from ImagePositionPatient.
+
+    SliceThickness is not it. A "1 mm" series is often reconstructed at 0.7-0.8 mm
+    increments and a "5 mm" one at 6-7 mm, so the index ratio between the two series is
+    whatever those two numbers give - measured on one live cohort: median 6.404, range
+    5.000-6.772, and not an integer. Hard-wiring downsample=5 then mis-pairs every slice
+    by a growing amount while the content still matches at 0.997, which looks like a data
+    problem and is not one.
+    """
+    if not os.path.isdir(path):
+        img = sitk.ReadImage(path)
+        return float(img.GetSpacing()[2])
+    r = sitk.ImageSeriesReader()
+    ids = r.GetGDCMSeriesIDs(path)
+    if not ids:
+        return float("nan")
+    best, n = None, -1
+    for sid in ids:
+        f = r.GetGDCMSeriesFileNames(path, sid)
+        if len(f) > n:
+            best, n = f, len(f)
+    zs = []
+    for fn in best[:60]:
+        rd = sitk.ImageFileReader(); rd.SetFileName(fn); rd.LoadPrivateTagsOff()
+        rd.ReadImageInformation()
+        if rd.HasMetaDataKey("0020|0032"):
+            zs.append(float(rd.GetMetaData("0020|0032").split("\\")[2]))
+    if len(zs) < 3:
+        return float("nan")
+    return float(np.median(np.diff(np.sort(np.array(zs)))))
+
+
+def resample_z(vol, src_mm, dst_mm):
+    """Linear resampling along z only, so the pair lands on an exact integer ratio."""
+    if abs(src_mm - dst_mm) < 1e-4:
+        return vol
+    n_out = max(int(round(vol.shape[0] * src_mm / dst_mm)), 4)
+    src = np.arange(vol.shape[0], dtype=np.float64) * src_mm
+    dst = np.arange(n_out, dtype=np.float64) * dst_mm
+    idx = np.clip(np.searchsorted(src, dst) - 1, 0, vol.shape[0] - 2)
+    w = ((dst - src[idx]) / (src[idx + 1] - src[idx]))[:, None, None].astype(np.float32)
+    return (vol[idx] * (1 - w) + vol[idx + 1] * w).astype(np.float32)
+
+
 def series_geometry(path):
     """(n_slices, z_spacing_mm) for a file or a DICOM series directory."""
     img = read_dicom_series(path) if os.path.isdir(path) else sitk.ReadImage(path)
@@ -229,6 +274,10 @@ def main():
     ap.add_argument("--slice_fwhm", type=float, default=5.0)
     ap.add_argument("--min_slices", type=int, default=40)
     ap.add_argument("--max_offset", type=int, default=4)
+    ap.add_argument("--fix_ratio", action="store_true", default=True,
+                    help="resample the thin series so thick/thin spacing is exactly "
+                         "--downsample. Off by --no_fix_ratio.")
+    ap.add_argument("--no_fix_ratio", dest="fix_ratio", action="store_false")
     ap.add_argument("--protocol_meta", action="store_true", default=True,
                     help="record scanner/acquisition metadata per case (allow-listed "
                          "DICOM tags only, never patient attributes)")
@@ -257,6 +306,14 @@ def main():
         try:
             thin = read_hu(thin_p, args.rescale_hu)
             thick = read_hu(thick_p, args.rescale_hu)
+            sz_t, sz_k = true_z_spacing(thin_p), true_z_spacing(thick_p)
+            ratio = sz_k / sz_t if (sz_t and sz_t == sz_t and sz_k == sz_k) else float("nan")
+            if args.fix_ratio and ratio == ratio and abs(ratio - r) > 0.02:
+                # Bring the thin series onto a grid where thick/thin is exactly r, so
+                # every downstream assumption (operator, certificate, public weights)
+                # keeps holding without change.
+                thin = resample_z(thin, sz_t, sz_k / r)
+                sz_t = sz_k / r
             bb = lung_bbox(thin)
             ys, xs = bb[1], bb[2]
             z_lo = bb[0].start - bb[0].start % r          # snap so slabs line up
@@ -284,7 +341,10 @@ def main():
             lung = float(((x > -990) & (x < -500)).mean())
             rec = dict(case=case, offset=off, sub_offset=sub, match_mse=round(err, 6),
                        thin_shape=str(x.shape), thick_shape=str(y.shape),
-                       lung_frac=round(lung, 4))
+                       lung_frac=round(lung, 4),
+                       z_thin_mm=round(sz_t, 4) if sz_t == sz_t else "",
+                       z_thick_mm=round(sz_k, 4) if sz_k == sz_k else "",
+                       z_ratio_raw=round(ratio, 4) if ratio == ratio else "")
             if args.protocol_meta:
                 for role, pth in (("thin", thin_p), ("thick", thick_p)):
                     for k, v in protocol_fingerprint(pth).items():
@@ -292,6 +352,7 @@ def main():
             rows.append(rec)
             ok += 1
             print(f"[ok]   {case}: thin {x.shape} thick {y.shape} off={off:+d} sub={sub:+d} "
+                  f"z {sz_t:.2f}/{sz_k:.2f}mm ratio {ratio:.2f} "
                   f"mse={err:.5f} lung={lung:.2f} HU[{x.min():.0f},{x.max():.0f}]")
             if ok == 3 and all(r_["lung_frac"] < 0.02 for r_ in rows[:3]):
                 print("\n!! the first 3 cases have essentially NO lung voxels.\n"
