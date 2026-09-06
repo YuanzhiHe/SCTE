@@ -30,6 +30,12 @@ ap.add_argument('--min_cases', type=int, default=12,
 ap.add_argument('--flow_ckpt', default='public_flow.pt')
 ap.add_argument('--residual_scale', type=float, default=0.028)
 ap.add_argument('--flow_steps', type=int, default=64)
+ap.add_argument('--base_recon', action='store_true',
+                help='certify the hybrid arm (frozen backbone + flow residual) instead of '
+                     'flow on plain up-sampling. Needs <case>_base.npy, i.e. the backbone '
+                     'pass must have run first.')
+ap.add_argument('--suffix', default='', help='appended to output names, to keep a '
+                                             '--base_recon run beside a plain one')
 ap.add_argument('--dry', action='store_true', help='only show the grouping')
 a = ap.parse_args()
 
@@ -153,9 +159,11 @@ for gi, g in enumerate(runnable):
             print('  阈值写入失败:', e)
 
     for nm, extra in (('oracle_test', ['--oracle']),
-                      ('flow', ['--ckpt', a.flow_ckpt, '--flow',
-                                '--residual_scale', str(a.residual_scale),
-                                '--flow_steps', str(a.flow_steps)])):
+                      ('flow' + a.suffix,
+                       ['--ckpt', a.flow_ckpt, '--flow',
+                        '--residual_scale', str(a.residual_scale),
+                        '--flow_steps', str(a.flow_steps)]
+                       + (['--base_recon'] if a.base_recon else []))):
         out = os.path.join(gd, f'cert_{nm}.csv')
         if os.path.exists(out):
             continue
@@ -165,11 +173,11 @@ for gi, g in enumerate(runnable):
 
     row = dict(group=g, tag=tag, n_cal=len(groups[g]['cal']), n_test=len(groups[g]['test']),
                w=w)
-    for nm in ('oracle_test', 'flow'):
+    for nm in ('oracle_test', 'flow' + a.suffix):
         p = os.path.join(gd, f'cert_{nm}.csv')
         if os.path.exists(p):
             rr = list(csv.DictReader(open(p)))
-            row[nm] = '%d/%d' % (sum(x['verdict'] == 'certified' for x in rr), len(rr))
+            row['flow' if nm.startswith('flow') else nm] = '%d/%d' % (sum(x['verdict'] == 'certified' for x in rr), len(rr))
     results.append(row)
 
 print('\n\n===== 按机器分别标定后的结果')
