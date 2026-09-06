@@ -1,0 +1,15 @@
+cluster,title,venue,year,type,role
+Cluster A,Quantitative Emphysema Measurement On Ultra-High-Resolution CT,Int J COPD,2019,benchmark,cite-not-claim
+Cluster A,Effect of slice thickness on quantitative analysis of ILD,-,2025,benchmark,cite-not-claim
+Cluster A,Impact of CT Reconstruction Parameters on Emphysema Index,-,2025,benchmark,cite-not-claim
+Cluster B,CTHNet / Spatial resolution enhancement thick slice CT,npj Digit Med,2024,method+benchmark,our backbone; no densitometric agreement reported
+Cluster B,RPLHR-CT / TVSRN,MICCAI,2022,method+benchmark,baseline; pseudo-LR gap
+Cluster B,I3Net,IEEE TMI,2024,method,baseline
+Cluster B,MedSR-Impact,arXiv,2025,method+benchmark,closest to claim 1 framing; reports improvement
+Cluster C,DLR effect on abdominal CT densitometry (meta-analysis),Eur Radiol,2022,survey,global attenuation shift known for DLR
+Cluster C,DLR for quantitative COPD assessment,Int J COPD,-,method+benchmark,DLR biases emphysema at low dose
+Cluster D,Kernel conversion for archived chest CT,-,2022,method,"same motivation, kernel lever"
+Cluster E,On hallucinations in tomographic image reconstruction,IEEE TMI,2021,theory,null-space theory; explains our negative result
+Cluster F,Self-supervised conformal prediction for imaging,-,2025,theory+method,closest to claim 3
+Cluster F,Metric-guided conformal bounds,-,2025,method,bounds a downstream metric
+Cluster F,Non-reference QA for medical imaging,arXiv,2024,method,perceptual NR-IQA
