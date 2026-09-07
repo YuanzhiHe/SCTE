@@ -11,22 +11,27 @@ Writes <case>_lung.npy (uint8, 0 = background, 1..5 = the five lobes) next to
 
   python scripts/make_lung_masks.py --root DATA/public_pairs_test [--fast] [--limit N]
 """
-import argparse, os, subprocess, sys, tempfile
+import argparse, os, shutil, subprocess, sys, tempfile
 import nibabel as nib
 import numpy as np
 
 LOBES = ['lung_upper_lobe_left', 'lung_lower_lobe_left', 'lung_upper_lobe_right',
          'lung_middle_lobe_right', 'lung_lower_lobe_right']
-TS = os.path.join(os.path.dirname(sys.executable), 'TotalSegmentator')
+# Windows: the console-script .exe breaks totalsegmentator's multiprocessing named
+# pipes when the venv lives on another drive (E:) than the base python (C:).
+# Invoking the module through the interpreter keeps the process tree consistent.
+TS = [sys.executable, '-m', 'totalsegmentator.bin.TotalSegmentator']
 
 
 def segment(vol_hu, fast=True, spacing=(1., 1., 1.)):
     tmp = tempfile.mkdtemp()
-    nii = os.path.join(tmp, 'in.nii.gz'); out = os.path.join(tmp, 'seg')
+    # Uncompressed .nii on purpose: temp sits on SSD, and zlib-compressing ~100 MB
+    # of float32 per case costs 10-30 s of single-threaded CPU for nothing there.
+    nii = os.path.join(tmp, 'in.nii'); out = os.path.join(tmp, 'seg')
     nib.save(nib.Nifti1Image(np.transpose(vol_hu, (2, 1, 0)).astype(np.float32),
                              np.diag(list(spacing) + [1.])), nii)
-    cmd = [TS, '-i', nii, '-o', out, '--roi_subset'] + LOBES + (['--fast'] if fast else [])
-    r = subprocess.run(cmd, capture_output=True, text=True)
+    cmd = TS + ['-i', nii, '-o', out, '--roi_subset'] + LOBES + (['--fast'] if fast else [])
+    r = subprocess.run(cmd, capture_output=True, text=True, errors='replace')
     if r.returncode != 0:
         raise RuntimeError(r.stderr[-800:])
     m = np.zeros(vol_hu.shape, np.uint8)
@@ -34,7 +39,7 @@ def segment(vol_hu, fast=True, spacing=(1., 1., 1.)):
         p = os.path.join(out, n + '.nii.gz')
         if os.path.exists(p):
             m[np.transpose(nib.load(p).get_fdata(), (2, 1, 0)) > 0.5] = i
-    subprocess.run(['rm', '-rf', tmp])
+    shutil.rmtree(tmp, ignore_errors=True)
     return m
 
 
