@@ -36,6 +36,11 @@ ap.add_argument('--base_recon', action='store_true',
                      'pass must have run first.')
 ap.add_argument('--suffix', default='', help='appended to output names, to keep a '
                                              '--base_recon run beside a plain one')
+ap.add_argument('--pooled_control', action='store_true',
+                help='also fit and certify ONE pooled calibration on the same cases, as a '
+                     'control. Without it a rise in certification cannot be attributed to '
+                     'per-machine constants, because the earlier pooled numbers were '
+                     'produced before the z-spacing prep fix.')
 ap.add_argument('--dry', action='store_true', help='only show the grouping')
 a = ap.parse_args()
 
@@ -96,22 +101,40 @@ if a.dry:
     sys.exit(0)
 
 os.makedirs(a.out, exist_ok=True)
-results = []
+
+# Each job is one calibration: a tag, a display name, and the two directories it is
+# fitted and reported on. The per-machine jobs get a directory of links; the pooled
+# control points straight at the originals, because copying ~500 volumes on a machine
+# with no symlinks would cost more disk than the whole run.
+jobs = []
+if a.pooled_control:
+    jobs.append(dict(tag='pooled', name='合并对照（修复后同一批数据）', cal=a.cal, test=a.test,
+                     n_cal=sum(len(d['cal']) for d in groups.values()),
+                     n_test=sum(len(d['test']) for d in groups.values()), link=False))
 for gi, g in enumerate(runnable):
-    tag = 'g%d' % gi
+    jobs.append(dict(tag='g%d' % gi, name=g, group=g, link=True,
+                     n_cal=len(groups[g]['cal']), n_test=len(groups[g]['test'])))
+
+results = []
+for job in jobs:
+    tag = job['tag']
     gd = os.path.join(a.out, tag)
-    for role, root in (('cal', a.cal), ('test', a.test)):
-        sub = os.path.join(gd, role)
-        os.makedirs(sub, exist_ok=True)
-        for c in groups[g][role]:
-            for suf in ('_thin.npy', '_thick.npy', '_lung.npy', '_base.npy'):
-                src = os.path.join(root, c + suf)
-                if os.path.exists(src):
-                    link_or_copy(src, os.path.join(sub, c + suf))
-    print(f'\n===== {tag}: {g}  (标定 {len(groups[g]["cal"])} / 上报 {len(groups[g]["test"])})')
+    os.makedirs(gd, exist_ok=True)
+    if job['link']:
+        for role, root in (('cal', a.cal), ('test', a.test)):
+            sub = os.path.join(gd, role)
+            os.makedirs(sub, exist_ok=True)
+            for c in groups[job['group']][role]:
+                for suf in ('_thin.npy', '_thick.npy', '_lung.npy', '_base.npy'):
+                    s = os.path.join(root, c + suf)
+                    if os.path.exists(s):
+                        link_or_copy(s, os.path.join(sub, c + suf))
+        cal, tst = os.path.join(gd, 'cal'), os.path.join(gd, 'test')
+    else:
+        cal, tst = job['cal'], job['test']
+    print(f'\n===== {tag}: {job["name"]}  (标定 {job["n_cal"]} / 上报 {job["n_test"]})')
     proto = os.path.join(gd, 'protocol.json')
     fwd = os.path.join(gd, 'forward_op.pt')
-    cal, tst = os.path.join(gd, 'cal'), os.path.join(gd, 'test')
 
     def run(cmd, log):
         with open(os.path.join(gd, log), 'w') as fh:
@@ -143,7 +166,7 @@ for gi, g in enumerate(runnable):
         run([PY, f'{ROOT}/scripts/certify.py', '--root', cal, '--oracle',
              '--calibration', proto, '--learned_op', fwd, '--lung_mask', '--csv', oc],
             'oracle.log')
-        # thresholds from this group's own null
+        # thresholds from this job's own null
         try:
             import numpy as np, json
             rows = list(csv.DictReader(open(oc)))
@@ -171,13 +194,13 @@ for gi, g in enumerate(runnable):
         run([PY, f'{ROOT}/scripts/certify.py', '--root', tst, '--calibration', proto,
              '--learned_op', fwd, '--lung_mask', '--csv', out] + extra, f'{nm}.log')
 
-    row = dict(group=g, tag=tag, n_cal=len(groups[g]['cal']), n_test=len(groups[g]['test']),
-               w=w)
+    row = dict(group=job['name'], tag=tag, n_cal=job['n_cal'], n_test=job['n_test'], w=w)
     for nm in ('oracle_test', 'flow' + a.suffix):
         p = os.path.join(gd, f'cert_{nm}.csv')
         if os.path.exists(p):
             rr = list(csv.DictReader(open(p)))
-            row['flow' if nm.startswith('flow') else nm] = '%d/%d' % (sum(x['verdict'] == 'certified' for x in rr), len(rr))
+            row['flow' if nm.startswith('flow') else nm] = '%d/%d' % (
+                sum(x['verdict'] == 'certified' for x in rr), len(rr))
     results.append(row)
 
 print('\n\n===== 按机器分别标定后的结果')
@@ -185,5 +208,12 @@ print(f"{'组':<34s}{'有效层厚':>10s}{'标定':>6s}{'上报':>6s}{'Oracle':>
 for r in results:
     print(f"{r['group'][:34]:<34s}{str(r['w']):>10s}{r['n_cal']:>6d}{r['n_test']:>6d}"
           f"{r.get('oracle_test', '-'):>10s}{r.get('flow', '-'):>10s}")
-print('\n对照：混合标定下 Oracle 85.1%、Flow 12.6%、公开标定 2.9%（444 例）。')
-print('若分组后 Flow 明显上升，说明此前的失败有相当部分来自"两台机器的物理被平均掉了"。')
+
+if a.pooled_control:
+    print('\n读法：把每台机器的 Flow 与 pooled 行比，两者之差才是"分机器标定"的效果。')
+    print('不要拿它和历史上那个 12.6% 比 —— 那个数是在 z 间距修复之前拟合的，差异里')
+    print('混着 prep 的改动。若各机器与 pooled 基本持平，结论是一套标定跨厂商通用，')
+    print('这对部署是更强的结论，不是失败。')
+else:
+    print('\n没有跑合并对照（--pooled_control）。缺了它，认证率的任何变化都无法归因于')
+    print('分机器标定：历史上那个混合标定的数字是在 z 间距修复之前拟的。')
