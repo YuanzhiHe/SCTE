@@ -11,7 +11,7 @@ whole-lung and per-lobe densitometry against the 1 mm reference.
       --flow --residual_scale 0.028 --flow_steps 32 --learned_op runs/forward_op_rplhr.pt \
       --calibration runs/protocol_rplhr_5mm.json --n 15 --csv results/volume_flow.csv
 """
-import argparse, csv, os, sys
+import argparse, csv, gc, os, sys
 import numpy as np, torch
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from scte_r import metrics
@@ -75,8 +75,27 @@ ap.add_argument('--base_recon', action='store_true',
                 help='feed the cached <case>_base.npy strong reconstruction to the '
                      'flow decoder as its base predictor')
 ap.add_argument('--n', type=int, default=0); ap.add_argument('--csv', default=None)
+ap.add_argument('--start', type=int, default=0,
+                help='skip the first N cases; with --csv, rows already on disk are kept')
+ap.add_argument('--log', default=None, metavar='FILE',
+                help='tee all stdout/stderr to this file (append) so output survives '
+                     'even when launched from a process whose own redirection is blocked')
 ap.add_argument('--device', default='cuda' if torch.cuda.is_available() else 'cpu')
 a = ap.parse_args()
+if a.log:
+    class _Tee:
+        def __init__(self, *streams): self.streams = streams
+        def write(self, data):
+            for s in self.streams:
+                try: s.write(data)
+                except Exception: pass
+        def flush(self):
+            for s in self.streams:
+                try: s.flush()
+                except Exception: pass
+    _lf = open(a.log, 'a', buffering=1)
+    sys.stdout = _Tee(_lf, sys.__stdout__)   # file FIRST: a dead console must not
+    sys.stderr = _Tee(_lf, sys.__stderr__)   # block the log that diagnosing depends on
 if a.trilinear and not a.interp: a.interp = 'linear'
 r = a.downsample
 assert a.slab % r == 0 and a.overlap % r == 0, 'slab and overlap must be multiples of r'
@@ -190,7 +209,32 @@ cases = sorted(f for f in os.listdir(a.root) if f.endswith('_thin.npy'))
 if a.n: cases = cases[:a.n]
 torch.manual_seed(0)
 rows = []
+done = set()
+if a.csv and os.path.exists(a.csv):
+    # identity-based resume: whatever case ids are already in the CSV are skipped,
+    # regardless of --start. Position-based resume silently dropped cases when the
+    # skip count and the CSV row count ever disagreed (observed: --start 10 with an
+    # 8-row CSV -> cases 9-10 would have been lost from the final table).
+    with open(a.csv) as fh:
+        for row in csv.DictReader(fh):
+            rows.append(row); done.add(row['case'])
+    print('resuming: %d cases already in %s' % (len(done), a.csv), flush=True)
+cases = [f for f in cases if f[:-9] not in done]
+print('%d cases to run (%d done)' % (len(cases), len(done)), flush=True)
+
+def flush_csv():
+    if a.csv and rows:
+        with open(a.csv, 'w', newline='') as fh:
+            w = csv.DictWriter(fh, fieldnames=list(rows[0].keys()))
+            w.writeheader(); w.writerows(rows)
+        # heartbeat file: python's own writes are the one I/O path proven reliable
+        # here, so progress is reported through it even if stdout logging fails
+        with open(os.path.splitext(a.csv)[0] + '.progress', 'w') as fh:
+            fh.write('%d\n' % len(rows))
 for ci, f in enumerate(cases, 1):
+    if a.device == 'cuda':        # cached blocks from earlier cases accumulate until the
+        torch.cuda.empty_cache()  # 6 GB WDDM driver starts paging and every slab crawls;
+        gc.collect()              # releasing between cases keeps each one at full speed
     thin = np.load(os.path.join(a.root, f))
     thick = np.load(os.path.join(a.root, f.replace('_thin', '_thick')))
     mp = os.path.join(a.root, f.replace('_thin', '_lung'))
@@ -207,6 +251,16 @@ for ci, f in enumerate(cases, 1):
             print('[skip] %s: no cached base reconstruction' % f); continue
         base_vol = np.load(bp).astype(np.float32)
     D = thin.shape[0]
+    # Per-case slab size: the per-slab GPU footprint scales with in-plane area
+    # (activations are channels x slab x H x W), so a 512x512 series needs a
+    # shallower slab than a 280x300 one or the 6 GB WDDM driver starts paging
+    # (observed on a 512x512 case: fb 5784/6113 MiB, sm 100%, memory controller
+    # 0% - compute halted). 2.6M voxels/slab is the largest configuration that
+    # ran with headroom; smaller in-plane keeps the full requested slab.
+    slab, ov = a.slab, a.overlap
+    if thin.shape[1] * thin.shape[2] * slab > 2_600_000:
+        slab = max(2 * r, int(2_600_000 / (thin.shape[1] * thin.shape[2])) // r * r)
+        ov = max(r, slab // 2 // r * r)
     grad = None
     if a.grad_gate or a.grad_steps:
         from scte_r.forward_operator import SSPForwardOperator
@@ -227,22 +281,22 @@ for ci, f in enumerate(cases, 1):
               else ((lung > 0) if has_mask else np.ones(thin.shape, bool)))
         gthr = float(np.percentile(grad[lm], a.grad_gate if a.grad_gate else 80.0))
     acc = np.zeros(thin.shape, np.float32); wacc = np.zeros(D, np.float32) + 1e-8
-    step = a.slab - a.overlap
-    starts = list(range(0, max(D - a.slab, 0) + 1, step))
-    if starts[-1] + a.slab < D: starts.append(D - a.slab)
+    step = slab - ov
+    starts = list(range(0, max(D - slab, 0) + 1, step))
+    if starts[-1] + slab < D: starts.append(D - slab)
     with torch.no_grad():
         for z0 in (starts if rec is None else []):
             z0 -= z0 % r
-            yt = torch.from_numpy(thick[z0 // r: z0 // r + a.slab // r].astype(np.float32)
+            yt = torch.from_numpy(thick[z0 // r: z0 // r + slab // r].astype(np.float32)
                                   )[None, None].to(a.device) / 1000.
-            if yt.shape[2] * r != a.slab: continue
+            if yt.shape[2] * r != slab: continue
             bs = None if base_vol is None else torch.from_numpy(
-                base_vol[z0:z0 + a.slab])[None, None].to(a.device) / 1000.
-            w_hann = hann_z(a.slab, a.overlap)
+                base_vol[z0:z0 + slab])[None, None].to(a.device) / 1000.
+            w_hann = hann_z(slab, ov)
             steps_here = None
             if a.grad_steps and grad is not None:
                 lo, hi = (int(v) for v in a.grad_steps.split(','))
-                gs = grad[z0:z0 + a.slab]
+                gs = grad[z0:z0 + slab]
                 frac = float((gs > gthr).mean()) if gthr is not None else 1.0
                 steps_here = hi if frac > 0.05 else lo
                 slab_steps.append(steps_here)
@@ -262,13 +316,13 @@ for ci, f in enumerate(cases, 1):
                     sd = var.sqrt()
                     if sacc is None:
                         sacc = np.zeros(thin.shape, np.float32)
-                    sacc[z0:z0 + a.slab] += sd[0, 0].cpu().numpy() * 1000. * w_hann[:, None, None]
+                    sacc[z0:z0 + slab] += sd[0, 0].cpu().numpy() * 1000. * w_hann[:, None, None]
                     xs = s1                       # audit sample 1, not the mean
                 else:
                     xs = mean
-            w_hann = hann_z(a.slab, a.overlap)
-            acc[z0:z0 + a.slab] += xs[0, 0].cpu().numpy() * 1000. * w_hann[:, None, None]
-            wacc[z0:z0 + a.slab] += w_hann
+            w_hann = hann_z(slab, ov)
+            acc[z0:z0 + slab] += xs[0, 0].cpu().numpy() * 1000. * w_hann[:, None, None]
+            wacc[z0:z0 + slab] += w_hann
     if rec is None: rec = acc / wacc[:, None, None]
     if a.lung_blend and base_vol is not None:
         bm = lung_from(base_vol, a.lung_blend)
@@ -310,9 +364,13 @@ for ci, f in enumerate(cases, 1):
     rows.append(row)
     ss = ('  steps %d-%d avg %.0f' % (min(slab_steps), max(slab_steps),
           np.mean(slab_steps))) if slab_steps else ''
-    print('[%2d/%d] %-14s LAA950 ref %6.2f%% rec %6.2f%%  PSNR %5.2f  lungPSNR %5.2f  SSIM %.4f%s'
+    sm = ('  slab %d/%d' % (slab, ov)) if slab != a.slab else ''
+    gm = ('  GPU %.1f/%.1f GB' % (torch.cuda.memory_allocated() / 2**30,
+          torch.cuda.memory_reserved() / 2**30)) if a.device == 'cuda' else ''
+    print('[%2d/%d] %-14s LAA950 ref %6.2f%% rec %6.2f%%  PSNR %5.2f  lungPSNR %5.2f  SSIM %.4f%s%s%s'
           % (ci, len(cases), row['case'], row['laa950_ref'], row['laa950_rec'],
-             pw, pl, sw, ss), flush=True)
+             pw, pl, sw, ss, sm, gm), flush=True)
+    flush_csv()
 
 A = lambda k: np.array([x[k] for x in rows], dtype=float)
 print('\nn=%d  WHOLE-LUNG (TotalSegmentator mask)' % len(rows))
