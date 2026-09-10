@@ -178,6 +178,28 @@ for job in jobs:
                      tau_s=round(tau(g_('s')), 2))
             json.dump(p, open(proto, 'w'), indent=1)
             print(f"  阈值 {p['tau_delta']=} {p['tau_rho']=} {p['tau_s']=}")
+            # The null run above happened BEFORE these thresholds existed, so its
+            # verdicts came from the Arbiter's defaults and describe nothing. Re-derive
+            # them from the term columns, which do not depend on the thresholds - else
+            # the calibration file reads as a catastrophic certification rate and
+            # invites exactly the wrong conclusion.
+            for r in rows:
+                if r['verdict'] == 'abstain':
+                    continue
+                sv = r.get('s', '')
+                viol = [(n_, q / t_) for n_, q, t_ in (
+                    ('displacement', abs(float(r['delta_HU'])), p['tau_delta']),
+                    ('structural', float(r['rho_struct']), p['tau_rho']),
+                    ('tail_recovery', abs(float(sv)) if sv not in ('', None) else 0.0,
+                     p['tau_s'])) if q > t_]
+                r['verdict'] = 'flagged' if viol else 'certified'
+                r['violated'] = max(viol, key=lambda t: t[1])[0] if viol else ''
+            with open(oc, 'w', newline='') as fh:
+                wr = csv.DictWriter(fh, fieldnames=list(rows[0].keys()))
+                wr.writeheader(); wr.writerows(rows)
+            nc = sum(r['verdict'] == 'certified' for r in rows)
+            print(f'  标定集自身覆盖率 {nc}/{len(rows)} ({100*nc/len(rows):.1f}%) '
+                  f'（阈值就是从它拟的，这个数应当在 95% 附近）')
         except Exception as e:
             print('  阈值写入失败:', e)
 
