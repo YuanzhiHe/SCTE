@@ -267,6 +267,13 @@ class Arbiter:
                 out.append(("abstain", "empty_lung_interior")); continue
             d = abs(float(cert["delta_hat"][i]) * HU_SCALE)
             r = float(cert["rho_struct"][i])
+            # A reconstruction containing non-finite voxels makes every comparison
+            # below False, so it would fall through to "certified" - the one verdict it
+            # must never get. Nothing downstream notices either: LAA counts `NaN < -950`
+            # as healthy parenchyma, so the endpoint comes out finite and wrong. Observed
+            # on real cases whose lung masks were fine, i.e. the model itself diverged.
+            if not (math.isfinite(d) and math.isfinite(r)):
+                out.append(("abstain", "non_finite_reconstruction")); continue
             s = cert["s"][i]
             viol = []
             if d > self.tau_delta:
