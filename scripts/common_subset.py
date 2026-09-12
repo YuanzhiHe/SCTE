@@ -45,11 +45,38 @@ for spec in a.arms:
 common = set.intersection(*[set(r) for _, _, r in arms])
 if not common:
     sys.exit('the arms share no cases')
-common = sorted(common)
+
+# A case whose PSNR is NaN has non-finite voxels in its reconstruction, and LAA does
+# NOT report that: `NaN < -950` is False, so those voxels silently count as healthy
+# parenchyma and the endpoint comes out finite but wrong. So a case is dropped from
+# EVERY metric as soon as any arm has a non-finite value for it anywhere, not just
+# from the metric that happens to show the NaN.
+def _bad(rows, case):
+    for k, v in rows[case].items():
+        if k == 'case' or v in (None, ''):
+            continue
+        try:
+            x = float(v)
+        except ValueError:
+            continue
+        if x != x or x in (float('inf'), float('-inf')):
+            return True
+    return False
+
+
+n_shared = len(common)
+dropped = sorted(c for c in common if any(_bad(r, c) for _, _, r in arms))
+common = sorted(common - set(dropped))
+if not common:
+    sys.exit('every shared case has a non-finite value')
 print(f'\n共同完成的病例 {len(common)} 例  ' +
       '  '.join(f'{lb}:{len(r)}' for lb, _, r in arms))
-if len(common) < min(len(r) for _, _, r in arms):
+if n_shared < min(len(r) for _, _, r in arms):
     print('（已丢弃各臂中其他臂尚未完成的病例）')
+if dropped:
+    print(f'另丢弃 {len(dropped)} 例：某一臂存在非有限值（重建含 NaN 体素时 LAA 仍会'
+          f'算出一个有限但错误的值，故整例剔除）')
+    print('  ' + '  '.join(dropped[:10]) + ('  ...' if len(dropped) > 10 else ''))
 
 
 def ccc(x, y):
