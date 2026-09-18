@@ -47,3 +47,6 @@ baselines/i3net/
 RECON/
 reader_manifest_DO_NOT_EXPORT.csv
 READER/
+
+# 生成的 PDF 不入库（HTML 是源文件，用 soffice 重新导出即可）
+report/*.pdf
