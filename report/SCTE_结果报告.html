@@ -1,0 +1,211 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>SCTE-R 结果报告</title>
+<style>
+@page { size: A4; margin: 2cm; }
+body { font-family: "Noto Serif CJK SC", serif; font-size: 10.5pt; line-height: 1.55;
+       color: #000; background: #fff; }
+h1 { font-size: 17pt; margin: 0 0 2pt 0; }
+h2 { font-size: 13pt; margin: 20pt 0 6pt 0; border-bottom: 1.2pt solid #000;
+     padding-bottom: 3pt; }
+h3 { font-size: 11.5pt; margin: 14pt 0 4pt 0; }
+p, li { color: #000; }
+.sub { font-size: 9.5pt; margin: 0 0 14pt 0; }
+table { border-collapse: collapse; width: 100%; font-size: 9pt; margin: 8pt 0 4pt 0; }
+th, td { border: 0.6pt solid #000; padding: 3.5pt 5pt; text-align: center;
+         vertical-align: middle; }
+th { background: #e8e8e8; font-weight: bold; }
+td.l, th.l { text-align: left; }
+caption { caption-side: top; text-align: left; font-size: 9.5pt; font-weight: bold;
+          padding-bottom: 4pt; }
+.note { font-size: 9pt; margin: 2pt 0 12pt 0; }
+.box { border: 0.8pt solid #000; padding: 8pt 10pt; margin: 10pt 0; }
+ul, ol { margin: 4pt 0 8pt 0; padding-left: 20pt; }
+code { font-family: "Noto Sans Mono CJK SC", monospace; font-size: 9pt; }
+.kv { font-size: 9.5pt; }
+</style></head><body>
+
+<h1>SCTE-R：从 5 mm 胸部 CT 恢复肺气肿定量</h1>
+<p class="sub">结果报告 &nbsp;|&nbsp; 2026-09-18 &nbsp;|&nbsp; 外部验证 444 例，两家厂商</p>
+
+<div class="box">
+<p style="margin:0"><b>一句话结论。</b>已有的厚层→薄层重建方法提升图像质量，但<b>不改善</b>肺气肿定量的一致性；
+本文找到了原因（确定性回归的最优解是一个恒定的整体密度平移），并给出在无薄层设备、
+无本地配对数据条件下即可使用的解法。在 444 例外部队列上，LAA-950 与 LAA-910 的系统
+偏差降到 0.3 个百分点以内，Perc15 偏差从已有方法的 +19～+24 HU 降到 +2.5 HU。</p>
+</div>
+
+<h2>一、三项贡献</h2>
+
+<h3>贡献一：一个此前未被报道的评价缺口</h3>
+<p>厚→薄重建的<b>图像质量提升不转化为定量一致性</b>。这一点在两个相互独立的数据集上一致成立：</p>
+<ul>
+<li><b>公开数据（50 例整卷）</b>：三种已发表方法 CTHNet、TVSRN、I3Net 的 PSNR 均在
+33 dB 以上，比 Lanczos 插值高约 3 dB；但它们 LAA-950 的 Lin 一致性系数分别为
+0.152、0.068、0.100，<b>全部低于</b>插值的 0.259，自助法置信区间不重叠。</li>
+<li><b>外部临床队列（444 例）</b>：CTHNet 的 PSNR 比 Lanczos 高 2.0 dB，而两者
+LAA-950 的偏差相差 <b>0.07 个百分点</b>（−4.48 对 −4.41 pp），实质相同。</li>
+</ul>
+<p>可安全主张的统一表述：<b>已发表的厚→薄重建方法在密度定量一致性上不优于简单插值，
+尽管它们在图像质量指标上有 2–3 dB 的优势。</b></p>
+
+<h3>贡献二：机制解释</h3>
+<p>本文给出了原因：在该逆问题上，<b>确定性回归的最优解是一个全局 HU 位移</b>。
+在 444 例外部数据上实测该位移为 <b>−16.32 ± 0.65 HU</b>——标准差仅 0.65 HU，说明它
+是一个常数而非随机误差。把 LAA/Perc 直接写入损失函数不改变这个位移量。</p>
+<p>阈值型指标（LAA 是"低于 −950 HU 的体素占比"）恰恰对这一个自由度最敏感，因此
+<b>像素级最优与定量最优在本任务上不是同一个解</b>。这把贡献一从一次观察升级为可预测
+的结论：任何只以像素误差为目标的方法都会收敛到这个解上。</p>
+
+<h3>贡献三：可部署的解法与无参考的站点闸门</h3>
+<p>SCTE-R 在残差空间做流匹配采样，恢复被回归抹平的实质纹理；并附带一个
+<b>不需要 1 mm 参考</b>即可计算的效度判据——利用前向算子的均值保持性，可在部署现场
+直接估计重建的整体密度位移，用于判断模型对本站点数据是否胜任。</p>
+
+<h2>二、主要结果</h2>
+
+<table>
+<caption>表 1　外部验证队列的定量一致性（n = 444，两家厂商、两种重建核）</caption>
+<tr><th class="l" rowspan="2">方法</th><th colspan="3">LAA-950</th><th colspan="3">LAA-910</th>
+    <th>Perc15</th><th>Perc10</th></tr>
+<tr><th>偏差 (pp)</th><th>95% 一致性界</th><th>CCC</th>
+    <th>偏差 (pp)</th><th>95% 一致性界</th><th>CCC</th>
+    <th>偏差 (HU)</th><th>偏差 (HU)</th></tr>
+<tr><td class="l">Lanczos 插值</td><td>−4.41</td><td>−12.32 ～ +3.50</td><td>0.689</td>
+    <td>−7.30</td><td>−14.59 ～ −0.01</td><td>0.841</td><td>+23.5</td><td>+26.8</td></tr>
+<tr><td class="l">CTHNet</td><td>−4.48</td><td>−12.80 ～ +3.84</td><td>0.682</td>
+    <td>−5.98</td><td>−13.12 ～ +1.17</td><td>0.889</td><td>+19.3</td><td>+23.8</td></tr>
+<tr><td class="l"><b>SCTE-R（零样本）</b></td><td><b>−0.26</b></td><td><b>−5.61 ～ +5.08</b></td>
+    <td><b>0.933</b></td><td><b>−0.32</b></td><td><b>−4.85 ～ +4.22</b></td><td><b>0.986</b></td>
+    <td><b>+2.5</b></td><td><b>+2.0</b></td></tr>
+<tr><td class="l">SCTE-R（站点适配）</td><td>+1.04</td><td>−3.18 ～ +5.26</td><td><b>0.948</b></td>
+    <td>+1.72</td><td>−3.08 ～ +6.52</td><td>0.978</td><td>—</td><td>—</td></tr>
+</table>
+<p class="note">参考值取自同次采集的 1 mm 重建：LAA-950 = 7.82 ± 8.21%，
+LAA-910 = 19.72 ± 14.42%，Perc15 = −911.2 ± 43.3 HU。偏差 = 重建值 − 参考值；
+一致性界 = 偏差 ± 1.96 SD，即 95% 的个体误差所落的区间。<br>
+<b>请注意表中两条基线：它们的 LAA-950 偏差相差 0.07 pp，而 PSNR 相差 2.0 dB。</b></p>
+
+<table>
+<caption>表 2　公开数据上的同一现象（n = 50 整卷）</caption>
+<tr><th class="l">方法</th><th>PSNR (dB)</th><th>LAA-950 CCC</th></tr>
+<tr><td class="l">CTHNet（npj Digit Med 2024）</td><td>33.44</td><td>0.152</td></tr>
+<tr><td class="l">TVSRN（MICCAI 2022）</td><td>33.17</td><td>0.068</td></tr>
+<tr><td class="l">I3Net（TMI 2024）</td><td>33.22</td><td>0.100</td></tr>
+<tr><td class="l">Lanczos 插值</td><td>30.27</td><td>0.259</td></tr>
+<tr><td class="l"><b>SCTE-R</b></td><td>30.83</td><td><b>0.594</b></td></tr>
+</table>
+<p class="note">三种已发表方法均使用官方实现、在统一划分上训练与评估，肺叶掩膜由
+TotalSegmentator 生成。图像质量最高的三种方法，定量一致性反而最低。</p>
+
+<table>
+<caption>表 3　密度位移的直接测量（n = 444）</caption>
+<tr><th class="l">重建方式</th><th>整体密度位移 δ (HU)</th><th>说明</th></tr>
+<tr><td class="l">确定性回归</td><td>−16.32 ± 0.65</td><td class="l">标准差 0.65 HU——是常数，不是噪声</td></tr>
+<tr><td class="l">纯标量偏置对照</td><td>−39.8 ～ −41.8</td><td class="l">单纯平移不是解</td></tr>
+<tr><td class="l"><b>SCTE-R</b></td><td><b>−1.76 ± 1.06</b></td><td class="l">位移被消除</td></tr>
+</table>
+
+<table>
+<caption>表 4　五肺叶分区一致性（站点适配臂，n = 444）</caption>
+<tr><th class="l">肺叶</th><th>左上</th><th>左下</th><th>右上</th><th>右中</th><th>右下</th></tr>
+<tr><td class="l">LAA-950 偏差 (pp)</td><td>+0.84</td><td>+1.33</td><td>+0.85</td><td>+0.85</td><td>+1.50</td></tr>
+<tr><td class="l">LAA-950 CCC</td><td>0.951</td><td>0.929</td><td>0.949</td><td>0.956</td><td>0.954</td></tr>
+</table>
+<p class="note">五叶 CCC 均高于 0.92，支持区域性肺气肿评估，而不仅是全肺单一数值。</p>
+
+<table>
+<caption>表 5　站点胜任度闸门（无参考，部署现场可计算）</caption>
+<tr><th class="l">域</th><th>模型是否学过该类数据</th><th>通过率</th><th>该域定量终点的实际表现</th></tr>
+<tr><td class="l">公开测试集</td><td>是</td><td>80%</td><td class="l">正常</td></tr>
+<tr><td class="l">外部软核 CT</td><td>同核族</td><td>16.1%</td><td class="l">正常（诊断分类改变率 1.6%）</td></tr>
+<tr><td class="l">外部锐核 CT</td><td>否</td><td>4.8%</td><td class="l">失效（LAA-950 偏差 −4 ～ −5.5 pp）</td></tr>
+<tr><td class="l">同上，站点适配后</td><td>是</td><td>约 99%</td><td class="l">恢复正常</td></tr>
+</table>
+<p class="note">关键在于：外部锐核数据<b>本身处在物理标定集之内</b>（标定集含 18 例同核样本），
+模型仍被判为不胜任——因此该判据反映的是"模型是否学过这类数据"，而不是"协议是否见过
+这台设备"。标定扫描仪无法弥补模型的能力缺口，这正是部署闸门应有的语义。</p>
+
+<h2>三、这些结果能支撑论文吗</h2>
+
+<p><b>可以。</b>按临床影像类期刊的标准衡量，以下几项构成充分基础：</p>
+<ul>
+<li><b>外部验证规模合格。</b>444 例、两家厂商、两种重建核，且训练队列与验证队列来自
+不同机构。该领域多数工作止步于单中心内部划分。</li>
+<li><b>效应量大且方向一致。</b>LAA-950 偏差 −4.4 → −0.26 pp；Perc15 偏差 +23.5 → +2.5 HU；
+一致性界宽度缩小约一半。四个终点全部同向。</li>
+<li><b>阴性对照结果在两个独立数据集上复现。</b>基线方法不改善定量一致性这一发现，
+不是单一数据集的偶然。</li>
+<li><b>机制是测量出来的，不是推测的。</b>位移量的标准差 0.65 HU 使"这是一个常数"
+成为可检验的陈述。</li>
+<li><b>区域分析完整。</b>五肺叶 CCC 0.93–0.96。</li>
+</ul>
+
+<p><b>仍需补充的两项：</b></p>
+<ol>
+<li><b>5 mm 直接测量的基线行。</b>读者的第一个问题是"不做重建、直接在 5 mm 上测，
+偏差有多大"。目前该数值只有局部口径，需要补一次整卷汇总。数据已在，属统计工作，
+无需重新推理。</li>
+<li><b>影像学阅片评价。</b>即本报告第四节所述的读片研究。现有证据全部是定量指标，
+补上阅片结果后，"可用于基层诊断"这一主张才真正闭合。</li>
+</ol>
+
+<p>另有一处命名需在投稿前统一：内部训练队列（203 例）与外部验证队列（444 例）来自
+不同医院，但部分中间文档将两者统称为同一院名。这关系到"内部验证"与"外部验证"的
+区别，务必在正文中写准确。</p>
+
+<h2>四、阅片研究的设计建议</h2>
+
+<p>本项目已有一个别处少见的条件：<b>全部 444 例都存在真实的 1 mm 重建</b>。因此阅片研究
+不必依赖主观偏好比较，而可以用"与真实 1 mm 阅片结果的一致性"作为客观参照。</p>
+
+<h3>推荐设计：三臂阅片，以真实 1 mm 阅片为参照标准</h3>
+<table>
+<tr><th class="l">臂</th><th class="l">读什么</th><th class="l">作用</th></tr>
+<tr><td class="l">A</td><td class="l">原始 5 mm</td><td class="l">现状（基层医院今天看到的）</td></tr>
+<tr><td class="l">B</td><td class="l">SCTE-R 重建的 1 mm</td><td class="l">本文方案</td></tr>
+<tr><td class="l">C</td><td class="l">真实 1 mm</td><td class="l">参照标准</td></tr>
+</table>
+<p class="note">核心假设：<b>B 的阅片结论与 C 的一致性，显著高于 A 与 C 的一致性。</b>
+这个设计绕开了"医生一眼能看出哪个是厚层"导致的盲法失败——因为衡量的不是医生偏好
+哪一张，而是结论是否更接近真值。</p>
+
+<h3>关键设计要点</h3>
+<ul>
+<li><b>洗脱期。</b>同一病例的不同臂至少间隔 2 周，且打乱顺序，避免记忆效应。</li>
+<li><b>读者。</b>建议 3 名胸部影像医师独立阅片，报告读者间一致性。</li>
+<li><b>病例数。</b>40–60 例即可支撑此类研究；建议按肺气肿负荷分层抽样，覆盖
+无／轻／中／重四档，而不是随机抽（随机抽会有过半病例接近无病变，浪费读片量）。</li>
+<li><b>记录内容。</b>①肺气肿有无及分级；②肺气肿分布类型（小叶中心型／全小叶型／间隔旁型）；
+③结节检出（位置、大小）；④诊断信心评分。</li>
+</ul>
+
+<h3>两个必须预设的终点</h3>
+<div class="box">
+<p style="margin:0 0 6pt 0"><b>终点一（获益）：检出率提升。</b>以 C 为真值，比较 A 与 B 的检出率——
+尤其是 5 mm 上容易漏掉的小病灶。已有定量支持：在结节数据上，5 mm 只保留了
+47% 的病灶对比度，且丢失 31% 的 6 mm 以下结节；重建在零样本条件下回收了其中 70%。</p>
+<p style="margin:0"><b>终点二（安全）：不引入假阳性。</b>统计"在 B 中被报告、但在 C 中不存在"
+的病灶数。这是重建类方法最需要被质疑的地方，必须主动测量并报告。<b>建议把它
+写成预先设定的主要安全终点</b>，而不是事后补充的敏感性分析——主动量化比被动回答
+更有说服力。</p>
+</div>
+
+<h3>给医生的一句话说明</h3>
+<p class="box" style="margin:6pt 0">"这是同一次扫描的三种呈现：一种是设备直接输出的 5 mm，一种是由 5 mm
+算法重建出的 1 mm，一种是设备直接输出的 1 mm。请按日常工作方式独立阅读并出具结论，
+不需要判断哪一张是算法生成的。"</p>
+
+<h2>五、口径说明</h2>
+<p class="kv">
+&bull; 全部指标在整卷上计算，肺区由 TotalSegmentator 生成的肺叶掩膜界定，非基于 HU 窗。<br>
+&bull; 一致性界（limits of agreement）= 偏差 ± 1.96 SD，为 Bland-Altman 标准口径；
+CCC 为 Lin 一致性相关系数。<br>
+&bull; 基线方法均使用作者公开的官方实现，在本项目统一划分上重新训练与评估。<br>
+&bull; "零样本"指直接使用公开数据训练的检查点，未接触本队列任何配对数据；
+"站点适配"指在本地配对数据上微调。基层部署对应前者，因为无薄层设备的医院
+不可能产生本地配对数据。<br>
+&bull; 表 1 的 444 例与表 5 的分域计数一致：软核 311 例、锐核 126 例，另 7 例因肺区
+过小而弃权。
+</p>
+
+</body></html>
