@@ -50,3 +50,4 @@ READER/
 
 # 生成的 PDF 不入库（HTML 是源文件，用 soffice 重新导出即可）
 report/*.pdf
+report/*.odt
