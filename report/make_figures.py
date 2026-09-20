@@ -1,8 +1,10 @@
 """Render the report's four figures from the summary tables in report/figdata/.
 
-Greyscale only: the report is printed and circulated in black and white, so the
-arms are separated by fill value and hatch rather than hue. That departs from the
-results-to-figure palette (assets/color-palette.txt), which assumes colour.
+Colour is used to separate the arms. The report's running text stays black, so the
+palette is confined to the panels; it follows the results-to-figure asset
+(assets/color-palette.txt), extended with two hues for the arms that file does not
+name. Every hue is paired with a distinct marker or hatch so the panels still read
+when printed in greyscale.
 
 Panel ids and filenames follow that skill's naming policy (figure1_*.pdf, lowercase,
 deterministic), and every panel states its source table in the caption, per
@@ -35,6 +37,19 @@ plt.rcParams.update({
     'legend.frameon': False,
 })
 
+# results-to-figure/assets/color-palette.txt supplies the first two; the rest keep
+# the same saturation so no arm dominates by colour weight alone.
+C_BASE1 = '#4C78A8'      # control  -> Lanczos
+C_BASE2 = '#F58518'      # treated  -> CTHNet
+C_BASE3 = '#54A24B'      # cluster_1 -> TVSRN
+C_BASE4 = '#E45756'      # cluster_2 -> I3Net
+C_OURS = '#6B4C9A'       # SCTE-R, zero-shot
+C_OURS2 = '#B07AA1'      # SCTE-R, site-adapted
+C_GRID = '#9A9A9A'
+
+COLOR = {'Lanczos': C_BASE1, 'CTHNet': C_BASE2, 'TVSRN': C_BASE3, 'I3Net': C_BASE4,
+         'SCTE-R': C_OURS, 'SCTE-R-zeroshot': C_OURS, 'SCTE-R-adapted': C_OURS2}
+
 OURS = 'SCTE-R-zeroshot'
 LBL = {'Lanczos': 'Lanczos 插值', 'CTHNet': 'CTHNet', 'TVSRN': 'TVSRN', 'I3Net': 'I3Net',
        'SCTE-R-zeroshot': 'SCTE-R\n（零样本）', 'SCTE-R-adapted': 'SCTE-R\n（站点适配）',
@@ -47,10 +62,12 @@ def load(name):
 
 
 def style(m):
-    """ours: solid dark; baselines: light with hatch."""
+    """ours: solid fill; baselines: lighter fill with a hatch, so the distinction
+    survives a greyscale print as well as colour."""
+    c = COLOR.get(m, C_GRID)
     if m.startswith('SCTE-R'):
-        return dict(facecolor='0.25', edgecolor='0', hatch='')
-    return dict(facecolor='0.88', edgecolor='0', hatch='///')
+        return dict(facecolor=c, edgecolor='0.15', hatch='')
+    return dict(facecolor=c, edgecolor='0.15', hatch='///', alpha=0.55)
 
 
 # ---------------------------------------------------------------- figure 1
@@ -68,9 +85,10 @@ def figure1():
         cluster = {'CTHNet', 'TVSRN', 'I3Net'} if cohort == 'public' else set()
         for xi, yi, r in zip(x, y, sub):
             ours = r['method'].startswith('SCTE-R')
-            ax.scatter(xi, yi, s=58 if ours else 40,
-                       facecolor='0.25' if ours else 'white',
-                       edgecolor='0', linewidth=0.9, marker='o' if ours else 's', zorder=3)
+            ax.scatter(xi, yi, s=62 if ours else 44,
+                       facecolor=COLOR.get(r['method'], C_GRID),
+                       edgecolor='0.15', linewidth=0.9,
+                       marker='o' if ours else 's', zorder=3)
             if r['method'] in cluster:
                 continue
             ax.annotate(r['method'].replace('SCTE-R-zeroshot', 'SCTE-R')
@@ -82,13 +100,13 @@ def figure1():
             cy = np.mean([b for b, r in zip(y, sub) if r['method'] in cluster])
             ax.annotate('CTHNet、TVSRN、I3Net', (cx, cy), textcoords='offset points',
                         xytext=(-4, 26), ha='center', fontsize=6.6,
-                        arrowprops=dict(arrowstyle='-', lw=0.6, color='0.4',
+                        arrowprops=dict(arrowstyle='-', lw=0.6, color=C_GRID,
                                         shrinkA=1, shrinkB=6))
         # the baselines' horizontal run: same bias across a wide PSNR range
         base = [(a, b) for a, b, r in zip(x, y, sub) if not r['method'].startswith('SCTE-R')]
         if len(base) >= 2:
             bx = [p[0] for p in base]; by = [p[1] for p in base]
-            ax.plot([min(bx), max(bx)], [np.mean(by)] * 2, color='0.45', lw=0.8,
+            ax.plot([min(bx), max(bx)], [np.mean(by)] * 2, color=C_GRID, lw=0.9,
                     ls=(0, (4, 3)), zorder=1)
         ax.set_title(title, fontsize=8.5, pad=9)
         ax.set_xlabel('PSNR (dB)')
@@ -113,15 +131,16 @@ def figure2():
             r = sub[m]
             b, lo, hi = float(r['bias']), float(r['loa_lo']), float(r['loa_hi'])
             ours = m.startswith('SCTE-R')
-            ax.plot([lo, hi], [yi, yi], color='0' if ours else '0.5',
-                    lw=2.4 if ours else 1.4, solid_capstyle='butt', zorder=2)
-            ax.plot([lo, lo], [yi - .16, yi + .16], color='0' if ours else '0.5', lw=1)
-            ax.plot([hi, hi], [yi - .16, yi + .16], color='0' if ours else '0.5', lw=1)
-            ax.scatter([b], [yi], s=34, facecolor='0.15' if ours else 'white',
-                       edgecolor='0', zorder=3, linewidth=0.9)
+            c = COLOR.get(m, C_GRID)
+            ax.plot([lo, hi], [yi, yi], color=c, lw=2.6 if ours else 1.6,
+                    solid_capstyle='butt', zorder=2)
+            ax.plot([lo, lo], [yi - .16, yi + .16], color=c, lw=1.1)
+            ax.plot([hi, hi], [yi - .16, yi + .16], color=c, lw=1.1)
+            ax.scatter([b], [yi], s=38, facecolor=c, edgecolor='0.15',
+                       marker='o' if ours else 's', zorder=3, linewidth=0.9)
             ax.annotate(f'{b:+.2f}', (b, yi), textcoords='offset points',
                         xytext=(0, 7), ha='center', fontsize=6.6)
-        ax.axvline(0, color='0', lw=0.7, ls=(0, (2, 2)), zorder=1)
+        ax.axvline(0, color='0.35', lw=0.8, ls=(0, (2, 2)), zorder=1)
         ax.set_yticks(ys, [LBL[m].replace('\n', '') for m in order], fontsize=7.2)
         ax.set_xlabel('偏差与 95% 一致性界 (pp)')
         ax.set_title(ep, fontsize=8.5, pad=9)
@@ -145,13 +164,19 @@ def figure3():
     for i, (col, lab, sh) in enumerate((('perc15_bias_hu', 'Perc15', ''),
                                         ('perc10_bias_hu', 'Perc10', '///'))):
         v = [float(r[col]) for r in pr]
-        ax.bar(x + (i - .5) * w, v, w, label=lab, facecolor='0.35' if i == 0 else '0.8',
-               edgecolor='0', linewidth=0.7, hatch=sh)
-    ax.axhline(0, color='0', lw=0.7)
+        cols = [COLOR.get(m, C_GRID) for m in ms]
+        ax.bar(x + (i - .5) * w, v, w, label=lab, color=cols,
+               edgecolor='0.15', linewidth=0.7, hatch=sh,
+               alpha=1.0 if i == 0 else 0.55)
+    ax.axhline(0, color='0.35', lw=0.8)
     ax.set_xticks(x, [LBL[m].replace('\n', '') for m in ms], fontsize=7.2)
     ax.set_ylabel('偏差 (HU)')
     ax.set_title('低密度百分位的偏差', fontsize=8.5, pad=9)
-    ax.legend(fontsize=7, loc='upper right')
+    from matplotlib.patches import Patch
+    ax.legend(handles=[Patch(facecolor='0.6', edgecolor='0.15', label='Perc15'),
+                       Patch(facecolor='0.6', edgecolor='0.15', hatch='///',
+                             alpha=0.55, label='Perc10')],
+              fontsize=7, loc='upper right')
     ax.spines[['top', 'right']].set_visible(False)
 
     ax = axes[1]
@@ -161,12 +186,13 @@ def figure3():
     v = [float(r['delta_hu']) for r in dp]
     e = [float(r['delta_sd']) for r in dp]
     y = np.arange(len(arms))[::-1]
-    ax.barh(y, v, 0.5, xerr=e, facecolor=['0.8', '0.8', '0.35'],
-            edgecolor='0', linewidth=0.7, error_kw=dict(ecolor='0', lw=0.9, capsize=2.5))
+    ax.barh(y, v, 0.5, xerr=e, color=[C_BASE2, C_BASE4, C_OURS],
+            edgecolor='0.15', linewidth=0.7, alpha=0.85,
+            error_kw=dict(ecolor='0.2', lw=0.9, capsize=2.5))
     for yi, vi, ei in zip(y, v, e):
         ax.annotate(f'{vi:.2f}', (vi - ei, yi), textcoords='offset points',
                     xytext=(-4, -2.5), fontsize=6.8, ha='right')
-    ax.axvline(0, color='0', lw=0.7)
+    ax.axvline(0, color='0.35', lw=0.8)
     ax.set_xlim(min(v) - 9, 2.5)
     ax.set_yticks(y, [lab[a] for a in arms], fontsize=7.2)
     ax.set_xlabel('整体密度位移 δ (HU)')
@@ -190,8 +216,8 @@ def figure4():
     x = np.arange(len(rows))
     v = [float(r['certified_pct']) for r in rows]
     failed = [r['endpoint_status'] == 'failed' for r in rows]
-    ax.bar(x, v, 0.56, facecolor=['0.8' if f else '0.35' for f in failed],
-           edgecolor='0', linewidth=0.7,
+    ax.bar(x, v, 0.56, color=[C_BASE4 if f else C_OURS for f in failed],
+           edgecolor='0.15', linewidth=0.7, alpha=0.85,
            hatch=['///' if f else '' for f in failed])
     for xi, vi in zip(x, v):
         ax.annotate(f'{vi:.1f}%', (xi, vi), textcoords='offset points', xytext=(0, 3),
