@@ -1,0 +1,12 @@
+{
+  "details": {
+    "panel_count": 0,
+    "panels": []
+  },
+  "inputs": {
+    "audit_tool": "figure_spec_audit",
+    "extract_tool": "result_extract"
+  },
+  "status": "warn",
+  "tool": "figure_plan"
+}

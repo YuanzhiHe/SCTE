@@ -1,0 +1,13 @@
+{
+  "counts": {
+    "export_count": 0
+  },
+  "details": {
+    "exports": []
+  },
+  "inputs": {
+    "plan_json": "figdata/_plan.json"
+  },
+  "status": "warn",
+  "tool": "figure_manifest"
+}
