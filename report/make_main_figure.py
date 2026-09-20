@@ -51,10 +51,14 @@ def tag(ax, letter, dx=-0.085, dy=1.06):
 
 # ------------------------------------------------------------------ panel A
 def box(ax, x, y, w, h, text, fc='white', ec='0.25', lw=0.9, fs=7.2, bold=False):
+    # clip_on=False: a box whose edge lands on the axes boundary loses that edge,
+    # which is how the two output boxes came out with no right-hand border.
     ax.add_patch(FancyBboxPatch((x, y), w, h, boxstyle='round,pad=0.006,rounding_size=0.012',
-                                facecolor=fc, edgecolor=ec, linewidth=lw, zorder=2))
+                                facecolor=fc, edgecolor=ec, linewidth=lw, zorder=2,
+                                clip_on=False))
     ax.text(x + w / 2, y + h / 2, text, ha='center', va='center', fontsize=fs,
-            zorder=3, fontweight='bold' if bold else 'normal', linespacing=1.35)
+            zorder=3, fontweight='bold' if bold else 'normal', linespacing=1.35,
+            clip_on=False)
 
 
 def arrow(ax, p, q, text=None, rad=0.0, ls='-', color='0.3', tdy=0.032, fs=6.4):
@@ -81,32 +85,33 @@ def panelA(ax):
 
     y1, h1 = 0.60, 0.30          # pipeline row
     y2, h2 = 0.05, 0.28          # physics and certificate row
-    box(ax, 0.000, y1, 0.125, h1, '5 mm\n厚层观测 y', fc='#EDF2F8', fs=6.9)
-    box(ax, 0.158, y1, 0.150, h1, '基预测 x0\n上采样／冻结骨干', fc='#F7F7F7', fs=6.9)
-    box(ax, 0.341, y1, 0.212, h1,
+    box(ax, 0.000, y1, 0.110, h1, '5 mm\n厚层观测 y', fc='#EDF2F8', fs=6.9)
+    box(ax, 0.140, y1, 0.135, h1, '基预测 x0\n上采样／冻结骨干', fc='#F7F7F7', fs=6.6)
+    box(ax, 0.305, y1, 0.215, h1,
         '残差空间流匹配采样\nu = (x − x0) / s_r\nEuler 积分 + 数据一致性投影',
-        fc='#F0EBF6', ec=C_OURS, lw=1.2, fs=6.6)
-    box(ax, 0.586, y1, 0.118, h1, '1 mm\n重建 x', fc='#F0EBF6', ec=C_OURS, lw=1.2, fs=6.9)
-    box(ax, 0.752, y1, 0.248, h1, '密度学终点\nLAA-950／LAA-910／Perc15', fs=6.9)
-    box(ax, 0.752, y2, 0.248, h2,
-        '无参考效度判据\nδ、ρ_struct、s → 通过／标记', ec=C_BASE2, lw=1.2, fs=6.9)
-    box(ax, 0.341, y2, 0.212, h2,
-        '前向算子 A_w\nz 向高斯 (FWHM w) + 跨层平均 (r = 5)\n均值保持', fc='#FDF3E8',
-        ec=C_BASE2, lw=1.0, fs=6.3)
+        fc='#F0EBF6', ec=C_OURS, lw=1.2, fs=6.4)
+    box(ax, 0.550, y1, 0.105, h1, '1 mm\n重建 x', fc='#F0EBF6', ec=C_OURS, lw=1.2, fs=6.9)
+    box(ax, 0.690, y1, 0.300, h1, '密度学终点\nLAA-950／LAA-910／Perc15', fs=6.6)
+    box(ax, 0.690, y2, 0.300, h2,
+        '无参考效度判据\nδ、ρ_struct、s → 通过／标记', ec=C_BASE2, lw=1.2, fs=6.6)
+    box(ax, 0.305, y2, 0.305, h2,
+        '前向算子 A_w\n(z 向高斯 + 跨层平均, r = 5)\n均值保持', fc='#FDF3E8',
+        ec=C_BASE2, lw=1.0, fs=6.4)
 
-    for a, b in ((0.125, 0.158), (0.308, 0.341), (0.553, 0.586)):
+    for a, b in ((0.110, 0.140), (0.275, 0.305), (0.520, 0.550), (0.655, 0.690)):
         arrow(ax, (a, y1 + h1 / 2), (b, y1 + h1 / 2))
-    arrow(ax, (0.704, y1 + h1 / 2), (0.752, y1 + h1 / 2))
-    ax.add_patch(FancyArrowPatch((0.645, y1), (0.752, y2 + h2 / 2), arrowstyle='-|>',
+    ax.add_patch(FancyArrowPatch((0.603, y1), (0.690, y2 + h2 * 0.72), arrowstyle='-|>',
                                  mutation_scale=8, linewidth=0.9, color='0.3',
-                                 connectionstyle='arc3,rad=-0.3', zorder=2))
+                                 connectionstyle='arc3,rad=-0.28', zorder=2,
+                                 clip_on=False))
     # the operator constrains the sampler and supplies the certificate's estimator
-    arrow(ax, (0.447, y1), (0.447, y2 + h2), ls=(0, (3, 2)), color=C_BASE2)
-    ax.add_patch(FancyArrowPatch((0.553, y2 + h2 / 2), (0.752, y2 + h2 / 2),
+    arrow(ax, (0.410, y1), (0.410, y2 + h2), ls=(0, (3, 2)), color=C_BASE2)
+    ax.add_patch(FancyArrowPatch((0.610, y2 + h2 * 0.35), (0.690, y2 + h2 * 0.35),
                                  arrowstyle='-|>', mutation_scale=8, linewidth=0.9,
-                                 color=C_BASE2, linestyle=(0, (3, 2)), zorder=2))
-    ax.text(0.652, y2 + h2 / 2 - 0.045, '均值保持 → 无需 1 mm 参考', fontsize=6.3,
-            color=C_BASE2, ha='center', va='top')
+                                 color=C_BASE2, linestyle=(0, (3, 2)), zorder=2,
+                                 clip_on=False))
+    ax.text(0.650, y2 + h2 * 0.35 - 0.035, '均值保持\n无需 1 mm 参考', fontsize=6.0,
+            color=C_BASE2, ha='center', va='top', linespacing=1.3)
     ax.text(0.0, y1 - 0.075, '（无薄层设备的医院仅有此项）', fontsize=6.2, color='0.35')
 
 
