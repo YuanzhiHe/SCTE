@@ -53,11 +53,14 @@ C_OURS = '#6B4C9A'       # SCTE-R, zero-shot
 C_OURS2 = '#B07AA1'      # SCTE-R, site-adapted
 C_GRID = '#9A9A9A'
 
-COLOR = {'Lanczos': C_BASE1, 'CTHNet': C_BASE2, 'TVSRN': C_BASE3, 'I3Net': C_BASE4,
+C_THICK = '#7F7F7F'          # doing nothing: the origin every other arm moves from
+COLOR = {'Thick5mm': C_THICK, 'Lanczos': C_BASE1, 'CTHNet': C_BASE2,
+         'TVSRN': C_BASE3, 'I3Net': C_BASE4,
          'SCTE-R': C_OURS, 'SCTE-R-zeroshot': C_OURS, 'SCTE-R-adapted': C_OURS2}
 
 OURS = 'SCTE-R-zeroshot'
-LBL = {'Lanczos': 'Lanczos 插值', 'CTHNet': 'CTHNet', 'TVSRN': 'TVSRN', 'I3Net': 'I3Net',
+LBL = {'Thick5mm': '5 mm 直测', 'Lanczos': 'Lanczos 插值', 'CTHNet': 'CTHNet',
+       'TVSRN': 'TVSRN', 'I3Net': 'I3Net',
        'SCTE-R-zeroshot': 'SCTE-R\n（零样本）', 'SCTE-R-adapted': 'SCTE-R\n（站点适配）',
        'SCTE-R': 'SCTE-R'}
 
@@ -115,7 +118,7 @@ def panel_laa910(ax):
     rows = [r for r in load('agreement_loa.csv') if r['endpoint'] == 'LAA-910']
     tag(ax, 'B')
     ax.set_title('LAA-910 的一致性（n = 444）', fontsize=8.2, pad=8)
-    order = ['Lanczos', 'CTHNet', OURS, 'SCTE-R-adapted']
+    order = ['Thick5mm', 'Lanczos', 'CTHNet', OURS, 'SCTE-R-adapted']
     sub = {r['method']: r for r in rows}
     ys = np.arange(len(order))[::-1]
     for yi, m in zip(ys, order):
@@ -151,9 +154,13 @@ def panel_percentile(ax):
             ax.annotate(f'{vi:+.1f}', (xi, vi), textcoords='offset points',
                         xytext=(0, 2.5), ha='center', fontsize=6.3)
     ax.axhline(0, color='0.35', lw=0.8)
-    ax.set_xticks(x, [LBL[m].replace('（', '\n（') for m in ms], fontsize=6.7)
+    # four categories in a narrow panel: the full labels collide, so this panel
+    # uses short forms and the caption carries the full names
+    short = {'Thick5mm': '5 mm\n直测', 'Lanczos': 'Lanczos', 'CTHNet': 'CTHNet',
+             'SCTE-R-zeroshot': 'SCTE-R\n零样本'}
+    ax.set_xticks(x, [short.get(m, m) for m in ms], fontsize=6.6)
     ax.set_ylabel('偏差 (HU)')
-    ax.set_ylim(0, 31)
+    ax.set_ylim(0, 35)
     ax.legend(handles=[Patch(facecolor='0.6', edgecolor='0.15', label='Perc15'),
                        Patch(facecolor='0.6', edgecolor='0.15', hatch='///', alpha=0.55,
                              label='Perc10')], fontsize=7, loc='upper right')

@@ -1,9 +1,11 @@
 method,endpoint,bias,loa_lo,loa_hi,ccc
-Lanczos,LAA-950,-4.41,-12.32,3.50,0.689
-CTHNet,LAA-950,-4.48,-12.80,3.84,0.682
+Thick5mm,LAA-950,-4.99,-13.5,3.51,0.631
+Lanczos,LAA-950,-4.41,-12.32,3.5,0.689
+CTHNet,LAA-950,-4.48,-12.8,3.84,0.682
 SCTE-R-zeroshot,LAA-950,-0.26,-5.61,5.08,0.933
 SCTE-R-adapted,LAA-950,1.04,-3.18,5.26,0.948
-Lanczos,LAA-910,-7.30,-14.59,-0.01,0.841
+Thick5mm,LAA-910,-8.37,-16.49,-0.26,0.801
+Lanczos,LAA-910,-7.3,-14.59,-0.01,0.841
 CTHNet,LAA-910,-5.98,-13.12,1.17,0.889
 SCTE-R-zeroshot,LAA-910,-0.32,-4.85,4.22,0.986
 SCTE-R-adapted,LAA-910,1.72,-3.08,6.52,0.978

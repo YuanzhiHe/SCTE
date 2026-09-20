@@ -1,4 +1,5 @@
 method,cohort,psnr_db,laa950_bias_pp,laa950_ccc,laa910_bias_pp,laa910_ccc
+Thick5mm,external,27.59,-4.99,0.631,-8.37,0.801
 Lanczos,external,28.79,-4.41,0.689,-7.30,0.841
 CTHNet,external,30.77,-4.48,0.682,-5.98,0.889
 SCTE-R-zeroshot,external,26.81,-0.26,0.933,-0.32,0.986

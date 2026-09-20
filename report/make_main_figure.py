@@ -36,10 +36,12 @@ plt.rcParams.update({
 
 C_BASE1, C_BASE2, C_BASE3, C_BASE4 = '#4C78A8', '#F58518', '#54A24B', '#E45756'
 C_OURS, C_OURS2, C_GRID = '#6B4C9A', '#B07AA1', '#9A9A9A'
-COLOR = {'Lanczos': C_BASE1, 'CTHNet': C_BASE2, 'TVSRN': C_BASE3, 'I3Net': C_BASE4,
+C_THICK = '#7F7F7F'          # doing nothing: the origin every other arm moves from
+COLOR = {'Thick5mm': C_THICK, 'Lanczos': C_BASE1, 'CTHNet': C_BASE2,
+         'TVSRN': C_BASE3, 'I3Net': C_BASE4,
          'SCTE-R': C_OURS, 'SCTE-R-zeroshot': C_OURS, 'SCTE-R-adapted': C_OURS2}
 OURS = 'SCTE-R-zeroshot'
-LBL = {'Lanczos': 'Lanczos 插值', 'CTHNet': 'CTHNet',
+LBL = {'Thick5mm': '5 mm 直测', 'Lanczos': 'Lanczos 插值', 'CTHNet': 'CTHNet',
        'SCTE-R-zeroshot': 'SCTE-R（零样本）', 'SCTE-R-adapted': 'SCTE-R（站点适配）'}
 
 CASE = 'CT00000102'          # the local case with the largest low-density burden
@@ -204,17 +206,27 @@ def panel_d(ax):
         ours = r['method'].startswith('SCTE-R')
         ax.scatter(xi, yi, s=58 if ours else 42, facecolor=COLOR[r['method']],
                    edgecolor='0.15', lw=0.9, marker='o' if ours else 's', zorder=3)
+        below = r['method'] == OURS          # its label would sit under the 95% arrow
         ax.annotate(LBL[r['method']].replace('（', '\n（'), (xi, yi),
-                    textcoords='offset points', xytext=(0, 8), ha='center', fontsize=6.0)
+                    textcoords='offset points', xytext=(0, -9 if below else 8),
+                    ha='center', va='top' if below else 'baseline', fontsize=6.0)
     base = [(a, b) for a, b, r in zip(x, y, rows) if not r['method'].startswith('SCTE-R')]
     bx, by = [p[0] for p in base], [p[1] for p in base]
     ax.plot([min(bx), max(bx)], [np.mean(by)] * 2, color=C_GRID, lw=1.0, ls=(0, (4, 3)))
     ax.annotate('', (min(bx), np.mean(by) - 0.42), (max(bx), np.mean(by) - 0.42),
                 arrowprops=dict(arrowstyle='<->', lw=0.8, color='0.35'))
-    ax.text(np.mean(bx), np.mean(by) - 1.55, 'PSNR 相差 2.0 dB，\n偏差相差 0.07 pp',
-            ha='center', fontsize=6.1, color='0.2', linespacing=1.3)
+    ax.text(np.mean(bx), np.mean(by) - 0.95,
+            'PSNR 相差 3.2 dB，偏差仅挽回 0.5 pp（10%）',
+            ha='center', va='top', fontsize=6.1, color='0.2')
+    # SCTE-R sits at lower PSNR than doing nothing, with the bias nearly gone
+    thick = next(q for q, r in zip(y, rows) if r['method'] == 'Thick5mm')
+    ours = next((a, b) for a, b, r in zip(x, y, rows) if r['method'] == OURS)
+    ax.annotate('', (ours[0], ours[1] + 0.3), (ours[0], thick - 0.1),
+                arrowprops=dict(arrowstyle='-|>', lw=1.1, color=C_OURS))
+    ax.text(ours[0] + 0.10, (thick + ours[1]) / 2, '挽回 95%', fontsize=6.4,
+            color=C_OURS, ha='left', va='center')
     ax.set_xlabel('PSNR (dB)'); ax.set_ylabel('|LAA-950 偏差| (pp)')
-    ax.set_ylim(-0.4, max(y) * 1.5); ax.margins(x=0.22)
+    ax.set_ylim(-1.6, max(y) * 1.38); ax.margins(x=0.24)
     ax.spines[['top', 'right']].set_visible(False)
 
 
@@ -222,7 +234,7 @@ def panel_e(ax):
     rows = load('agreement_loa.csv')
     tag(ax, 'e')
     ax.set_title('LAA-950 的偏差与 95% 一致性界（n = 444）', fontsize=8, pad=6)
-    order = ['Lanczos', 'CTHNet', OURS, 'SCTE-R-adapted']
+    order = ['Thick5mm', 'Lanczos', 'CTHNet', OURS, 'SCTE-R-adapted']
     sub = {r['method']: r for r in rows if r['endpoint'] == 'LAA-950'}
     ys = np.arange(len(order))[::-1]
     for yi, m in zip(ys, order):
@@ -239,7 +251,7 @@ def panel_e(ax):
     ax.axvline(0, color='0.35', lw=0.8, ls=(0, (2, 2)))
     ax.set_yticks(ys, [LBL[m] for m in order], fontsize=6.6)
     ax.set_xlabel('偏差与 95% 一致性界 (pp)')
-    ax.set_ylim(-0.7, len(order) - 0.25)
+    ax.set_ylim(-0.7, len(order) - 0.2)
     ax.spines[['top', 'right', 'left']].set_visible(False)
     ax.tick_params(axis='y', length=0)
 
