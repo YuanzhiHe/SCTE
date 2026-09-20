@@ -1,9 +1,15 @@
 """Render the report's four figures from the summary tables in report/figdata/.
 
-Colour is used to separate the arms. The report's running text stays black, so the
-palette is confined to the panels; it follows the results-to-figure asset
+The main figure (make_main_figure.py) already carries the external-cohort
+quality-vs-bias scatter, the LAA-950 agreement interval, the displacement bars and
+the site gate. This file draws only what the main figure does not: the public
+cohort, LAA-910, and the percentile biases. Splitting it that way keeps every
+number in the report in exactly one place.
+
+Colour is used to separate the arms, matching the main figure so one hue means one
+arm across both. The palette follows the results-to-figure asset
 (assets/color-palette.txt), extended with two hues for the arms that file does not
-name. Every hue is paired with a distinct marker or hatch so the panels still read
+name; every hue is paired with a distinct marker or hatch so the panels still read
 when printed in greyscale.
 
 Panel ids and filenames follow that skill's naming policy (figure1_*.pdf, lowercase,
@@ -70,168 +76,95 @@ def style(m):
     return dict(facecolor=c, edgecolor='0.15', hatch='///', alpha=0.55)
 
 
-# ---------------------------------------------------------------- figure 1
-def figure1():
-    rows = load('arms_quality_vs_bias.csv')
-    fig, axes = plt.subplots(1, 2, figsize=(6.9, 2.9))
-    for ax, cohort, title in ((axes[0], 'external', '外部临床队列（n = 444）'),
-                              (axes[1], 'public', '公开数据（n = 50）')):
-        sub = [r for r in rows if r['cohort'] == cohort]
-        x = [float(r['psnr_db']) for r in sub]
-        y = [abs(float(r['laa950_bias_pp'])) for r in sub]
-        # On the public cohort the three published methods sit on top of one another;
-        # that coincidence IS the finding, so they get one shared label instead of
-        # three overlapping ones.
-        cluster = {'CTHNet', 'TVSRN', 'I3Net'} if cohort == 'public' else set()
-        for xi, yi, r in zip(x, y, sub):
-            ours = r['method'].startswith('SCTE-R')
-            ax.scatter(xi, yi, s=62 if ours else 44,
-                       facecolor=COLOR.get(r['method'], C_GRID),
-                       edgecolor='0.15', linewidth=0.9,
-                       marker='o' if ours else 's', zorder=3)
-            if r['method'] in cluster:
-                continue
-            ax.annotate(r['method'].replace('SCTE-R-zeroshot', 'SCTE-R')
-                        .replace('SCTE-R-adapted', 'SCTE-R (适配)'),
-                        (xi, yi), textcoords='offset points', xytext=(0, 8),
-                        ha='center', fontsize=6.6)
-        if cluster:
-            cx = np.mean([a for a, r in zip(x, sub) if r['method'] in cluster])
-            cy = np.mean([b for b, r in zip(y, sub) if r['method'] in cluster])
-            ax.annotate('CTHNet、TVSRN、I3Net', (cx, cy), textcoords='offset points',
-                        xytext=(-4, 26), ha='center', fontsize=6.6,
-                        arrowprops=dict(arrowstyle='-', lw=0.6, color=C_GRID,
-                                        shrinkA=1, shrinkB=6))
-        # the baselines' horizontal run: same bias across a wide PSNR range
-        base = [(a, b) for a, b, r in zip(x, y, sub) if not r['method'].startswith('SCTE-R')]
-        if len(base) >= 2:
-            bx = [p[0] for p in base]; by = [p[1] for p in base]
-            ax.plot([min(bx), max(bx)], [np.mean(by)] * 2, color=C_GRID, lw=0.9,
-                    ls=(0, (4, 3)), zorder=1)
-        ax.set_title(title, fontsize=8.5, pad=9)
-        ax.set_xlabel('PSNR (dB)')
-        ax.set_ylim(-0.25, max(y) * 1.55)
-        ax.margins(x=0.22)
-        ax.spines[['top', 'right']].set_visible(False)
-    axes[0].set_ylabel('|LAA-950 偏差| (pp)')
-    fig.tight_layout()
-    fig.savefig(os.path.join(OUT, 'figure1_quality_vs_bias.pdf'))
-    plt.close(fig)
+from matplotlib.patches import Patch
+
+def tag(ax, letter, dx=-0.10, dy=1.10):
+    ax.text(dx, dy, letter, transform=ax.transAxes, fontsize=10,
+            fontweight='bold', va='top', ha='left')
 
 
-# ---------------------------------------------------------------- figure 2
-def figure2():
-    rows = load('agreement_loa.csv')
-    fig, axes = plt.subplots(1, 2, figsize=(6.9, 2.9), sharey=True)
-    order = ['Lanczos', 'CTHNet', OURS, 'SCTE-R-adapted']
-    for ax, ep in zip(axes, ('LAA-950', 'LAA-910')):
-        sub = {r['method']: r for r in rows if r['endpoint'] == ep}
-        ys = np.arange(len(order))[::-1]
-        for yi, m in zip(ys, order):
-            r = sub[m]
-            b, lo, hi = float(r['bias']), float(r['loa_lo']), float(r['loa_hi'])
-            ours = m.startswith('SCTE-R')
-            c = COLOR.get(m, C_GRID)
-            ax.plot([lo, hi], [yi, yi], color=c, lw=2.6 if ours else 1.6,
-                    solid_capstyle='butt', zorder=2)
-            ax.plot([lo, lo], [yi - .16, yi + .16], color=c, lw=1.1)
-            ax.plot([hi, hi], [yi - .16, yi + .16], color=c, lw=1.1)
-            ax.scatter([b], [yi], s=38, facecolor=c, edgecolor='0.15',
-                       marker='o' if ours else 's', zorder=3, linewidth=0.9)
-            ax.annotate(f'{b:+.2f}', (b, yi), textcoords='offset points',
-                        xytext=(0, 7), ha='center', fontsize=6.6)
-        ax.axvline(0, color='0.35', lw=0.8, ls=(0, (2, 2)), zorder=1)
-        ax.set_yticks(ys, [LBL[m].replace('\n', '') for m in order], fontsize=7.2)
-        ax.set_xlabel('偏差与 95% 一致性界 (pp)')
-        ax.set_title(ep, fontsize=8.5, pad=9)
-        ax.set_ylim(-0.7, len(order) - 0.3)
-        ax.spines[['top', 'right', 'left']].set_visible(False)
-        ax.tick_params(axis='y', length=0)
-    fig.tight_layout()
-    fig.savefig(os.path.join(OUT, 'figure2_agreement_loa.pdf'))
-    plt.close(fig)
-
-
-# ---------------------------------------------------------------- figure 3
-def figure3():
-    pr = load('percentile_bias.csv')
-    dp = load('displacement.csv')
-    fig, axes = plt.subplots(1, 2, figsize=(6.9, 2.8))
-
-    ax = axes[0]
-    ms = [r['method'] for r in pr]
-    x = np.arange(len(ms)); w = 0.36
-    for i, (col, lab, sh) in enumerate((('perc15_bias_hu', 'Perc15', ''),
-                                        ('perc10_bias_hu', 'Perc10', '///'))):
-        v = [float(r[col]) for r in pr]
-        cols = [COLOR.get(m, C_GRID) for m in ms]
-        ax.bar(x + (i - .5) * w, v, w, label=lab, color=cols,
-               edgecolor='0.15', linewidth=0.7, hatch=sh,
-               alpha=1.0 if i == 0 else 0.55)
-    ax.axhline(0, color='0.35', lw=0.8)
-    ax.set_xticks(x, [LBL[m].replace('\n', '') for m in ms], fontsize=7.2)
-    ax.set_ylabel('偏差 (HU)')
-    ax.set_title('低密度百分位的偏差', fontsize=8.5, pad=9)
-    from matplotlib.patches import Patch
-    ax.legend(handles=[Patch(facecolor='0.6', edgecolor='0.15', label='Perc15'),
-                       Patch(facecolor='0.6', edgecolor='0.15', hatch='///',
-                             alpha=0.55, label='Perc10')],
-              fontsize=7, loc='upper right')
+def panel_public(ax):
+    """The public benchmark, which the main figure leaves out."""
+    rows = [r for r in load('arms_quality_vs_bias.csv') if r['cohort'] == 'public']
+    tag(ax, 'A')
+    ax.set_title('公开数据（n = 50）', fontsize=8.2, pad=8)
+    x = [float(r['psnr_db']) for r in rows]
+    y = [abs(float(r['laa950_bias_pp'])) for r in rows]
+    cluster = {'CTHNet', 'TVSRN', 'I3Net'}
+    for xi, yi, r in zip(x, y, rows):
+        ours = r['method'].startswith('SCTE-R')
+        ax.scatter(xi, yi, s=62 if ours else 44, facecolor=COLOR.get(r['method'], C_GRID),
+                   edgecolor='0.15', linewidth=0.9, marker='o' if ours else 's', zorder=3)
+        if r['method'] not in cluster:
+            ax.annotate(r['method'], (xi, yi), textcoords='offset points',
+                        xytext=(0, 8), ha='center', fontsize=6.6)
+    cx = np.mean([a for a, r in zip(x, rows) if r['method'] in cluster])
+    cy = np.mean([b for b, r in zip(y, rows) if r['method'] in cluster])
+    ax.annotate('CTHNet、TVSRN、I3Net', (cx, cy), textcoords='offset points',
+                xytext=(-6, 26), ha='center', fontsize=6.6,
+                arrowprops=dict(arrowstyle='-', lw=0.6, color=C_GRID, shrinkA=1, shrinkB=6))
+    base = [(a, b) for a, b, r in zip(x, y, rows) if not r['method'].startswith('SCTE-R')]
+    bx, by = [q[0] for q in base], [q[1] for q in base]
+    ax.plot([min(bx), max(bx)], [np.mean(by)] * 2, color=C_GRID, lw=0.9, ls=(0, (4, 3)), zorder=1)
+    ax.set_xlabel('PSNR (dB)'); ax.set_ylabel('|LAA-950 偏差| (pp)')
+    ax.set_ylim(-0.25, max(y) * 1.55); ax.margins(x=0.22)
     ax.spines[['top', 'right']].set_visible(False)
 
-    ax = axes[1]
-    arms = [r['arm'] for r in dp]
-    lab = {'deterministic-regression': '确定性回归', 'bias-only-control': '纯标量偏置',
-           'SCTE-R': 'SCTE-R'}
-    v = [float(r['delta_hu']) for r in dp]
-    e = [float(r['delta_sd']) for r in dp]
-    y = np.arange(len(arms))[::-1]
-    ax.barh(y, v, 0.5, xerr=e, color=[C_BASE2, C_BASE4, C_OURS],
-            edgecolor='0.15', linewidth=0.7, alpha=0.85,
-            error_kw=dict(ecolor='0.2', lw=0.9, capsize=2.5))
-    for yi, vi, ei in zip(y, v, e):
-        ax.annotate(f'{vi:.2f}', (vi - ei, yi), textcoords='offset points',
-                    xytext=(-4, -2.5), fontsize=6.8, ha='right')
-    ax.axvline(0, color='0.35', lw=0.8)
-    ax.set_xlim(min(v) - 9, 2.5)
-    ax.set_yticks(y, [lab[a] for a in arms], fontsize=7.2)
-    ax.set_xlabel('整体密度位移 δ (HU)')
-    ax.set_title('位移的直接测量（n = 444）', fontsize=8.5, pad=9)
+
+def panel_laa910(ax):
+    rows = [r for r in load('agreement_loa.csv') if r['endpoint'] == 'LAA-910']
+    tag(ax, 'B')
+    ax.set_title('LAA-910 的一致性（n = 444）', fontsize=8.2, pad=8)
+    order = ['Lanczos', 'CTHNet', OURS, 'SCTE-R-adapted']
+    sub = {r['method']: r for r in rows}
+    ys = np.arange(len(order))[::-1]
+    for yi, m in zip(ys, order):
+        r = sub[m]
+        b, lo, hi = float(r['bias']), float(r['loa_lo']), float(r['loa_hi'])
+        ours = m.startswith('SCTE-R'); c = COLOR[m]
+        ax.plot([lo, hi], [yi, yi], color=c, lw=2.6 if ours else 1.6, solid_capstyle='butt')
+        for e in (lo, hi):
+            ax.plot([e, e], [yi - .15, yi + .15], color=c, lw=1.1)
+        ax.scatter([b], [yi], s=38, facecolor=c, edgecolor='0.15', lw=0.9,
+                   marker='o' if ours else 's', zorder=3)
+        ax.annotate(f'{b:+.2f}', (b, yi), textcoords='offset points', xytext=(0, 7),
+                    ha='center', fontsize=6.5)
+    ax.axvline(0, color='0.35', lw=0.8, ls=(0, (2, 2)))
+    ax.set_yticks(ys, [LBL[m] for m in order], fontsize=6.9)
+    ax.set_xlabel('偏差与 95% 一致性界 (pp)')
+    ax.set_ylim(-0.7, len(order) - 0.25)
     ax.spines[['top', 'right', 'left']].set_visible(False)
     ax.tick_params(axis='y', length=0)
-    fig.tight_layout()
-    fig.savefig(os.path.join(OUT, 'figure3_percentile_and_displacement.pdf'))
-    plt.close(fig)
 
 
-# ---------------------------------------------------------------- figure 4
-def figure4():
-    rows = load('site_gate.csv')
-    lab = {'public-test': '公开测试集\n（模型学过）',
-           'external-soft-kernel': '外部软核\n（同核族）',
-           'external-sharp-kernel': '外部锐核\n（未学过）',
-           'external-sharp-adapted': '外部锐核\n（站点适配后）'}
-    status = {True: '终点失效', False: '终点正常'}
-    fig, ax = plt.subplots(figsize=(4.6, 2.8))
-    x = np.arange(len(rows))
-    v = [float(r['certified_pct']) for r in rows]
-    failed = [r['endpoint_status'] == 'failed' for r in rows]
-    ax.bar(x, v, 0.56, color=[C_BASE4 if f else C_OURS for f in failed],
-           edgecolor='0.15', linewidth=0.7, alpha=0.85,
-           hatch=['///' if f else '' for f in failed])
-    for xi, vi in zip(x, v):
-        ax.annotate(f'{vi:.1f}%', (xi, vi), textcoords='offset points', xytext=(0, 3),
-                    ha='center', fontsize=7)
-    ax.set_xticks(x, ['%s\n%s' % (lab[r['domain']], status[f])
-                      for r, f in zip(rows, failed)], fontsize=6.9)
-    ax.set_ylabel('判据通过率 (%)')
-    ax.set_ylim(0, 100)
+def panel_percentile(ax):
+    pr = load('percentile_bias.csv')
+    tag(ax, 'C')
+    ax.set_title('低密度百分位的偏差（n = 444）', fontsize=8.2, pad=8)
+    ms = [r['method'] for r in pr]
+    x = np.arange(len(ms)); w = 0.36
+    for i, (col, sh) in enumerate((('perc15_bias_hu', ''), ('perc10_bias_hu', '///'))):
+        v = [float(r[col]) for r in pr]
+        ax.bar(x + (i - .5) * w, v, w, color=[COLOR.get(m, C_GRID) for m in ms],
+               edgecolor='0.15', linewidth=0.7, hatch=sh, alpha=1.0 if i == 0 else 0.55)
+        for xi, vi in zip(x + (i - .5) * w, v):
+            ax.annotate(f'{vi:+.1f}', (xi, vi), textcoords='offset points',
+                        xytext=(0, 2.5), ha='center', fontsize=6.3)
+    ax.axhline(0, color='0.35', lw=0.8)
+    ax.set_xticks(x, [LBL[m].replace('（', '\n（') for m in ms], fontsize=6.7)
+    ax.set_ylabel('偏差 (HU)')
+    ax.set_ylim(0, 31)
+    ax.legend(handles=[Patch(facecolor='0.6', edgecolor='0.15', label='Perc15'),
+                       Patch(facecolor='0.6', edgecolor='0.15', hatch='///', alpha=0.55,
+                             label='Perc10')], fontsize=7, loc='upper right')
     ax.spines[['top', 'right']].set_visible(False)
-    fig.tight_layout()
-    fig.savefig(os.path.join(OUT, 'figure4_site_gate.pdf'))
-    plt.close(fig)
 
 
-for fn in (figure1, figure2, figure3, figure4):
-    fn(); print('绘制', fn.__name__)
-print('输出目录', OUT)
+fig = plt.figure(figsize=(7.2, 2.95))
+gs = fig.add_gridspec(1, 3, wspace=0.44, left=0.075, right=0.985, top=0.85, bottom=0.26)
+panel_public(fig.add_subplot(gs[0, 0]))
+panel_laa910(fig.add_subplot(gs[0, 1]))
+panel_percentile(fig.add_subplot(gs[0, 2]))
+out = os.path.join(OUT, 'figure2_additional.pdf')
+fig.savefig(out)
+print('输出', out)
