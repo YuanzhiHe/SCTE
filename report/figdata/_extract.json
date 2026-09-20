@@ -1,0 +1,87 @@
+{
+  "counts": {
+    "artifact_count": 5,
+    "supported_panel_count": 0
+  },
+  "details": {
+    "artifacts": [
+      {
+        "delimiter": ",",
+        "headers": [
+          "method",
+          "endpoint",
+          "bias",
+          "loa_lo",
+          "loa_hi",
+          "ccc"
+        ],
+        "kind": "generic-table",
+        "path": "figdata/agreement_loa.csv",
+        "row_count": 8
+      },
+      {
+        "delimiter": ",",
+        "headers": [
+          "method",
+          "cohort",
+          "psnr_db",
+          "laa950_bias_pp",
+          "laa950_ccc",
+          "laa910_bias_pp",
+          "laa910_ccc"
+        ],
+        "kind": "generic-table",
+        "path": "figdata/arms_quality_vs_bias.csv",
+        "row_count": 9
+      },
+      {
+        "delimiter": ",",
+        "headers": [
+          "arm",
+          "delta_hu",
+          "delta_sd",
+          "n"
+        ],
+        "kind": "generic-table",
+        "path": "figdata/displacement.csv",
+        "row_count": 3
+      },
+      {
+        "delimiter": ",",
+        "headers": [
+          "method",
+          "perc15_bias_hu",
+          "perc10_bias_hu"
+        ],
+        "kind": "generic-table",
+        "path": "figdata/percentile_bias.csv",
+        "row_count": 3
+      },
+      {
+        "delimiter": ",",
+        "headers": [
+          "domain",
+          "model_trained_on_domain",
+          "certified_pct",
+          "endpoint_status",
+          "laa950_bias_pp"
+        ],
+        "kind": "generic-table",
+        "path": "figdata/site_gate.csv",
+        "row_count": 4
+      }
+    ],
+    "supported_panels": []
+  },
+  "inputs": {
+    "paths": [
+      "figdata/agreement_loa.csv",
+      "figdata/arms_quality_vs_bias.csv",
+      "figdata/displacement.csv",
+      "figdata/percentile_bias.csv",
+      "figdata/site_gate.csv"
+    ]
+  },
+  "status": "pass",
+  "tool": "result_extract"
+}

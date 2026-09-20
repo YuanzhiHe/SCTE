@@ -1,0 +1,10 @@
+method,cohort,psnr_db,laa950_bias_pp,laa950_ccc,laa910_bias_pp,laa910_ccc
+Lanczos,external,28.79,-4.41,0.689,-7.30,0.841
+CTHNet,external,30.77,-4.48,0.682,-5.98,0.889
+SCTE-R-zeroshot,external,26.81,-0.26,0.933,-0.32,0.986
+SCTE-R-adapted,external,28.34,1.04,0.948,1.72,0.978
+CTHNet,public,33.44,-0.82,0.152,,
+TVSRN,public,33.17,-0.90,0.068,,
+I3Net,public,33.22,-0.86,0.100,,
+Lanczos,public,30.27,-0.78,0.259,,
+SCTE-R,public,30.83,-0.51,0.594,,

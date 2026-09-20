@@ -1,0 +1,5 @@
+domain,model_trained_on_domain,certified_pct,endpoint_status,laa950_bias_pp
+public-test,yes,80.0,intact,
+external-soft-kernel,same-family,16.1,intact,-0.3
+external-sharp-kernel,no,4.8,failed,-4.8
+external-sharp-adapted,yes,99.0,intact,

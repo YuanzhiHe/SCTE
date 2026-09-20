@@ -1,0 +1,21 @@
+{
+  "counts": {
+    "invalid_panel_count": 4,
+    "panel_count": 0
+  },
+  "details": {
+    "invalid_panels": [
+      "fig1 | bar | arms_quality_vs_bias.csv",
+      "fig2 | bar | agreement_loa.csv",
+      "fig3 | bar | percentile_bias.csv",
+      "fig4 | bar | site_gate.csv"
+    ],
+    "panels": []
+  },
+  "inputs": {
+    "extract_json": "figdata/_extract.json",
+    "spec_path": "figdata/figure_spec.txt"
+  },
+  "status": "warn",
+  "tool": "figure_spec_audit"
+}

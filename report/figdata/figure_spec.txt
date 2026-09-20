@@ -1,0 +1,4 @@
+fig1 | bar | arms_quality_vs_bias.csv
+fig2 | bar | agreement_loa.csv
+fig3 | bar | percentile_bias.csv
+fig4 | bar | site_gate.csv
