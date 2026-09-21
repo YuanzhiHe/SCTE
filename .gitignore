@@ -60,3 +60,4 @@ paper/output/doc/*.docx
 paper/output/doc/*.odt
 paper/output/doc/*.pdf
 paper/figures/_*.png
+paper/output/doc/pg-*.png
