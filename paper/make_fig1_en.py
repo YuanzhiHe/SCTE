@@ -61,89 +61,10 @@ def tag(ax, letter, dx=-0.09, dy=1.10, fs=10):
 
 
 # =============================================================== panel a
-def sub(ax, x, y, w, h, lines, fc, ec, lw=1.0, title=None, tfs=6.6, fs=5.9,
-        hatch=None):
-    """A module box with a title strip and its own sub-cells.
-
-    One box per stage was too coarse: the stages differ in what they consume and
-    what they hand on, and a single block of text inside one rectangle hides that.
-    Each stage is drawn as a titled module whose sub-cells carry one item each.
-    """
-    ax.add_patch(FancyBboxPatch((x, y), w, h, boxstyle='round,pad=0.004,rounding_size=0.010',
-                                facecolor=fc, edgecolor=ec, linewidth=lw, zorder=2,
-                                clip_on=False))
-    if hatch:
-        # a band at the left edge rather than a fill: a hatch across the whole box
-        # runs through every line of text inside it
-        ax.add_patch(Rectangle((x + 0.004, y + 0.012), 0.009, h - 0.024,
-                               facecolor=ec, alpha=0.65, edgecolor='none',
-                               zorder=3, clip_on=False))
-    ty = y + h
-    if title:
-        ax.add_patch(Rectangle((x, y + h - 0.085), w, 0.085, facecolor=ec, alpha=0.90,
-                               edgecolor='none', zorder=3, clip_on=False))
-        ax.text(x + w / 2, y + h - 0.0425, title, ha='center', va='center',
-                fontsize=tfs, color='white', fontweight='bold', zorder=4, clip_on=False)
-        ty = y + h - 0.085
-    n = len(lines)
-    ch = (ty - y) / max(n, 1)
-    for i, t in enumerate(lines):
-        cy = ty - (i + 0.5) * ch
-        if i:
-            ax.plot([x + 0.006, x + w - 0.006], [ty - i * ch] * 2, color=ec, lw=0.5,
-                    alpha=0.55, zorder=3, clip_on=False)
-        ax.text(x + w / 2, cy, t, ha='center', va='center', fontsize=fs, zorder=4,
-                clip_on=False, linespacing=1.25)
-
-
 def arrow(ax, p, q, ls='-', color='0.3', rad=0.0, lw=0.9):
     ax.add_patch(FancyArrowPatch(p, q, arrowstyle='-|>', mutation_scale=7.5,
                                  linewidth=lw, color=color, linestyle=ls, zorder=5,
                                  clip_on=False, connectionstyle=f'arc3,rad={rad}'))
-
-
-def panel_a(ax):
-    ax.set_xlim(0, 1); ax.set_ylim(0, 1); ax.axis('off')
-    tag(ax, 'a', dx=-0.012, dy=1.10)
-    ax.text(0.035, 1.09, 'Method: from the 5 mm series to endpoints and a validity indicator',
-            transform=ax.transAxes, fontsize=8.4, fontweight='bold', va='top')
-
-    yT, hT = 0.545, 0.40         # top row: the pipeline
-    yB, hB = 0.035, 0.375        # bottom row: the physics and what it enables
-
-    sub(ax, 0.000, yT, 0.152, hT, ['5 mm series $y$', 'the only one\navailable'],
-        '#E8EFF7', C_BASE1, title='Input', hatch='.')
-    sub(ax, 0.178, yT, 0.150, hT, ['upsampling', 'or frozen backbone', 'gives $x_0$'],
-        '#F4F4F4', '#6E6E6E', title='Base predictor')
-    sub(ax, 0.354, yT, 0.220, hT,
-        ['$u=(x-x_0)/s_r$', 'Euler, $t\\!:\\!0\\!\\to\\!1$', 'data-consistency step'],
-        '#EFE9F6', C_OURS, lw=1.3, title='Flow matching')
-    sub(ax, 0.600, yT, 0.130, hT, ['1 mm estimate', '$\\hat{x}$'],
-        '#EFE9F6', C_OURS, lw=1.3, title='Output')
-    sub(ax, 0.756, yT, 0.244, hT, ['LAA-950 / LAA-910', 'Perc15 / Perc10', 'five lobes'],
-        'white', '#3A3A3A', title='Endpoints')
-
-    sub(ax, 0.354, yB, 0.220, hB,
-        ['$z$ Gaussian (FWHM $w$)', 'slab averaging ($r=5$)', 'mean-preserving'],
-        '#FDF0E1', C_BASE2, lw=1.1, title='Forward operator $A_w$', hatch='.', fs=5.7)
-    sub(ax, 0.600, yB, 0.130, hB, ['$\\hat{\\delta}$', '$\\rho_{\\rm struct}$', '$s$'],
-        '#FDF0E1', C_BASE2, lw=1.1, title='Reference-free', fs=6.4)
-    sub(ax, 0.756, yB, 0.244, hB,
-        ['pass / flag', 'site-level competence', 'no per-scan claim'],
-        'white', C_BASE2, lw=1.1, title='Validity indicator')
-
-    for a, b in ((0.152, 0.178), (0.328, 0.354), (0.574, 0.600), (0.730, 0.756)):
-        arrow(ax, (a, yT + hT / 2), (b, yT + hT / 2))
-    for a, b in ((0.574, 0.600), (0.730, 0.756)):
-        arrow(ax, (a, yB + hB / 2), (b, yB + hB / 2), color=C_BASE2)
-    arrow(ax, (0.464, yT), (0.464, yB + hB), ls=(0, (3, 2)), color=C_BASE2)
-    arrow(ax, (0.665, yT), (0.665, yB + hB), ls=(0, (3, 2)), color=C_OURS)
-    ax.text(0.479, (yT + yB + hB) / 2, 'constrains', fontsize=5.8, color=C_BASE2,
-            va='center', ha='left')
-    ax.text(0.680, (yT + yB + hB) / 2, '$\\hat{x}$', fontsize=6.2, color=C_OURS,
-            va='center', ha='left')
-    ax.text(0.878, yB - 0.075, 'no 1 mm reference', fontsize=6.0,
-            color=C_BASE2, ha='center', va='top')
 
 
 # =============================================================== panels b, c
@@ -166,7 +87,7 @@ def load_case():
     return thin[:n], upsample_z(thick)[:n], base[:n], rec[:n], lung[:n]
 
 
-def panel_b(axes, thin, thickup, base, rec):
+def panel_a(axes, thin, thickup, base, rec):
     """One column per method, through-plane (coronal) view, plus a zoom row.
 
     Through-plane is the only view where 5 mm acquisition differs from 1 mm, so it
@@ -192,7 +113,7 @@ def panel_b(axes, thin, thickup, base, rec):
         ax.set_title(name, fontsize=7.0, pad=3)
         if j == 0:
             ax.set_ylabel('coronal', fontsize=6.8)
-            tag(ax, 'b', dx=-0.16, dy=1.34)
+            tag(ax, 'a', dx=-0.16, dy=1.34)
         axz = axes[1][j]
         axz.imshow(im[zz:zz + zh, zx:zx + zw], cmap='gray', vmin=WIN[0], vmax=WIN[1],
                    aspect='equal', interpolation='nearest')
@@ -204,7 +125,7 @@ def panel_b(axes, thin, thickup, base, rec):
             axz.set_ylabel('zoom', fontsize=6.8)
 
 
-def panel_c(ax, thin, thickup, base, rec, lung):
+def panel_b(ax, thin, thickup, base, rec, lung):
     """LAA as a function of its own threshold.
 
     A histogram buries the informative region under the parenchymal peak. Sweeping
@@ -212,7 +133,7 @@ def panel_c(ax, thin, thickup, base, rec, lung):
     curves separate is where a method will misreport, and the standard cut-offs are
     read straight off the x-axis.
     """
-    tag(ax, 'c')
+    tag(ax, 'b')
     ax.set_title('LAA vs. threshold', fontsize=8, pad=6)
     thr = np.arange(-1000, -860, 2.0)
     vals = {}
@@ -238,9 +159,9 @@ def panel_c(ax, thin, thickup, base, rec, lung):
 
 
 # =============================================================== panels d-f
-def panel_d(ax):
+def panel_c(ax):
     rows = [r for r in load('arms_quality_vs_bias.csv') if r['cohort'] == 'external']
-    tag(ax, 'd')
+    tag(ax, 'c')
     ax.set_title('Image quality gains do not reach the measurement', fontsize=8, pad=6)
     x = [float(r['psnr_db']) for r in rows]
     y = [abs(float(r['laa950_bias_pp'])) for r in rows]
@@ -255,10 +176,15 @@ def panel_d(ax):
     base = [(a, b) for a, b, r in zip(x, y, rows) if not r['method'].startswith('SCTE-R')]
     bx, by = [p[0] for p in base], [p[1] for p in base]
     ax.plot([min(bx), max(bx)], [np.mean(by)] * 2, color=C_GRID, lw=1.0, ls=(0, (4, 3)))
-    ax.annotate('', (min(bx), np.mean(by) - 0.42), (max(bx), np.mean(by) - 0.42),
+    # the span arrow sits in the empty band between the baseline row and the
+    # generative points; drawn level with the markers it was hidden behind them
+    span = 3.15
+    for e in (min(bx), max(bx)):
+        ax.plot([e, e], [span, np.mean(by) - 0.30], color='0.55', lw=0.6,
+                ls=(0, (2, 2)), zorder=1)
+    ax.annotate('', (min(bx), span), (max(bx), span),
                 arrowprops=dict(arrowstyle='<->', lw=0.8, color='0.35'))
-    ax.text(np.mean(bx), np.mean(by) - 0.95,
-            '3.2 dB apart; 0.5 pp recovered (10%)',
+    ax.text(np.mean(bx), span - 0.28, '3.2 dB apart; 0.5 pp recovered (10%)',
             ha='center', va='top', fontsize=6.1, color='0.2')
     # SCTE-R sits at lower PSNR than doing nothing, with the bias nearly gone
     thick = next(q for q, r in zip(y, rows) if r['method'] == 'Thick5mm')
@@ -276,9 +202,9 @@ def panel_d(ax):
     ax.spines[['top', 'right']].set_visible(False)
 
 
-def panel_e(ax):
+def panel_d(ax):
     rows = load('agreement_loa.csv')
-    tag(ax, 'e')
+    tag(ax, 'd')
     ax.set_title('LAA-950 bias and 95% limits of agreement ($n$ = 444)', fontsize=8, pad=6)
     order = ['Thick5mm', 'Lanczos', 'CTHNet', OURS, 'SCTE-R-adapted']
     sub = {r['method']: r for r in rows if r['endpoint'] == 'LAA-950'}
@@ -302,9 +228,9 @@ def panel_e(ax):
     ax.tick_params(axis='y', length=0)
 
 
-def panel_f(ax):
+def panel_e(ax):
     rows = load('displacement.csv')
-    tag(ax, 'f')
+    tag(ax, 'e')
     ax.set_title('A constant attenuation displacement', fontsize=8, pad=6)
     lab = {'deterministic-regression': 'Regression', 'bias-only-control': 'Scalar offset',
            'SCTE-R': 'SCTE-R'}
@@ -324,9 +250,9 @@ def panel_f(ax):
     ax.tick_params(axis='y', length=0)
 
 
-def panel_g(ax):
+def panel_f(ax):
     rows = load('site_gate.csv')
-    tag(ax, 'g')
+    tag(ax, 'f')
     ax.set_title('Pass rate by model-domain competence', fontsize=8, pad=6)
     lab = {'public-test': 'public test\n(in domain)', 'external-soft-kernel': 'external, soft\n(same family)',
            'external-sharp-kernel': 'external, sharp\n(unseen)',
@@ -351,26 +277,20 @@ def panel_g(ax):
 # =============================================================== layout
 thin, thickup, base, rec, lung = load_case()
 
-fig = plt.figure(figsize=(7.2, 9.0))
+fig = plt.figure(figsize=(7.2, 7.4))
 L, Rt = 0.105, 0.978
-
-# Panel a sits in its own grid: it is a schematic and needs far less vertical
-# breathing room than the data panels, and one shared hspace cannot serve both.
-gsA = fig.add_gridspec(1, 1, left=L, right=Rt, top=0.972, bottom=0.788)
-panel_a(fig.add_subplot(gsA[0, 0]))
-
-gsM = fig.add_gridspec(3, 4, left=L, right=Rt, top=0.735, bottom=0.050,
-                       height_ratios=[1.28, 0.92, 0.86], hspace=0.62, wspace=0.42)
+gsM = fig.add_gridspec(3, 4, left=L, right=Rt, top=0.945, bottom=0.055,
+                       height_ratios=[1.28, 0.92, 0.86], hspace=0.60, wspace=0.42)
 
 gsb = gsM[0, 0:3].subgridspec(2, 4, hspace=0.06, wspace=0.04, height_ratios=[1.0, 1.0])
 axes_b = [[fig.add_subplot(gsb[i, j]) for j in range(4)] for i in range(2)]
-panel_b(axes_b, thin, thickup, base, rec)
-panel_c(fig.add_subplot(gsM[0, 3]), thin, thickup, base, rec, lung)
+panel_a(axes_b, thin, thickup, base, rec)
+panel_b(fig.add_subplot(gsM[0, 3]), thin, thickup, base, rec, lung)
 
-panel_d(fig.add_subplot(gsM[1, 0:2]))
-panel_e(fig.add_subplot(gsM[1, 2:4]))
-panel_f(fig.add_subplot(gsM[2, 0:2]))
-panel_g(fig.add_subplot(gsM[2, 2:4]))
+panel_c(fig.add_subplot(gsM[1, 0:2]))
+panel_d(fig.add_subplot(gsM[1, 2:4]))
+panel_e(fig.add_subplot(gsM[2, 0:2]))
+panel_f(fig.add_subplot(gsM[2, 2:4]))
 
 fig.savefig(os.path.join(OUT, 'fig3_results.pdf'))
 fig.savefig(os.path.join(OUT, 'fig3_results.png'), dpi=300)
