@@ -372,6 +372,6 @@ panel_e(fig.add_subplot(gsM[1, 2:4]))
 panel_f(fig.add_subplot(gsM[2, 0:2]))
 panel_g(fig.add_subplot(gsM[2, 2:4]))
 
-fig.savefig(os.path.join(OUT, 'fig1.pdf'))
-fig.savefig(os.path.join(OUT, 'fig1.png'), dpi=300)
+fig.savefig(os.path.join(OUT, 'fig3_results.pdf'))
+fig.savefig(os.path.join(OUT, 'fig3_results.png'), dpi=300)
 print('Output', os.path.join(OUT, 'figure0_main.pdf'))
