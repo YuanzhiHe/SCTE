@@ -53,3 +53,10 @@ report/*.pdf
 report/*.odt
 report/figures/*.png
 report/pg-*.png
+
+# 期刊 PDF（有版权）与生成的稿件文件不入库
+paper/input/
+paper/output/doc/*.docx
+paper/output/doc/*.odt
+paper/output/doc/*.pdf
+paper/figures/_*.png
