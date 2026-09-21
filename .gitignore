@@ -61,3 +61,6 @@ paper/output/doc/*.odt
 paper/output/doc/*.pdf
 paper/figures/_*.png
 paper/output/doc/pg-*.png
+
+# 稿件整体不入库
+paper/
