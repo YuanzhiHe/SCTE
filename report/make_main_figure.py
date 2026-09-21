@@ -19,7 +19,6 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.patches import FancyBboxPatch, FancyArrowPatch, Patch, Rectangle
-from matplotlib.gridspec import GridSpec
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)          # repo root: DATA/ and RECON/ live beside report/
@@ -61,49 +60,87 @@ def tag(ax, letter, dx=-0.09, dy=1.10, fs=10):
 
 
 # =============================================================== panel a
-def box(ax, x, y, w, h, text, fc='white', ec='0.25', lw=0.9, fs=6.6):
-    ax.add_patch(FancyBboxPatch((x, y), w, h, boxstyle='round,pad=0.005,rounding_size=0.012',
+def sub(ax, x, y, w, h, lines, fc, ec, lw=1.0, title=None, tfs=6.6, fs=5.9,
+        hatch=None):
+    """A module box with a title strip and its own sub-cells.
+
+    One box per stage was too coarse: the stages differ in what they consume and
+    what they hand on, and a single block of text inside one rectangle hides that.
+    Each stage is drawn as a titled module whose sub-cells carry one item each.
+    """
+    ax.add_patch(FancyBboxPatch((x, y), w, h, boxstyle='round,pad=0.004,rounding_size=0.010',
                                 facecolor=fc, edgecolor=ec, linewidth=lw, zorder=2,
                                 clip_on=False))
-    ax.text(x + w / 2, y + h / 2, text, ha='center', va='center', fontsize=fs,
-            zorder=3, linespacing=1.35, clip_on=False)
+    if hatch:
+        ax.add_patch(FancyBboxPatch((x, y), w, h, boxstyle='round,pad=0.004,rounding_size=0.010',
+                                    facecolor='none', edgecolor=ec, linewidth=0,
+                                    hatch=hatch, alpha=0.30, zorder=2, clip_on=False))
+    ty = y + h
+    if title:
+        ax.add_patch(Rectangle((x, y + h - 0.085), w, 0.085, facecolor=ec, alpha=0.90,
+                               edgecolor='none', zorder=3, clip_on=False))
+        ax.text(x + w / 2, y + h - 0.0425, title, ha='center', va='center',
+                fontsize=tfs, color='white', fontweight='bold', zorder=4, clip_on=False)
+        ty = y + h - 0.085
+    n = len(lines)
+    ch = (ty - y) / max(n, 1)
+    for i, t in enumerate(lines):
+        cy = ty - (i + 0.5) * ch
+        if i:
+            ax.plot([x + 0.006, x + w - 0.006], [ty - i * ch] * 2, color=ec, lw=0.5,
+                    alpha=0.55, zorder=3, clip_on=False)
+        ax.text(x + w / 2, cy, t, ha='center', va='center', fontsize=fs, zorder=4,
+                clip_on=False, linespacing=1.25)
 
 
-def arrow(ax, p, q, ls='-', color='0.3', rad=0.0):
+def arrow(ax, p, q, ls='-', color='0.3', rad=0.0, lw=0.9):
     ax.add_patch(FancyArrowPatch(p, q, arrowstyle='-|>', mutation_scale=7.5,
-                                 linewidth=0.9, color=color, linestyle=ls, zorder=2,
+                                 linewidth=lw, color=color, linestyle=ls, zorder=5,
                                  clip_on=False, connectionstyle=f'arc3,rad={rad}'))
 
 
 def panel_a(ax):
     ax.set_xlim(0, 1); ax.set_ylim(0, 1); ax.axis('off')
-    tag(ax, 'a', dx=-0.012, dy=1.26)
-    ax.text(0.035, 1.25, '方法与效度判据', transform=ax.transAxes, fontsize=8.4,
-            fontweight='bold', va='top')
+    tag(ax, 'a', dx=-0.012, dy=1.10)
+    ax.text(0.035, 1.09, '方法：从厚层观测到定量终点与效度判据',
+            transform=ax.transAxes, fontsize=8.4, fontweight='bold', va='top')
 
-    y1, h1 = 0.58, 0.34
-    y2, h2 = 0.02, 0.32
-    box(ax, 0.000, y1, 0.112, h1, '5 mm\n厚层观测 y', fc='#EDF2F8')
-    box(ax, 0.142, y1, 0.138, h1, '基预测 x0\n上采样／冻结骨干', fc='#F7F7F7', fs=6.3)
-    box(ax, 0.310, y1, 0.218, h1,
-        '残差空间流匹配采样\nu = (x − x0) / s_r\nEuler 积分 + 数据一致性投影',
-        fc='#F0EBF6', ec=C_OURS, lw=1.2, fs=6.1)
-    box(ax, 0.558, y1, 0.108, h1, '1 mm\n重建 x', fc='#F0EBF6', ec=C_OURS, lw=1.2)
-    box(ax, 0.700, y1, 0.300, h1, '密度学终点\nLAA-950／LAA-910／Perc15')
-    box(ax, 0.700, y2, 0.300, h2, '无参考效度判据\nδ、ρ_struct、s → 通过／标记',
-        ec=C_BASE2, lw=1.2)
-    box(ax, 0.310, y2, 0.310, h2,
-        '前向算子 A_w\n(z 向高斯 + 跨层平均, r = 5)\n均值保持', fc='#FDF3E8',
-        ec=C_BASE2, lw=1.0, fs=6.1)
+    yT, hT = 0.545, 0.40         # top row: the pipeline
+    yB, hB = 0.035, 0.375        # bottom row: the physics and what it enables
 
-    for a, b in ((0.112, 0.142), (0.280, 0.310), (0.528, 0.558), (0.666, 0.700)):
-        arrow(ax, (a, y1 + h1 / 2), (b, y1 + h1 / 2))
-    arrow(ax, (0.612, y1), (0.700, y2 + h2 * 0.74), rad=-0.28)
-    arrow(ax, (0.419, y1), (0.419, y2 + h2), ls=(0, (3, 2)), color=C_BASE2)
-    arrow(ax, (0.620, y2 + h2 * 0.36), (0.700, y2 + h2 * 0.36), ls=(0, (3, 2)), color=C_BASE2)
-    ax.text(0.660, y2 + h2 * 0.36 - 0.04, '均值保持\n无需 1 mm 参考', fontsize=5.9,
-            color=C_BASE2, ha='center', va='top', linespacing=1.3)
-    ax.text(0.0, y1 - 0.10, '（无薄层设备的医院仅有此项）', fontsize=6.0, color='0.35')
+    sub(ax, 0.000, yT, 0.135, hT, ['5 mm 厚层 $y$', '仅此项可得'],
+        '#E8EFF7', C_BASE1, title='输入', hatch='....')
+    sub(ax, 0.163, yT, 0.150, hT, ['上采样', '或冻结骨干', '得 $x_0$'],
+        '#F4F4F4', '#6E6E6E', title='基预测')
+    sub(ax, 0.341, yT, 0.232, hT,
+        ['$u=(x-x_0)/s_r$', 'Euler 积分 $t\\!:\\!0\\!\\to\\!1$', '数据一致性投影'],
+        '#EFE9F6', C_OURS, lw=1.3, title='残差空间流匹配采样')
+    sub(ax, 0.601, yT, 0.125, hT, ['1 mm 重建', '$\\hat{x}$'],
+        '#EFE9F6', C_OURS, lw=1.3, title='输出')
+    sub(ax, 0.754, yT, 0.246, hT, ['LAA-950 / LAA-910', 'Perc15 / Perc10', '五肺叶分区'],
+        'white', '#3A3A3A', title='密度学终点')
+
+    sub(ax, 0.341, yB, 0.232, hB,
+        ['$z$ 向高斯 (FWHM $w$)', '跨层平均 ($r=5$)', '均值保持'],
+        '#FDF0E1', C_BASE2, lw=1.1, title='前向算子 $A_w$', hatch='//')
+    sub(ax, 0.601, yB, 0.125, hB, ['$\\hat{\\delta}$', '$\\rho_{\\rm struct}$', '$s$'],
+        '#FDF0E1', C_BASE2, lw=1.1, title='无参考量', fs=6.4)
+    sub(ax, 0.754, yB, 0.246, hB,
+        ['通过 / 标记', '站点级胜任度', '不含逐例保证'],
+        'white', C_BASE2, lw=1.1, title='效度判据')
+
+    for a, b in ((0.135, 0.163), (0.313, 0.341), (0.573, 0.601), (0.726, 0.754)):
+        arrow(ax, (a, yT + hT / 2), (b, yT + hT / 2))
+    for a, b in ((0.573, 0.601), (0.726, 0.754)):
+        arrow(ax, (a, yB + hB / 2), (b, yB + hB / 2), color=C_BASE2)
+    arrow(ax, (0.457, yT), (0.457, yB + hB), ls=(0, (3, 2)), color=C_BASE2)
+    arrow(ax, (0.663, yT), (0.663, yB + hB), ls=(0, (3, 2)), color=C_OURS)
+    ax.text(0.472, (yT + yB + hB) / 2, '约束采样', fontsize=5.8, color=C_BASE2,
+            va='center', ha='left')
+    ax.text(0.678, (yT + yB + hB) / 2, '$\\hat{x}$', fontsize=6.2, color=C_OURS,
+            va='center', ha='left')
+    ax.text(0.877, yB - 0.055, '均值保持 → 无需 1 mm 参考', fontsize=6.0,
+            color=C_BASE2, ha='center')
 
 
 # =============================================================== panels b, c
@@ -221,12 +258,16 @@ def panel_d(ax):
     # SCTE-R sits at lower PSNR than doing nothing, with the bias nearly gone
     thick = next(q for q, r in zip(y, rows) if r['method'] == 'Thick5mm')
     ours = next((a, b) for a, b, r in zip(x, y, rows) if r['method'] == OURS)
-    ax.annotate('', (ours[0], ours[1] + 0.3), (ours[0], thick - 0.1),
-                arrowprops=dict(arrowstyle='-|>', lw=1.1, color=C_OURS))
-    ax.text(ours[0] + 0.10, (thick + ours[1]) / 2, '挽回 95%', fontsize=6.4,
-            color=C_OURS, ha='left', va='center')
+    # a diagonal arrow from doing nothing to the sampler shows the move itself,
+    # and keeps clear of the two labels stacked near x = 27-28.5
+    tx = next(a for a, r in zip(x, rows) if r['method'] == 'Thick5mm')
+    ax.annotate('', xy=(ours[0] - 0.06, ours[1] + 0.32), xytext=(tx - 0.10, thick - 0.18),
+                arrowprops=dict(arrowstyle='-|>', lw=1.2, color=C_OURS,
+                                connectionstyle='arc3,rad=0.28'))
+    ax.text(tx - 1.08, (thick + ours[1]) / 2 - 0.15, '挽回 95%', fontsize=6.5,
+            color=C_OURS, ha='center', va='center', rotation=78)
     ax.set_xlabel('PSNR (dB)'); ax.set_ylabel('|LAA-950 偏差| (pp)')
-    ax.set_ylim(-1.6, max(y) * 1.38); ax.margins(x=0.24)
+    ax.set_ylim(-2.3, max(y) * 1.30); ax.margins(x=0.26)
     ax.spines[['top', 'right']].set_visible(False)
 
 
@@ -298,32 +339,33 @@ def panel_g(ax):
     # title or with the 99% bar, whichever corner it is placed in
     ax.set_xticks(x, ['%s\n%s' % (lab[r['domain']], '终点失效' if f else '终点正常')
                       for r, f in zip(rows, failed)], fontsize=6.0)
-    ax.set_ylabel('判据通过率 (%)'); ax.set_ylim(0, 112)
+    ax.set_ylabel('通过率 (%)'); ax.set_ylim(0, 114)
     ax.spines[['top', 'right']].set_visible(False)
 
 
 # =============================================================== layout
 thin, thickup, base, rec, lung = load_case()
 
-fig = plt.figure(figsize=(7.2, 8.9))
-gs = GridSpec(5, 4, figure=fig,
-              height_ratios=[0.80, 0.78, 0.78, 1.02, 0.96],
-              hspace=0.52, wspace=0.40,
-              left=0.085, right=0.975, top=0.955, bottom=0.045)
+fig = plt.figure(figsize=(7.2, 9.0))
+L, Rt = 0.085, 0.975
 
-panel_a(fig.add_subplot(gs[0, :]))
+# Panel a sits in its own grid: it is a schematic and needs far less vertical
+# breathing room than the data panels, and one shared hspace cannot serve both.
+gsA = fig.add_gridspec(1, 1, left=L, right=Rt, top=0.972, bottom=0.788)
+panel_a(fig.add_subplot(gsA[0, 0]))
 
-# b occupies the left three columns over two rows (full view + zoom); c sits right
-gsb = gs[1:3, 0:3].subgridspec(2, 4, hspace=0.06, wspace=0.04,
-                               height_ratios=[1.0, 1.0])
+gsM = fig.add_gridspec(3, 4, left=L, right=Rt, top=0.735, bottom=0.050,
+                       height_ratios=[1.28, 0.92, 0.86], hspace=0.60, wspace=0.38)
+
+gsb = gsM[0, 0:3].subgridspec(2, 4, hspace=0.06, wspace=0.04, height_ratios=[1.0, 1.0])
 axes_b = [[fig.add_subplot(gsb[i, j]) for j in range(4)] for i in range(2)]
 panel_b(axes_b, thin, thickup, base, rec)
-panel_c(fig.add_subplot(gs[1:3, 3]), thin, thickup, base, rec, lung)
+panel_c(fig.add_subplot(gsM[0, 3]), thin, thickup, base, rec, lung)
 
-panel_d(fig.add_subplot(gs[3, 0:2]))
-panel_e(fig.add_subplot(gs[3, 2:4]))
-panel_f(fig.add_subplot(gs[4, 0:2]))
-panel_g(fig.add_subplot(gs[4, 2:4]))
+panel_d(fig.add_subplot(gsM[1, 0:2]))
+panel_e(fig.add_subplot(gsM[1, 2:4]))
+panel_f(fig.add_subplot(gsM[2, 0:2]))
+panel_g(fig.add_subplot(gsM[2, 2:4]))
 
 fig.savefig(os.path.join(OUT, 'figure0_main.pdf'))
 fig.savefig(os.path.join(OUT, 'figure0_main.png'), dpi=300)

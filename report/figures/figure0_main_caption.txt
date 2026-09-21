@@ -1,26 +1,51 @@
-图 1　SCTE-R 从 5 mm 胸部 CT 恢复肺气肿定量。
+Fig. 1 | Restoring emphysema densitometry from thick-slice chest CT.
 
-(a) 方法与效度判据。5 mm 厚层观测 y 经基预测得到 x₀（上采样或冻结骨干），在残差
-空间 u = (x − x₀)/s_r 上做流匹配采样并投影回数据一致集，输出 1 mm 重建 x̂。前向
-算子 A_w（z 向高斯与跨层平均，r = 5）既约束采样，又因其均值保持性使效度判据
-（δ̂、ρ_struct、s）可在无 1 mm 参考的条件下计算。
+a, Method. The 5 mm series y, the only series available at a site without
+thin-slice reconstruction, passes through a base predictor to give x0, and the
+scaled residual u = (x - x0)/s_r is sampled by flow matching with an explicit
+Euler integration from t = 0 to t = 1, each step projected back onto the set
+consistent with the measurement. The forward operator A_w, a through-plane
+Gaussian of full width at half maximum w followed by averaging over r = 5
+slices, both constrains that projection and supplies the three reference-free
+quantities: the global attenuation displacement delta, the structural residual
+rho_struct, and the through-plane variance term s. Because A_w preserves slab
+means, these are computable without any 1 mm reference. Hatching marks the
+modules that depend on the operator.
 
-(b) 同一次采集的冠状位（贯穿层面方向，即 5 mm 与 1 mm 唯一存在差异的方向）。列自
-左至右为 5 mm 上采样、CTHNet、SCTE-R 与 1 mm 参考；下行为黄框区域的放大。5 mm 呈
-阶梯状伪影，CTHNet 将实质纹理平滑掉，SCTE-R 的纹理与 1 mm 参考相当。
+b, Coronal views of one examination from the public paired cohort, the plane in
+which 5 mm and 1 mm acquisition differ. Columns are the 5 mm series upsampled,
+CTHNet, SCTE-R, and the 1 mm reference; the lower row magnifies the boxed
+parenchymal region. The 5 mm series shows through-plane staircase artefact,
+CTHNet smooths the parenchymal texture, and SCTE-R reproduces a texture
+comparable to the reference.
 
-(c) LAA 随阈值的变化（纵轴对数刻度）。虚线标出 LAA-950 与 LAA-910 两个常用阈值。
-5 mm 与 CTHNet 的曲线在低阈值区系统性低于参考，SCTE-R 与参考重合。
+c, Fraction of lung voxels below a given attenuation, on a logarithmic vertical
+axis, for the same examination. Dashed vertical lines mark the two standard
+cut-offs. The 5 mm and CTHNet curves fall below the reference throughout the
+low-attenuation region; SCTE-R follows the reference.
 
-(d) 外部队列中图像质量与定量偏差的关系。两条基线的 PSNR 相差 2.0 dB，LAA-950
-偏差仅相差 0.07 个百分点。
+d, Peak signal-to-noise ratio against the absolute LAA-950 bias in the external
+cohort (n = 444). The horizontal dashed line marks the mean bias of the three
+non-generative arms: 3.2 dB separates the 5 mm series from CTHNet while the bias
+falls by 0.5 percentage points. The curved arrow marks the distance covered by
+SCTE-R from the unreconstructed series, 95% of the bias, at a lower PSNR.
+Circles are generative arms, squares are the others.
 
-(e) LAA-950 的偏差与 95% 一致性界。
+e, Bias and 95% limits of agreement for LAA-950 (n = 444). Points are the bias,
+horizontal bars the limits, and the dashed line zero bias.
 
-(f) 整体密度位移的直接测量。确定性回归收敛到 −16.32 ± 0.65 HU；标准差 0.65 HU
-表明其为常数而非随机误差。
+f, Global attenuation displacement measured directly (n = 444). Bars are the
+mean and error bars the standard deviation. The deterministic regression sits at
+-16.32 +/- 0.65 HU; a standard deviation of 0.65 HU on a -16 HU effect
+identifies the displacement as a property of the estimator rather than
+case-level noise.
 
-(g) 判据通过率随模型对本域胜任度的变化；斜线填充为定量终点实际失效的域。
+g, Fraction of examinations passing the competence indicator in four
+model-by-domain combinations. Hatched fill marks the domain in which the
+densitometric endpoints actually failed. The sharp-kernel data lie inside the
+physical calibration set, so what separates the columns is whether the model has
+seen this kind of data.
 
-队列说明：(b)(c) 取自公开配对队列（本地留有逐例重建）；(d)–(g) 为 444 例外部
-队列，二者并非同一批受试者。数据来源：figdata 目录下各汇总表；(a) 为示意图。
+Panels b and c come from the public paired cohort, where reconstructions are
+held locally; panels d to g report the external cohort. These are not the same
+patients.
