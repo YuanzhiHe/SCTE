@@ -22,9 +22,9 @@ We address it in an external cohort of 444 chest CT examinations from a hospital
 
 ### Thick-to-thin slice restoration
 
-Restoration of 1 mm CT from thicker reconstructions is usually posed as through-plane super-resolution. The RPLHR-CT dataset introduced a real-paired benchmark, in which the thick and thin series come from the same raw acquisition rather than from simulated downsampling, together with a transformer baseline[^yu2022tvsrn]. Subsequent architectures include an inter-intra-slice interpolation network[^song2024i3net] and a convolutional-transformer hybrid trained to recover masked regions from visible ones, which reached reader-level parity with real thin slices for pneumonia diagnosis and nodule detection[^yu2024cthnet]. A multicohort benchmark later released a multi-ratio real-paired dataset and showed that training on simulated rather than real thick-slice inputs degrades every method tested, which establishes real pairs as the appropriate training and evaluation setting[^yu2026benchmark].
+Restoration of 1 mm CT from thicker reconstructions is usually posed as through-plane super-resolution. The RPLHR-CT dataset introduced a real-paired benchmark, in which the thick and thin series come from the same raw acquisition rather than from simulated downsampling, together with a transformer baseline[^yu2022tvsrn]. Subsequent architectures include an inter-intra-slice interpolation network[^song2024i3net], a three-dimensional conditional generative adversarial network applied to spinal morphology[^nakamoto2022], and a convolutional-transformer hybrid trained to recover masked regions from visible ones, which reached reader-level parity with real thin slices for pneumonia diagnosis and nodule detection[^yu2024cthnet]. A multicohort benchmark later released a multi-ratio real-paired dataset and showed that training on simulated rather than real thick-slice inputs degrades every method tested, which establishes real pairs as the appropriate training and evaluation setting[^yu2026benchmark].
 
-Evaluation across this literature rests on peak signal-to-noise ratio (PSNR) and the structural similarity index measure (SSIM), supplemented by reader studies and, more recently, by segmentation and radiomic consistency. None of these endpoints is a thresholded statistic of the attenuation histogram.
+Evaluation across this literature rests on peak signal-to-noise ratio (PSNR) and the structural similarity index measure (SSIM), supplemented by task-level endpoints. Synthesized thin slices have been shown to raise computer-aided nodule detection on thick-slice CT[^jeong2024] and to improve the reproducibility and discriminative performance of radiomic features[^yang2026radiomic]. None of these endpoints is a thresholded statistic of the attenuation histogram.
 
 ### Slice thickness and quantitative CT
 
@@ -152,6 +152,9 @@ Training, inference, calibration, and evaluation code, together with the model w
 [^vanstiphout2021]: van Stiphout, J. A. et al. Eur. Radiol. 32, 2921–2929 (2021).
 [^bhadra2021]: Bhadra, S. et al. IEEE Trans. Med. Imaging 40, 3249–3260 (2021).
 [^lipman2023]: Lipman, Y. et al. ICLR (2023).
+[^jeong2024]: Jeong, J. et al. Diagnostics 14, 2558 (2024).
+[^nakamoto2022]: Nakamoto, A. et al. Sci. Rep. 12, 12176 (2022).
+[^yang2026radiomic]: Yang, H. et al. Insights Imaging 17 (2026).
 [^wasserthal2023]: Wasserthal, J. et al. Radiol. Artif. Intell. 5, e230024 (2023).
 [^bland1986]: Bland, J. M. & Altman, D. G. Lancet 327, 307–310 (1986).
 [^lin1989]: Lin, L. I.-K. Biometrics 45, 255–268 (1989).
