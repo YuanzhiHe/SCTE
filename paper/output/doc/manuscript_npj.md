@@ -2,7 +2,7 @@
 
 ## Abstract
 
-Emphysema is quantified on chest computed tomography (CT) from the attenuation histogram of the lung, most often as the low-attenuation area below −950 Hounsfield units (HU), abbreviated LAA-950. The measurement requires 1 mm reconstructions, yet much of chest CT is reconstructed at 5 mm and hospitals without thin-slice capability cannot produce the thin series at all. Deep learning restores thin slices from thick ones and improves image quality, but whether that improvement reaches the measurement has not been tested. In an external cohort of 444 examinations from two manufacturers and two reconstruction kernels, it did not. A published restoration network exceeded Lanczos interpolation by 2.0 dB in peak signal-to-noise ratio (PSNR) while their LAA-950 biases differed by 0.07 percentage points, and each recovered about one-tenth of the bias carried by the unreconstructed 5 mm series. The cause lies in the structure of the problem itself. A deterministic estimator narrows the lung attenuation histogram and displaces it, and we measured that displacement at −16.32 ± 0.65 HU across the cohort, a spread too small for a patient-level effect. Threshold indices are the quantities most sensitive to both. Sampling the reconstruction residual with a flow-matching decoder removes the displacement and recovers 95% of the bias, at a PSNR below that of the unreconstructed series, while indicating scanner-level competence without a thin-slice reference.
+Emphysema is quantified on chest computed tomography (CT) from the lung attenuation histogram, most often as the low-attenuation area below −950 Hounsfield units (HU), or LAA-950. The measurement needs 1 mm reconstructions, yet much of chest CT is reconstructed at 5 mm and sites without thin-slice capability cannot produce the thin series. Deep learning restores thin slices and improves image quality, but whether that improvement reaches the measurement is untested. In 444 external examinations from two manufacturers and two kernels, it did not: a published network exceeded interpolation by 2.0 dB in peak signal-to-noise ratio while their LAA-950 biases differed by 0.07 percentage points, each recovering a tenth of the bias the unreconstructed series carries. A deterministic estimator narrows the histogram and displaces it, measured at −16.32 ± 0.65 HU, and threshold indices are most sensitive to both. Sampling the reconstruction residual recovers 95% of that bias at lower image quality.
 
 ## Introduction
 
@@ -20,7 +20,7 @@ We address it in an external cohort of 444 chest CT examinations from a hospital
 
 ## Results
 
-![**Fig. 1 | Study overview.** **a**, Cohorts. Hospital A contributed 203 paired examinations for model training; the public RPLHR-CT release contributed 50 whole volumes, which also supplied the pretraining weights used by the zero-shot arm. Hospital B, which contributed no training data, provided 494 paired examinations on scanners from two manufacturers with two reconstruction kernels; 50 were used to fit protocol constants and the indicator thresholds and 444 were reported, of which 311 were soft-kernel and 126 sharp-kernel. Descriptive statistics use all 444 examinations and paired tests use the 438 that every arm completed with finite values throughout. In every cohort the thick and thin series of an examination come from the same raw acquisition. **b**, Evaluation framework. The 5 mm series as acquired is the input to every arm, the matched 1 mm series is the reference, and each arm is assessed on the same set of endpoints. TVSRN and I3Net were evaluated on the public cohort, where released weights are available.](figures/fig1_overview.pdf)
+![**Fig. 1 | Study design.** **a**, Cohorts and analysis sets. Hospital A contributed 203 paired examinations, used to train the cohort-trained arm. The public RPLHR-CT release contributed 50 whole volumes, used for the cross-method comparison and as the source of the weights the zero-shot arm carries. Hospital B contributed 494 paired examinations on scanners from two manufacturers with two reconstruction kernels and contributed no training data to any arm; 50 were used to fit protocol constants and indicator thresholds, and 444 were reported. Descriptive statistics use all 444; paired comparisons use the 438 that every arm completed with finite values throughout, six having been excluded under a rule fixed before the comparison. **b**, Evaluation framework. Every arm takes the acquired 5 mm series as input and is assessed against the matched 1 mm series from the same raw acquisition. TVSRN and I3Net were evaluated on the public cohort, where released weights are available. The reference-free indicator is read at the level of the domain rather than the individual examination.](figures/fig1_study_design.png)
 
 ### Study cohorts
 
@@ -34,7 +34,7 @@ Through-plane views make the difference visible before any index is computed: th
 
 ### Image quality gains do not reach the measurement
 
-Relative to reading the 5 mm series directly, Lanczos interpolation recovered 12% of the LAA-950 bias and a published restoration network recovered 10%, while the network exceeded interpolation by 2.0 dB in PSNR (Fig. 2c, Table 1). The two differed in LAA-950 bias by 0.07 percentage points. Across the four arms the relation between PSNR and densitometric bias was flat over a 3.2 dB span.
+Relative to reading the 5 mm series directly, Lanczos interpolation recovered 12% of the LAA-950 bias and a published restoration network recovered 10%, while the network exceeded interpolation by 2.0 dB in PSNR (Fig. 2c, Table 1). The two differed in LAA-950 bias by 0.07 percentage points. Across the three non-generative arms the relation between PSNR and densitometric bias was flat over a 3.2 dB span.
 
 The public cohort showed the same ordering with far smaller absolute differences (Fig. 3a). Three published methods reached PSNR above 33 dB, about 3 dB above Lanczos, and all three had slightly larger LAA-950 bias than Lanczos (−0.82, −0.90 and −0.86 against −0.78 percentage points; Table 4). That cohort has a reference LAA-950 of 1.21 ± 1.14%, close to a normal population, so every method's error is small in absolute terms and the failure is invisible there. The difference in scale between the two cohorts is itself informative about why the gap has not been reported.
 
@@ -48,13 +48,13 @@ The residual sampler, applied zero-shot with weights trained only on public data
 
 ![**Fig. 3 | Endpoints not covered by Fig. 2.** **a**, Image quality against absolute LAA-950 bias on the public paired cohort ($n$ = 50). The three published methods take almost the same value and carry one shared label. **b**, Bias and 95% limits of agreement for LAA-910 in the external cohort ($n$ = 444). **c**, Bias in the 15th and 10th percentiles of the lung attenuation histogram in the external cohort ($n$ = 444); columns left to right are the 5 mm series read directly, Lanczos interpolation, CTHNet and SCTE-R applied zero-shot.](figures/fig3_additional.pdf) Expressed against the unreconstructed series, the sampler recovered 95% of the LAA-950 bias. Its PSNR was 26.81 dB, below the 27.59 dB of the unreconstructed 5 mm series and 3.96 dB below the published network.
 
-Agreement also held at the level of the individual lobe. Across the five lobes CCC ranged from 0.929 to 0.956 with biases between +0.84 and +1.50 percentage points (Table 6). Results were insensitive to the number of integration steps, with a paired absolute-error difference in LAA-950 between 32 and 64 integration steps of −0.06 to +0.46 percentage points (bootstrap 95% confidence interval, 20 examinations) and a lung PSNR difference of 0.09 dB.
+Agreement also held at the level of the individual lobe. In the cohort-trained arm, CCC across the five lobes ranged from 0.929 to 0.956 with biases between +0.84 and +1.50 percentage points (Table 6). Results were insensitive to the number of integration steps, with a paired absolute-error difference in LAA-950 between 32 and 64 integration steps of −0.06 to +0.46 percentage points (bootstrap 95% confidence interval, 20 examinations) and a lung PSNR difference of 0.09 dB.
 
-Fine-tuning on paired data from the validation site tightened the LAA-950 limits of agreement to −3.18 to +5.26 and raised CCC to 0.948, and raised PSNR by 1.5 dB, at the cost of larger LAA-910 bias and larger percentile errors. Sites that can produce paired data can therefore trade one endpoint against another; sites without thin-slice capability cannot produce such data at all, which is why the zero-shot arm is the deployable one.
+Training on the 203 paired examinations from Hospital A, with the validation cohort still untouched, tightened the LAA-950 limits of agreement to −3.18 to +5.26 and raised CCC to 0.948, and raised PSNR by 1.5 dB, at the cost of larger LAA-910 bias and larger percentile errors. Paired clinical data therefore buys agreement on one endpoint at the expense of others. Both arms remain deployable at a site without thin-slice capability, since neither requires paired data from that site.
 
 ### Competence varies by scanner, not by scan
 
-The indicator passed 80% of examinations in the domain the public model was trained on. On the validation cohort it passed 16.1% of the 311 soft-kernel examinations, where the densitometric endpoints held with a diagnostic reclassification rate of 1.6%, and 4.8% of the 126 sharp-kernel examinations, where they did not, with LAA-950 bias between −4 and −5.5 percentage points and a reclassification rate of 27.6% (Fig. 2f). After fine-tuning on matched data both scanner families passed at about 99% with endpoints intact. The sharp-kernel data lay inside the physical calibration set, so what the indicator separates is whether the model has seen this kind of data, not whether the protocol has seen this scanner.
+The indicator passed 80% of examinations in the domain the public model was trained on. On the validation cohort it passed 16.1% of the 311 soft-kernel examinations, where the densitometric endpoints held with a diagnostic reclassification rate of 1.6%, and 4.8% of the 126 sharp-kernel examinations, where they did not, with LAA-950 bias between −4 and −5.5 percentage points and a reclassification rate of 27.6% (Fig. 2f). The remaining seven examinations returned an abstention because the eroded lung interior was too small to support the estimators. After fine-tuning on matched data both scanner families passed at about 99% with endpoints intact. The sharp-kernel data lay inside the physical calibration set, so what the indicator separates is whether the model has seen this kind of data, not whether the protocol has seen this scanner.
 
 Within a single scanner the verdict carried no case-level information. Among the 311 soft-kernel examinations, 0 of the 50 that passed and 5 of the 261 that were flagged crossed the 10% diagnostic cut-off (Fisher exact test, two-sided, p = 1.0). The indicator therefore functions as a site-level gate.
 
@@ -66,7 +66,7 @@ Table 1 | Agreement with the 1 mm reference for LAA-950, external cohort (n = 44
 | Lanczos interpolation | −4.41 | −12.32 to +3.50 | 0.689 |
 | CTHNet | −4.48 | −12.80 to +3.84 | 0.682 |
 | SCTE-R, zero-shot | −0.26 | −5.61 to +5.08 | 0.933 |
-| SCTE-R, site-adapted | +1.04 | −3.18 to +5.26 | 0.948 |
+| SCTE-R, cohort-trained | +1.04 | −3.18 to +5.26 | 0.948 |
 
 Table 2 | Agreement with the 1 mm reference for LAA-910, external cohort (n = 444). Reference LAA-910 was 19.72 ± 14.42%.
 
@@ -76,7 +76,7 @@ Table 2 | Agreement with the 1 mm reference for LAA-910, external cohort (n = 44
 | Lanczos interpolation | −7.30 | −14.59 to −0.01 | 0.841 |
 | CTHNet | −5.98 | −13.12 to +1.17 | 0.889 |
 | SCTE-R, zero-shot | −0.32 | −4.85 to +4.22 | 0.986 |
-| SCTE-R, site-adapted | +1.72 | −3.08 to +6.52 | 0.978 |
+| SCTE-R, cohort-trained | +1.72 | −3.08 to +6.52 | 0.978 |
 
 Table 3 | Bias in the low-attenuation percentiles, external cohort (n = 444). Reference Perc15 was −911.2 ± 43.3 HU.
 
@@ -97,15 +97,15 @@ Table 4 | Public paired cohort (n = 50), where the reference LAA-950 was 1.21 ±
 | Lanczos interpolation | 30.27 | −0.78 | 0.78 | 0.259 |
 | SCTE-R | 30.83 | −0.51 | 0.54 | 0.594 |
 
-Table 5 | Global attenuation displacement measured directly, external cohort (n = 444). Values are mean ± standard deviation across examinations.
+Table 5 | Global attenuation displacement measured directly, external cohort (n = 444). Values are mean ± standard deviation across examinations, except the scalar-offset control, which is reported as the range across the fitted offsets and carries no standard deviation.
 
 | Arm | Displacement δ (HU) |
 |:---|---:|
 | Deterministic regression | −16.32 ± 0.65 |
-| Scalar-offset control | −39.8 to −41.8 |
+| Scalar-offset control | −39.8 to −41.8 (range) |
 | SCTE-R | −1.76 ± 1.06 |
 
-Table 6 | Lobar agreement for LAA-950, site-adapted arm, external cohort (n = 444).
+Table 6 | Lobar agreement for LAA-950, cohort-trained arm, external cohort (n = 444).
 
 | Lobe | Bias (pp) | CCC |
 |:---|---:|---:|
@@ -117,9 +117,9 @@ Table 6 | Lobar agreement for LAA-950, site-adapted arm, external cohort (n = 44
 
 ## Discussion
 
-Image quality and densitometric accuracy came apart on this task, and by a wide margin. A published restoration network with 2.0 dB more PSNR than Lanczos interpolation carried the same LAA-950 bias to within 0.07 percentage points, and the method that restored agreement had the lowest PSNR of every arm tested, including the unreconstructed 5 mm series. Anyone selecting a restoration model on image quality alone would rank these methods in close to the reverse of their densitometric order.
+Image quality and densitometric accuracy came apart on this task, and by a wide margin. A published restoration network with 2.0 dB more PSNR than Lanczos interpolation carried the same LAA-950 bias to within 0.07 percentage points, and in the external cohort the method that restored agreement had the lowest PSNR of any arm, including the unreconstructed 5 mm series. Anyone selecting a restoration model on image quality alone would rank these methods in close to the reverse of their densitometric order.
 
-Two properties of a deterministic estimator account for this. The first follows from the objective: minimising squared error suppresses the residual component the operator does not constrain, which narrows the lung histogram and leaves less mass below the threshold. The second property is an empirical regularity. Across 444 examinations the estimator displaced the histogram by −16.32 HU with a standard deviation of 0.65 HU, a spread far too small for a patient-level effect, and adding the densitometric indices to the training objective left that displacement within 0.01 HU. Threshold statistics are the functionals such a displacement moves, which is why they fail while structural metrics do not. A sampled residual retains its width, and under sampling the displacement fell to −1.76 HU.
+Two properties of a deterministic estimator account for this. The first follows from the objective: minimising squared error suppresses the residual component the operator does not constrain, which narrows the lung histogram and leaves less mass below the threshold. The second property is an empirical regularity. Across 444 examinations the estimator displaced the histogram by −16.32 HU with a standard deviation of 0.65 HU, a spread far too small for a patient-level effect, and adding the densitometric indices to the training objective left that displacement within 0.01 HU. Threshold statistics are the functionals such a displacement moves, which is why they fail while structural metrics do not. A sampled residual retains its width, and under sampling the displacement fell from −16.32 to −1.76 HU without reaching zero.
 
 The magnitude of the displacement remains an open question. It was similar in the public cohort, where the model was in domain, which leaves domain shift as at most a partial account.
 
@@ -127,13 +127,13 @@ This scopes rather than contradicts the benchmark result that restoration improv
 
 For sites without thin-slice capability, the practical reading is that reconstruction is worth doing and the choice of method matters more than its image quality suggests. Reading the 5 mm series directly missed about two-thirds of the emphysema present. Interpolation and a published network each recovered about a tenth of that bias; the residual sampler recovered 95%. The accompanying indicator addresses the question such a site must answer first, which is whether the model transfers to its scanner at all, and it answers that question without a thin-slice reference. Its resolution is the scanner, which is the granularity at which a site makes the deployment decision.
 
-Deep-learning restoration of thin-slice chest CT improves image quality without improving emphysema densitometry. A deterministic estimator narrows the lung histogram and, as measured here, displaces it by a constant amount; threshold indices are the quantities most sensitive to both. Sampling the reconstruction residual removes the displacement and recovers 95% of the bias present in the unreconstructed 5 mm series, on an external cohort of 444 examinations from two manufacturers, at an image quality below that of the series it started from. A reference-free indicator identifies scanners on which the model is not competent.
+Deep-learning restoration of thin-slice chest CT improves image quality without improving emphysema densitometry. A deterministic estimator narrows the lung histogram and, as measured here, displaces it by a constant amount; threshold indices are the quantities most sensitive to both. Sampling the reconstruction residual reduces the displacement and recovers 95% of the bias present in the unreconstructed 5 mm series, on an external cohort of 444 examinations from two manufacturers, at an image quality below that of the series it started from. A reference-free indicator identifies scanners on which the model is not competent.
 
 Two directions follow from this work. Multi-site evaluation would map the range of protocols over which the fitted operator and the indicator thresholds carry, beyond the two manufacturers and two kernels covered here, and the indicator itself offers a way to screen each new site before any thin-slice reference exists. A reading study, together with comparison against pulmonary function or longitudinal decline, would then establish that the recovered agreement changes what a clinician concludes.
 
 ## Methods
 
-![**Fig. 4 | Method.** **a**, Forward model. Thick-slice reconstruction applies a through-plane sensitivity profile of full width at half maximum $w$ and then averages each group of $r = 5$ slices, giving $y = A_w x + \varepsilon$. The operator preserves slab means and has a non-trivial null space, so through-plane detail that averages to zero within a slab leaves no trace in the observation. **b**, Residual-space sampling, shown unrolled. A base predictor supplies $x_0$; the scaled residual is initialised from a standard normal and advanced by explicit Euler steps of a velocity field $v_\theta$ conditioned on the observation and the fitted width, with a projection onto the measurement-consistent set after each step. The estimate is $\hat{x} = x_0 + s_r u$, and sampling rather than averaging retains the width of the residual distribution. **c**, The three reference-free terms are parallel readouts of the same data-consistency residual $R = A_w\hat{x} - y$ taken over the eroded lung interior, and the verdict requires all three to fall inside thresholds fitted on the null distribution of calibration cases.](figures/fig4_method.pdf)
+![**Fig. 4 | Method.** **a**, Forward model. Thick-slice reconstruction convolves along the through-plane axis with a Gaussian of full width at half maximum $w$ and then averages each group of $r = 5$ slices, giving $y = A_w x + \varepsilon$. The operator has a non-trivial null space: any component $z$ with $A_w z = 0$ leaves no trace in the observation. **b**, Residual-space sampling. A base predictor gives $x_0$ by upsampling or from a frozen backbone; the scaled residual is initialised from a standard normal and advanced over $t \in [0,1]$ by a velocity field $v_\theta$ conditioned on the observation and the fitted width, with a projection onto the measurement-consistent set inside the loop. The estimate is $\hat{x} = x_0 + s_r u$. **c**, Reference-free assessment. The displacement and the structural residual are read from the data-consistency residual $R = A_w\hat{x} - y$ over the eroded lung interior; the variance score compares the through-plane variance of the reconstruction against the value predicted from the observation, and is therefore a separate branch. All three must fall inside thresholds fitted on paired calibration cases. The assessment is made at the level of the domain and does not certify the fidelity of an individual scan.](figures/fig4_method_new.png)
 
 ### Related work
 
@@ -157,13 +157,13 @@ $$y = A_w x + \varepsilon,$$
 
 where $A_w$ convolves along the through-plane axis with a Gaussian of full width at half maximum $w$ and then averages each group of $r$ slices, and $\varepsilon$ collects acquisition noise. The effective width $w$ is a protocol constant, fitted once per protocol on calibration pairs.
 
-Two properties of $A_w$ carry the argument that follows. It is mean-preserving, so the mean attenuation of any slab is unchanged by the operator. And it has a non-trivial null space: through-plane detail that averages to zero within a slab leaves no trace in $y$.
+Two properties of $A_w$ carry the argument that follows. Its kernel is normalised, so a constant offset passes through unchanged, $A_w(x + \delta\mathbf{1}) = A_w x + \delta$, wherever the kernel support lies inside the region considered. And it has a non-trivial null space: any component $z$ with $A_w z = 0$ leaves no trace in $y$.
 
 The quantity to be recovered is not $x$ but a functional of it. For a lung set $\Omega$ and threshold $\tau$,
 
-$$\mathrm{LAA}_\tau(x) = \frac{|\{v \in \Omega : x_v < \tau\}|}{|\Omega|},$$
+$$\mathrm{LAA}_\tau(x) = 100 \times \frac{\#\{v \in \Omega : x_v < \tau\}}{\#\Omega}\ \ (\%).$$
 
-and Perc15 is the corresponding quantile. Both depend on $x$ only through the histogram of $\{x_v : v \in \Omega\}$, and both respond only to histogram mass that crosses $\tau$; mass that moves elsewhere leaves them unchanged.
+Perc15 and Perc10 are the 15th and 10th percentiles of the same set of values, and are quantiles rather than counts above a fixed threshold. Both depend on $x$ only through the histogram of $\{x_v : v \in \Omega\}$, and both respond only to histogram mass that crosses $\tau$; mass that moves elsewhere leaves them unchanged.
 
 This is where a squared-error estimator and a densitometric estimator part company. Write the reconstruction as $\hat{x} = x + e$. Mean squared error is minimised by the conditional mean, which suppresses the component of $e$ that the operator does not constrain. That suppression narrows the lung histogram, and a narrower histogram places less mass below $\tau$, so a reconstruction that is optimal in squared error underestimates LAA by construction.
 
@@ -187,7 +187,7 @@ After each integration step the iterate is projected back onto the set consisten
 
 ### Reference-free competence indicator
 
-Mean preservation gives an estimator of $\delta$ that needs no 1 mm reference (Fig. 4c). Because $A_w$ preserves slab means, any displacement of $\hat{x}$ appears undiminished in $A_w\hat{x} - y$ over the eroded lung set $\Omega_e$, so
+Because the kernel is normalised, a displacement of $\hat{x}$ passes through the operator undiminished, so it appears at full size in $A_w\hat{x} - y$ wherever the kernel support lies inside the lung. Restricting to the eroded lung set $\Omega_e$ enforces that condition, and gives an estimator of $\delta$ that needs no 1 mm reference (Fig. 4c),
 
 $$\hat{\delta} = \frac{1}{|\Omega_e|}\sum_{v \in \Omega_e} \left(A_w\hat{x} - y\right)_v$$
 

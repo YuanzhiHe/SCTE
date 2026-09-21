@@ -235,12 +235,16 @@ def panel_e(ax):
     lab = {'deterministic-regression': 'Regression', 'bias-only-control': 'Scalar offset',
            'SCTE-R': 'SCTE-R'}
     v = [float(r['delta_hu']) for r in rows]
-    e = [float(r['delta_sd']) for r in rows]
+    # the scalar-offset control is reported as a range, not a mean with a standard
+    # deviation, so it carries no error bar
+    e = [float(r['delta_sd']) if r['delta_sd'] else 0.0 for r in rows]
+    has_sd = [bool(r['delta_sd']) for r in rows]
     y = np.arange(len(rows))[::-1]
     ax.barh(y, v, 0.5, xerr=e, color=[C_BASE2, C_BASE4, C_OURS], edgecolor='0.15',
             lw=0.7, alpha=0.85, error_kw=dict(ecolor='0.2', lw=0.9, capsize=2.5))
-    for yi, vi, ei in zip(y, v, e):
-        ax.annotate(f'{vi:.2f} ± {ei:.2f}', (vi - ei, yi), textcoords='offset points',
+    for yi, vi, ei, sd in zip(y, v, e, has_sd):
+        txt = f'{vi:.2f} ± {ei:.2f}' if sd else '−39.8 to −41.8'
+        ax.annotate(txt, (vi - ei, yi), textcoords='offset points',
                     xytext=(-6, -2.3), fontsize=6.1, ha='right')
     ax.axvline(0, color='0.35', lw=0.8)
     ax.set_yticks(y, [lab[r['arm']] for r in rows], fontsize=6.6)
