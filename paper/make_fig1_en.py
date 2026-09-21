@@ -73,9 +73,11 @@ def sub(ax, x, y, w, h, lines, fc, ec, lw=1.0, title=None, tfs=6.6, fs=5.9,
                                 facecolor=fc, edgecolor=ec, linewidth=lw, zorder=2,
                                 clip_on=False))
     if hatch:
-        ax.add_patch(FancyBboxPatch((x, y), w, h, boxstyle='round,pad=0.004,rounding_size=0.010',
-                                    facecolor='none', edgecolor=ec, linewidth=0,
-                                    hatch=hatch, alpha=0.30, zorder=2, clip_on=False))
+        # a band at the left edge rather than a fill: a hatch across the whole box
+        # runs through every line of text inside it
+        ax.add_patch(Rectangle((x + 0.004, y + 0.012), 0.009, h - 0.024,
+                               facecolor=ec, alpha=0.65, edgecolor='none',
+                               zorder=3, clip_on=False))
     ty = y + h
     if title:
         ax.add_patch(Rectangle((x, y + h - 0.085), w, 0.085, facecolor=ec, alpha=0.90,
@@ -109,39 +111,39 @@ def panel_a(ax):
     yT, hT = 0.545, 0.40         # top row: the pipeline
     yB, hB = 0.035, 0.375        # bottom row: the physics and what it enables
 
-    sub(ax, 0.000, yT, 0.135, hT, ['5 mm series $y$', 'the only one available'],
-        '#E8EFF7', C_BASE1, title='Input', hatch='....')
-    sub(ax, 0.163, yT, 0.150, hT, ['upsampling', 'or frozen backbone', 'gives $x_0$'],
+    sub(ax, 0.000, yT, 0.152, hT, ['5 mm series $y$', 'the only one\navailable'],
+        '#E8EFF7', C_BASE1, title='Input', hatch='.')
+    sub(ax, 0.178, yT, 0.150, hT, ['upsampling', 'or frozen backbone', 'gives $x_0$'],
         '#F4F4F4', '#6E6E6E', title='Base predictor')
-    sub(ax, 0.341, yT, 0.232, hT,
+    sub(ax, 0.354, yT, 0.220, hT,
         ['$u=(x-x_0)/s_r$', 'Euler, $t\\!:\\!0\\!\\to\\!1$', 'data-consistency step'],
-        '#EFE9F6', C_OURS, lw=1.3, title='Residual-space flow matching')
-    sub(ax, 0.601, yT, 0.125, hT, ['1 mm estimate', '$\\hat{x}$'],
+        '#EFE9F6', C_OURS, lw=1.3, title='Flow matching')
+    sub(ax, 0.600, yT, 0.130, hT, ['1 mm estimate', '$\\hat{x}$'],
         '#EFE9F6', C_OURS, lw=1.3, title='Output')
-    sub(ax, 0.754, yT, 0.246, hT, ['LAA-950 / LAA-910', 'Perc15 / Perc10', 'five lobes'],
-        'white', '#3A3A3A', title='Densitometric endpoints')
+    sub(ax, 0.756, yT, 0.244, hT, ['LAA-950 / LAA-910', 'Perc15 / Perc10', 'five lobes'],
+        'white', '#3A3A3A', title='Endpoints')
 
-    sub(ax, 0.341, yB, 0.232, hB,
+    sub(ax, 0.354, yB, 0.220, hB,
         ['$z$ Gaussian (FWHM $w$)', 'slab averaging ($r=5$)', 'mean-preserving'],
-        '#FDF0E1', C_BASE2, lw=1.1, title='Forward operator $A_w$', hatch='//')
-    sub(ax, 0.601, yB, 0.125, hB, ['$\\hat{\\delta}$', '$\\rho_{\\rm struct}$', '$s$'],
+        '#FDF0E1', C_BASE2, lw=1.1, title='Forward operator $A_w$', hatch='.', fs=5.7)
+    sub(ax, 0.600, yB, 0.130, hB, ['$\\hat{\\delta}$', '$\\rho_{\\rm struct}$', '$s$'],
         '#FDF0E1', C_BASE2, lw=1.1, title='Reference-free', fs=6.4)
-    sub(ax, 0.754, yB, 0.246, hB,
+    sub(ax, 0.756, yB, 0.244, hB,
         ['pass / flag', 'site-level competence', 'no per-scan claim'],
         'white', C_BASE2, lw=1.1, title='Validity indicator')
 
-    for a, b in ((0.135, 0.163), (0.313, 0.341), (0.573, 0.601), (0.726, 0.754)):
+    for a, b in ((0.152, 0.178), (0.328, 0.354), (0.574, 0.600), (0.730, 0.756)):
         arrow(ax, (a, yT + hT / 2), (b, yT + hT / 2))
-    for a, b in ((0.573, 0.601), (0.726, 0.754)):
+    for a, b in ((0.574, 0.600), (0.730, 0.756)):
         arrow(ax, (a, yB + hB / 2), (b, yB + hB / 2), color=C_BASE2)
-    arrow(ax, (0.457, yT), (0.457, yB + hB), ls=(0, (3, 2)), color=C_BASE2)
-    arrow(ax, (0.663, yT), (0.663, yB + hB), ls=(0, (3, 2)), color=C_OURS)
-    ax.text(0.472, (yT + yB + hB) / 2, 'constrains', fontsize=5.8, color=C_BASE2,
+    arrow(ax, (0.464, yT), (0.464, yB + hB), ls=(0, (3, 2)), color=C_BASE2)
+    arrow(ax, (0.665, yT), (0.665, yB + hB), ls=(0, (3, 2)), color=C_OURS)
+    ax.text(0.479, (yT + yB + hB) / 2, 'constrains', fontsize=5.8, color=C_BASE2,
             va='center', ha='left')
-    ax.text(0.678, (yT + yB + hB) / 2, '$\\hat{x}$', fontsize=6.2, color=C_OURS,
+    ax.text(0.680, (yT + yB + hB) / 2, '$\\hat{x}$', fontsize=6.2, color=C_OURS,
             va='center', ha='left')
-    ax.text(0.877, yB - 0.055, 'no 1 mm reference', fontsize=6.0,
-            color=C_BASE2, ha='center')
+    ax.text(0.878, yB - 0.075, 'no 1 mm reference', fontsize=6.0,
+            color=C_BASE2, ha='center', va='top')
 
 
 # =============================================================== panels b, c
@@ -229,7 +231,9 @@ def panel_c(ax, thin, thickup, base, rec, lung):
     ax.set_xlabel('threshold (HU)'); ax.set_ylabel('below threshold (%)')
     ax.set_yscale('log'); ax.set_ylim(0.03, 60)
     ax.set_xlim(thr[0], thr[-1])
-    ax.legend(fontsize=6.2, loc='upper left')
+    ax.legend(fontsize=6.0, loc='upper left', frameon=True, framealpha=1.0,
+              facecolor='white', edgecolor='none', borderpad=0.25,
+              handlelength=1.5, labelspacing=0.35)
     ax.spines[['top', 'right']].set_visible(False)
 
 
@@ -265,8 +269,8 @@ def panel_d(ax):
     ax.annotate('', xy=(ours[0] - 0.06, ours[1] + 0.32), xytext=(tx - 0.10, thick - 0.18),
                 arrowprops=dict(arrowstyle='-|>', lw=1.2, color=C_OURS,
                                 connectionstyle='arc3,rad=0.28'))
-    ax.text(tx - 1.08, (thick + ours[1]) / 2 - 0.15, '95% recovered', fontsize=6.5,
-            color=C_OURS, ha='center', va='center', rotation=78)
+    ax.text(tx - 1.30, thick - 0.55, '95%\nrecovered', fontsize=6.4, color=C_OURS,
+            ha='left', va='top', linespacing=1.25)
     ax.set_xlabel('PSNR (dB)'); ax.set_ylabel('|LAA-950 bias| (pp)')
     ax.set_ylim(-2.3, max(y) * 1.30); ax.margins(x=0.26)
     ax.spines[['top', 'right']].set_visible(False)
