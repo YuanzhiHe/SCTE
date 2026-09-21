@@ -249,7 +249,7 @@ box(ax, 0.845, 0.30, 0.155, 0.50,
 ax.text(0.9225, 0.26, 'thresholds from the\nnull distribution on\ncalibration cases',
         fontsize=5.5, ha='center', va='top', color='0.35', linespacing=1.3)
 
-fig.savefig(os.path.join(OUT, 'fig2_method.pdf'))
-fig.savefig(os.path.join(OUT, 'fig2_method.png'), dpi=300)
+fig.savefig(os.path.join(OUT, 'fig4_method.pdf'))
+fig.savefig(os.path.join(OUT, 'fig4_method.png'), dpi=300)
 plt.close(fig)
-print('wrote', os.path.join(OUT, 'fig2_method.pdf'))
+print('wrote', os.path.join(OUT, 'fig4_method.pdf'))

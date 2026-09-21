@@ -172,6 +172,6 @@ gs = fig.add_gridspec(1, 3, wspace=0.50, left=0.085, right=0.985, top=0.84, bott
 panel_public(fig.add_subplot(gs[0, 0]))
 panel_laa910(fig.add_subplot(gs[0, 1]))
 panel_percentile(fig.add_subplot(gs[0, 2]))
-out = os.path.join(OUT, 'fig4_additional.pdf')
+out = os.path.join(OUT, 'fig3_additional.pdf')
 fig.savefig(out)
 print('Output', out)
