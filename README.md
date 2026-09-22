@@ -1,7 +1,7 @@
-# SCTE-R — thick-slice CT restoration for emphysema densitometry
+# SCTE-R: thick-slice CT restoration for emphysema densitometry
 
-Restoring 1 mm CT from 5 mm reconstructions so that the *emphysema indices*
-(LAA-950, LAA-910, Perc15/10/5) are right — not just the pixels.
+Restoring 1 mm CT from 5 mm reconstructions so that the emphysema indices
+(LAA-950, LAA-910, Perc15/10/5) come out right, not only the pixels.
 
 ## The finding this is built on
 
@@ -15,26 +15,30 @@ protocol (50 whole volumes, TotalSegmentator lobe masks):
 | CTHNet (npj Digit. Med. 2024) | 31.60 | 0.82 | 0.152 |
 | I3Net (IEEE TMI 2024) | 31.34 | 0.86 | 0.100 |
 
-Each beats interpolation by 3.4–4.0 dB and **none improves the densitometry** —
-their LAA-950 concordance is *below* plain interpolation. Image fidelity and
-density fidelity are not the same objective.
+Each beats interpolation by 3.4 to 4.0 dB, and none improves the densitometry: their
+LAA-950 concordance sits below plain interpolation. Image fidelity and density
+fidelity are not the same objective.
 
-Why: the map from reconstruction to a threshold statistic is many-to-one, and the
-cheapest way to hit the target is a global HU displacement. Every deterministic
-regression we trained lands on a ~20 HU displaced solution regardless of the loss
-(halving the biomarker loss weight moves it from 19.08 to 19.09 HU).
+The reason is a global attenuation displacement. Every deterministic regression we
+trained settles at one regardless of the loss, and adding the biomarker term to the
+objective moves it by 0.01 HU. On the public cohort the displacement is about 20 HU;
+on a 444-examination external cohort from a second hospital it measures
+−16.32 ± 0.65 HU, a spread too small for a patient-level effect.
 
 ## What this repo adds
 
-- **A per-scan, reference-free certificate.** The displacement `δ̂` is measurable
-  from the thick observation alone, via the forward operator's mean preservation.
-  It separates "recovered the distribution" from "shifted the distribution":
-  displaced arms 0/50 certified, ours 47/50, with `|δ̂|` inside the
-  perfect-reconstruction null.
-- **A strong backbone plus a flow-matched residual**, emitting two outputs from one
-  integration: a 4-sample mean for viewing (lung PSNR within 0.25 dB of the best
-  published network) and a single sample for reporting (densitometry 1.5–2.2×
-  more accurate, CCC 3.9×).
+- A reference-free indicator of whether a model is competent on a given scanner.
+  The displacement `δ̂` is computable from the thick observation alone, because the
+  forward operator passes a constant offset through unchanged. It separates a
+  recovered distribution from a shifted one: displaced arms certify 0/50, ours 47/50,
+  with `|δ̂|` inside the perfect-reconstruction null. A stratified audit on the
+  external cohort places its resolution at the scanner, not the individual scan;
+  within one scanner the verdict carries no case-level information
+  (Fisher exact test, p = 1.0).
+- A frozen backbone with a flow-matched residual, giving two outputs from one
+  integration: a four-sample mean for viewing, within 0.25 dB of the best published
+  network on lung PSNR, and a single sample for reporting, 1.5 to 2.2 times more
+  accurate densitometrically.
 
 ## Layout
 
